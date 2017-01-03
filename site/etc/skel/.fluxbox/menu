@@ -20,7 +20,7 @@
     [exec] (Tableur) {localc} </usr/local/share/icons/hicolor/16x16/apps/libreoffice-calc.png>
     [exec] (Présentation) {loimpress} </usr/local/share/icons/hicolor/16x16/apps/libreoffice-impress.png>
     [separator]
-    [exec] (VLC) {vlc} </usr/local/share/icons/hicolor/16x16/apps/vlc.png>
+    [exec] (VLC) {mpv --profile=pseudo-gui} </usr/local/share/icons/hicolor/16x16/apps/mpv.png>
     [exec] (Gimp) {gimp} </usr/local/share/icons/hicolor/16x16/apps/gimp.png>
     [exec] (Inkscape) {inkscape} </usr/local/share/icons/hicolor/16x16/apps/inkscape.png>
     [exec] (Régler le son) {ovol} </usr/local/share/icons/gnome/16x16/status/stock_volume.png>

@@ -147,7 +147,7 @@ Control Mod4 F12 :TakeToWorkspace 12
 Mod1 P :Exec dmenu_run -sb "#000000" -sf "#4A90D9" -nb "#000000" -nf "#606060"
 Mod4 W :Exec firefox-esr
 Mod4 F :Exec pcmanfm
-Mod4 M :Exec vlc
+Mod4 M :Exec mpv --profile=pseudo-gui
 Mod4 T :Exec urxvtcd
 Mod4 S :Exec qs
 Print :Exec scrotup
