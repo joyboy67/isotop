@@ -2,6 +2,7 @@ all:
 	@echo "Building OpenBSD iso"
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh 
+	@./bin/download_pkgs.sh 
 	@./bin/build_site.sh 
 	@./bin/build_obsd_iso.sh 
 	@chmod a+rw CustomOBSD.iso
