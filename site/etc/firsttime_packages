@@ -1,4 +1,3 @@
-dungeon-crawl
 stone-soup-0.15.2p0
 cowsay
 lynx
@@ -45,7 +44,7 @@ ffmpeg2theora
 libdvdcss
 libdvdnav
 libdvdread
-vlc
+mpv
 gstreamer-0.10.36p9
 gstreamer-ffmpeg-0.10.13p11
 gstreamer-plugins-bad-0.10.23p22

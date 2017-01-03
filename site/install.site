@@ -44,5 +44,11 @@ echo "* Configure dhclient"
 echo "---"
 echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
 
+echo "* Configure boot.conf"
+echo "---"
+touch /etc/boot.conf
+echo "echo Welcome in IsoT0p" >> /etc/boot.conf
+echo "echo ---" >> /etc/boot.conf
+
 exit 0
 
