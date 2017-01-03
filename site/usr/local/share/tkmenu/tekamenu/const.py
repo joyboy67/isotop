@@ -71,7 +71,7 @@ Gummi = Éditeur LaTeX, gummi, /usr/local/share/gummi/icons/gummi.png
 
 [Multimedia]
 Simple-scan = Scanner, simple-scan, /usr/local/share/icons/gnome/48x48/devices/scanner.png
-Lecteur vidéo = Lecteur vidéo, vlc, /usr/local/share/icons/hicolor/48x48/apps/vlc.png
+Lecteur vidéo = Lecteur vidéo, mpv --profile=pseudo-gui, /usr/local/share/icons/hicolor/64x64/apps/mpv.png
 Gimp = Editeur d'image , gimp, /usr/local/share/icons/hicolor/48x48/apps/gimp.png
 Inkscape = Images vectorielles , inkscape, /usr/local/share/icons/hicolor/48x48/apps/inkscape.png
 
