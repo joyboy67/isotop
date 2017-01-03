@@ -1,0 +1,10 @@
+[Default Applications]
+image/png=viewnior.desktop
+image/jpeg=viewnior.desktop
+image/svg+xml=viewnior.desktop
+image/gif=viewnior.desktop
+image/x-xcf=viewnior.desktop
+application/x-compressed-tar=xarchiver.desktop
+application/x-tar=xarchiver.desktop
+application/pdf=evince.desktop
+text/plain=mousepad.desktop

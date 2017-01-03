@@ -1,0 +1,23 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+numlockx &
+conky -c ~/.fluxbox/conky.conf &
+xset -display :0 s off -dpms &
+xsetroot -solid "#345583" && wpsetters=feh fbsetbg -a ~/.fluxbox/wallpaper.png &
+redshift-gtk -l 47.13:1.33 -t 5500:4000 &
+
+
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox
+# or if you want to keep a log:

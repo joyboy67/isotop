@@ -1,0 +1,12 @@
+#!/bin/sh
+
+DIR=~/Documents/notes
+mkdir -p $DIR
+
+N=$(tkzenity "Nouvelle note" "Nom de la nouvelle note : ")
+
+if [ -n "$N" ]; then
+    leafpad "$DIR/$N"
+fi
+exit
+

@@ -1,0 +1,63 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Ouvrir un terminal ici</name>
+	<unique-id>1430681774901975-6</unique-id>
+	<command>urxvtcd</command>
+	<description>lancer un terminal dans le répertoire courant</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>acroread</icon>
+	<name>Convertir en PDF</name>
+	<unique-id>1430681789008349-7</unique-id>
+	<command>unoconv -f pdf %f</command>
+	<description>exporte le fchier au format PDF dans le répertoire courant</description>
+	<patterns>*.odt;*.odp;*.ods</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>browser</icon>
+	<name>Envoyer l'image sur le net</name>
+	<unique-id>1430680843463192-5</unique-id>
+	<command>/usr/bin/pixup %F</command>
+	<description>téléverser l&apos;image sur framapic.org et partagez-la</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<image-files/>
+</action>
+<action>
+	<icon>catfish</icon>
+	<name>Recherche</name>
+	<unique-id>1430701366296475-16</unique-id>
+	<command>/usr/bin/catfish --path=%f</command>
+	<description>effectuez une recherche dans le répertoire courant</description>
+	<patterns>*</patterns>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>edit</icon>
+	<name>Modifier l&apos;image</name>
+	<unique-id>1440701060510825-4</unique-id>
+	<command>/usr/bin/imagemod-hl %F</command>
+	<description>pivoter, redimensionner, convertir ou imprimer une image</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<image-files/>
+</action>
+<action>
+    <icon>dialog-question</icon>
+	<name>Vérifier le md5</name>
+    <unique-id>1456843190812647-1</unique-id>
+	<command>zenity --info --text=&quot;md5 : $(md5sum %f |cut -d&apos; &apos; -f1)&quot;</command>
+	<description>Vérifier la somme de contrôle de l&apos;image</description>
+	<patterns>*.iso;*.ISO</patterns>
+	<startup-notify/>
+	<other-files/>
+</action>
+</actions>

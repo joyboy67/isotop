@@ -1,0 +1,23 @@
+! urxvt config ---------------------------------------------------------
+URxvt.termName: rxvt-unicode
+URxvt.imLocale: fr_FR.UTF-8
+URxvt.saveLines: 5000
+URxvt.cursorBlink: true
+URxvt.visualBell: false
+URxvt.urgentOnBell: true
+!URxvt.font: -*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+URxvt.font: xft:Hack:pixelsize=12:antialias=true
+URxvt.scrollBar: false
+URxvt.scrollBar_right: false
+URxvt.matcher.button: 1
+
+URxvt.background:	#000000
+URxvt.foreground:	#eeeeee
+!URxvt.color0:		#08090A
+!URxvt.color1:		#4b555e
+!URxvt.tintColor: 	#FCFCFC
+
+urxvt.transparent: true
+urxvt.shading: 15
+
+Xcursor.theme: dmz

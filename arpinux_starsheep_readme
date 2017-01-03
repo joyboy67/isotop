@@ -1,0 +1,41 @@
+
+== Génération de l'iso ==
+- Le dépôt est là : https://framagit.org/3hg/SiO2
+- Une fois cloné, vous avez tout pour fabriquer une iso. Pour ça, lancez
+  : ``sudo make``
+- C'est censé fonctionner sous linux comme sous OBSD la génération de
+  l'iso, j'espère ne pas avoir modifié un truc qui coince.
+- Vous retrouvez une iso CustomOBSD.iso que vous pouvez tester sous
+  qemu, virtualbox, au plaisir...
+
+
+== Test de l'iso ==
+L'installation est une install classique d'OpenBSD. Le seul truc chiant,
+c'est d'avoir assez de place dans la partition /usr/local/, donc
+prévoyez un gros disque. Le partitionnement par défaut se chargera du
+reste.
+
+À l'étape d'installation des sets, il faut tout sélectionner pour avoir
+le "site60.tgz" d'installé. Taper "all" suffit pour ça. Ne pas se
+préoccuper du manque de signature (ça viendra en temps voulu).
+
+
+Ensuite, l'installation se déroule normalement, et lors du premier
+démarrage tous les paquets sont installés. J'espère trouver une autre
+méthode à l'avenir. (oui, c'est du bricolage actuellement)
+
+
+== Configuration de l'iso ==
+
+Tout se configure dans le dossier "site". Vous trouverez les fichiers
+qui seront installés dans le nouveau système.
+
+- site/install.site : le script exécuté juste après l'installation
+- site/etc/rc.firsttime : le script exécuté au premier démarrage
+- obsdiso.conf : la configuration de l'iso
+
+
+
+
+-- 
+/Thuban/

@@ -1,0 +1,6 @@
+[app] (name=TkMenu)
+  [Deco]	{NONE}
+[end]
+[app] (name=18582025935544) (class=Toplevel)
+  [Head]	{1}
+[end]

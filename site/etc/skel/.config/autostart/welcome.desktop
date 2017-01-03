@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Welcome
+Comment=Debian welcome message
+Comment[fr]=Message d'accueil Debian
+Exec=/usr/share/live-df/welcome.sh
+Path=/usr/share/live-df
+Terminal=false
+StartupNotify=false
+Hidden=false

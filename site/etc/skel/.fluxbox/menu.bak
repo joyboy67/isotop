@@ -1,0 +1,61 @@
+[begin] (· DFLinux ·)
+[encoding] {UTF-8}
+[exec] (Menu principal) {tkmenu}
+[submenu] (Menu Debian) {} </usr/share/icons/Adwaita/16x16/actions/go-home.png>
+    [include] (/etc/X11/fluxbox/fluxbox-menu)
+[end]
+[separator]
+[exec] (Rechercher sur le web) {~/.fluxbox/dfmenu/scripts/qs2}
+[submenu] (Fichiers) {Fichiers} </usr/share/icons/Adwaita/16x16/places/folder.png>
+    [exec] (Ouvrir thunar) {thunar}
+    [submenu] (Dossier personnel)
+        [wallpapers] (~) {xdg-open}
+    [end]
+    [submenu] (Images)
+        [wallpapers] (~/Images) {xdg-open}
+    [end]
+    [submenu] (Documents)
+        [wallpapers] (~/Documents) {xdg-open}
+    [end]
+    [submenu] (Vidéos)
+        [wallpapers] (~/Vidéos) {xdg-open}
+    [end]
+    [submenu] (Téléchargements)
+        [wallpapers] (~/Téléchargements) {xdg-open}
+    [end]
+    [exec] (Recherche de fichiers) {catfish} </usr/share/icons/Adwaita/16x16/actions/edit-find.png>
+[end]
+[submenu] (Notes)
+        [exec] (Nouvelle note) {~/.fluxbox/dfmenu/scripts/note}
+        [submenu] (Editer une note)
+            [wallpapers] (~/Documents/notes/) {mousepad}
+        [end]
+        [submenu] (Supprimer une note)
+            [wallpapers] (~/Documents/notes/) {rm}
+        [end]
+[end]
+
+[exec] (Capture d'écran) {~/.fluxbox/dfmenu/scripts/scrotup}
+
+[separator]
+[exec] (Aide) {xdg-open ~/Documents/les_cahiers_du_debutant.pdf} </usr/share/icons/Adwaita/16x16/actions/help-faq.png>
+[submenu] (Session) </usr/share/icons/Adwaita/16x16/actions/system-log-out.png>
+
+    [submenu] (Configurer)
+        [config] (Configure)
+        [submenu] (System Styles) {Choose a style...}
+            [stylesdir] (/usr/local/share/fluxbox/styles)
+        [end]
+        [submenu] (User Styles) {Choose a style...}
+            [stylesdir] (~/.fluxbox/styles)
+        [end]
+        [reconfig] (Recharger la configuration)
+    [end]
+
+    [separator]
+    [exec] (Verouiller l'écran) {xlock}
+    [exit] (Fermer la session) </usr/share/icons/Adwaita/16x16/actions/application-exit.png>
+[end]
+[endencoding]
+[end]
+ 

@@ -1,0 +1,40 @@
+.\"	$OpenBSD$
+.\"
+.\" Written by thuban <thuban@yeuxdelibad.net>.
+.\" Licence MIT
+.\"
+.Dd 18/12/26
+.Dt owi 8
+.Os
+.Sh NAME
+.Nm owi
+.Nd manage wifi connexions
+.Sh SYNOPSIS
+.Nm owi
+
+Without options, it will show the gui to select your favourite network and set wpa passphrase.
+
+.Nm owi -d
+
+Use -d to autoconnect to the strongest recognized wifi network
+.Sh DESCRIPTION
+The
+.Nm
+tool scans wifi networks and give a gui to set wpa passphrase and connect. It
+writes an appropriate
+.Xr hostname.if 5
+file,
+and starts the network with
+.Xr /etc/netstart 8 .
+.Sh FILES
+.Pa /etc/owi.conf
+.Sh SEE ALSO
+.Xr hostname.if 5
+
+wifind
+.Sh HISTORY
+I didn't wanted to edit my 
+.Xr hostname.if 5
+manually. Then I discovered wifind and wanted to do something similar using python and graphical.
+.Sh AUTHORS
+thuban <thuban@yeuxdelibad.net>

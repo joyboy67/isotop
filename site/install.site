@@ -1,0 +1,48 @@
+echo "---"
+echo "* RUNNING POST-INSTALL SCRIPT"
+echo "---"
+
+# pkg
+echo "---"
+echo "* Configuring install PATH"
+echo "installpath = http://ftp.fr.openbsd.org/pub/OpenBSD/%v/packages/%a/" >> /etc/pkg.conf
+echo "installpath += http://ftp2.fr.openbsd.org/pub/OpenBSD/%v/packages/%a/" >> /etc/pkg.conf
+
+# doas
+echo "* Configure doas"
+echo "---"
+echo "permit keepenv :wheel " >> /etc/doas.conf
+echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
+echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
+echo "permit nopass :wheel cmd /usr/sbin/apm" >> /etc/doas.conf
+
+# ports
+echo "* Ports configuration"
+echo "---"
+echo "FETCH_PACKAGES=yes" >> /etc/mk.conf
+#cd /usr
+#ftp http://ftp.openbsd.org/pub/OpenBSD/$(uname -r)/ports.tar.gz
+#ftp http://ftp.openbsd.org/pub/OpenBSD/$(uname -r)/SHA256.sig
+#signify -Cp /etc/signify/openbsd-$(uname -r | cut -c 1,3)-base.pub -x SHA256.sig ports.tar.gz
+#tar xzf ports.tar.gz
+#rm ports.tar.gz
+#
+
+# unbound configuration
+echo "* Configure unbound DNS resolver"
+echo "---"
+touch /etc/monthly.local
+echo 'unbound-anchor -u _unbound -a "/var/unbound/db/root.key"' >> /etc/monthly.local
+echo 'ftp -o /var/unbound/etc/unbound_ad_servers "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=unbound&showintro=0&mimetype=plaintext"' >> /etc/monthly.local
+echo '/usr/local/bin/antipub.sh' >> /etc/monthly.local
+
+unbound-anchor -u _unbound -a "/var/unbound/db/root.key"
+ftp -o /var/unbound/etc/unbound_ad_servers "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=unbound&showintro=0&mimetype=plaintext"
+rcctl enable unbound
+
+echo "* Configure dhclient"
+echo "---"
+echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
+
+exit 0
+
