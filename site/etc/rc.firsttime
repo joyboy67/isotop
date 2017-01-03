@@ -7,15 +7,16 @@ echo '* Installing packages'
 PACKAGES="$(cat /etc/firsttime_packages)"
 # we use /home as it's often the biggest partition
 OLD_PKG_PATH=$PKG_PATH
-export PKG_PATH=/home/root/pkg_cache
 mkdir -p $PKG_PATH
+# WIP
+#export PKG_PATH=/home/root/pkg_cache
 
 pkg_add -vmz $PACKAGES | tee -a -
+rm -rf /home/root
 
 # restore PKG_PATH
-export PKG_PATH=$OLD_PKG_PATH
+#export PKG_PATH=$OLD_PKG_PATH
 
-rm -rf $PKG_CACHE
 rm /etc/firsttime_packages
 
 echo "---"
