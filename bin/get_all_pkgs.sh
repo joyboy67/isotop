@@ -4,9 +4,10 @@
 
 # Description : download all packages and theirs dependencies
 # Depends : openbsd
+# warning : all packages must be installed ont the openbsd host which run this script
 
 . ./obsdiso.conf
-OUTDIR=site/root/pkg_cache
+OUTDIR=site/home/root/pkg_cache
 
 get_deps() {
     DEPS=$(pkg_info -f $1 | grep '^@depend' | cut -f 3 -d :)
@@ -21,6 +22,8 @@ dl_pkgs() {
             dl_pkgs $d
         fi
     done
+    p=$(pkg_info $1 | head -n1 | cut -d':' -f 2)
+    ftp -C -o $OUTDIR/$p.tgz $PKG_PATH/$p.tgz
 }
 
 mkdir -p $OUTDIR
