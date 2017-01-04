@@ -356,9 +356,9 @@ if [ "$(uname)" = "OpenBSD" ]; then
     DLER="ftp -C"
 else
     if [ -n "$(command -v curl)" ]; then
-        DLER="curl -# -C -"
+        DLER="curl -O -C -"
     elif [ -n "$(command -v wget)" ]; then
-        DLER="wget"
+        DLER="wget --continue"
     fi
 fi
 

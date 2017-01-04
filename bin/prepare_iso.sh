@@ -15,9 +15,9 @@ if [ "$(uname)" = "OpenBSD" ]; then
     DLER="ftp -C"
 else
     if [ -n "$(command -v curl)" ]; then
-        DLER="curl -# -C -"
+        DLER="curl -O -C -"
     elif [ -n "$(command -v wget)" ]; then
-        DLER="wget"
+        DLER="wget --continue"
     fi
 fi
 
@@ -27,11 +27,16 @@ if [ ! -e ${NAME}.iso ]; then
     echo "* Checking iso"
     # check if iso fits SHA256
     $DLER "${MIRROR}/${VERSION}/${ARCH}/SHA256"
-    sha256 -C SHA256 install${V1}${V2}.iso
+    if [ "$(uname)" = "OpenBSD" ]; then
+        sha256 -C SHA256 install${V1}${V2}.iso
+    else
+        GOODSHA="$(grep install60.iso SHA256 |cut -d' ' -f4)"
+        CURSHA="$(sha256sum install${V1}${V2}.iso |cut -d' ' -f1)"
+        test $GOODSHA = $CURSHA
+    fi
 
     if [ $? -ne 0 ]; then
-        echo "There is a problem with the downloaded iso. Run the script again"
-        rm install${V1}${V2}.iso
+        echo "There is a problem with the downloaded iso. Run the script again and try do delete the previous downloaded file."
         exit 1
     else
         mv install${V1}${V2}.iso ${NAME}.iso
