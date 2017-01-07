@@ -41,6 +41,13 @@ echo "kern.shminfo.shmall=51200" >> /etc/sysctl.conf
 echo "kern.shminfo.shmmni=1024" >> /etc/sysctl.conf
 echo "kern.maxfiles=20000" >> /etc/sysctl.conf
 
+#echo "---"
+#echo "* Increase limits in login.conf"
+#sed -i "s/datasize-max=512M/datasize-max=4096M/g" /etc/login.conf
+#sed -i "s/datasize-cur=512M/datasize-cur=4096M/g" /etc/login.conf
+
+
+
 
 echo "======================="
 echo "Done"

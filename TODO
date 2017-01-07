@@ -4,4 +4,5 @@
 - Ajouter un gui pour chercher/installer les paquets
 - Support des .fs pour les clés USB et pas que les .iso
 - Traduire en anglais
+- Augmenter limites dans login.conf
 
