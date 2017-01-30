@@ -1,10 +1,11 @@
 all:
 	@echo "Building OpenBSD iso"
 	@echo "-------------------------"
-	@./bin/prepare_iso.sh 
-	@./bin/download_pkgs.sh 
-	@./bin/build_site.sh 
-	@./bin/build_obsd_iso.sh 
+	@./bin/prepare_iso.sh | tee build.log
+	@./bin/download_pkgs.sh | tee -a build.log
+	@./bin/build_site.sh | tee -a build.log
+	@./bin/build_obsd_iso.sh | tee -a build.log
+	@./bin/build_obsd_fs.sh | tee -a build.log
 	@chmod a+rw CustomOBSD.iso
 
 help:
@@ -21,12 +22,6 @@ prepare:
 clean:
 	@echo "Cleaning build environment"
 	@echo "-------------------------"
-	@rm -rf CustomOBSD.iso
+	@rm -rf CustomOBSD.*
 	@rm -rf install*-*
-
-cleanfull:
-	@echo "Cleaning entire build environment"
-	@echo "-------------------------"
-	@rm -rf CustomOBSD.iso
-	@rm -rf install*
 

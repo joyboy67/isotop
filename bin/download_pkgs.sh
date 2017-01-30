@@ -363,8 +363,10 @@ else
 fi
 
 for p in $TODL; do
-    $DLER $PKG_PATH/$p
-    mv $p $OUTDIR/
+    if [ ! -f $OUTDIR/$p ]; then
+        $DLER $PKG_PATH/$p
+        mv $p $OUTDIR/
+    fi
 done
 
 exit 0

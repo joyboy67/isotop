@@ -15,7 +15,10 @@ if [ -d ./site ]; then
     fi
 
     cd site
-    tar cvzf ../${NAME}/${VERSION}/${ARCH}/site${V1}${V2}.tgz *
+    tar cvzf ../site${V1}${V2}.tgz *
+    cd ..
+    echo "* Copy custom siteXX.tgz"
+    cp site${V1}${V2}.tgz ${NAME}/${VERSION}/${ARCH}/site${V1}${V2}.tgz 
 fi
 
 exit 0

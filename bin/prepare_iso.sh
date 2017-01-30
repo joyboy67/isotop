@@ -8,7 +8,7 @@
 
 
 echo "---"
-echo "* Downloading OpenBSD iso"
+echo "* Downloading OpenBSD iso and fs"
 
 
 if [ "$(uname)" = "OpenBSD" ]; then
@@ -30,7 +30,7 @@ if [ ! -e ${NAME}.iso ]; then
     if [ "$(uname)" = "OpenBSD" ]; then
         sha256 -C SHA256 install${V1}${V2}.iso
     else
-        GOODSHA="$(grep install60.iso SHA256 |cut -d' ' -f4)"
+        GOODSHA="$(grep install${V1}${V2}.iso SHA256 |cut -d' ' -f4)"
         CURSHA="$(sha256sum install${V1}${V2}.iso |cut -d' ' -f1)"
         test $GOODSHA = $CURSHA
     fi
@@ -43,32 +43,34 @@ if [ ! -e ${NAME}.iso ]; then
     fi
 fi
 
-echo "---"
-echo "* Extracting iso..."
-mkdir -p loopdir
-if [ "$(uname)" = "OpenBSD" ]; then
-    vnconfig vnd0 ${NAME}.iso
-    mount -t cd9660 /dev/vnd0c loopdir/
-    cp -r loopdir/ ./${NAME}
-    umount loopdir/
-    vnconfig -u vnd0
-else
-    mkdir -p ./${NAME}
-    mount -o loop ${NAME}.iso loopdir
-    cp -r loopdir/* ./${NAME}
-    umount loopdir/
-fi
-#chown -R root:wheel ./${NAME}/
-#chmod -R +w ./${NAME}/
-rm -r loopdir/
 
+if [ ! -d ${NAME} ]; then
+    echo "---"
+    echo "* Extracting iso..."
+    mkdir -p loopdir
+    mkdir -p ./${NAME}
+    if [ "$(uname)" = "OpenBSD" ]; then
+        vnconfig vnd0 ${NAME}.iso
+        mount -t cd9660 /dev/vnd0c loopdir/
+        cp -r loopdir/* ./${NAME}
+        umount loopdir/
+        vnconfig -u vnd0
+    else
+        mount -o loop ${NAME}.iso loopdir
+        cp -r loopdir/* ./${NAME}
+        umount loopdir/
+    fi
+    rm -r loopdir/
+fi
+
+echo "---"
+echo "* Preparing site configuration..."
 mkdir -p site/etc
 touch site/install.site
 chmod 755 site/install.site
 touch site/etc/rc.firsttime
 chmod 755 site/etc/rc.firsttime
 
-echo "* Now edit the files in ${NAME}"
 
 exit 0
 

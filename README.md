@@ -18,7 +18,14 @@ Just run (with root privileges)
 
     make 
 
-To build a `CustomOBSD.iso` file.
+To build a `CustomOBSD.iso` and `CustomOBSD.fs` files.
+
+
+You can burn this iso file. 
+
+To copy CustomOBSD.fs on a bootable USB key : 
+
+    dd if=CustomOBSD.fs of=/dev/your_usb_device
 
 
 
