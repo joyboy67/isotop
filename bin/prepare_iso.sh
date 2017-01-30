@@ -8,7 +8,7 @@
 
 
 echo "---"
-echo "* Downloading OpenBSD iso and fs"
+echo "* Downloading OpenBSD iso"
 
 
 if [ "$(uname)" = "OpenBSD" ]; then
