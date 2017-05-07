@@ -1,6 +1,5 @@
-[app] (name=TkMenu)
-  [Deco]	{NONE}
+[app] (name=fbrun)
+  [Position]	(WINCENTER)	{0 0}
+  [Layer]	{2}
 [end]
-[app] (name=18582025935544) (class=Toplevel)
-  [Head]	{1}
-[end]
+

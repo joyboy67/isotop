@@ -3,10 +3,19 @@
 DIR=~/Documents/notes
 mkdir -p $DIR
 
-N=$(tkzenity "Nouvelle note" "Nom de la nouvelle note : ")
+if [ $# -eq 0 ]; then # nothing to edit
+	N=$DIR/$(zeniTK --title="Nouvelle note" --text="Nom de la nouvelle note : " --entry)
+else
+	N="$1"
+fi
 
 if [ -n "$N" ]; then
-    leafpad "$DIR/$N"
+	temp=$(mktemp)
+	cat "$N" | zeniTK --text-info --title "$1" > $temp
+	if [ -n "$(cat $temp)" ]; then
+		mv $temp "$N"
+	fi
+	rm $temp
 fi
 exit
 

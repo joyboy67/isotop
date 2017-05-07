@@ -1,0 +1,600 @@
+#!/usr/bin/env python3
+# -*- coding:Utf-8 -*- 
+
+import os
+import sys
+import argparse
+from tkinter import *
+from tkinter import ttk
+from PIL import Image, ImageTk
+
+
+## Constantes
+appname="zeniTK"
+appdesc="zeniTK is a replacement for zenity written using tkinter library"
+version=0.2
+
+defaultfont="DejaVu Sans Condensed"
+defaultfontsize=10
+
+## Lang
+import locale
+LANG=locale.getdefaultlocale()[0]
+if LANG == 'fr_FR':
+    txt_ok = "Valider"
+    txt_cancel = "Annuler"
+    txt_error = "Erreur"
+    txt_all_ft = "Tout"
+else:
+    txt_ok = "OK"
+    txt_cancel = "Cancel"
+    txt_error = "Error"
+    txt_all_ft = "All"
+
+
+def change_colors(style, font, fontsize):
+    theme = {
+        'disabledfg':"#eeeeee",
+        'dark': "#777777",
+        'darker': "#333333",
+        'darkest': "#777777",
+        'lighter': "#777777",
+        'lightest': "#ffffff",
+        'selectbg': "#41B1FF",
+        'selectfg': "#ffffff",
+        'foreground': "#111111",
+        'background': "#dddddd",
+        'borderwidth': 0,
+        'font': (font, fontsize)
+        }
+
+    style.configure(".", padding=5, relief="flat", 
+            background=theme['background'],
+            foreground=theme['foreground'],
+            bordercolor=theme['darker'],
+            indicatorcolor=theme['selectbg'],
+            focuscolor=theme['selectbg'],
+            darkcolor=theme['dark'],
+            lightcolor=theme['lighter'],
+            troughcolor=theme['darker'],
+            selectbackground=theme['selectbg'],
+            selectforeground=theme['selectfg'],
+            selectborderwidth=theme['borderwidth'],
+            window=theme['background'],
+            frame=theme['foreground'],
+            font=theme['font'],
+            highlightcolor=theme['selectbg'],
+            )
+
+    style.map(".",
+        foreground=[('pressed', theme['darkest']), ('active', theme['selectfg'])],
+        background=[('pressed', '!disabled', 'black'), ('active', theme['lighter'])]
+        )
+
+    style.configure("TButton", relief="flat")
+    style.map("TButton", 
+        background=[('disabled', theme['disabledfg']), ('pressed', theme['selectbg']), ('active', theme['selectbg'])],
+        foreground=[('disabled', theme['disabledfg']), ('pressed', theme['selectfg']), ('active', theme['selectfg'])],
+        bordercolor=[('alternate', theme['selectbg'])],
+        )
+
+
+
+
+class Gui():
+
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0,\
+            font=defaultfont, fontsize=defaultfontsize):
+
+        self.title = title
+        self.font = font
+        self.fontsize=fontsize
+
+        self.root = Tk()
+        # configure appearance
+        self.apply_style()
+
+        # set title
+        if title != "":
+            self.root.title(title)
+        else:
+            self.root.title(appname)
+
+        # set window icon
+        if icon != "" :
+            if os.path.isfile(icon):
+                image = Image.open(icon)
+                imgicon = ImageTk.PhotoImage(image)
+                self.root.tk.call('wm', 'iconphoto', self.root._w, imgicon)  
+
+        # dimensions
+        if width > 0 and height > 0:
+            self.root.geometry("{}x{}".format(width, height))
+        elif width > 0 and height == 0:
+            self.root.geometry("{}x{}".format(width , self.root.winfo_reqheight()))
+        elif height > 0 and width == 0:
+            self.root.geometry("{}x{}".format(self.root.winfo_reqwidth(), height))
+
+        # timeout
+        if timeout >= 0:
+            self.timeout = int(timeout) * 1000 # convert to ms
+
+        ttk.Sizegrip().grid(column=0, row=1, sticky=(S,E))
+        self.root.grid_columnconfigure(0, weight=1)
+        self.root.grid_rowconfigure(0, weight=1)
+
+        self.mainframe = ttk.Frame(self.root, padding="3 3 12 12")
+        self.mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        self.mainframe.grid_columnconfigure(0, weight=1)
+        self.mainframe.grid_rowconfigure(0, weight=1)
+
+    def apply_style(self):
+        style = ttk.Style()
+        style.theme_use("clam")
+        change_colors(style, self.font, self.fontsize)
+        # change font
+        self.root.option_add('*Dialog.msg.font', '"{}" {}'.format(self.font,self.fontsize))
+
+    def _start(self):
+        if self.timeout:
+            self.root.after(self.timeout, self.stop)
+
+    def start(self):
+        self._start()
+        self.root.mainloop()
+
+    def stop(self, retval=0):
+        self.root.destroy()
+        sys.exit(retval)
+
+
+class ZenEntry(Gui):
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            font=defaultfont, fontsize=defaultfontsize, \
+            text = "", entry_text= ""):
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+
+        if len(text) != 0:
+            textLabel = ttk.Label(self.mainframe, text=text)
+            textLabel.grid(column=0, row=0, columnspan=2)
+
+        self.entry = ttk.Entry(self.mainframe)
+        self.entry.focus_set()
+        self.entry.grid(columnspan=2)
+        self.entry.bind("<Return>", self.valid)
+        if len(entry_text) != 0:
+            self.entry.delete(0, END)
+            self.entry.insert(0, entry_text)
+
+        # buttons
+        okbtn = ttk.Button(self.mainframe, text="✓ {}".format(txt_ok), command=self.valid)
+        okbtn.grid(column=1, row=2, sticky=E)
+        cancelbtn = ttk.Button(self.mainframe, text="✗ {}".format(txt_cancel), command=self.stop)
+        cancelbtn.grid(column=0, row=2, sticky=W)
+
+    def valid(self, event):
+        s = self.entry.get().strip()
+        print(s)
+        self.stop()
+
+class ZenInfo(Gui):
+    """class to show error, info or warning
+    nature can be either "info", "error" or "warning
+    """ 
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            font=defaultfont, fontsize=defaultfontsize, \
+            text = "", nature="info"):
+
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+        self.text = text
+        self.nature = nature
+
+        # hide main window
+        self.root.overrideredirect(1)
+        self.root.withdraw()
+
+    def start(self):
+        self._start()
+        from tkinter import messagebox
+        self.apply_style()
+        if self.nature == "info":
+            messagebox.showinfo(title=self.title, message=self.text, parent=self.root)
+        elif self.nature == "error":
+            messagebox.showerror(title=self.title, message=self.text, parent=self.root)
+        elif self.nature == "warning":
+            messagebox.showwarning(title=self.title, message=self.text, parent=self.root)
+        self.stop()
+
+class ZenFileDialog(Gui):
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            text = "",\
+            font=defaultfont, fontsize=defaultfontsize, \
+            multiple = False, directory = False, separator = "|", \
+            file_filter = ""):
+
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+        self.text = text
+
+        self.sep = separator
+        self.multiple = multiple
+        self.directory = directory
+        self.filetypes = [(txt_all_ft, "*")]
+        if len (file_filter) > 0:
+            ft_name, ft_pattern = file_filter.split('|')
+            # put custom pattern first
+            self.filetypes.insert(0,(ft_name, ft_pattern))
+
+        self.root.overrideredirect(1)
+        self.root.withdraw()
+
+    def start(self):
+        self._start()
+        from tkinter import filedialog
+        path = ""
+        if self.directory :
+            path = filedialog.askdirectory(\
+                    initialdir=(os.path.expanduser("~")),\
+                    title=self.title,\
+                    parent=self.root)
+            print(path)
+
+        elif self.multiple:
+            path = filedialog.askopenfilenames(\
+                    initialdir=(os.path.expanduser("~")),\
+                    title=self.title,\
+                    filetypes=self.filetypes,\
+                    parent=self.root)
+            print(self.sep.join(path))
+
+        else:
+            path = filedialog.askopenfilename(\
+                    initialdir=(os.path.expanduser("~")),\
+                    title=self.title,\
+                    filetypes=self.filetypes,\
+                    parent=self.root)
+            print(path)
+        self.stop()
+
+class ZenColor(Gui):
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            font=defaultfont, fontsize=defaultfontsize, \
+            text = "", color="#eeeeee"):
+
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+        self.color = color
+
+        # hide main window
+        self.root.overrideredirect(1)
+        self.root.withdraw()
+
+    def start(self):
+        self._start()
+        from tkinter import colorchooser
+        c = ""
+        c = colorchooser.askcolor(color=self.color)
+        print(c[1])
+        self.stop()
+
+class ZenTextinfo(Gui):
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            font=defaultfont, fontsize=defaultfontsize, \
+            text = "", entry_text= ""):
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+
+        if len(text) != 0:
+            textLabel = ttk.Label(self.mainframe, text=text)
+            textLabel.grid(column=0, row=0, columnspan=2)
+
+        from tkinter import scrolledtext 
+
+        self.txtarea = scrolledtext.ScrolledText(
+            master = self.mainframe,
+            wrap   = WORD,
+        )
+        self.txtarea.grid(column=0, row=1, columnspan=2)
+        if len(entry_text) != 0:
+            self.txtarea.insert(INSERT, entry_text)
+        self.txtarea.focus_set()
+
+        # buttons
+        okbtn = ttk.Button(self.mainframe, text="✓ {}".format(txt_ok), command=self.valid)
+        okbtn.grid(column=1, row=2, sticky=E)
+        cancelbtn = ttk.Button(self.mainframe, text="✗ {}".format(txt_cancel), command=self.stop)
+        cancelbtn.grid(column=0, row=2, sticky=W)
+
+    def valid(self, event="event"):
+        s = self.txtarea.get("1.0",END).strip()
+        print(s)
+        self.stop()
+
+class ZenProgress(Gui):
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            font=defaultfont, fontsize=defaultfontsize, \
+            pulsate = False, auto_close= False):
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+
+        self.auto_close = auto_close
+
+        self.textLabel = ttk.Label(self.mainframe)
+        self.textLabel.grid(column=0, row=0)
+        if pulsate:
+            self.pbar = ttk.Progressbar(self.mainframe, orient=HORIZONTAL, mode='indeterminate')
+        else:
+            self.pbar = ttk.Progressbar(self.mainframe, orient=HORIZONTAL)
+        self.pbar["value"] = 0
+        self.pbar.grid(column=0, row=1)
+
+        self.okbtn = ttk.Button(self.mainframe, text="✓ {}".format(txt_ok), command=self.stop)
+        self.okbtn.config(state='disabled')
+        self.okbtn.grid()
+
+    def start(self):
+        self._start()
+        self.pbar.start()
+        self.root.after(100, self.watch)
+        self.root.mainloop()
+
+    def watch(self):
+        while True:
+            line = sys.stdin.readline()
+            if not line: break
+            line = line.strip()
+
+            if line.startswith("#"):
+                self.textLabel.config(text=line[1:])
+
+            elif line.isdigit():
+                perc=int(line)
+                self.pbar["value"] = perc
+                self.pbar.update()
+
+                if perc == 100 :
+                    if self.auto_close:
+                        self.stop()
+                    else:
+                        self.pbar.stop()
+                        self.okbtn.config(state='enabled')
+                    break
+
+
+class ZenQuestion(Gui):
+    """class to ask question
+    """ 
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            font=defaultfont, fontsize=defaultfontsize, \
+            text = ""):
+
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+        self.text = text
+        self.title=title
+
+        # hide main window
+        self.root.overrideredirect(1)
+        self.root.withdraw()
+
+    def start(self):
+        self._start()
+        from tkinter import messagebox
+        rep = messagebox.askyesno(title=self.title, message=self.text, parent=self.root)
+        if rep:
+            retval = 0
+        else:
+            retval = 1
+        self.stop(retval)
+
+class ZenList(Gui):
+    def __init__(self, title = "", icon = "", \
+            width = 0, height = 0, timeout = 0, \
+            font=defaultfont, fontsize=defaultfontsize, \
+            text = "", liste=[]):
+        super().__init__(title, icon, width, height, timeout, font, fontsize)
+
+        if len(text) != 0:
+            textLabel = ttk.Label(self.mainframe, text=text)
+            textLabel.grid(column=0, row=0, columnspan=2)
+
+        self.l = Listbox(self.mainframe)
+        self.l.grid(column=0, row=1, columnspan=2, sticky=(N,W,E,S))
+        self.l.bind('<Double-Button-1>', self.valid)
+
+        # fill list
+        for i in liste:
+            self.l.insert('end', i)
+
+        s = ttk.Scrollbar(self.mainframe, orient=VERTICAL, command=self.l.yview)
+        s.grid(column=1, row=1, sticky=(N,S,E))
+        self.l['yscrollcommand'] = s.set
+
+        # buttons
+        okbtn = ttk.Button(self.mainframe, text="✓ {}".format(txt_ok), command=self.valid)
+        okbtn.grid(column=1, row=2, sticky=E)
+        cancelbtn = ttk.Button(self.mainframe, text="✗ {}".format(txt_cancel), command=self.stop)
+        cancelbtn.grid(column=0, row=2, sticky=W)
+
+    def valid(self, event=None):
+        try:
+            i = self.l.curselection()[0]
+            print(i)
+            self.stop(0)
+        except IndexError:
+            self.stop(1)
+
+
+
+def main():
+    parser = argparse.ArgumentParser(description=appdesc)
+    parser.add_argument('--title', help="Set the dialog title")
+    parser.add_argument('--window-icon', help="Set the window icon with the path to an image. You also can use one of the four stock icons : 'error', 'info', 'question' or 'warning'")
+    parser.add_argument('--width', help="Set the dialog width", type=int)
+    parser.add_argument('--height', help="Set the dialog height", type=int)
+    parser.add_argument('--timeout', help="Set the dialog timeout in seconds", type=int)
+    parser.add_argument('--font', help="Set the dialog font")
+    parser.add_argument('--fontsize', help="Set the dialog fontsize", type=int)
+
+    parser.add_argument('--entry', help="Display text entry dialog", action="store_true")
+    parser.add_argument('--text', help="Set the dialog text")
+    parser.add_argument('--entry-text', help="Set the entry text")
+
+    parser.add_argument('--error', help="Display error dialog", action="store_true")
+    parser.add_argument('--info', help="Display info dialog", action="store_true")
+    parser.add_argument('--warning', help="Display warning dialog", action="store_true")
+
+    parser.add_argument('--file-selection', help="Display file selection dialog", action="store_true")
+    parser.add_argument('--multiple', help="Allow selection of multiple filenames in file selection dialog", action="store_true")
+    parser.add_argument('--directory', help="Activate directory selection", action="store_true")
+    parser.add_argument('--separator', help="Specify separator to use when returning multiple selections")
+    parser.add_argument('--file-filter', help='--file-filter="NAME | PATTERN" , Sets a filename filter')
+
+    parser.add_argument('--color-selection', help="Display color selection dialog", action="store_true")
+    parser.add_argument('--color', help="Set initial color")
+
+    parser.add_argument('--text-info', help="Display text information dialog", action="store_true")
+
+
+    parser.add_argument('--progress', help="Display progress indication dialog", action="store_true")
+    parser.add_argument('--auto-close', help="Close dialog when 100% has been reached", action="store_true")
+    parser.add_argument('--pulsate', help="Pulsate progress bar", action="store_true")
+
+
+    parser.add_argument('--question', help="Ask a question", action="store_true")
+
+    parser.add_argument('--list', help="Display list dialog", nargs="+")
+
+    args = parser.parse_args()
+
+    title, icon, width, height, timeout = "", "", 0, 0, 0
+    font=defaultfont
+    fontsize=defaultfontsize
+
+    if args.title:
+        title = args.title
+    if args.window_icon:
+        icon = args.window_icon
+    if args.width:
+        width = args.width
+    if args.height:
+        height = args.height
+    if args.timeout:
+        timeout = args.timeout
+    if args.font:
+        font = args.font
+    if args.fontsize:
+        fontsize = args.fontsize
+
+    if args.entry:
+        text, entry_text = "", ""
+        if args.text:
+            text = args.text
+        if args.entry_text:
+            entry_text=args.entry_text
+        app = ZenEntry(title=title, icon=icon, width=width, height=height,\
+                timeout=timeout, text=text, entry_text=entry_text, \
+                font=font, fontsize=fontsize)
+        app.start()
+
+    if args.error or args.info or args.warning:
+        title, text = "", ""
+        if args.text:
+            text = args.text
+        if args.title:
+            title = args.title
+
+        if args.info:
+            nature="info"
+
+        if args.error:
+            nature="error"
+            if not args.text:
+                text = txt_error
+            if not args.title:
+                title = txt_error
+
+        if args.warning:
+            nature="warning"
+
+        app = ZenInfo(title=title, text=text, nature=nature, timeout=timeout, font=font, fontsize=fontsize)
+        app.start()
+
+    if args.file_selection:
+        multiple = False
+        directory = False
+        separator = "|"
+        file_filter = ""
+        if args.multiple:
+            multiple = True
+        if args.directory:
+            directory = True
+        if args.separator:
+            separator = args.separator
+        if args.file_filter:
+            file_filter = args.file_filter
+
+        app = ZenFileDialog(title=title, multiple=multiple, separator = separator, \
+                file_filter = file_filter, font=font, fontsize=fontsize)
+        app.start()
+
+    if args.color_selection:
+        color="#eeeeee"
+        if args.color:
+            color=args.color
+        app = ZenColor(title = title, color=color, timeout=timeout, font=font, fontsize=fontsize)
+        app.start()
+
+    if args.text_info:
+        entry_text, text = "" , ""
+        if args.entry_text:
+            entry_text=args.entry_text
+        txtin = sys.stdin.read()
+        if len(txtin) > 0:
+            entry_text = txtin
+        if args.text:
+            text=args.text
+        app = ZenTextinfo(title=title, icon=icon, width=width, height=height, timeout=timeout, \
+                text=text, entry_text=entry_text, font=font, fontsize=fontsize)
+                
+        app.start()
+
+    if args.progress:
+        auto_close=False
+        pulsate=False
+        if args.auto_close:
+            auto_close=True
+        if args.pulsate:
+            pulsate=True
+        app = ZenProgress(title=title, icon=icon, width=width, height=height, timeout=timeout, \
+                pulsate=pulsate, auto_close=auto_close, font=font, fontsize=fontsize)
+        app.start()
+
+    if args.question:
+        text = "Do you wear pants?"
+        if args.text:
+            text=args.text
+        app = ZenQuestion(title=title, icon=icon, width=width, height=height, timeout=timeout, \
+                text=text, font=font, fontsize=fontsize)
+        app.start()
+
+
+    if args.list:
+        text = ""
+        if args.text:
+            text=args.text
+        app = ZenList(title=title, icon=icon, width=width, height=height, timeout=timeout, \
+                text=text, liste=args.list, font=font, fontsize=fontsize)
+        app.start()
+
+    return 0
+
+if __name__ == '__main__':
+    main()
+
+
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
+

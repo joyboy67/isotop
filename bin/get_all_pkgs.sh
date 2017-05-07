@@ -4,7 +4,7 @@
 
 # Description : download all packages and theirs dependencies
 # Depends : openbsd
-# warning : all packages must be installed ont the openbsd host which run this script
+
 
 . ./obsdiso.conf
 OUTDIR=site/home/root/pkg_cache
@@ -22,8 +22,15 @@ dl_pkgs() {
             dl_pkgs $d
         fi
     done
-    p=$(pkg_info $1 | head -n1 | cut -d':' -f 2)
-    ftp -C -o $OUTDIR/$p.tgz $PKG_PATH/$p.tgz
+    p=$(pkg_info $1 | head -n1 | cut -d' ' -f 3)
+    # test if url in description -> package not installed
+	if [ -n "$(echo $p |grep $PKG_PATH)" ]; then
+		ftp -C -o $OUTDIR/$(basename $p) $p
+	else
+		p=$(echo $p | cut -d':' -f2)
+		ftp -C -o $OUTDIR/$p.tgz $PKG_PATH/$p.tgz
+	fi
+
 }
 
 mkdir -p $OUTDIR
@@ -33,6 +40,7 @@ mkdir -p $OUTDIR
 dl_pkgs "quirks"
 
 for p in $PACKAGES; do
+    echo ""
     echo "*** $p"
     dl_pkgs $p
 done

@@ -4,12 +4,17 @@
 #
 # Lines starting with a '#' are ignored.
 
-numlockx &
-conky -c ~/.fluxbox/conky.conf &
+xsetroot -solid "#345583" 
+if [ -f ~/.fluxbox/lastwallpaper ]; then
+	wpsetters=feh fbsetbg -l &
+else
+	wpsetters=feh fbsetbg -a ~/Images/Wallpapers/diodonBSD-peha.png &
+fi
 xset -display :0 s off -dpms &
-xsetroot -solid "#345583" && wpsetters=feh fbsetbg -a ~/.fluxbox/wallpaper.png &
+numlockx &
 redshift-gtk -l 47.13:1.33 -t 5500:4000 &
-
+conky -c ~/.fluxbox/conky.conf &
+tray-vol &
 
 which fbautostart > /dev/null
 if [ $? -eq 0 ]; then

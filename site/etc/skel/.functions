@@ -15,7 +15,7 @@ mvcd()
 
 # Creates an archive from given directory
 mktar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
-mktgz() { tar cvzf "${1%%/}.tgz"  "${1%%/}/"; }
+mktgz() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
 mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }                                           
 mktxz() { tar cvJf "${1%%/}.tar.xz" "${1%%/}/"; }                                           
 
@@ -41,9 +41,9 @@ wget \
 
 # Temps déxécution d'un processus
 ptimer() {
-    STARTTIME=$(date "+%s")
+    STARTTIME=$(date "+%s.%N")
     $* &
-    PROCESSTIME=$(($(date +%s) - $STARTTIME))
+    PROCESSTIME=$(echo "$(date +%s.%N)-$STARTTIME" | bc)
     echo "Process took $PROCESSTIME seconds."
 }
 
@@ -73,11 +73,3 @@ gif2webm() {
     ffmpeg -i "$1" -c:v libvpx -crf 12 -b:v 500k "${1%.*}".webm
 }
 
-streamer() {
-    youtube-dl -o - "$1" | mpv - 
-}
-
-reloadtex() {
-    pdflatex "${1}"
-    xdotool search --class mupdf key --window %@ r
-}

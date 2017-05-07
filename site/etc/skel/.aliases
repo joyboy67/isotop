@@ -5,7 +5,6 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lls='ls -s'
-alias ls='ls -F'
 
 # Quelques alias pratiques
 alias c='clear'
@@ -15,8 +14,11 @@ alias less='less --quiet'
 alias dh='df -h'
 
 # Parce que j'aime savoir ce que je fais
-alias rmr='rm -rf'
-alias cpr='cp -r'
+alias rm='rm --verbose'
+alias rmr='rm --verbose -rf'
+alias cpr='cp --verbose -r'
+alias cp='cp --verbose'
+alias mv='mv --verbose'
 
 # noir et blanc, c'est cool
 alias xterm='xterm -bg black -fg white'
@@ -33,10 +35,10 @@ alias v='vim'
 alias processports='lsof -i -n -P'
 
 # Voir les ports ouverts
-alias openports='netstat -nah'
+alias openports='netstat -nape --inet'
 
 # Une calculatrice en python
-alias calc='python3.4 -ic "from math import *; from random import *"' 
+alias calc='python -ic "from math import *; from random import *"' 
 
 # compare 2 répertoire
 alias diffdir='diff -rq $1 $2'
@@ -45,14 +47,10 @@ alias diffdir='diff -rq $1 $2'
 alias pdfmini="gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=fichier_reduit.pdf "
 
 # adresse ip
-alias whatsmyip='ftp -V -o - http://ipecho.net/plain'
+alias whatsmyip='wget -qO- http://ipecho.net/plain'
 
 # Enlever les commentaires : 
 alias nocomment='egrep -v "^\s*(#|$)"'
 
 # insert image in latex slide
 alias image2slide='mogrify -density 96 -units PixelsPerInch'
-alias clbin='curl -v -F "clbin=<-" https://clbin.com'
-alias pyserver='python3.4 -m http.server'
-alias web='w3m -B'
-alias meteo='curl wttr.in'

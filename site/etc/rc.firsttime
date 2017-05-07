@@ -3,53 +3,21 @@ echo "First boot installation"
 echo "======================="
 
 echo "---"
-echo "* Enabling softdep and noatime"
-sed -i "s/rw/rw,softdep,noatime/g" /etc/fstab
-# faster for package installation later
-mount -a
-
-echo "---"
 echo '* Installing packages' 
 PACKAGES="$(cat /etc/firsttime_packages)"
 # we use /home as it's often the biggest partition
 export PKG_PATH=/home/root/pkg_cache
-OLD_PKG_PATH=$PKG_PATH
 mkdir -p $PKG_PATH
 
 pkg_add -vmz $PACKAGES | tee -a -
-rm -rf /home/root
 
-# restore PKG_PATH
-export PKG_PATH=$OLD_PKG_PATH
-
+rm -rf $PKG_PATH
 rm /etc/firsttime_packages
 
 echo "---"
-echo "* Set default python3 path"
-ln -sf /usr/local/bin/python3.4 /usr/local/bin/python3
-
-echo "---"
-echo "* Enabling services"
-rcctl enable cupsd
-rcctl enable slim
-rcctl enable apmd
-rcctl set apmd flags -A
-
-echo "---"
-echo "* Increase limits in sysctl.conf"
-echo "kern.shminfo.shmall=51200" >> /etc/sysctl.conf
-echo "kern.shminfo.shmmni=1024" >> /etc/sysctl.conf
-echo "kern.maxfiles=20000" >> /etc/sysctl.conf
-
-#echo "---"
-#echo "* Increase limits in login.conf"
-#sed -i "s/datasize-max=512M/datasize-max=4096M/g" /etc/login.conf
-#sed -i "s/datasize-cur=512M/datasize-cur=4096M/g" /etc/login.conf
-
-
-
+echo "* Set default python3 path with python3.6"
+ln -sf /usr/local/bin/python3.6 /usr/local/bin/python3
 
 echo "======================="
 echo "Done"
 echo "======================="
-

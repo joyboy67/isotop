@@ -1,38 +1,43 @@
-[begin] (· IsoT0P ·)
+[begin] (· SiO2 ·)
 [encoding] {UTF-8}
-[exec] (Menu principal) {tkmenu} </usr/local/share/icons/gnome-brave/16x16/apps/gnome-gmenu.png>
-[exec] (OBSD4a) {firefox-esr https://obsd4a.net} 
-[submenu] (Applications) {Applications} </usr/local/share/icons/gnome-colors-common/16x16/categories/gnome-applications.png>
-    [exec] (Xfce4-appfinder) {xfce4-appfinder} </usr/local/share/icons/gnome-colors-common/16x16/actions/xfce4-appfinder.png>
+[exec] (TKmeν) {tkmenu} </usr/local/share/icons/gnome-brave/16x16/apps/gnome-gmenu.png>
+[exec] (Run command) {fbrun} </usr/local/share/icons/Adwaita/16x16/actions/system-run.png>
+[exec] (OBSD4a) {firefox https://obsd4a.net} 
+[exec] (Rechercher sur le web) {~/.fluxbox/tools/qs} </usr/local/share/icons/gnome-colors-common/16x16/actions/search.png>
+[separator]
+[submenu] (Applications) </usr/local/share/icons/gnome-brave/16x16/actions/stock_right.png>
+	[exec] (Firefox) {firefox} </usr/local/share/icons/Adwaita/16x16/apps/web-browser.png>
+    [exec] (Anonymous Browser) {tor-browser}
+	[exec] (Thunderbird) {thunderbird} </usr/local/share/icons/gnome-colors-common/16x16/apps/stock_mail.png>
+	[exec] (Transmission) {transmission} </usr/local/share/icons/hicolor/16x16/apps/transmission.png>
+    [exec] (Configurer le WiFi) {doas owi} </usr/local/share/icons/gnome-colors-common/16x16/devices/network-wireless.png>
     [separator]
-    [exec] (Firefox) {firefox-esr} </usr/local/lib/firefox-esr-45.2.0/browser/chrome/icons/default/default16.png>
-    [exec] (Poezio) {urxvtcd -e poezio} </usr/local/share/sio2/pixmaps/poezio.png>
-    [exec] (Thunderbird) {thunderbird} </usr/local/lib/thunderbird-45.2.0/chrome/icons/default/default16.png>
-    [exec] (Filezilla) {filezilla} </usr/local/share/icons/hicolor/16x16/apps/filezilla.png>
-    [exec] (Transmission) {transmission-gtk} </usr/local/share/icons/hicolor/16x16/apps/transmission.png>
-    [separator]
-    [exec] (Simple-scan) {simple-scan} </usr/local/share/icons/gnome/16x16/devices/scanner.png>
-    [exec] (Éditeur de texte) {leafpad} </usr/local/share/icons/hicolor/16x16/apps/leafpad.png>
-    [exec] (Configurer une imprimante) {firefox-esr http://localhost:631} </usr/local/share/icons/gnome/16x16/devices/printer.png>
-    [exec] (Éditeur LaTeX) {gummi} </usr/local/share/gummi/icons/gummi.png>
-    [exec] (Suite Bureautique) {libreoffice} </usr/local/share/icons/hicolor/16x16/apps/libreoffice-main.png>
+	[exec] (Bureautique) {libreoffice} </usr/local/share/icons/hicolor/16x16/apps/libreoffice-startcenter.png>
     [exec] (Texte) {lowriter} </usr/local/share/icons/hicolor/16x16/apps/libreoffice-writer.png>
     [exec] (Tableur) {localc} </usr/local/share/icons/hicolor/16x16/apps/libreoffice-calc.png>
     [exec] (Présentation) {loimpress} </usr/local/share/icons/hicolor/16x16/apps/libreoffice-impress.png>
     [separator]
-    [exec] (VLC) {mpv --profile=pseudo-gui} </usr/local/share/icons/hicolor/16x16/apps/mpv.png>
-    [exec] (Gimp) {gimp} </usr/local/share/icons/hicolor/16x16/apps/gimp.png>
-    [exec] (Inkscape) {inkscape} </usr/local/share/icons/hicolor/16x16/apps/inkscape.png>
+	[exec] (PCManFM) {pcmanfm} </usr/local/share/icons/gnome-brave/16x16/apps/pcmanfm.png>
+	[exec] (Terminal) {urxvtcd} </usr/local/share/icons/gnome-colors-common/16x16/apps/terminal.png>
+	[exec] (Gimp) {gimp} </usr/local/share/icons/hicolor/16x16/apps/gimp.png>
+	[exec] (Inkscape) {inkscape} </usr/local/share/icons/hicolor/16x16/apps/inkscape.png>
+    [exec] (Éditeur de texte) {geany} </usr/local/share/icons/gnome-colors-common/16x16/apps/geany.png>
+    [exec] (Recherche) {catfish} </usr/local/share/icons/gnome-colors-common/16x16/actions/catfish.png>
     [exec] (Régler le son) {ovol} </usr/local/share/icons/gnome/16x16/status/stock_volume.png>
+    [separator]
+	[exec] (Media player) {mpv} </usr/local/share/icons/hicolor/16x16/apps/mpv.png>
+	[exec] (Télécharger une vidéo) {youtube-dl-gui} 
     [separator]
     [exec] (Crawl stone-soup) {crawl-ss} </usr/local/share/crawl/dat/tiles/stone_soup_icon-32x32.png>
     [separator]
-    [exec] (Upgrade with openup) {urxvtcd -e openuplaunch} </usr/local/share/icons/gnome-colors-common/16x16/status/system-upgrade.png>
+    [exec] (Upgrade OpenBSD) {urxvtcd -e openbsdupgrade} </usr/local/share/icons/gnome-colors-common/16x16/status/system-upgrade.png>
+    [exec] (Send dmesg) {send_dmesg.sh} </usr/local/share/icons/gnome-brave/16x16/actions/stock_up.png>
 [end]
-[separator]
-[exec] (Rechercher sur le web) {qs} </usr/local/share/icons/gnome-colors-common/16x16/actions/search.png>
+#
 [submenu] (Fichiers) {Fichiers} </usr/local/share/icons/gnome-brave/16x16/places/folder.png>
     [exec] (Gestionnaire de fichiers) {pcmanfm} </usr/local/share/icons/gnome-brave/16x16/apps/pcmanfm.png>
+    [exec] (Ranger (cli\)) {urxvtcd -e ranger}
+    [separator]
     [submenu] (Dossier personnel) </usr/local/share/icons/gnome-brave/16x16/places/folder_home.png>
         [wallpapers] (~) {xdg-open}
     [end]
@@ -53,25 +58,29 @@
 [end]
 [submenu] (Notes) </usr/local/share/icons/gnome-colors-common/16x16/apps/stock_notes.png>
         [exec] (Nouvelle note) {~/.fluxbox/tools/note} </usr/local/share/icons/gnome-colors-common/16x16/apps/stock_insert-note.png>
-        [submenu] (Éditer une note) </usr/local/share/icons/gnome-colors-common/16x16/apps/stock_notes.png>
-            [wallpapers] (~/Documents/notes/) {leafpad}
+        [submenu] (Editer une note) </usr/local/share/icons/gnome-colors-common/16x16/apps/stock_notes.png>
+            [wallpapers] (~/Documents/notes/) {~/.fluxbox/tools/note}
         [end]
         [submenu] (Supprimer une note) </usr/local/share/icons/gnome-colors-common/16x16/actions/stock_delete.png>
             [wallpapers] (~/Documents/notes/) {rm}
         [end]
 [end]
 
-[exec] (Capture d'écran) {scrotup} </usr/local/share/icons/gnome-colors-common/16x16/devices/gnome-screenshot.png>
+[exec] (Capture d'écran) {~/.fluxbox/tools/scrotup} </usr/local/share/icons/gnome-colors-common/16x16/devices/gnome-screenshot.png>
 
 [separator]
 [submenu] (Session) </usr/local/share/icons/gnome-colors-common/16x16/apps/gnome-session-properties.png>
 
     [submenu] (Configurer)
-        [config] (Configure)
+    	[submenu] (Wallpaper)
+			[wallpapers] (~/Images/Wallpapers) {wpsetters=feh fbsetbg -a}
+		[end]
         [exec] (Éditer le menu) {ivgotzeflux}
+        [exec] (Éditer les raccourcis clavier) {geany ~/.fluxbox/keys}
         [submenu] (System Styles) {Choose a style...}
             [stylesdir] (/usr/local/share/fluxbox/styles)
         [end]
+        [config] (Configuration Fluxbox)
         [submenu] (User Styles) {Choose a style...}
             [stylesdir] (~/.fluxbox/styles)
         [end]
@@ -83,7 +92,7 @@
     [exit] (Fermer la session) </usr/local/share/icons/gnome-colors-common/16x16/actions/gnome-session-logout.png>
     [separator]
     [exec] (Suspendre) {doas /usr/sbin/apm -S} </usr/local/share/icons/gnome-colors-common/16x16/actions/system-lock-screen.png>
-    [exec] (Hiberner) {doas /usr/sbin/apm -Z} </usr/local/share/icons/gnome-colors-common/16x16/apps/gnome-session-sleep.png>
+    [exec] (Hiberner) {doas /usr/sbin/apm -z} </usr/local/share/icons/gnome-colors-common/16x16/apps/gnome-session-sleep.png>
     [exec] (Redémarrer) {doas /sbin/reboot} </usr/local/share/icons/gnome-colors-common/16x16/apps/gnome-session-reboot.png>
     [exec] (Éteindre) {doas /sbin/shutdown -hp now} </usr/local/share/icons/gnome-colors-common/16x16/apps/gnome-session-halt.png>
 [end]
