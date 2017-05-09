@@ -11,6 +11,7 @@ chown -R root:wheel /etc/login.conf
 chown -R root:wheel /etc/motd
 chown -R root:wheel /etc/skel
 chown -R root:wheel /etc/pf.conf
+chown -R root:wheel /etc/boot.conf
 
 # pkg
 echo "* Configuring install PATH"
