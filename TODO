@@ -1,8 +1,8 @@
 - Vérifier que firefox est en fr
+- Vérifier que thunderbird est en fr
 - Ajouter des alias ?
-- écrire un gui pour youtube-dl ?
 - Ajouter un gui pour chercher/installer les paquets
-- Support des .fs pour les clés USB et pas que les .iso
 - Traduire en anglais
-- Augmenter limites dans login.conf
-
+- Rédiger doc d'installation
+- Préciser taille requise pour /usr/local
+- Bibliothèque pour les applis Tk ?
