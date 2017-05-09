@@ -21,8 +21,7 @@ class Gui():
 
         ttk.Label(self.mainframe, text="Volume :").pack()
 
-        w = ttk.Scale(self.mainframe)
-        w = Scale(self.mainframe, from_=0, to=100, orient=HORIZONTAL, command=setvol)
+        w = ttk.Scale(self.mainframe, from_=0, to=100, orient=HORIZONTAL, command=setvol)
         w.set(getvol())
         w.pack()
 
@@ -31,6 +30,8 @@ class Gui():
         if ismuted():
             self.mutebtn.config(text="Unmute")
 
+        style = ttk.Style()
+        style.theme_use("clam")
         self.root.mainloop()
 
     def mute(self):
@@ -59,7 +60,9 @@ def ismuted():
         return True
 
 def setvol(vol):
-    vol = int(int(vol) / 100 * 255)
+    if "." in vol:
+        vol = vol.split('.')[0]
+    vol = round(int(vol) / 100 * 255)
     call(['mixerctl', 'outputs.master={}'.format(vol)])
 
 
