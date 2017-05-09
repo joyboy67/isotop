@@ -307,6 +307,8 @@ class Gui():
         else:
             self.main()
 
+        style = ttk.Style()
+        style.theme_use("clam")
         self.root.mainloop()
 
     def bgscan(self):
