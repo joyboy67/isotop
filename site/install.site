@@ -2,6 +2,16 @@ echo "---"
 echo "* RUNNING POST-INSTALL SCRIPT"
 echo "---"
 
+echo
+echo "* Fix permissions"
+echo "---"
+chown -R root:wheel /etc/doas.conf
+chown -R root:wheel /etc/hotplug
+chown -R root:wheel /etc/login.conf
+chown -R root:wheel /etc/motd
+chown -R root:wheel /etc/skel
+chown -R root:wheel /etc/pf.conf
+
 # pkg
 echo "* Configuring install PATH"
 echo "---"
@@ -34,10 +44,8 @@ echo "---"
 touch /etc/monthly.local
 echo 'unbound-anchor -u _unbound -a "/var/unbound/db/root.key"' >> /etc/monthly.local
 echo 'ftp -o /var/unbound/etc/unbound_ad_servers "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=unbound&showintro=0&mimetype=plaintext"' >> /etc/monthly.local
-echo '/usr/local/bin/antipub.sh' >> /etc/monthly.local
 
-unbound-anchor -u _unbound -a "/var/unbound/db/root.key"
-ftp -o /var/unbound/etc/unbound_ad_servers "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=unbound&showintro=0&mimetype=plaintext"
+#unbound-anchor -u _unbound -a "/var/unbound/db/root.key"
 rcctl enable unbound
 
 echo "* Configure dhclient"
