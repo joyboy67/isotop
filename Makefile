@@ -11,7 +11,6 @@ iso:
 	@echo "Building OpenBSD iso"
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh | tee build.log
-	# to replace with get_all_pkg if on openbsd
 	@./bin/build_site.sh | tee -a build.log
 	@./bin/build_obsd_iso.sh | tee -a build.log
 	@chmod a+rw CustomOBSD.iso
@@ -20,7 +19,6 @@ fs:
 	@echo "Building OpenBSD fs"
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh | tee build.log
-	# to replace with get_all_pkg if on openbsd
 	@./bin/build_site.sh | tee -a build.log
 	@./bin/build_obsd_fs.sh | tee -a build.log
 	@chmod a+rw CustomOBSD.iso
@@ -37,8 +35,8 @@ help:
 
 download:
 	# replace download_pkgs with get_all_pkgs if on openbsd
-	#@./bin/download_pkgs.sh | tee -a build.log
-	@./bin/get_all_pkgs.sh | tee -a build.log
+	@./bin/download_pkgs.sh | tee -a build.log
+	#@./bin/get_all_pkgs.sh | tee -a build.log
 
 prepare:
 	@echo "Setting up build environment"
