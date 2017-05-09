@@ -16,6 +16,7 @@ Usage
 
 Just run (with root privileges)
 
+	make download
     make 
 
 To build a `CustomOBSD.iso` and `CustomOBSD.fs` files.

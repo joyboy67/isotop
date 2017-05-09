@@ -1,14 +1,3 @@
-
-== Génération de l'iso ==
-- Le dépôt est là : https://framagit.org/3hg/SiO2
-- Une fois cloné, vous avez tout pour fabriquer une iso. Pour ça, lancez
-  : ``sudo make``
-- C'est censé fonctionner sous linux comme sous OBSD la génération de
-  l'iso, j'espère ne pas avoir modifié un truc qui coince.
-- Vous retrouvez une iso CustomOBSD.iso que vous pouvez tester sous
-  qemu, virtualbox, au plaisir...
-
-
 == Test de l'iso ==
 L'installation est une install classique d'OpenBSD. Le seul truc chiant,
 c'est d'avoir assez de place dans la partition /usr/local/, donc
