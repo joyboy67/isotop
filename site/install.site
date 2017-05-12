@@ -57,5 +57,11 @@ echo "* Enable hotplugd"
 echo "---"
 rcctl enable hotplugd
 
+echo "* Enable apmd"
+echo "---"
+rcctl enable apmd
+rcctl set apmd status on
+rcctl set apmd flags -A
+
 exit 0
 
