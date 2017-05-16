@@ -422,7 +422,7 @@ class ZenList(Gui):
     def valid(self, event=None):
         try:
             i = self.l.curselection()[0]
-            print(i)
+            print(self.l.get(i))
             self.stop(0)
         except IndexError:
             self.stop(1)
