@@ -6,3 +6,6 @@
 - Rédiger doc d'installation
 - Préciser taille requise pour /usr/local
 - Bibliothèque pour les applis Tk ?
+- Ajouter un test avant de lancer le script d'upgrade d'openbsd pour savoir si connexion à internet dispo
+- remplir les applications du volet pcmanfm
+- gtk-chtheme ?
