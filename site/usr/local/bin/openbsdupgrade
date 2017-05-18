@@ -1,6 +1,12 @@
 #!/bin/sh
 # download openup and run it after syspatch
 
+/usr/local/sbin/networkcheck
+if [ $? -ne 0 ]; then
+	echo "No internet connexion avaiable..."
+	exit 1
+fi
+
 echo "===> Running syspatch"
 doas syspatch
 
