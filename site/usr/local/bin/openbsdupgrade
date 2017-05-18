@@ -4,6 +4,7 @@
 /usr/local/sbin/networkcheck
 if [ $? -ne 0 ]; then
 	echo "No internet connexion avaiable..."
+	sleep 3
 	exit 1
 fi
 
