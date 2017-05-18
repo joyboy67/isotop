@@ -75,6 +75,7 @@
     	[submenu] (Wallpaper)
 			[wallpapers] (~/Images/Wallpapers) {wpsetters=feh fbsetbg -a}
 		[end]
+        [exec] (Changer le thème GTK) {setgtktheme}
         [exec] (Éditer le menu) {ivgotzeflux}
         [exec] (Éditer les raccourcis clavier) {geany ~/.fluxbox/keys}
         [submenu] (System Styles) {Choose a style...}
