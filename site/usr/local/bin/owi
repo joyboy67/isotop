@@ -95,6 +95,10 @@ def help():
     print("You need root privileges to use this tool")
     sys.exit()
 
+def contact(event):
+    import webbrowser
+    webbrowser.open_new("{}#encouragement".format(appurl))
+
 def dBmtoperc(dBm):
     """
     convert dBm to percent
@@ -482,10 +486,17 @@ class Gui():
         menuBtn.grid(column=0, row=0, columnspan=2, sticky=E+N+W)
 
         scanBtn = ttk.Button(menuBtn, text=txt_scan, command=lambda: self.scan())
-        scanBtn.grid(column=0, row=0)
+        scanBtn.grid(column=0, row=0, sticky=W)
 
         configBtn = ttk.Button(menuBtn, text=txt_configuration, command=lambda: self.askiface())
-        configBtn.grid(column=1, row=0)
+        configBtn.grid(column=1, row=0, sticky=W)
+
+        aboutbtn = ttk.Button(menuBtn, text="?", command=lambda: Popup(txt_about))
+        aboutbtn.grid(column=2, row=0, sticky=W)
+
+        link = Label(menuBtn, text="     ⏣", cursor="hand2")
+        link.grid(column=3,row=0,sticky=E)
+        link.bind("<Button-1>", contact)
 
         self.l = Listbox(self.mainframe, height=12, width=20)
         self.l.grid(column=0, row=1, columnspan=2, sticky=(N,W,E,S))
@@ -503,9 +514,6 @@ class Gui():
 
         self.p = ttk.Progressbar(self.mainframe, mode='indeterminate', orient=HORIZONTAL)
         self.p.grid(column=0, row=3, columnspan=3, sticky=(S,W,E))
-
-        aboutbtn = ttk.Button(self.mainframe, text="?", command=lambda: Popup(txt_about))
-        aboutbtn.grid(column=0, row=4, sticky=W)
 
         btnBoxBtm = ttk.Frame(self.mainframe)
         btnBoxBtm.grid(column=1, row=4, sticky=E)
