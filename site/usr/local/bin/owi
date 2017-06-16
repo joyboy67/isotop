@@ -29,12 +29,17 @@ from tkinter import simpledialog
 configfile = "/etc/owi.conf"
 
 appname = "OWi :: OpenBSD Wifi"
+appurl = "https://yeuxdelibad.net/Divers/Contact.html"
 version = "0.2"
 
 green="#0DC412"
 yellow="#DFE619"
 orange="#FFA500"
 red="#FF1C1C"
+font="Sans"
+fontsize=10
+
+# trads
 txt_passphrase="Passphrase required : "
 txt_scanning="Scanning WiFI networks"
 txt_connect="Connect to WiFi"
@@ -46,14 +51,15 @@ txt_ethlabel="Ethernet interface (i.e. jme0) :"
 txt_about = """
 {}
 {}
+{}
 ---
-Made with love by thuban <thuban@yeuxdelibad.net>
+Made with ♥ by thuban <thuban@yeuxdelibad.net>
 
 Distributed under MIT licence
 ---
 Choose a network and double-click to connect.
 Right click on a network to change password.
-""".format(appname, version)
+""".format(appname, version, appurl)
 
 LANG=locale.getdefaultlocale()[0]
 if LANG.startswith("fr"):
@@ -66,14 +72,14 @@ if LANG.startswith("fr"):
     txt_about = """
 {}
 {}
+{}
 ---
-Fait avec amour par thuban <thuban@yeuxdelibad.net>
-
-Distribué sous license MIT
+Fait avec ♥ par thuban <thuban@yeuxdelibad.net>
+Distribué sous licence MIT
 ---
 Choisissez un réseau puis double-cliquez dessus pour vous connecter.
 Cliquez-droit sur un réseau pour changer le mot de passe.
-    """.format(appname, version)
+    """.format(appname, version, appurl)
 
 
 ### functions
@@ -540,6 +546,7 @@ class Gui():
 
         style = ttk.Style()
         style.theme_use("clam")
+        self.root.option_add('*Dialog.msg.font', '"{}" {}'.format(font,fontsize))
 
 
 def main():
