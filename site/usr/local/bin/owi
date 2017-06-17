@@ -52,11 +52,11 @@ txt_about = """
 {}
 {}
 {}
----
+
 Made with ♥ by thuban <thuban@yeuxdelibad.net>
 
 Distributed under MIT licence
----
+
 Choose a network and double-click to connect.
 Right click on a network to change password.
 """.format(appname, version, appurl)
@@ -73,10 +73,10 @@ if LANG.startswith("fr"):
 {}
 {}
 {}
----
+
 Fait avec ♥ par thuban <thuban@yeuxdelibad.net>
 Distribué sous licence MIT
----
+
 Choisissez un réseau puis double-cliquez dessus pour vous connecter.
 Cliquez-droit sur un réseau pour changer le mot de passe.
     """.format(appname, version, appurl)
@@ -97,7 +97,7 @@ def help():
 
 def contact(event):
     import webbrowser
-    webbrowser.open_new("{}#encouragement".format(appurl))
+    webbrowser.open_new("{}#encouragements".format(appurl))
 
 def dBmtoperc(dBm):
     """
@@ -481,9 +481,21 @@ class Gui():
         self.ethiface  = getconfig("ethiface")
 
     def main(self):
+        ttk.Sizegrip().grid(column=0, row=1, sticky=(S,E))
+        self.root.grid_columnconfigure(0, weight=1)
+        self.root.grid_rowconfigure(0, weight=1)
+
+        self.mainframe = ttk.Frame(self.root, padding="3 3 12 12")
+        self.mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        self.mainframe.grid_columnconfigure(0, weight=1)
+        self.mainframe.grid_rowconfigure(1, weight=1)
+
+        style = ttk.Style()
+        style.theme_use("clam")
+        self.root.option_add('*Dialog.msg.font', '"{}" {}'.format(font,fontsize))
 
         menuBtn = ttk.Frame(self.mainframe)
-        menuBtn.grid(column=0, row=0, columnspan=2, sticky=E+N+W)
+        menuBtn.grid(column=0, row=0, columnspan=2, sticky=E+N+W+S)
 
         scanBtn = ttk.Button(menuBtn, text=txt_scan, command=lambda: self.scan())
         scanBtn.grid(column=0, row=0, sticky=W)
@@ -494,9 +506,11 @@ class Gui():
         aboutbtn = ttk.Button(menuBtn, text="?", command=lambda: Popup(txt_about))
         aboutbtn.grid(column=2, row=0, sticky=W)
 
-        link = Label(menuBtn, text="     ⏣", cursor="hand2")
+        link = Label(menuBtn, text="    ⏣", cursor="hand2")
         link.grid(column=3,row=0,sticky=E)
         link.bind("<Button-1>", contact)
+
+        menuBtn.columnconfigure(3, weight=1)
 
         self.l = Listbox(self.mainframe, height=12, width=20)
         self.l.grid(column=0, row=1, columnspan=2, sticky=(N,W,E,S))
@@ -516,7 +530,7 @@ class Gui():
         self.p.grid(column=0, row=3, columnspan=3, sticky=(S,W,E))
 
         btnBoxBtm = ttk.Frame(self.mainframe)
-        btnBoxBtm.grid(column=1, row=4, sticky=E)
+        btnBoxBtm.grid(column=1, row=4, sticky=E+N+S)
 
         self.wconnect_btn = ttk.Button(btnBoxBtm, text=txt_wire, command=self.doconnect_wired)
         self.wconnect_btn.grid(column=0, row=0,sticky=W+S)
@@ -542,19 +556,6 @@ class Gui():
 
         self.wlaniface  = getconfig("wlaniface")
         self.ethiface  = getconfig("ethiface")
-
-        ttk.Sizegrip().grid(column=0, row=1, sticky=(S,E))
-        self.root.grid_columnconfigure(0, weight=1)
-        self.root.grid_rowconfigure(0, weight=1)
-
-        self.mainframe = ttk.Frame(self.root, padding="3 3 12 12")
-        self.mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
-        self.mainframe.grid_columnconfigure(0, weight=1)
-        self.mainframe.grid_rowconfigure(1, weight=1)
-
-        style = ttk.Style()
-        style.theme_use("clam")
-        self.root.option_add('*Dialog.msg.font', '"{}" {}'.format(font,fontsize))
 
 
 def main():
