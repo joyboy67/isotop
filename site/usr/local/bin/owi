@@ -29,7 +29,8 @@ from tkinter import simpledialog
 configfile = "/etc/owi.conf"
 
 appname = "OWi :: OpenBSD Wifi"
-appurl = "https://yeuxdelibad.net/Divers/Contact.html"
+appurl = "https://framagit.org/Thuban/owi"
+contacturl = "https://yeuxdelibad.net/Divers/Contact.html"
 version = "0.2"
 
 green="#0DC412"
@@ -97,7 +98,7 @@ def help():
 
 def contact(event):
     import webbrowser
-    webbrowser.open_new("{}#encouragements".format(appurl))
+    webbrowser.open_new("{}#encouragements".format(contacturl))
 
 def dBmtoperc(dBm):
     """
