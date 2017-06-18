@@ -1,8 +1,7 @@
 - Ajouter des alias ?
 - Ajouter un gui pour chercher/installer les paquets
 - Traduire en anglais
-- Rédiger doc d'installation
 - Préciser taille requise pour /usr/local
 - Bibliothèque pour les applis Tk ?
 - remplir les applications du volet pcmanfm
-- gtk-chtheme ?
+- gtk-chtheme -> un port de lxappearance est en cours d'apparition?
