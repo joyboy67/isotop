@@ -21,7 +21,7 @@ fs:
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
 	@./bin/build_obsd_fs.sh | tee -a build.log
-	@chmod a+rw CustomOBSD.iso
+	@chmod a+rw CustomOBSD.fs
 
 help:
 	@echo "Usage: as root"
