@@ -1,9 +1,0 @@
-#!/bin/sh
-# capture d'écran et upload
-# thuban@yeuxdelibad.net
-IMAGE=/tmp/scrotup-$(date +%d-%m-%y-%H-%M).png
-
-scrot -s -d 3 $IMAGE 
-pixup $IMAGE
-
-exit 0
