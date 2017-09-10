@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Copcopll
+Comment=
+Exec=/home/xavier/geek/gitreps/coolrepo/Scripts/copcoll
+Icon=insert-text-symbolic
+Path=
+Terminal=false
+StartupNotify=false

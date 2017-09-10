@@ -1,0 +1,17 @@
+[Configuration]
+last-window-posx=674
+last-window-posy=193
+last-window-width=372
+last-window-height=505
+last-window-state-sticky=FALSE
+playlist-autocenter=TRUE
+mpd-hostname=localhost
+mpd-port=6600
+mpd-password=
+mpd-use-defaults=TRUE
+show-status-icon=TRUE
+show-statusbar=TRUE
+song-format=XFMPC_PREFERENCES_SONG_FORMAT_ARTIST_TITLE
+song-format-custom=%a - %t
+playlist-show-position=FALSE
+

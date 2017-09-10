@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Name=Screenshot
+Name[fr]=Capture d'écran
+Comment=Take screenshots of the entire screen, of the active window or of a region
+Comment[fr]=Prendre une capture d'écran de l'écran tout entier, de la fenêtre active ou d'une zone
+Icon=applets-screenshooter
+Exec=/home/xavier/bin/bin/scrotup
+Type=Application
+StartupNotify=true
+Terminal=false
+Categories=GTK;Utility;
+X-XFCE-Source=file:///usr/share/applications/xfce4-screenshooter.desktop
+Path=

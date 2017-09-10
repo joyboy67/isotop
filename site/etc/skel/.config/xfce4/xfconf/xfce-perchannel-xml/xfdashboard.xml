@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfdashboard" version="1.0">
+  <property name="min-notification-timeout" type="uint" value="5000"/>
+  <property name="theme" type="string" value="xfdashboard"/>
+</channel>
