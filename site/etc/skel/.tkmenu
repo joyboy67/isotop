@@ -5,21 +5,22 @@ titlebar = True
 title = False
 
 [Recent]
-0.0 = Navigateur web, firefox,     /usr/local/lib/firefox-esr-52.0.2/browser/chrome/icons/default/default48.png
+0.0 = Navigateur web, firefox,     /usr/local/lib/firefox-55.0.3/browser/icons/mozicon128.png
 1.0 = Dossier personnel, thunar,    /usr/local/share/icons/gnome-brave/32x32/places/user-home.png
-2.0 = Services Framasoft, firefox https://framasoft.org/,   /usr/local/share/sio2/pixmaps/internet_framasoft.png
+2.0 = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 3.0 = Suite bureautique, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
 
 
 [Internet]
-navigateur web = Navigateur web, firefox,     /usr/local/lib/firefox-esr-52.0.2/browser/chrome/icons/default/default48.png
-courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-45.8.0/chrome/icons/default/default48.png
-chercher = Chercher, firefox https://duckduckgo.com, /usr/local/share/sio2/pixmaps/ddg.png
-framasoft = Services Framasoft, firefox https://framasoft.org/,   /usr/local/share/sio2/pixmaps/internet_framasoft.png
-obsd4awiki = Wiki OBSD4*, firefox https://obsd4a.net/wiki/,   /usr/local/share/sio2/pixmaps/puffysterix.png
-obsd4aforum = Forum OBSD4*, https://obsd4a.net/qa/,   /usr/local/share/sio2/pixmaps/openbsdyinyang.png
-openbsd = OpenBSD, https://www.openbsd.org/,   /usr/local/share/sio2/pixmaps/puffyrock.png
-faq = FAQ OpenBSD, https://www.openbsd.org/faq/index.html,   /usr/local/share/sio2/pixmaps/puffyhood.png
+navigateur web = Navigateur web, firefox,     /usr/local/lib/firefox-55.0.3/browser/icons/mozicon128.png
+
+courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-52.2.1/chrome/icons/default/default48.png
+chercher = Chercher, firefox https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
+framasoft = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
+obsd4awiki = Wiki OBSD4*, firefox https://obsd4a.net/wiki/,   /opt/isotop/pixmaps/puffysterix.png
+obsd4aforum = Forum OBSD4*, https://obsd4a.net/qa/,   /opt/isotop/pixmaps/openbsdyinyang.png
+openbsd = OpenBSD, https://www.openbsd.org/,   /opt/isotop/pixmaps/puffyrock.png
+faq = FAQ OpenBSD, https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
 
 
 [Fichiers]
