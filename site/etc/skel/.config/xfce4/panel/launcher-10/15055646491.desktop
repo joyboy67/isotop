@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Youtube-dl GUI
+Comment=
+Exec=/opt/bin/youtube-dl-gui
+Icon=video-x-generic
+Path=
+Terminal=false
+StartupNotify=false

@@ -1,4 +1,4 @@
-PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:.
+PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:/opt/bin:.
 export PATH HOME TERM
 LC_CTYPE="fr_FR.UTF-8"
 LC_MESSAGES="fr_FR.UTF-8"

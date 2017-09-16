@@ -4,7 +4,7 @@
 	<icon>utilities-terminal</icon>
 	<name>Ouvrir un terminal ici</name>
 	<unique-id>1430681774901975-6</unique-id>
-	<command>urxvtcd</command>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
 	<description>lancer un terminal dans le répertoire courant</description>
 	<patterns>*</patterns>
 	<startup-notify/>
@@ -21,11 +21,11 @@
 	<text-files/>
 </action>
 <action>
-	<icon>browser</icon>
-	<name>Envoyer l'image sur le net</name>
-	<unique-id>1430680843463192-5</unique-id>
-	<command>/usr/bin/pixup %F</command>
-	<description>téléverser l&apos;image sur framapic.org et partagez-la</description>
+	<icon>go-up-symbolic</icon>
+	<name>Envoyer l&apos;image sur le net</name>
+	<unique-id>1505563726571801-1</unique-id>
+	<command>/opt/bin/pixup %F</command>
+	<description></description>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<image-files/>
@@ -33,31 +33,31 @@
 <action>
 	<icon>catfish</icon>
 	<name>Recherche</name>
-	<unique-id>1430701366296475-16</unique-id>
+	<unique-id>1505565160483836-2</unique-id>
 	<command>/usr/bin/catfish --path=%f</command>
-	<description>effectuez une recherche dans le répertoire courant</description>
+	<description>Effectuez une recherche dans le répertoire courant</description>
 	<patterns>*</patterns>
 	<directories/>
 	<text-files/>
 </action>
 <action>
-	<icon>edit</icon>
+	<icon>edit-select-symbolic</icon>
 	<name>Modifier l&apos;image</name>
-	<unique-id>1440701060510825-4</unique-id>
-	<command>/usr/bin/imagemod-hl %F</command>
-	<description>pivoter, redimensionner, convertir ou imprimer une image</description>
+	<unique-id>1505565152729112-1</unique-id>
+	<command>/opt/bin/imagemod %F</command>
+	<description>Pivoter, redimensionner, convertir ou imprimer une image</description>
 	<patterns>*</patterns>
 	<startup-notify/>
 	<image-files/>
 </action>
 <action>
-    <icon>dialog-question</icon>
-	<name>Vérifier le md5</name>
-    <unique-id>1456843190812647-1</unique-id>
-	<command>zenity --info --text=&quot;md5 : $(md5sum %f |cut -d&apos; &apos; -f1)&quot;</command>
-	<description>Vérifier la somme de contrôle de l&apos;image</description>
-	<patterns>*.iso;*.ISO</patterns>
-	<startup-notify/>
-	<other-files/>
+	<icon>media-playback-start-symbolic</icon>
+	<name>Lire avec mpd</name>
+	<unique-id>1505565242364792-3</unique-id>
+	<command>/opt/bin/play_in_mpd %F</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
 </action>
 </actions>

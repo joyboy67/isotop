@@ -4,190 +4,33 @@
   <property name="backdrop" type="empty">
     <property name="screen0" type="empty">
       <property name="monitor0" type="empty">
-        <property name="brightness" type="empty"/>
-        <property name="color1" type="empty"/>
-        <property name="color2" type="empty"/>
-        <property name="color-style" type="empty"/>
-        <property name="image-path" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
-        <property name="image-show" type="empty"/>
-        <property name="last-image" type="string" value="/tmp/unsplay-wall-1449730308.jpg"/>
-        <property name="last-single-image" type="string" value="/tmp/unsplay-wall-1449730308.jpg"/>
-        <property name="last-image-list" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
         <property name="workspace0" type="empty">
           <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/Images/Wallpaper.png"/>
-          <property name="backdrop-cycle-enable" type="bool" value="false"/>
-          <property name="backdrop-cycle-random-order" type="bool" value="true"/>
-          <property name="backdrop-cycle-timer" type="uint" value="10"/>
-        </property>
-        <property name="workspace1" type="empty">
-          <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
-        </property>
-        <property name="workspace2" type="empty">
-          <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
-        </property>
-        <property name="workspace3" type="empty">
-          <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
-        </property>
-        <property name="workspace4" type="empty">
-          <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
-        </property>
-        <property name="workspace5" type="empty">
-          <property name="color-style" type="int" value="0"/>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
-        </property>
-      </property>
-      <property name="monitorLVDS1" type="empty">
-        <property name="workspace0" type="empty">
-          <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/Images/Wallpapers/landscape.jpg"/>
+          <property name="last-image" type="string" value="/opt/isotop/walls/openbsd_mini.jpg"/>
           <property name="backdrop-cycle-enable" type="bool" value="true"/>
           <property name="backdrop-cycle-random-order" type="bool" value="true"/>
         </property>
         <property name="workspace1" type="empty">
-          <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
+          <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
+          <property name="last-image" type="string" value="/usr/local/share/backgrounds/xfce/xfce-teal.jpg"/>
         </property>
         <property name="workspace2" type="empty">
-          <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
+          <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
+          <property name="last-image" type="string" value="/usr/local/share/backgrounds/xfce/xfce-teal.jpg"/>
         </property>
         <property name="workspace3" type="empty">
-          <property name="color-style" type="int" value="1"/>
-          <property name="color1" type="array">
-            <value type="uint" value="7936"/>
-            <value type="uint" value="16128"/>
-            <value type="uint" value="28416"/>
-            <value type="uint" value="65535"/>
-          </property>
-          <property name="color2" type="array">
-            <value type="uint" value="26880"/>
-            <value type="uint" value="34048"/>
-            <value type="uint" value="46848"/>
-            <value type="uint" value="65535"/>
-          </property>
+          <property name="color-style" type="int" value="0"/>
           <property name="image-style" type="int" value="5"/>
-          <property name="last-image" type="string" value="/home/xavier/.config/xfce4/desktop/backdrop.list"/>
+          <property name="last-image" type="string" value="/usr/local/share/backgrounds/xfce/xfce-teal.jpg"/>
         </property>
       </property>
     </property>
   </property>
-  <property name="desktop-icons" type="empty">
-    <property name="icon-size" type="uint" value="40"/>
-    <property name="file-icons" type="empty">
-      <property name="show-home" type="bool" value="true"/>
-      <property name="show-filesystem" type="bool" value="false"/>
-      <property name="show-trash" type="bool" value="false"/>
-      <property name="show-removable" type="bool" value="true"/>
-    </property>
-    <property name="use-custom-font-size" type="bool" value="true"/>
-    <property name="font-size" type="double" value="12.000000"/>
-  </property>
-  <property name="desktop-menu" type="empty">
-    <property name="show" type="bool" value="true"/>
-  </property>
-  <property name="windowlist-menu" type="empty">
-    <property name="show" type="bool" value="false"/>
-  </property>
   <property name="last" type="empty">
-    <property name="window-width" type="int" value="826"/>
-    <property name="window-height" type="int" value="515"/>
+    <property name="window-width" type="int" value="843"/>
+    <property name="window-height" type="int" value="560"/>
   </property>
 </channel>

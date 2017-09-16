@@ -1,6 +1,6 @@
 #!/bin/sh
 # choose how to modify an image
-# requires zenity and imagemagick 
+# requires zeniTK and imagemagick 
 # and photoprint 
 
 # action personnalisée dans thunar : 
@@ -20,7 +20,6 @@ TOGIF="Convert to GIF"
 RESIZE="Resize"
 TURNR="Turn right"
 TURNL="Turn left"
-PRINTIMG="Print images"
 
 case $LANG in
 	fr*)
@@ -33,7 +32,6 @@ case $LANG in
         RESIZE="Redimensionner l'image"
         TURNR="Tourner à droite"
         TURNL="Tourner à gauche"
-        PRINTIMG="Imprimer les images"
         ;;
     de*)
 		scaletitle="Stufenbild"
@@ -59,54 +57,53 @@ case $LANG in
         ;;
 esac
 
+if [ $# -eq 0 ]; then
+	echo "Nothing to do"
+	exit
+fi
 
-R=$(zenity --list --text "$scaletext"\
-    --radiolist --column "" --column "Action" --print-column=2 \
-    TRUE "1: $TOJPG" \
-    FALSE "2: $TOPNG" \
-    FALSE "3: $TOGIF" \
-    FALSE "4: $RESIZE" \
-    FALSE "5: $TURNR" \
-    FALSE "6: $TURNL"\
-    FALSE "7: $PRINTIMG"\
-    | cut -d':' -f1)
+R=$(zeniTK --text "$scaletext" --list \
+    "$TOJPG" \
+    "$TOPNG" \
+    "$TOGIF" \
+    "$RESIZE" \
+    "$TURNR" \
+    "$TURNL")
 
 case $R in 
-    1 ) 
+    $TOJPG ) 
         for i in $@; do
             convert -interlace line "$i" "${i%.*}.jpg"
         done
         ;;
-    2 ) 
+    $TOPNG ) 
         for i in $@; do
             convert -interlace line "$i" "${i%.*}.png"
         done
         ;;
-    3 ) 
+    $TOGIF ) 
         for i in $@; do
             convert -interlace line "$i" "${i%.*}.gif"
         done
         ;;
-    4 ) 
-        imgsize=$(zenity --title "$scaletitle" --entry --entry-text="100x100" --text="$scalemsg")
+    $RESIZE ) 
+        imgsize=$(zeniTK --title "$scaletitle" --entry --entry-text="100x100" --text="$scalemsg")
         for i in $@; do
             if [ -n "$imgsize" ]; then
                 convert -scale $imgsize "$i" "${i%.*}-$imgsize.${i##*.}" 
             fi
         done
         ;;
-    5 ) 
+    $TURNR ) 
         for i in $@; do
             convert -rotate 90 $i $i
         done
         ;;
-    6 ) 
+    $TURNL ) 
         for i in $@; do
             convert -rotate -90 $i $i
         done
         ;;
-    7 )
-        photoprint $@ ;;
 esac
     
 IFS=$OLDIFS

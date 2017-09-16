@@ -18,6 +18,18 @@ echo "---"
 echo "* Set default python3 path with python3.6"
 ln -sf /usr/local/bin/python3.6 /usr/local/bin/python3
 
+echo "* Enable hotplugd"
+echo "---"
+rcctl enable hotplugd
+
+
+
+echo "* Enable messagebus"
+echo "---"
+rcctl enable messagebus
+rcctl order messagebus
+
+
 echo "======================="
 echo "Done"
 echo "======================="

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Upgrade OpenBSD
+Comment=
+Exec=/opt/bin/openbsdupgrade
+Icon=system-software-update
+Path=
+Terminal=true
+StartupNotify=false

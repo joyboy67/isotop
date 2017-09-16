@@ -32,7 +32,7 @@
 ; (gtk_accel_path "<Actions>/terminal-window/reset-and-clear" "")
 ; (gtk_accel_path "<Actions>/terminal-window/about" "")
 ; (gtk_accel_path "<Actions>/terminal-window/search-next" "")
-; (gtk_accel_path "<Actions>/terminal-window/toggle-menubar" "")
+(gtk_accel_path "<Actions>/terminal-window/toggle-menubar" "F10")
 (gtk_accel_path "<Actions>/terminal-window/goto-tab-7" "<Alt>7")
 ; (gtk_accel_path "<Actions>/terminal-window/select-all" "<Primary><Shift>a")
 ; (gtk_accel_path "<Actions>/terminal-window/help-menu" "")

@@ -174,7 +174,7 @@ class ZenEntry(Gui):
         cancelbtn = ttk.Button(self.mainframe, text="✗ {}".format(txt_cancel), command=self.stop)
         cancelbtn.grid(column=0, row=2, sticky=W)
 
-    def valid(self, event):
+    def valid(self, event=None):
         s = self.entry.get().strip()
         print(s)
         self.stop()

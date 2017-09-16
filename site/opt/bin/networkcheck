@@ -12,7 +12,7 @@ from urllib import request
 
 def check_connectivity():
     try:
-        request.urlopen("http://www.openbsd.org", timeout=10)
+        request.urlopen("https://www.openbsd.org", timeout=10)
         return True
     except:
         return False

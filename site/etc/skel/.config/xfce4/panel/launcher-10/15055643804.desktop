@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Search online
+Comment=Search on any serachengine
+Exec=/opt/bin/qs
+Icon=system-search
+Path=
+Terminal=false
+StartupNotify=false
