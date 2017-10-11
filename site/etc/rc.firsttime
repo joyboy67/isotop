@@ -21,13 +21,14 @@ ln -sf /usr/local/bin/python3.6 /usr/local/bin/python3
 echo "* Enable hotplugd"
 echo "---"
 rcctl enable hotplugd
-
+rcctl start hotplugd
 
 
 echo "* Enable messagebus"
 echo "---"
 rcctl enable messagebus
 rcctl order messagebus
+rcctl start messagebus
 
 
 echo "======================="

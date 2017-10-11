@@ -62,15 +62,16 @@ Choose a network and double-click to connect.
 Right click on a network to change password.
 """.format(appname, version, appurl)
 
-LANG=locale.getdefaultlocale()[0]
-if LANG.startswith("fr"):
-    txt_passphrase="Mot de passe requis : "
-    txt_scanning="Recherche de points d'accès WiFi"
-    txt_connect="Connection au réseau WiFi"
-    txt_wire="Connexion filaire"
-    txt_scan = "Scanner"
-    txt_configuration = "Configurer"
-    txt_about = """
+try:
+    LANG=locale.getdefaultlocale()[0]
+    if LANG.startswith("fr"):
+        txt_passphrase="Mot de passe requis : "
+        txt_scanning="Recherche de points d'accès WiFi"
+        txt_connect="Connection au réseau WiFi"
+        txt_wire="Connexion filaire"
+        txt_scan = "Scanner"
+        txt_configuration = "Configurer"
+        txt_about = """
 {}
 {}
 {}
@@ -80,8 +81,9 @@ Distribué sous licence MIT
 
 Choisissez un réseau puis double-cliquez dessus pour vous connecter.
 Cliquez-droit sur un réseau pour changer le mot de passe.
-    """.format(appname, version, appurl)
-
+        """.format(appname, version, appurl)
+except:
+    pass
 
 ### functions
 def help():
@@ -262,7 +264,7 @@ def do_hostnameif(nwid, wpakey):
         wf.write("wpakey {}\n".format(wpakey))
         if not ethiface:
             wf.write("dhcp\n")
-            wf.write("rtsol\n")
+            wf.write("inet6 autoconf\n")
         else:
             with open("/etc/hostname.{}".format(ethiface), "w") as ef:
                 ef.write("up\n")
@@ -270,7 +272,7 @@ def do_hostnameif(nwid, wpakey):
                 tf.write("trunkproto failover trunkport {}\n".format(ethiface))
                 tf.write("trunkport {}\n".format(wlaniface))
                 tf.write("dhcp\n")
-                tf.write("rtsol\n")
+                tf.write("inet6 autoconf\n")
 
 def auto_connect():
     """check for avaiable AP

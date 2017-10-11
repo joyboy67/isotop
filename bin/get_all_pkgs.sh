@@ -25,10 +25,22 @@ dl_pkgs() {
     p=$(pkg_info $1 | head -n1 | cut -d' ' -f 3)
     # test if url in description -> package not installed
 	if [ -n "$(echo $p |grep $PKG_PATH)" ]; then
-		ftp -C -o $OUTDIR/$(basename $p) $p
+		if [ ! -f $OUTDIR/$(basename $p) ]; then
+			ftp -C -o $OUTDIR/$(basename $p) $p
+		else
+			echo "$p already downloaded"
+		fi
 	else
 		p=$(echo $p | cut -d':' -f2)
-		ftp -C -o $OUTDIR/$p.tgz $PKG_PATH/$p.tgz
+		if [ ! -f $OUTDIR/$p.tgz ]; then
+			ftp -C -o $OUTDIR/$p.tgz $PKG_PATH/$p.tgz
+		else
+			echo "$p already downloaded"
+		fi
+	fi
+	if [ $? -ne 0 ]; then
+		echo "download failed"
+		exit 1
 	fi
 
 }

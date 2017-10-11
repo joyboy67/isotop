@@ -4,7 +4,7 @@ LC_CTYPE="fr_FR.UTF-8"
 LC_MESSAGES="fr_FR.UTF-8"
 LC_ALL='fr_FR.UTF-8'
 LANG='fr_FR.UTF-8'
-export LC_CTYPE LC_MESSAGES LC_ALL LANG
+export $LC_CTYPE $LC_MESSAGES $LC_ALL $LANG
 
 export LDFLAGS="-L /usr/lib -L/usr/local/lib"
 export CXXFLAGS="-I /usr/include -I/usr/local/include"

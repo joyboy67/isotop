@@ -12,4 +12,4 @@ Name=File Manager
 Name[fr]=Gestionnaire de fichiers
 Comment=Browse the file system
 Comment[fr]=Parcourir le système de fichiers
-X-XFCE-Source=file:///usr/share/applications/exo-file-manager.desktop
+X-XFCE-Source=file:///usr/local/share/applications/exo-file-manager.desktop

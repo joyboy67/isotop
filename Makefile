@@ -31,12 +31,11 @@ help:
 	@echo "make iso		        : build iso only"
 	@echo "make fs		        : build fs only"
 	@echo "make download	    : download all packages"
-	@echo "make cleanfull		: clean up build directories completely"
 
 download:
 	# replace download_pkgs with get_all_pkgs if on openbsd
-	@./bin/download_pkgs.sh | tee -a build.log
-	#@./bin/get_all_pkgs.sh | tee -a build.log
+	#@./bin/download_pkgs.sh | tee -a build.log
+	@./bin/get_all_pkgs.sh | tee -a build.log
 
 prepare:
 	@echo "Setting up build environment"

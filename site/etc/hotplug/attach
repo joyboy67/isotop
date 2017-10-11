@@ -2,6 +2,7 @@
 
 DEVCLASS=${1}
 DEVNAME=${2}
+MOUNTROOT=/mnt
 
 case "${DEVCLASS}" in
         2)

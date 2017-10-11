@@ -25,6 +25,7 @@ echo "permit keepenv :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel  cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel  cmd /sbin/reboot" >> /etc/doas.conf
 echo "permit nopass :wheel  cmd /usr/sbin/apm" >> /etc/doas.conf
+echo "permit nopass :wheel  cmd /opt/bin/owi" >> /etc/doas.conf
 
 
 # ports
@@ -53,20 +54,11 @@ echo "* Configure dhclient"
 echo "---"
 echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
 
-echo "* Enable hotplugd"
-echo "---"
-rcctl enable hotplugd
-
 echo "* Enable apmd"
 echo "---"
 rcctl enable apmd
 rcctl set apmd status on
 rcctl set apmd flags -A
-
-echo "* Enable messagebus"
-echo "---"
-rcctl enable messagebus
-rcctl order messagebus
 
 echo "* Enable xenodm"
 echo "---"

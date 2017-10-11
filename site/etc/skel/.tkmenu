@@ -1,22 +1,22 @@
 [DEFAULT]
 closeafterrun = True
 theme = light
-titlebar = False
+titlebar = True
 title = True
 
 [Recent]
-1.0 = Dossier personnel, thunar ~,    /usr/local/share/icons/gnome-brave/32x32/places/user-home.png
 2.0 = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 3.0 = Suite bureautique, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
-1505565112.7074523 = Navigateur web,firefox,/usr/local/lib/firefox-55.0.3/browser/icons/mozicon128.png
+1505565112.7074523 = Navigateur web,firefox, /opt/isotop/pixmaps/firefox.png
+1505565138.6299736 = Dossier personnel,thunar ~,/usr/local/share/icons/gnome-brave/32x32/places/user-home.png
 
 [Internet]
-navigateur web = Navigateur web, firefox,     /usr/local/lib/firefox-55.0.3/browser/icons/mozicon128.png
+navigateur web = Navigateur web, firefox,     /opt/isotop/pixmaps/firefox.png
 courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-52.2.1/chrome/icons/default/default48.png
 chercher = Chercher, firefox https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
 framasoft = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
-obsd4awiki = Wiki OBSD4*, firefox https://obsd4a.net/wiki/,   /opt/isotop/pixmaps/puffysterix.png
-obsd4aforum = Forum OBSD4*, https://obsd4a.net/qa/,   /opt/isotop/pixmaps/openbsdyinyang.png
+obsd4awiki = Wiki OBSD4*, firefox https://wiki.obsd4a.net,   /opt/isotop/pixmaps/puffysterix.png
+obsd4aforum = Forum OBSD4*, https://obsd4a.net/forum/,   /opt/isotop/pixmaps/openbsdyinyang.png
 openbsd = OpenBSD, https://www.openbsd.org/,   /opt/isotop/pixmaps/puffyrock.png
 faq = FAQ OpenBSD, https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
 
