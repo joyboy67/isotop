@@ -5,9 +5,13 @@ echo "======================="
 echo "---"
 echo '* Installing packages' 
 PACKAGES="$(cat /etc/firsttime_packages)"
+
+# check if there is packages already downloaded for offline install
 # we use /home as it's often the biggest partition
-export PKG_PATH=/home/root/pkg_cache
-mkdir -p $PKG_PATH
+mkdir -p /home/root/pkg_cache
+if [ $(ls /home/root/pkg_cache |wc -l ) -gt 0 ]; then
+	export PKG_PATH=/home/root/pkg_cache
+fi
 
 pkg_add -vmz $PACKAGES | tee -a -
 
