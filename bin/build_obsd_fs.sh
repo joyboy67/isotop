@@ -8,6 +8,8 @@
 
 . ./obsdiso.conf
 
+SIZE=$1
+
 if [ "$(uname)" = "OpenBSD" ]; then
     echo "---"
     echo "* Rebuilding fs"
@@ -18,7 +20,6 @@ if [ "$(uname)" = "OpenBSD" ]; then
     BLOCKSIZE=512
     #BUF=$(expr 1024 \* 1024 \* 10) # 10M
     #FSSIZE=$(expr $(du -s ${NAME} |awk '{print $1}') + $BUF)
-    SIZE="1900000000"    # G
     FSSIZE=$(expr $SIZE / $BLOCKSIZE ) 
 
     # mount points

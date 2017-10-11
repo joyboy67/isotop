@@ -20,8 +20,17 @@ fs:
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh | tee -a build.log
+	@./bin/build_obsd_fs.sh 19000000000| tee -a build.log
 	@chmod a+rw CustomOBSD.fs
+
+fsnetinst:
+	@echo "Building OpenBSD fs netinst"
+	@echo "-------------------------"
+	@./bin/prepare_iso.sh | tee build.log
+	@./bin/build_site.sh | tee -a build.log
+	@./bin/build_obsd_fs.sh 400000000| tee -a build.log
+	@chmod a+rw CustomOBSD.fs
+
 
 help:
 	@echo "Usage: as root"
