@@ -29,6 +29,9 @@ To copy CustomOBSD.fs on a bootable USB key :
     dd if=CustomOBSD.fs of=/dev/your_usb_device
 
 
+If you do not copy all packages inside `site`, you can build a lighter
+`.fs` file with ``make fsnetinst``.
+
 
 Simple configuration
 -------------
