@@ -6,6 +6,7 @@ all:
 	@./bin/build_obsd_iso.sh | tee -a build.log
 	@./bin/build_obsd_fs.sh | tee -a build.log
 	@chmod a+rw CustomOBSD.iso
+	@chmod a+rw CustomOBSD.fs
 
 iso:
 	@echo "Building OpenBSD iso"
