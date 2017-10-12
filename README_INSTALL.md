@@ -67,10 +67,10 @@ Location of sets? (cd disk ftp http or 'done') [cd]
 {Enter}
  
 Available CD-ROMs are: cd0
-Which one contains the install media? (or 'don') [cd0]
+Which one contains the install media? (or 'done') [cd0]
 {Enter}
  
-Pathname of the sets? (or 'done') [6.0/amd64]
+Pathname of the sets? (or 'done') [6.2/amd64]
 {Enter}
  
 Set name(s)? (or 'abort' or 'done') [done]

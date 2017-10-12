@@ -4,7 +4,7 @@ all:
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
 	@./bin/build_obsd_iso.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh | tee -a build.log
+	@./bin/build_obsd_fs.sh 19000000000| tee -a build.log
 	@chmod a+rw CustomOBSD.iso
 	@chmod a+rw CustomOBSD.fs
 
@@ -40,6 +40,7 @@ help:
 	@echo "make cleanfull		: clean up build directories completely"
 	@echo "make iso		        : build iso only"
 	@echo "make fs		        : build fs only"
+	@echo "make fsnetinst	    : build a small fs only, for netinst install"
 	@echo "make download	    : download all packages"
 
 download:
