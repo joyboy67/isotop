@@ -14,10 +14,10 @@ dvd+rw-tools (cdrtools)
 Usage
 -----
 
-Just run (with root privileges)
+Just run 
 
 	make download
-    make 
+    make  # as root
 
 To build a `CustomOBSD.iso` and `CustomOBSD.fs` files.
 
