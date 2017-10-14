@@ -1,9 +1,9 @@
 [Default Applications]
-image/png=viewnior.desktop
-image/jpeg=viewnior.desktop
-image/svg+xml=viewnior.desktop
-image/gif=viewnior.desktop
-image/x-xcf=viewnior.desktop
+image/png=ristretto.desktop
+image/jpeg=ristretto.desktop
+image/svg+xml=ristretto.desktop
+image/gif=ristretto.desktop
+image/x-xcf=ristretto.desktop
 application/x-compressed-tar=xarchiver.desktop
 application/x-tar=xarchiver.desktop
 application/pdf=evince.desktop
