@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Send dmesg
+Name=Envoyer le dmesg
 Comment=Send dmesg and info to help OpenBSD developpers
 Exec=/opt/bin/send_dmesg.sh
 Icon=mail-reply-sender

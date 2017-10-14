@@ -1,7 +1,7 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=Search online
+Name=Rechercher en ligne
 Comment=Search on any serachengine
 Exec=/opt/bin/qs
 Icon=system-search
