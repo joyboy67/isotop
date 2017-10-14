@@ -8,6 +8,8 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
 from PIL import Image, ImageTk
+from io import BytesIO
+import base64
 
 from subprocess import Popen
 from tekamenu.const import *
@@ -51,7 +53,6 @@ def change_colors(style, color="light"):
             focuscolor=theme['selectbg'],
             darkcolor=theme['dark'],
             lightcolor=theme['lighter'],
-            troughcolor=theme['foreground'],
             selectbackground=theme['selectbg'],
             selectforeground=theme['selectfg'],
             troughtcolor=theme['selectbg'],
@@ -109,6 +110,10 @@ class TKMenu():
         # main window
         self.root = Tk()
 
+        # set window icon
+        imgicon = Image.open(BytesIO(base64.b64decode(tkmenuicon)))
+        imgicon = ImageTk.PhotoImage(imgicon)
+        self.root.tk.call('wm', 'iconphoto', self.root._w, imgicon)  
         # style
         #('clam', 'alt', 'default', 'classic')
         style = ttk.Style()
