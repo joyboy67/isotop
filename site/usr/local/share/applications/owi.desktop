@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Configurer le WiFi
-Comment=Configurer le WiFi facilement
+Name=Configure WiFi
+Name[fr]=Configurer le WiFi
+Comment=Configure WiFi easily
+Comment[fr]=Configurer le WiFi facilement
 Exec=/opt/bin/doasowi
 Categories=System;Settings;
 Terminal=true

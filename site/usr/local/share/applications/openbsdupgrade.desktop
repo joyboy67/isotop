@@ -1,7 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Mise à jour d'OpenBSD
-Comment=Mettre OpenBSD à jour avec syspatch et openup
+Name=Upgrade OpenBSD
+Name[fr]=Mise à jour d'OpenBSD
+Comment=Upgrade OpenBSD with syspatch and openup
+Comment[fr]=Mettre OpenBSD à jour avec syspatch et openup
 Exec=/opt/bin/openbsdupgrade
 Categories=System;
 Terminal=true
