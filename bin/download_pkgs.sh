@@ -364,6 +364,7 @@ x264-20170717.tgz
 x265-2.5p0.tgz
 xarchiver-0.5.4p1.tgz
 xclip-0.13.tgz
+xdg-user-dirs-0.16.tgz
 xdg-utils-1.1.2.tgz
 xdotool-3.20150503.1v0.tgz
 xfce-4.12p6.tgz
