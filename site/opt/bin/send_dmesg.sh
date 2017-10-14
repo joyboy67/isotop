@@ -25,7 +25,11 @@ ex : Dell XPS M1330, SD card not working, everything else works."
 esac
 
 SUBJECT="$(zeniTK --entry --title "dmesg@openbsd.org" --text "$TXT_SUBJECT")"
-REALMAIL="$(zeniTK --entry --title "dmesg@openbsd.org" --text "$TXT_REALMAIL")"
+if [ -n "$SUBJECT" ]; then
+	REALMAIL="$(zeniTK --entry --title "dmesg@openbsd.org" --text "$TXT_REALMAIL")"
+else
+	exit
+fi
 
 if [ -n "$SUBJECT" -a -n "$REALMAIL" ]; then
 	echo "Sending dmesg"
