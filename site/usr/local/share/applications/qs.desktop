@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Chercher en ligne
+Comment=Chercher en ligne avec le moteur de son choix
+Exec=/opt/bin/qs
+Icon=system-search
+Categories=Utility;
+Terminal=false

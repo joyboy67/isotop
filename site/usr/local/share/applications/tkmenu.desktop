@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Encoding=UTF-8
 Name=Tkmenu
 Comment=simple and quick menu
 Exec=/opt/bin/tkmenu
 Icon=/opt/isotop/pixmaps/tkmenu.png
-Terminal=False
+Categories=Utility;
+Terminal=false

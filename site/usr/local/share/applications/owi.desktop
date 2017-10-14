@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Configure Wifi
+Comment=Configurer le Wifi facilement
+Exec=/opt/bin/doasowi
+Categories=System;Settings;
+Terminal=true
+Icon=network-wireless
