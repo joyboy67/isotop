@@ -117,6 +117,7 @@ gtk+3-cups-3.22.21p0.tgz
 gtk-engines2-2.20.2p7.tgz
 gtk-update-icon-cache-3.22.21p0.tgz
 gtk-xfce-engine-3.2.0p1.tgz
+gtk2-murrine-engine-0.98.2p5.tgz
 gtk2mm-2.24.5p0.tgz
 gtksourceview-2.10.5p3.tgz
 gtkspell-2.0.16p9.tgz
@@ -128,6 +129,7 @@ harfbuzz-icu-1.5.1.tgz
 hermit-font-1.21p1.tgz
 hicolor-icon-theme-0.17.tgz
 hunspell-1.6.1p1.tgz
+hyphen-2.8.8.tgz
 icedtea-web-1.6.2p4.tgz
 icu4c-58.2p5.tgz
 ijs-0.35p2.tgz
@@ -306,12 +308,14 @@ redshift-1.11p0.tgz
 ristretto-0.8.2.tgz
 roboto-fonts-1.2p2v0.tgz
 rsync-3.1.2p0.tgz
+sane-backends-1.0.27p0.tgz
 scrot-0.8p3.tgz
 sdl-1.2.15p7.tgz
 sdl2-2.0.5p1.tgz
 sdl2-image-2.0.1.tgz
 serf-1.3.8p0.tgz
 shared-mime-info-1.9.tgz
+simple-scan-3.24.1.tgz
 soundtouch-1.9.2p2.tgz
 speex-1.2.0.tgz
 speexdsp-1.2rc3.tgz
@@ -355,6 +359,7 @@ vim-8.0.0987p0-no_x11.tgz
 vte3-0.48.3p0.tgz
 w3m-0.5.3p5.tgz
 wavpack-5.1.0p0.tgz
+webkitgtk4-2.18.0.tgz
 x264-20170717.tgz
 x265-2.5p0.tgz
 xarchiver-0.5.4p1.tgz
@@ -402,6 +407,8 @@ xfwm4-4.12.4.tgz
 xfwm4-themes-4.10.0.tgz
 xvidcore-1.3.4.tgz
 xz-5.2.3p0.tgz
+yelp-3.22.0p3.tgz
+yelp-xsl-3.20.1.tgz
 youtube-dl-2017.08.23p0.tgz
 zh-fonts-arphicttf-2.11p4.tgz
 zh-fonts-kc-1.05p2.tgz
