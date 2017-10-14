@@ -16,19 +16,15 @@ courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-52.2.1/chrome
 chercher = Chercher, firefox https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
 framasoft = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 obsd4awiki = Wiki OBSD4*, firefox https://wiki.obsd4a.net,   /opt/isotop/pixmaps/puffysterix.png
-obsd4aforum = Forum OBSD4*, https://obsd4a.net/forum/,   /opt/isotop/pixmaps/openbsdyinyang.png
-openbsd = OpenBSD, https://www.openbsd.org/,   /opt/isotop/pixmaps/puffyrock.png
-faq = FAQ OpenBSD, https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
+obsd4aforum = Forum OBSD4*, firefox https://obsd4a.net/forum/,   /opt/isotop/pixmaps/openbsdyinyang.png
+openbsd = OpenBSD, firefox https://www.openbsd.org/,   /opt/isotop/pixmaps/puffyrock.png
+faq = FAQ OpenBSD, firefox https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
 
 [Fichiers]
 dossier personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/gnome-brave/32x32/places/user-home.png
-mes images = Mes Images, thunar ~/Images, /usr/local/share/icons/gnome-brave/32x32/places/folder-images.png
-mes documents = Mes Documents, thunar ~/Documents, /usr/local/share/icons/gnome-brave/32x32/places/folder-documents.png
-mes musiques = Mes Musiques, thunar ~/Musiques, /usr/local/share/icons/gnome-brave/32x32/places/folder-music.png
-mes vidéos = Mes Vidéos, thunar ~/Vidéos, /usr/local/share/icons/gnome-brave/32x32/places/folder-videos.png
-téléchargements = Mes Téléchargements, thunar ~/Téléchargements, /usr/local/share/icons/gnome-brave/32x32/places/folder-downloads.png
-modeles = Mes Modèles, thunar ~/Modèles, /usr/local/share/icons/gnome-brave/32x32/places/folder-templates.png
-vérifier la poubelle = Vérifier la poubelle, thunar trash:///, /usr/local/share/icons/gnome/48x48/places/gnome-stock-trash.png
+mes images = Images, thunar ~/Images, /usr/local/share/icons/gnome-brave/32x32/places/folder-images.png
+mes documents = Documents, thunar ~/Documents, /usr/local/share/icons/gnome-brave/32x32/places/folder-documents.png
+mes telechargements = Téléchargements, thunar ~/Telechargements, /usr/local/share/icons/gnome-brave/32x32/places/folder-downloads.png
 
 [Bureautique]
 lo = Suite complète, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
