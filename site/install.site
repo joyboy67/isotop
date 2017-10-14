@@ -16,7 +16,7 @@ chown -R root:wheel /etc/boot.conf
 # pkg
 echo "* Configuring install PATH"
 echo "---"
-echo "https://ftp.fr.openbsd.org/" >> /etc/installurl
+echo "https://ftp.fr.openbsd.org/pub/OpenBSD" >> /etc/installurl
 
 # doas
 echo "* Configure doas"
