@@ -1,7 +1,7 @@
 stone-soup-0.18.1p0
 cowsay
 catfish
-w3m
+w3m-0.5.3p5
 xclip
 ranger
 scrot
@@ -44,6 +44,7 @@ gstreamer1-plugins-libav
 gstreamer1-plugins-ugly
 gimp
 inkscape
+simple-scan
 tktray
 python-tkinter-3.6.2
 py3-Pillow
@@ -73,6 +74,7 @@ zh-wqy-bitmapfont
 consolekit2
 gnome-colors-icon-theme
 gnome-themes-standard
+gtk2-murrine-engine
 xfce
 xfce-extras
 xfce4-power-manager
