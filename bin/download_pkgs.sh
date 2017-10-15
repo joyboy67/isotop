@@ -56,6 +56,7 @@ dmenu-4.7.tgz
 e2fsprogs-1.42.12p4.tgz
 enchant-1.6.1p1.tgz
 exo-0.10.7p0.tgz
+faad-2.7p2.tgz
 ffmpeg-20170825p1.tgz
 ffmpeg2theora-0.29p3.tgz
 ffmpegthumbnailer-2.0.8p5.tgz
@@ -152,11 +153,13 @@ lcms2-2.7.tgz
 libarchive-3.3.2.tgz
 libass-0.13.7.tgz
 libassuan-2.4.3p0.tgz
+libaudiofile-0.3.6p3.tgz
 libbluray-1.0.0.tgz
 libbs2b-3.1.0p2.tgz
 libcddb-1.3.2p0.tgz
 libcdio-0.80p9.tgz
 libcroco-0.6.12.tgz
+libcue-1.4.0p0.tgz
 libdaemon-0.14p1.tgz
 libdvdcss-1.4.0.tgz
 libdvdnav-5.0.3v0.tgz
@@ -180,9 +183,11 @@ libidn2-2.0.0.tgz
 libksba-1.3.5p0.tgz
 libltdl-2.4.2p1.tgz
 libmagic-5.32.tgz
+libmikmod-3.3.11.1.tgz
 libmms-0.6.2p3.tgz
 libmng-1.0.10p3.tgz
 libmpd-11.8.17p3.tgz
+libmpdclient-2.13.tgz
 libnatpmp-20150609.tgz
 libnettle-3.3p0.tgz
 libnotify-0.7.7.tgz
@@ -193,6 +198,7 @@ libraw-0.18.2p0.tgz
 libreoffice-5.2.7.2p6v0.tgz
 libreoffice-i18n-fr-5.2.7.2p1v0.tgz
 librsvg-2.40.18.tgz
+libsamplerate-0.1.9.tgz
 libsecret-0.18.5.tgz
 libshout-2.3.1.tgz
 libsigc++-2.10.0p1.tgz
@@ -227,9 +233,12 @@ mousepad-0.4.0p2.tgz
 mozilla-dicts-en-GB-1.3p1.tgz
 mozilla-dicts-fr-1.3p1.tgz
 mozjs17-17.0p4.tgz
+mpc-0.28p0.tgz
+mpd-0.20.10.tgz
 mpfr-3.1.5.2.tgz
 mpv-0.22.0p0.tgz
 mupdf-1.11p1.tgz
+musepack-475p2.tgz
 neon-0.30.2p0.tgz
 nghttp2-1.26.0.tgz
 noto-emoji-20150929p0.tgz
@@ -415,7 +424,6 @@ zh-fonts-arphicttf-2.11p4.tgz
 zh-fonts-kc-1.05p2.tgz
 zh-wqy-bitmapfont-0.9.9.0p2.tgz
 zip-3.0p0.tgz
-
 "
 
 mkdir -p $OUTDIR
