@@ -140,7 +140,7 @@ def remove_numbers(string):
 
     
 def get_ifaces():
-    """list avaiable iface"""
+    """list available iface"""
     ifacergx = re.compile('^(\S[a-z]+[0-9]+)')
     virtuals = ["lo", "pflog", "enc", "ppp", "tun", "bridge", "vlan", "svlan", "gre", "gif", "carp", "mpe", "vether", "trunk", "vxlan"]
 
@@ -337,7 +337,7 @@ class ConfigOwi(simpledialog.Dialog):
         wlanlabel.grid(column=0, row=1, sticky=W, pady=5, padx=5)
         wlan_ifaces = [ i for i in get_ifaces() if get_iface_type(i) == "wlan" ]
         if len(wlan_ifaces) == 0:
-            Popup("No Wireless interface avaiable")
+            Popup("No Wireless interface available")
         self.wlan_box_value = StringVar()
         self.wlan_box = ttk.Combobox(frame, textvariable=self.wlan_box_value)
         self.wlan_box['values'] = wlan_ifaces
