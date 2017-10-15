@@ -67,7 +67,7 @@ linuxlibertine-fonts-otf
 linuxlibertine-fonts-ttf
 noto-fonts
 roboto-fonts
-terminus-font
+terminus-font-4.46
 ubuntu-fonts
 un-fonts-core
 un-fonts-extra
@@ -82,7 +82,7 @@ xfce
 xfce-extras
 xfce4-power-manager
 cups
-cups-filters
+cups-filters-1.17.7
 cups-libs
 gutenprint
 foomatic-db
