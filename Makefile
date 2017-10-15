@@ -4,7 +4,7 @@ all:
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
 	@./bin/build_obsd_iso.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh 19000000000| tee -a build.log
+	@./bin/build_obsd_fs.sh 1900000000| tee -a build.log
 	@chmod a+rw CustomOBSD.iso
 	@chmod a+rw CustomOBSD.fs
 
@@ -21,7 +21,7 @@ fs:
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh 19000000000| tee -a build.log
+	@./bin/build_obsd_fs.sh 1900000000| tee -a build.log
 	@chmod a+rw CustomOBSD.fs
 
 fsnetinst:
