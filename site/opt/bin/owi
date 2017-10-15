@@ -336,6 +336,8 @@ class ConfigOwi(simpledialog.Dialog):
         wlanlabel = ttk.Label(frame, text=txt_wlanlabel)
         wlanlabel.grid(column=0, row=1, sticky=W, pady=5, padx=5)
         wlan_ifaces = [ i for i in get_ifaces() if get_iface_type(i) == "wlan" ]
+        if len(wlan_ifaces) == 0:
+            Popup("No Wireless interface avaiable")
         self.wlan_box_value = StringVar()
         self.wlan_box = ttk.Combobox(frame, textvariable=self.wlan_box_value)
         self.wlan_box['values'] = wlan_ifaces
