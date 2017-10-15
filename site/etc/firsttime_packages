@@ -43,6 +43,8 @@ gstreamer1-plugins-base
 gstreamer1-plugins-good
 gstreamer1-plugins-libav
 gstreamer1-plugins-ugly
+mpd
+mpc
 gimp
 inkscape
 simple-scan

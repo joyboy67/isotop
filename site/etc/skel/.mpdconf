@@ -10,7 +10,7 @@
 # be disabled and audio files will only be accepted over ipc socket (using
 # file:// protocol) or streaming files over an accepted protocol.
 #
-music_directory		"~/Musique"
+music_directory		"CHANGEME"
 #
 # This setting sets the MPD internal playlist directory. The purpose of this
 # directory is storage for playlists created by MPD. The server will use 
@@ -62,7 +62,7 @@ sticker_file			"~/.mpd/sticker.sql"
 # initialization. This setting is disabled by default and MPD is run as the
 # current user.
 #
-#user				"xavier"
+#user				"user"
 #
 # This setting sets the address for the daemon to listen on. Careful attention
 # should be paid if this is assigned to anything other then the default, any.
