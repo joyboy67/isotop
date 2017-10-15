@@ -2,6 +2,16 @@ echo "======================="
 echo "First boot installation"
 echo "======================="
 
+echo "This is the first time you start isotop,"
+echo "new packages will be installed."
+echo ""
+echo "Please, be patient."
+
+sleep 1
+echo "You may have a coffee, it's on me ;)"
+echo ""
+sleep 2
+
 echo "---"
 echo '* Installing packages' 
 PACKAGES="$(cat /etc/firsttime_packages)"
