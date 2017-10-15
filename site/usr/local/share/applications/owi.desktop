@@ -6,5 +6,5 @@ Comment=Configure WiFi easily
 Comment[fr]=Configurer le WiFi facilement
 Exec=/opt/bin/doasowi
 Categories=System;Settings;
-Terminal=true
+Terminal=false
 Icon=network-wireless
