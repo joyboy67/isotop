@@ -2,13 +2,6 @@ echo "======================="
 echo "First boot installation"
 echo "======================="
 
-echo "Votre système OpenBSD est installé !"
-echo "Afin d'obtenir un environnement de bureau complet,"
-echo "une série d'outils et d'applications va être installée."
-echo "Vous pouvez suivre la progression directement sur votre écran."
-echo "--"
-echo "Votre session se lancera une fois le processus terminé."
-
 echo "---"
 echo '* Installing packages' 
 PACKAGES="$(cat /etc/firsttime_packages)"

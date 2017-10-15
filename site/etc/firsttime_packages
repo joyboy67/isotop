@@ -6,6 +6,7 @@ xclip
 ranger
 scrot
 optipng
+xdg-user-dirs
 xdg-utils
 ImageMagick
 aspell-fr
