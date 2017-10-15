@@ -1,10 +1,7 @@
+
 [Default Applications]
-image/png=ristretto.desktop
-image/jpeg=ristretto.desktop
-image/svg+xml=ristretto.desktop
-image/gif=ristretto.desktop
-image/x-xcf=ristretto.desktop
-application/x-compressed-tar=xarchiver.desktop
-application/x-tar=xarchiver.desktop
-application/pdf=evince.desktop
-text/plain=mousepad.desktop
+text/html=firefox.desktop
+x-scheme-handler/http=firefox.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/about=firefox.desktop
+x-scheme-handler/unknown=firefox.desktop
