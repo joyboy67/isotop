@@ -3,7 +3,7 @@
 # first session launch configuration
 
 # add xdg-user-dirs
-mkdir ~/Téléchargements
+export XDG_CONFIG_DIRS=$HOME/.config/user-dirs.dirs
 xdg-user-dirs-update
 
 # change mpd configuration
