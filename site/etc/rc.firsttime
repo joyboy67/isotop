@@ -43,6 +43,7 @@ echo "---"
 rcctl enable messagebus
 rcctl order messagebus
 rcctl start messagebus
+rcctl restart messagebus
 
 
 echo "======================="
