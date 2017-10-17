@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # first session launch configuration
-
 . ~/.profile
+
 # add xdg-user-dirs
 export XDG_CONFIG_DIRS=$HOME/.config/user-dirs.dirs
 xdg-user-dirs-update
