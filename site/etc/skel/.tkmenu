@@ -6,7 +6,7 @@ title = True
 
 [Recent]
 1505565112.7074523 = Navigateur web,firefox, /opt/isotop/pixmaps/firefox.png
-1505565138.6299736 = Dossier personnel,thunar ~,/usr/local/share/icons/Arc/places/32/user-home.png
+1505565138.6299736 = Dossier personnel,thunar ~,/usr/local/share/icons/Arc/places/48/user-home.png
 3.0 = Suite bureautique, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
 4.0 = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 
@@ -21,14 +21,14 @@ openbsd = OpenBSD, firefox https://www.openbsd.org/,   /opt/isotop/pixmaps/puffy
 faq = FAQ OpenBSD, firefox https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
 
 [Fichiers]
-dossier personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/Arc/places/32/user-home.png
-mes images = Images, thunar $(xdg-user-dir PICTURES), /usr/local/share/icons/Arc/places/32/folder-pictures.png
-mes documents = Documents, thunar $(xdg-user-dir DOCUMENTS), /usr/local/share/icons/Arc/places/32/folder-documents.png
-mes telechargements = Téléchargements, thunar $(xdg-user-dir DOWNLOAD), /usr/local/share/icons/Arc/places/32/folder-download.png
-mes modelete = Modèles, thunar $(xdg-user-dir TEMPLATES), /usr/local/share/icons/Arc/places/32/folder-templates.png
-mes videos = Vidéos, thunar $(xdg-user-dir VIDEOS), /usr/local/share/icons/Arc/places/32/folder-videos.png
-mes musiques = Musiques, thunar $(xdg-user-dir MUSIC), /usr/local/share/icons/Arc/places/32/folder-music.png
-corbeille = Corbeille, thunar Trash://, /usr/local/share/icons/Arc/places/32/user-trash-full.png
+dossier personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/Arc/places/48/user-home.png
+mes images = Images, thunar $(xdg-user-dir PICTURES), /usr/local/share/icons/Arc/places/48/folder-pictures.png
+mes documents = Documents, thunar $(xdg-user-dir DOCUMENTS), /usr/local/share/icons/Arc/places/48/folder-documents.png
+mes telechargements = Téléchargements, thunar $(xdg-user-dir DOWNLOAD), /usr/local/share/icons/Arc/places/48/folder-download.png
+mes modelete = Modèles, thunar $(xdg-user-dir TEMPLATES), /usr/local/share/icons/Arc/places/48/folder-templates.png
+mes videos = Vidéos, thunar $(xdg-user-dir VIDEOS), /usr/local/share/icons/Arc/places/48/folder-videos.png
+mes musiques = Musiques, thunar $(xdg-user-dir MUSIC), /usr/local/share/icons/Arc/places/48/folder-music.png
+corbeille = Corbeille, thunar Trash://, /usr/local/share/icons/Arc/places/48/user-trash-full.png
 
 [Bureautique]
 lo = Suite complète, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
