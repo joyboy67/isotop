@@ -37,10 +37,6 @@ echo "---"
 rcctl enable hotplugd
 rcctl start hotplugd
 
-echo "* Enable messagebus"
-echo "---"
-rcctl enable cupsd cups_browsed
-rcctl start cupsd cups_browsed
 
 echo "* Enable messagebus"
 echo "---"
@@ -48,6 +44,19 @@ rcctl enable messagebus
 rcctl order messagebus
 rcctl start messagebus
 rcctl restart messagebus
+
+echo "* Enable cups"
+echo "---"
+rcctl enable cupsd cups_browsed
+rcctl start cupsd cups_browsed
+
+echo "* Disable ulpt to use USB printers"
+echo "---"
+config -fe /bsd << EOF
+disable ulpt
+quit
+EOF
+
 
 echo "======================="
 echo "Done"
