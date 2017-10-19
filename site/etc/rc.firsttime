@@ -37,6 +37,10 @@ echo "---"
 rcctl enable hotplugd
 rcctl start hotplugd
 
+echo "* Enable messagebus"
+echo "---"
+rcctl enable cupsd cups_browsed
+rcctl start cupsd cups_browsed
 
 echo "* Enable messagebus"
 echo "---"
@@ -44,7 +48,6 @@ rcctl enable messagebus
 rcctl order messagebus
 rcctl start messagebus
 rcctl restart messagebus
-
 
 echo "======================="
 echo "Done"
