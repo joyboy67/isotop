@@ -16,7 +16,7 @@ cli_add_to_specific_playlist 1
 close_send_to_tray 1
 deadbeef_version 0.7.2
 gtkui.columns.playlist [{"title":"Durée","id":"-1","format":"%length%","size":"55","align":"0","color_override":"0","color":"#ff000000"},{"title":"Titre","id":"-1","format":"%title%","size":"232","align":"0","color_override":"0","color":"#ff000000"},{"title":"Artiste / Album","id":"-1","format":"%artist% - %album%","size":"307","align":"0","color_override":"0","color":"#ff000000"},{"title":"♫","id":"1","format":"%playstatus%","size":"50","align":"0","color_override":"0","color":"#ff000000"}]
-gtkui.font.listview_column_text Hack 12
+gtkui.font.listview_column_text Hack 11
 gtkui.font.listview_group_text Hack 11
 gtkui.font.listview_text Hack 11
 gtkui.font.tabstrip_text Hack 11
@@ -63,9 +63,9 @@ hotkey.key30 "Ctrl k" 0 0 toggle_stop_after_album
 hotkeys_created 1
 ignore_archives 1
 junk.enable_cp1251_detection 1
-mainwin.geometry.h 817
+mainwin.geometry.h 649
 mainwin.geometry.maximized 0
-mainwin.geometry.w 868
+mainwin.geometry.w 718
 mainwin.geometry.x 0
 mainwin.geometry.y 21
 network.http_user_agent deadbeef
