@@ -39,7 +39,17 @@ doas make fs
 mv CustomOBSD.fs MEDIAS/$F-i386-full.fs
 
 cd MEDIAS
-sha256 * > SHA256
+sha256 *.iso > SHA256
+sha256 *.fs > SHA256
+
+# compress
+
+for i in *.fs; do
+	xz -k -9 $i
+done
+for i in *.iso; do
+	xz -k -9 $i
+done
 
 #mktorrent -a udp://tracker.openbittorrent.com:80 \
 	#	-a udp://tracker.opentrackr.org:1337 \
@@ -50,10 +60,7 @@ sha256 * > SHA256
 	#	-a udp://zer0day.ch:1337 \
 	#	$i; 
 
-for i in *.fs; do 
-	transmission-create $i
-done
-for i in *.iso; do 
+for i in *.xz; do 
 	transmission-create $i
 done
 
