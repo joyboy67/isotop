@@ -51,10 +51,10 @@
 	<image-files/>
 </action>
 <action>
-	<icon>media-playback-start-symbolic</icon>
-	<name>Lire avec mpd</name>
-	<unique-id>1505565242364792-3</unique-id>
-	<command>/opt/bin/play_in_mpd %F</command>
+	<icon>deadbeef</icon>
+	<name>Ajouter dans DeadBeef</name>
+	<unique-id>1508480644991653-3</unique-id>
+	<command>deadbeef --queue %F</command>
 	<description></description>
 	<patterns>*</patterns>
 	<directories/>
