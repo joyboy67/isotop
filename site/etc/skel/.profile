@@ -6,6 +6,3 @@ export CXXFLAGS="-I /usr/include -I/usr/local/include"
 
 . ~/.kshrc
 
-if [ "$(tty)" == "/dev/ttyC0" ]; then
-    startx
-fi

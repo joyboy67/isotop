@@ -15,11 +15,14 @@ case lang in
 	"fr")
 		cp -r /opt/isotop/trads/fr/.mozilla ~
 		cp -r /opt/isotop/trads/fr/.thunderbird ~
-LC_CTYPE="fr_FR.UTF-8"
-LC_MESSAGES="fr_FR.UTF-8"
-LC_ALL='fr_FR.UTF-8'
-LANG='fr_FR.UTF-8'
-export LC_CTYPE LC_MESSAGES LC_ALL LANG
+		echo 'LC_CTYPE="fr_FR.UTF-8"' >> ~/.profile
+		echo 'LC_MESSAGES="fr_FR.UTF-8"' >> ~/.profile
+		echo 'LC_ALL="fr_FR.UTF-8"' >> ~/.profile
+		echo 'LANG="fr_FR.UTF-8"' >> ~/.profile
+		echo 'export LC_CTYPE LC_MESSAGES LC_ALL LANG' >> ~/.profile
+	;;
+	*)
+		echo "No translation to do"
 	;;
 esac
 
