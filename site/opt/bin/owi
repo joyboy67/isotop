@@ -260,7 +260,7 @@ def do_hostnameif(nwid, wpakey):
 
     with open("/etc/hostname.{}".format(wlaniface), "w") as wf:
         wf.write("up\n")
-        wf.write("nwid {}\n".format(nwid))
+        wf.write("nwid '{}'\n".format(nwid))
         wf.write("wpakey {}\n".format(wpakey))
         if not ethiface:
             wf.write("dhcp\n")
