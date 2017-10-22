@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=OPaMa
+Name[fr]=OPaMa
+Comment=OpenBSD Package Manager
+Comment[fr]=Gestionnaire de paquets pour OpenBSD
+Exec=doas /opt/bin/opama
+Categories=System;
+Terminal=false
+Icon=system-software-install

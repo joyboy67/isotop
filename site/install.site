@@ -26,6 +26,7 @@ echo "permit nopass :wheel  cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel  cmd /sbin/reboot" >> /etc/doas.conf
 echo "permit nopass :wheel  cmd /usr/sbin/apm" >> /etc/doas.conf
 echo "permit nopass keepenv :wheel  cmd /opt/bin/owi" >> /etc/doas.conf
+echo "permit nopass keepenv :wheel  cmd /opt/bin/opama" >> /etc/doas.conf
 
 
 # ports
