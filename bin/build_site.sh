@@ -15,10 +15,6 @@ if [ -d ./site ]; then
     fi
 
     echo "---"
-    echo "* set installurl"
-    echo "$MIRROR" > ./site/etc/installurl
-
-    echo "---"
     echo "* Create siteXX.tgz"
     cd site
     tar cvzf ../site${V1}${V2}.tgz *
