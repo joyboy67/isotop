@@ -42,3 +42,8 @@ lecteur vidéo = Lecteur vidéo, mpv, /usr/local/share/icons/hicolor/64x64/apps/
 gimp = Editeur d'image , gimp, /usr/local/share/icons/hicolor/48x48/apps/gimp.png
 inkscape = Images vectorielles , inkscape, /usr/local/share/icons/hicolor/48x48/apps/inkscape.png
 
+[Isotop]
+owi = Réseaux WiFi, doas /opt/bin/owi, /usr/local/share/icons/gnome/48x48/devices/network-wireless.png
+opama = Gestionnaire de paquets, doas /opt/bin/opama, /usr/local/share/icons/gnome/48x48/apps/system-software-install.png
+senddmesg = Envoyer son dmesg, /opt/bin/send_dmesg, /usr/local/share/icons/gnome/48x48/actions/mail-reply-sender.png
+upgradeobsd = Mise à jour, xterm -e /opt/bin/openbsdupgrade, /usr/local/share/icons/gnome/48x48/apps/system-software-update.png
