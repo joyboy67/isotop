@@ -51,7 +51,12 @@ Made with ♥ by thuban <thuban@yeuxdelibad.net>
 Distributed under MIT licence
 """.format(appname, version, appurl)
 
-LANG=locale.getdefaultlocale()[0]
+LANG=""
+try:
+    LANG=locale.getdefaultlocale()[0]
+except:
+    print("Can't figure out used language")
+
 if LANG.startswith("fr"):
     txt_search = "Recherche..."
     txt_searchbox = "Chercher un paquet"
