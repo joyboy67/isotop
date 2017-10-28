@@ -21,7 +21,7 @@ from tkinter import simpledialog
 from tkinter import scrolledtext 
 
 appname = "OPaMa"
-version = 0.1
+version = 0.2
 appurl = "https://framagit.org/Thuban/opama"
 
 txt_search = "Searching..."
@@ -37,6 +37,9 @@ txt_clean = "Remove useless packages"
 txt_check = "Check for errors"
 txt_installurl = "Edit installurl"
 txt_mirror = "☞ Find more mirrors"
+txt_simulate = "This is what will happen if you click OK. Check twice nothing will break your system"
+txt_check_title = "Check system packages"
+txt_check_txt = "A terminal will open to check packages on your system. Answer questions, or press ctrl-c any time to quit"
 txt_about = "About"
 
 txt_aboutfull = """
@@ -51,11 +54,10 @@ Made with ♥ by thuban <thuban@yeuxdelibad.net>
 Distributed under MIT licence
 """.format(appname, version, appurl)
 
-LANG=""
-try:
-    LANG=locale.getdefaultlocale()[0]
-except:
+LANG=locale.getdefaultlocale()[0]
+if not type(LANG) == str:
     print("Can't figure out used language")
+    LANG=""
 
 if LANG.startswith("fr"):
     txt_search = "Recherche..."
@@ -71,6 +73,9 @@ if LANG.startswith("fr"):
     txt_check = "Vérifier les erreurs"
     txt_installurl = "Éditer le fichier installurl"
     txt_mirror = "☞ Trouver plus de miroirs"
+    txt_simulate = "Voici une simulation de ce qui se déroulera si vous validez. Faîtes bien attention"
+    txt_check_title = "Vérification des paquets"
+    txt_check_txt = "Un terminal va s'ouvrir pour vérifier les paquets du système. Répondez aux questions ou pressez ctrl-c pour quitter à tout moment."
     txt_about = "À propos"
 
     txt_aboutfull = """
@@ -90,6 +95,35 @@ Distribué sous license MIT
 def mirrors(event):
     import webbrowser
     webbrowser.open_new("https://www.openbsd.org/ftp.html")
+
+
+class SimulateCmd:
+
+    def __init__(self, parent, msg="",txt=""):
+        self.ret = False
+
+        top = self.top = Toplevel(parent)
+
+        Label(top, text=msg).pack()
+
+        self.scrolltxt = scrolledtext.ScrolledText(top)
+        self.scrolltxt.pack()
+        self.scrolltxt.insert(INSERT, txt)
+
+        b = Button(top, text="OK", command=self.ok)
+        b.pack(side=LEFT, padx=5, pady=5)
+
+        c = Button(top, text=txt_cancel, command=self.cancel)
+        c.pack(side=LEFT, padx=5, pady=5)
+
+    def ok(self):
+        self.top.destroy()
+        self.ret = True
+
+    def cancel(self):
+        self.top.destroy()
+        self.ret = False
+
 
 class InstallURL(simpledialog.Dialog):
        
@@ -377,6 +411,8 @@ class OpamaGui():
                     self.l.itemconfigure(i, background='#f0f0ff')
 
     def bg_search(self, sch, allinst=False):
+        self.root.config(cursor="watch") # change cursor to wait
+        self.root.update()
 
         self.results = [] # reinit
         if allinst:
@@ -392,6 +428,7 @@ class OpamaGui():
             self.results = self.results.splitlines()
 
         self.issearching = False
+        self.root.config(cursor="") # change cursor to wait
 
 
     def show_pkg(self, evt=None):
@@ -442,15 +479,24 @@ class OpamaGui():
         thread.start()
 
     def autoremove(self):
-        cmd = "pkg_delete -aIxv"
+        self.root.config(cursor="watch") # change cursor to wait
+        self.root.update()
+        output = subprocess.check_output('pkg_delete -aIxvn', shell=True)
+        s = SimulateCmd(self.root, txt_simulate, output)
+        self.root.wait_window(s.top)
+        self.root.config(cursor="") # change cursor to normal
 
-        self.termbox.grid()
+        if s.ret == True:
+            self.termbox.grid()
 
-        thread = threading.Thread(target=self.exec_and_show, args=(cmd,))
-        thread.daemon = True
-        thread.start()
+            cmd = "pkg_delete -aIxv"
+            thread = threading.Thread(target=self.exec_and_show, args=(cmd,))
+            thread.daemon = True
+            thread.start()
 
     def check(self):
+        from tkinter import messagebox
+        messagebox.showwarning(title=txt_check_title, message=txt_check_txt, parent=self.root)
         self.root.withdraw()
         cmd = 'xterm -sb -bg black -fg grey -fa "Hack" -fs 10 \
                 -e "echo Check packages && pkg_check -v"'

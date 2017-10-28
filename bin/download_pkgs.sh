@@ -51,6 +51,7 @@ dmenu-4.7.tgz
 e2fsprogs-1.42.12p4.tgz
 eboard-1.1.1p3.tgz
 enchant-1.6.1p1.tgz
+evince-3.24.1p0-light.tgz
 exo-0.10.7p0.tgz
 faad-2.7p2.tgz
 ffmpeg-20170825p1.tgz
@@ -159,6 +160,7 @@ libdaemon-0.14p1.tgz
 libdvdcss-1.4.0.tgz
 libdvdnav-5.0.3v0.tgz
 libdvdread-5.0.3p0.tgz
+libelf-0.8.13p3.tgz
 liberation-fonts-2.00.1p0.tgz
 libevent-2.0.22p0.tgz
 libexecinfo-0.3p0v0.tgz
@@ -195,6 +197,7 @@ libshout-2.3.1.tgz
 libsigc++-2.10.0p1.tgz
 libsndfile-1.0.27.tgz
 libsoup-2.58.2p0.tgz
+libspectre-0.2.8p2.tgz
 libtasn1-4.12.tgz
 libtheora-1.1.1p3.tgz
 libunique-1.1.6p9.tgz
@@ -333,7 +336,6 @@ thunderbird-i18n-fr-52.2.1.tgz
 tiff-4.0.8p1.tgz
 tk-8.5.19p0.tgz
 tktray-1.3.9p4.tgz
-tor-0.3.0.10.tgz
 tor-browser-7.0.5.tgz
 tor-launcher-0.2.12.3p0.tgz
 torbutton-1.9.7.6.tgz
@@ -345,6 +347,7 @@ twolame-0.3.13p1.tgz
 ubuntu-fonts-0.83.tgz
 un-fonts-core-1.0.2.080608p1.tgz
 un-fonts-extra-1.0.2.080608p1.tgz
+unrar-5.50v1.tgz
 unzip-6.0p11.tgz
 upower-0.99.4p1.tgz
 vim-8.0.0987p0-no_x11.tgz
