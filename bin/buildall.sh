@@ -1,6 +1,8 @@
 #!/bin/sh
-F="isotop-0.2"
+F="isotop-0.2.1"
 # download all packages in packages-amd64 and packages-i386 first
+
+mkdir -p MEDIAS
 
 # amd64
 sed -i 's/ARCH=.*$/ARCH=amd64/g' obsdiso.conf
