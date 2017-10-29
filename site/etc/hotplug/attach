@@ -7,11 +7,11 @@ MOUNTROOT=/mnt
 case "${DEVCLASS}" in
 		0)
 			if [ -n "$(echo $DEVNAME | grep -o "ugen[0-9]")" ]; then
-				addr=$(usbdevs -d | \
-					grep -B1 $DEVNAME | \
-					grep -o [0-9]: |\
-					grep -o [0-9])
-				chown _cups /dev/${DEVNAME}.* /dev/usb$addr
+				addr=$(usbdevs -vd | \
+					grep -B4 $DEVNAME | \
+					head -n1 | \
+					cut -d' ' -f 2)
+				chown _cups /dev/${DEVNAME}.* $addr
 			fi
 		;;
 
