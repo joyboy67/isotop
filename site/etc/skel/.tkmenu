@@ -17,7 +17,7 @@ chercher = Chercher, firefox https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
 framasoft = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 obsd4awiki = Wiki OBSD4*, firefox https://wiki.obsd4a.net,   /opt/isotop/pixmaps/puffysterix.png
 obsd4aforum = Forum OBSD4*, firefox https://obsd4a.net/forum/,   /opt/isotop/pixmaps/openbsdyinyang.png
-openbsd = OpenBSD, firefox https://www.openbsd.org/,   /opt/isotop/pixmaps/puffyrock.png
+kit = Kit de survie, firefox https://wiki.obsd4a.net/doku.php?id=tips:kit_survie,   /opt/isotop/pixmaps/puffyrock.png
 faq = FAQ OpenBSD, firefox https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
 
 [Fichiers]
