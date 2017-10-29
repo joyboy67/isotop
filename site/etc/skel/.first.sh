@@ -11,7 +11,7 @@ xdg-user-dirs-update
 # TRADS
 lang=$(cat /etc/kbdtype)
 
-case lang in 
+case $lang in 
 	"fr")
 		cp -r /opt/isotop/trads/fr/.mozilla ~
 		cp -r /opt/isotop/trads/fr/.thunderbird ~
