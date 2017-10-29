@@ -51,17 +51,17 @@ for i in *.iso; do
 	xz -k -9 $i
 done
 
-#mktorrent -a udp://tracker.openbittorrent.com:80 \
-	#	-a udp://tracker.opentrackr.org:1337 \
-	#	-a udp://tracker.coppersurfer.tk:6969 \
-	#	-a udp://tracker.publicbt.com:80 \
-	#	-a http://opensharing.org:2710/announce  \
-	#	-a udp://tracker.leechers-paradise.org:6969 \
-	#	-a udp://zer0day.ch:1337 \
-	#	$i; 
 
 for i in *.xz; do 
-	transmission-create $i
+	transmission-create \
+	-t udp://tracker.openbittorrent.com:80 \
+	-t udp://tracker.opentrackr.org:1337 \
+	-t udp://tracker.coppersurfer.tk:6969 \
+	-t udp://tracker.publicbt.com:80 \
+	-t http://opensharing.org:2710/announce  \
+	-t udp://tracker.leechers-paradise.org:6969 \
+	-t udp://zer0day.ch:1337 \
+	$i
 done
 
 for i in *.torrent; do 
