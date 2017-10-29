@@ -31,7 +31,6 @@ case $lang in
 	;;
 esac
 
-
 # change mpd configuration
 #sed -i -e "s;CHANGEME;$(xdg-user-dir MUSIC);" ~/.mpdconf
 
