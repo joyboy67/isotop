@@ -10,7 +10,8 @@ case "${DEVCLASS}" in
 				addr=$(usbdevs -vd | \
 					grep -B4 $DEVNAME | \
 					head -n1 | \
-					cut -d' ' -f 2)
+					cut -d' ' -f 2\
+					sed 's/://')
 				chown _cups /dev/${DEVNAME}.* $addr
 			fi
 		;;
