@@ -42,21 +42,23 @@ mv CustomOBSD.fs MEDIAS/$F-i386-full.fs
 
 cd MEDIAS
 sha256 *.iso > SHA256
-sha256 *.fs > SHA256
+sha256 *.fs >> SHA256
 
 # compress
 
 for i in *.fs; do
-	xz -k -9 $i
+	echo "xz'ing $i"
+	xz -v -T 0 -k -9 $i
 done
 for i in *.iso; do
-	xz -k -9 $i
+	echo "xz'ing $i"
+	xz -v -T 0 -k -9 $i
 done
 
 
 for i in *.xz; do 
+	echo "torrent'ing $i"
 	transmission-create \
-	-t udp://tracker.openbittorrent.com:80 \
 	-t udp://tracker.opentrackr.org:1337 \
 	-t udp://tracker.coppersurfer.tk:6969 \
 	-t udp://tracker.publicbt.com:80 \
