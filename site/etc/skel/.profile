@@ -4,5 +4,4 @@ export PATH HOME TERM
 export LDFLAGS="-L /usr/lib -L/usr/local/lib"
 export CXXFLAGS="-I /usr/include -I/usr/local/include"
 
-. ~/.kshrc
-
+export ENV=$HOME/.kshrc

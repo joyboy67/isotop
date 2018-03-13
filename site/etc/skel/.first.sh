@@ -20,6 +20,7 @@ case $lang in
 		echo 'LC_ALL="fr_FR.UTF-8"' >> ~/.profile
 		echo 'LANG="fr_FR.UTF-8"' >> ~/.profile
 		echo 'export LC_CTYPE LC_MESSAGES LC_ALL LANG' >> ~/.profile
+		MOUNTPOINTNAME="Disques"
 	;;
 	*)
 		echo "No translation to do, default to en_EN"
@@ -28,8 +29,12 @@ case $lang in
 		echo 'LC_ALL="en_EN.UTF-8"' >> ~/.profile
 		echo 'LANG="en_EN.UTF-8"' >> ~/.profile
 		echo 'export LC_CTYPE LC_MESSAGES LC_ALL LANG' >> ~/.profile
+		MOUNTPOINTNAME="Disks"
 	;;
 esac
+
+# link to /vol for automounting
+ln -s /vol/ ~/${MOUNTPOINTNAME}
 
 # change mpd configuration
 #sed -i -e "s;CHANGEME;$(xdg-user-dir MUSIC);" ~/.mpdconf

@@ -17,18 +17,6 @@ case "${DEVCLASS}" in
 		;;
 
         2)
-		# disk devices
-		# thanks to 
-		# https://www.tumfatig.net/20110903/automount-usb-stick-on-openbsd/
-		disklabel=`/sbin/disklabel $DEVNAME 2>&1 | sed -n '/^disk: /s/^disk: //p'`
-		case $disklabel in
-			"SCSI disk")
-				slices=`/sbin/disklabel $DEVNAME 2>&1 | sed -n '/^ *[abd-z]: /s/^ *\([abd-z]\):.*/\1/p'`
-				for slice in ${slices}; do
-					mkdir -p -m 1777 $MOUNTROOT/$DEVNAME$slice
-					mount /dev/$DEVNAME$slice $MOUNTROOT/$DEVNAME$slice
-				done
-			;;
-		esac
+			/usr/local/libexec/hotplug-diskmount attach -f dirty -m 0777 "${DEVNAME}"
         ;;
 esac
