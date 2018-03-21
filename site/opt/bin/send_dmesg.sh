@@ -12,7 +12,7 @@ Indiquez le nom du modèle de votre ordinateur
 et ce qui fonctionne ou non (en anglais).
 ex : Dell XPS M1330, SD card not working, everything else works."
 		TXT_REALMAIL="Indiquez votre adresse mail."
-		TXT_THX="Merci d'avoir aidé les développeurs d'OpenBSD"
+		TXT_THX="Message envoyé. Merci d'avoir aidé les développeurs d'OpenBSD"
 	;;
 	*)
 		TXT_SUBJECT="To help OpenBSD developpers, 
@@ -20,7 +20,7 @@ write you computer model and
 what works or not (in english).
 ex : Dell XPS M1330, SD card not working, everything else works."
 		TXT_REALMAIL="What is you email address?"
-		TXT_THX="Thanks for OpenBSD developpers"
+		TXT_THX="Message send. Thanks for OpenBSD developpers"
 	;;
 esac
 
