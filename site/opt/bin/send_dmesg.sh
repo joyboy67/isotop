@@ -13,6 +13,7 @@ et ce qui fonctionne ou non (en anglais).
 ex : Dell XPS M1330, SD card not working, everything else works."
 		TXT_REALMAIL="Indiquez votre adresse mail."
 		TXT_THX="Message envoyé. Merci d'avoir aidé les développeurs d'OpenBSD"
+		TXT_ERR="Erreur à l'envoi du dmesg..."
 	;;
 	*)
 		TXT_SUBJECT="To help OpenBSD developpers, 
@@ -21,6 +22,7 @@ what works or not (in english).
 ex : Dell XPS M1330, SD card not working, everything else works."
 		TXT_REALMAIL="What is you email address?"
 		TXT_THX="Message send. Thanks for OpenBSD developpers"
+		TXT_ERR="Error while sending dmesg"
 	;;
 esac
 
@@ -36,6 +38,8 @@ if [ -n "$SUBJECT" -a -n "$REALMAIL" ]; then
 	(dmesg; sysctl hw.sensors) | mail -r "$REALMAIL" -s "$SUBJECT" dmesg@openbsd.org
 	if [ $? -eq 0 ]; then
 		zeniTK --info --title "dmesg@openbsd.org" --text "$TXT_THX"
+	else
+		zeniTK --error --title "dmesg@openbsd.org" --text "$TXT_ERR"
 	fi
 fi
 
