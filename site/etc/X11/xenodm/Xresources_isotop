@@ -80,17 +80,17 @@ xlogin*innerFramesWidth: 0
 xlogin.Login.sepWidth: 0
 
 ! top/left border
-xlogin*hiColor: #333333
+xlogin*hiColor: #222222
 
 ! bottom/right border
-xlogin*shdColor: #333333
+xlogin*shdColor: #222222
 
 ! 'Welcome to..' text color
 xlogin*greetColor: #eeeeee
 #if defined(bpp4) || defined(bpp8) || defined(bpp15)
 ! flood fill
-xlogin*background: #999999
-xlogin*inpColor: #999999
+xlogin*background: #222222
+xlogin*inpColor: #222222
 #endif
 xlogin*failColor: #aa0000
 
@@ -98,7 +98,7 @@ xlogin*failColor: #aa0000
 *Foreground: #cccccc
 
 ! border/shadow
-*Background: #333333
+*Background: #222222
 #else
 xlogin*borderWidth: 3
 xlogin*frameWidth: 5
@@ -122,7 +122,8 @@ xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_4bpp.xpm
 xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_8bpp.xpm
 #endif
 #ifdef bpp15
-xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_15bpp.xpm
+xlogin*logoFileName: /opt/isotop/pixmaps/xenodm/isotop_logo.xpm
+!xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_15bpp.xpm
 #endif
 
 xlogin*useShape: true
@@ -141,8 +142,8 @@ XConsole*iconic:	true
 XConsole*font:		fixed
 
 
-XClock*background:	#999999
+XClock*background:	#222222
 XClock*foreground:	#cccccc
 XClock*borderWidth:	3
-XClock*borderColor:	#333333
+XClock*borderColor:	#000000
 XClock*geometry: 60x30+12+160
