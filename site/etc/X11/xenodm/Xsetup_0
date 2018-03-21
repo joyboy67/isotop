@@ -1,9 +1,13 @@
 #!/bin/sh
 # $OpenBSD: Xsetup_0,v 1.3 2017/09/05 17:48:07 deraadt Exp $
-# Random background
 RES=$(/usr/X11R6/bin/xrandr | sed -n '3p' | grep -Eo "[0-9]+x[0-9]+")
-WALL=$(find /opt/isotop/walls/ | /usr/bin/sort -R | /usr/bin/head -n 1)
+if [ -f /opt/isotop/walls/loginbg.jpg ]; then
+	WALL=/opt/isotop/walls/loginbg.jpg
+else
+	WALL=$(find /opt/isotop/walls/ | /usr/bin/sort -R | /usr/bin/head -n 1)
+fi
 /usr/local/bin/display -resize "${RES}"\! -window root "${WALL}" &
+
 /usr/X11R6/bin/xclock -d -brief -render &
 echo $! > /var/run/xclock.pid
 
