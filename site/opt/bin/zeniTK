@@ -538,7 +538,7 @@ def main():
             file_filter = args.file_filter
 
         app = ZenFileDialog(title=title, multiple=multiple, separator = separator, \
-                file_filter = file_filter, font=font, fontsize=fontsize)
+                file_filter = file_filter, directory = directory, font=font, fontsize=fontsize)
         app.start()
 
     if args.color_selection:
