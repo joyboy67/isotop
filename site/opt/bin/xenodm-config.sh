@@ -13,6 +13,7 @@ QUESTION="What do you wan't to configure?"
 TXT_CHGBG="Choose background image"
 TXT_RDMBG="Choose random background image directory"
 TXT_AUTOLOGIN="Set up autologin"
+TXT_DISABLEAUTOLOGIN="Disable autologin"
 TXT_AUTOLOGIN_WARN="Enter username to automatically log in.
 Warning, this leaves your machine open to the world"
 
@@ -37,6 +38,10 @@ case "$RES" in
 			sed -i "s/DisplayManager._0.autoLogin:.*$//" /etc/X11/xenodm/xenodm-config
 			echo "DisplayManager._0.autoLogin:    $U" >> /etc/X11/xenodm/xenodm-config
 		fi
+		;;
+	"$TXT_DISABLEAUTOLOGIN") 
+		sed -i "s/DisplayManager._0.autoLogin:.*$//" /etc/X11/xenodm/xenodm-config
+		;;
 esac
 
 exit 0
