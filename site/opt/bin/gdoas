@@ -1,0 +1,23 @@
+#!/bin/sh
+# gdoas : run doas in xterm
+
+MSG="To run this command, enter your password thanks to 'doas'"
+case $LANG in
+	fr*)
+		MSG="Pour lancer cette commande, entrez votre mot de passe.
+
+'doas' se charge du reste"
+	;;
+esac
+
+TXT="
+==============================================================
+
+$MSG
+
+==============================================================
+"
+
+xterm -e "echo \"$TXT\" && doas $@"
+
+exit 0
