@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=ffom
+Comment=Find Fastest OpenBSD mirror
+Comment[fr]=Trouver le miroir OpenBSD le plus rapide
+Exec=/opt/bin/ffom.sh
+Categories=Utility;
+Icon=system-search
+Terminal=true
