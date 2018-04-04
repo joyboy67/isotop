@@ -21,7 +21,7 @@ fs:
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh 1950000000| tee -a build.log
+	@./bin/build_obsd_fs.sh 1700000000| tee -a build.log
 	@chmod a+rw CustomOBSD.fs
 
 fsnetinst:
@@ -29,7 +29,7 @@ fsnetinst:
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh 400000000| tee -a build.log
+	@./bin/build_obsd_fs.sh 390000000| tee -a build.log
 	@chmod a+rw CustomOBSD.fs
 
 
@@ -58,5 +58,5 @@ clean:
 	@echo "-------------------------"
 	@rm -rf CustomOBSD.*
 	@rm -rf install*-*
-	@rm  sio2.img
+	@rm     SHA256
 
