@@ -1,5 +1,5 @@
-favorites=exo-file-manager.desktop,firefox.desktop,thunderbird.desktop,openbsdupgrade.desktop,owi.desktop,send-dmesg.desktop,youtube-dl-gui.desktop,exo-terminal-emulator.desktop
-recent=
+favorites=exo-file-manager.desktop,firefox.desktop,thunderbird.desktop,exo-terminal-emulator.desktop
+recent=exo-terminal-emulator.desktop
 button-title=Applications
 button-icon=/opt/isotop/pixmaps/openbsdicon.png
 button-single-row=false

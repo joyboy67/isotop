@@ -11,6 +11,7 @@
       <property name="size" type="uint" value="36"/>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
+        <value type="int" value="10"/>
         <value type="int" value="6"/>
         <value type="int" value="7"/>
         <value type="int" value="3"/>
@@ -71,5 +72,6 @@
         <value type="string" value="15077267261.desktop"/>
       </property>
     </property>
+    <property name="plugin-10" type="string" value="actions"/>
   </property>
 </channel>
