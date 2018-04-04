@@ -33,12 +33,12 @@ fi
 rm -rf $PKG_PATH
 rm /etc/firsttime_packages
 
+echo ""
 echo "* Enable hotplugd"
 echo "---"
 /usr/local/libexec/hotplug-diskmount init
 rcctl enable hotplugd
 rcctl start hotplugd
-
 
 echo "* Enable messagebus"
 echo "---"
@@ -60,6 +60,8 @@ EOF
 # recompute sha256 sum
 sha256 /bsd > /var/db/kernel.SHA256
 
+echo ""
+echo "* Restart messagebus"
 rcctl restart messagebus
 
 
