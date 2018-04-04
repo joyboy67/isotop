@@ -3,4 +3,4 @@ if [ -f ~/.first.sh ]; then
 	~/.first.sh
 fi
 . ~/.profile
-ck-launch-session startxfce4
+startxfce4 --with-ck-launch
