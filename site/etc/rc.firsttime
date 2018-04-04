@@ -57,9 +57,11 @@ config -fe /bsd << EOF
 disable ulpt
 quit
 EOF
-
+# recompute sha256 sum
+sha256 /bsd > /var/db/kernel.SHA256
 
 rcctl restart messagebus
+
 
 echo "======================="
 echo "Done"
