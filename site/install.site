@@ -25,7 +25,7 @@ echo "permit keepenv persist :wheel " >> /etc/doas.conf
 
 
 # softdep
-echo "* enable softdeps"
+echo "* Enable softdeps"
 echo "---"
 sed -i 's/rw,/rw,softdep,/g' /etc/fstab
 
