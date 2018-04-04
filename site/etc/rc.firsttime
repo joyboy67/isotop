@@ -25,12 +25,13 @@ fi
 
 pkg_add -vmz $PACKAGES | tee -a -
 
+if [ $? -eq 0 ]; then
+	echo '* Package installation finished :)'
+else
+	echo '* Package installation did not work :('
+fi
 rm -rf $PKG_PATH
 rm /etc/firsttime_packages
-
-echo "---"
-echo "* Set default python3 path with python3.6"
-ln -sf /usr/local/bin/python3.6 /usr/local/bin/python3
 
 echo "* Enable hotplugd"
 echo "---"
