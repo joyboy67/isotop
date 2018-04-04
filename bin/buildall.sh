@@ -47,16 +47,18 @@ sha256 *.fs >> SHA256
 # compress
 
 for i in *.fs; do
-	echo "xz'ing $i"
-	xz -v -T 0 -k -9 $i
+	echo "gzipping $i"
+	gzip -9 -v -o "$i.gz" "$i"
+	#xz -v -T 0 -k -9 $i
 done
 for i in *.iso; do
-	echo "xz'ing $i"
-	xz -v -T 0 -k -9 $i
+	echo "gzipping $i"
+	gzip -9 -v -o "$i.gz" "$i"
+	#xz -v -T 0 -k -9 $i
 done
 
 
-for i in *.xz; do 
+for i in *.gz; do 
 	echo "torrent'ing $i"
 	transmission-create \
 	-t udp://tracker.opentrackr.org:1337 \

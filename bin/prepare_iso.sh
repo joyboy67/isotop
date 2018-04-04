@@ -6,6 +6,9 @@
 
 . ./obsdiso.conf
 
+if [ -f SHA256 ]; then
+	rm SHA256
+fi
 
 echo "---"
 echo "* Downloading OpenBSD iso"

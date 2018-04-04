@@ -1,0 +1,4 @@
+self-repair.mozilla.org:HPKP	0	17625	1522941028642,1,0,WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18=r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=YLh1dUR9y6Kja30RrAn7JKnbQG/uEtLMkBgFF2Fuihg=sRHdihwgkaib1P1gxX8HFszlD+7/gTfNvuAybgLPNis=
+self-repair.mozilla.org:HSTS	0	17625	1554390628636,1,1
+obsd4a.net:HSTS	0	17625	1554390593783,1,0
+easylist-downloads.adblockplus.org:HSTS	0	17625	1554390590368,1,0
