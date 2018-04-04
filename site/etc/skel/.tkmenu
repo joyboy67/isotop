@@ -12,7 +12,7 @@ title = True
 
 [Internet]
 navigateur web = Navigateur web, firefox,     /opt/isotop/pixmaps/firefox.png
-courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-52.2.1/chrome/icons/default/default48.png
+courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-52.7.0/chrome/icons/default/default48.png
 chercher = Chercher, firefox https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
 framasoft = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 obsd4awiki = Wiki OBSD4*, firefox https://wiki.obsd4a.net,   /opt/isotop/pixmaps/puffysterix.png

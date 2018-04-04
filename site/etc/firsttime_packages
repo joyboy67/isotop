@@ -4,7 +4,7 @@ xboard
 gnuchess
 chocolate-doom
 doomdata
-supertuxkart
+minetest
 lynx
 xclip
 optipng
@@ -28,7 +28,6 @@ mozilla-dicts-en-GB
 thunderbird
 thunderbird-i18n-fr
 transmission-gtk
-tor-browser
 ffmpeg
 ffmpeg2theora
 libdvdcss
@@ -46,11 +45,11 @@ gimp
 inkscape
 simple-scan
 geany
-vim-8.0.0987p0-no_x11
+vim-8.0.1589-no_x11
 tktray
-python-tkinter-3.6.2
+python-tkinter-3.6.4
 py3-Pillow
-evince-3.24.1p0-light
+evince-3.26.0-light
 libreoffice
 libreoffice-i18n-fr
 liberation-fonts
@@ -68,7 +67,6 @@ noto-fonts
 noto-emoji
 roboto-fonts
 terminus-font-4.46
-ubuntu-fonts
 un-fonts-core
 un-fonts-extra
 zh-fonts-arphicttf
@@ -78,9 +76,9 @@ consolekit2
 gnome-themes-standard
 paper-icon-theme
 gtk2-murrine-engine
-gtk-xfce-engine-3.2.0p1
-libxfce4ui-4.12.1p3
-libxfce4util-4.12.1p0
+gtk-xfce-engine
+libxfce4ui
+libxfce4util
 xfce
 xfce4-appfinder
 xfce4-battery
@@ -112,7 +110,7 @@ thunar
 thunar-archive
 tumbler
 cups
-cups-filters-1.17.7
+cups-filters-1.20.1
 cups-libs
 gutenprint
 foomatic-db
