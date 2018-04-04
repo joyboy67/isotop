@@ -1,1 +1,0 @@
-{"showIconBadge":true,"blockMissing":false,"disablePrefetch":true,"stripMetadata":true,"whitelistedDomains":{}}
