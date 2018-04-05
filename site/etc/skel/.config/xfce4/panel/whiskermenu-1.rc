@@ -1,4 +1,4 @@
-favorites=exo-file-manager.desktop,firefox.desktop,thunderbird.desktop,exo-terminal-emulator.desktop
+favorites=exo-file-manager.desktop,firefox.desktop,thunderbird.desktop,exo-terminal-emulator.desktop,xenodm_configure.desktop,opama.desktop,owi.desktop
 recent=exo-terminal-emulator.desktop
 button-title=Applications
 button-icon=/opt/isotop/pixmaps/openbsdicon.png
