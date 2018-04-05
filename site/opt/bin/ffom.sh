@@ -24,7 +24,7 @@ end() {
 	echo '- - - - - - - - - - - - - - '
 	sort -g $t 
 	rm $t
-	exit
+	ksh
 }
 
 trap end INT
