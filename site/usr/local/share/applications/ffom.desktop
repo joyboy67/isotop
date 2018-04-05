@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=ffom
+Name=Ffom
 Comment=Find Fastest OpenBSD mirror
 Comment[fr]=Trouver le miroir OpenBSD le plus rapide
 Exec=/opt/bin/ffom.sh
