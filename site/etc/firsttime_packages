@@ -52,6 +52,7 @@ xdotool
 youtube-dl
 redshift
 catfish
+gvfs-smb
 curl
 firefox-esr
 firefox-esr-i18n-fr
@@ -61,7 +62,6 @@ thunderbird
 thunderbird-i18n-fr
 transmission-gtk
 ffmpeg
-ffmpeg2theora
 libdvdcss
 libdvdnav
 libdvdread
@@ -119,3 +119,4 @@ foomatic-db
 system-config-printer
 gtk+2-cups
 gtk+3-cups
+hplip
