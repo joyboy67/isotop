@@ -50,9 +50,9 @@ echo "FETCH_PACKAGES=yes" >> /etc/mk.conf
 echo "* Configure unbound DNS resolver"
 echo "---"
 touch /etc/monthly.local
-echo 'unbound-anchor -u _unbound -a "/var/unbound/db/root.key"' >> /etc/monthly.local
 echo 'ftp -o /var/unbound/etc/unbound_ad_servers "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=unbound&showintro=0&mimetype=plaintext"' >> /etc/monthly.local
 
+#echo 'unbound-anchor -u _unbound -a "/var/unbound/db/root.key"' >> /etc/monthly.local
 #unbound-anchor -u _unbound -a "/var/unbound/db/root.key"
 rcctl enable unbound
 

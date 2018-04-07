@@ -1,5 +1,5 @@
 #!/bin/sh
-F="isotop-0.3"
+F="isotop-0.3.1"
 # download all packages in packages-amd64 and packages-i386 first
 
 mkdir -p MEDIAS
