@@ -41,6 +41,7 @@ cups-pk-helper-0.2.6p0.tgz
 curl-7.59.0.tgz
 cyrus-sasl-2.1.26p25.tgz
 db-4.6.21p5v0.tgz
+db-java-4.6.21p6v0.tgz
 dbus-1.12.6v0.tgz
 dbus-daemon-launch-helper-1.12.6.tgz
 dbus-glib-0.110v0.tgz
@@ -57,7 +58,6 @@ evince-3.26.0-light.tgz
 exo-0.12.0.tgz
 faad-2.7p2.tgz
 ffmpeg-20180219p0.tgz
-ffmpeg2theora-0.29p3.tgz
 ffmpegthumbnailer-2.2.0.tgz
 fftw3-3.3.7.tgz
 fftw3-common-3.3.7.tgz
@@ -68,6 +68,7 @@ foomatic-db-4.0.20170503.tgz
 foomatic-db-engine-4.0.13.tgz
 freefont-ttf-20120503.tgz
 fribidi-0.19.7.tgz
+gamin-0.1.10p23.tgz
 garcon-0.6.1p1.tgz
 gcc-libs-4.9.4p8.tgz
 gconf2-3.2.6p9.tgz
@@ -123,12 +124,17 @@ gtksourceview-2.10.5p5.tgz
 gtkspell-2.0.16p11.tgz
 gutenprint-5.2.13.tgz
 gvfs-1.34.2.1.tgz
+gvfs-smb-1.34.2.1.tgz
 hack-fonts-3.002.tgz
 harfbuzz-1.7.6.tgz
 harfbuzz-icu-1.7.6.tgz
 hermit-font-1.21p1.tgz
 hicolor-icon-theme-0.17.tgz
 hotplug-diskmount-1.0.2.tgz
+hpaio-3.17.7p0.tgz
+hpcups-3.17.7p0.tgz
+hplip-3.17.7p0.tgz
+hplip-common-3.17.7p0.tgz
 hunspell-1.6.1p2.tgz
 hyphen-2.8.8.tgz
 icu4c-58.2p5.tgz
@@ -141,8 +147,10 @@ ja-fonts-funet-19911117p1.tgz
 ja-fonts-gnu-1.2.1.tgz
 jansson-2.10.tgz
 jasper-2.0.14.tgz
+javaPathHelper-1.0.tgz
 jbig2dec-0.11.tgz
 jbigkit-2.1.tgz
+jdk-1.8.0.144v0.tgz
 jmk-fonts-3.0p5.tgz
 jpeg-1.5.3v0.tgz
 json-glib-1.4.2.tgz
@@ -150,7 +158,9 @@ lame-3.99.5p1.tgz
 lapack-3.7.1.tgz
 lcms-1.19.tgz
 lcms2-2.9.tgz
+ldb-1.2.3p0.tgz
 libarchive-3.3.2p0.tgz
+libart-2.3.21p0.tgz
 libass-0.13.7p0.tgz
 libassuan-2.5.1p0.tgz
 libbluray-1.0.0p0.tgz
@@ -194,6 +204,7 @@ libqrencode-4.0.0.tgz
 libraw-0.18.8.tgz
 libreoffice-6.0.2.1v0.tgz
 libreoffice-i18n-fr-6.0.2.1v0.tgz
+libreoffice-java-6.0.2.1v0.tgz
 librsvg-2.40.20.tgz
 libsamplerate-0.1.9.tgz
 libsecret-0.18.5p0.tgz
@@ -202,6 +213,7 @@ libsigc++-2.10.0p1.tgz
 libsndfile-1.0.27.tgz
 libsoup-2.60.3.tgz
 libspectre-0.2.8p2.tgz
+libtalloc-2.1.11.tgz
 libtasn1-4.13p0.tgz
 libtheora-1.1.1p3.tgz
 libunique-1.1.6p12.tgz
@@ -239,6 +251,7 @@ mpv-0.22.0p1.tgz
 mupdf-1.11p2.tgz
 musepack-475p2.tgz
 neon-0.30.2p1.tgz
+net-snmp-5.7.3p14.tgz
 nghttp2-1.31.0.tgz
 noto-emoji-20150929p0.tgz
 noto-fonts-20150929p2.tgz
@@ -249,6 +262,7 @@ ntfs_3g-2017.3.23.tgz
 openal-1.17.2p0v0.tgz
 openjp2-2.3.0.tgz
 openldap-client-2.4.45p4.tgz
+openpam-20141014.tgz
 optipng-0.7.7.tgz
 opus-1.2.1.tgz
 orage-4.12.1p4.tgz
@@ -280,13 +294,17 @@ poppler-utils-0.59.0.tgz
 popt-1.16p1.tgz
 postgresql-client-10.3.tgz
 potrace-1.15.tgz
+py-Pillow-3.4.2p1.tgz
 py-cairo-1.16.3.tgz
+py-dbus-1.2.6.tgz
 py-dbus-common-1.2.6.tgz
+py-dnspython-1.15.0.tgz
 py-gobject-2.28.7v0.tgz
 py-gobject3-common-3.26.1.tgz
 py-gtk2-2.24.0p5.tgz
 py-lxml-3.7.0p0.tgz
 py-numpy-1.9.2p2.tgz
+py-reportlab-3.2.0p2v0.tgz
 py-setuptools-28.6.1p0v0.tgz
 py3-MarkupSafe-1.0.tgz
 py3-Pillow-3.4.2p1.tgz
@@ -313,6 +331,8 @@ redland-1.0.17p5.tgz
 redshift-1.11p3.tgz
 ristretto-0.8.2.tgz
 roboto-fonts-1.2p2v0.tgz
+samba-4.7.6.tgz
+samba-util-4.7.6.tgz
 sane-backends-1.0.27p1.tgz
 sdl-1.2.15p9.tgz
 sdl2-2.0.8.tgz
@@ -331,8 +351,10 @@ startup-notification-0.12p5.tgz
 system-config-printer-1.5.11.tgz
 taglib-1.11.1.tgz
 tcl-8.5.19p1.tgz
+tdb-1.3.15.tgz
 teeworlds-0.6.4p0.tgz
 terminus-font-4.46.tgz
+tevent-0.9.34p2.tgz
 thunar-1.6.14.tgz
 thunar-archive-0.3.1p4.tgz
 thunderbird-52.7.0.tgz
