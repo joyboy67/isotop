@@ -41,6 +41,7 @@ doas make fs
 mv CustomOBSD.fs MEDIAS/$F-i386-full.fs
 
 cd MEDIAS
+echo "Compute SHA256..."
 sha256 *.iso > SHA256
 sha256 *.fs >> SHA256
 
