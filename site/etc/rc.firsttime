@@ -39,17 +39,20 @@ echo "---"
 /usr/local/libexec/hotplug-diskmount init
 rcctl enable hotplugd
 rcctl start hotplugd
+echo ""
 
 echo "* Enable messagebus"
 echo "---"
 rcctl enable messagebus
 rcctl order messagebus
 rcctl start messagebus
+echo ""
 
 echo "* Enable cups"
 echo "---"
 rcctl enable cupsd cups_browsed
 rcctl start cupsd cups_browsed
+echo ""
 
 echo "* Disable ulpt to use USB printers"
 echo "---"
@@ -63,6 +66,7 @@ sha256 /bsd > /var/db/kernel.SHA256
 echo ""
 echo "* Restart messagebus"
 rcctl restart messagebus
+echo ""
 
 
 echo "======================="
