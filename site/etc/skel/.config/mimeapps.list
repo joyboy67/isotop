@@ -14,7 +14,7 @@ application/x-extension-xhtml=userapp-Firefox-VGH0GZ.desktop
 application/x-extension-xht=userapp-Firefox-VGH0GZ.desktop
 
 [Added Associations]
-x-scheme-handler/https=userapp-Firefox-VGH0GZ.desktop;
+x-scheme-handler/https=exo-web-browser.desktop
 x-scheme-handler/ftp=userapp-Firefox-VGH0GZ.desktop;
 x-scheme-handler/chrome=userapp-Firefox-VGH0GZ.desktop;
 text/html=userapp-Firefox-VGH0GZ.desktop;
@@ -24,3 +24,5 @@ application/x-extension-shtml=userapp-Firefox-VGH0GZ.desktop;
 application/xhtml+xml=userapp-Firefox-VGH0GZ.desktop;
 application/x-extension-xhtml=userapp-Firefox-VGH0GZ.desktop;
 application/x-extension-xht=userapp-Firefox-VGH0GZ.desktop;
+x-scheme-handler/http=exo-web-browser.desktop
+
