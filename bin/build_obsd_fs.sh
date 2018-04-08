@@ -38,7 +38,7 @@ if [ "$(uname)" = "OpenBSD" ]; then
     fdisk -yi ${VND}
     echo "creating slice"
     echo "a\n\n\n\n\nw\nq\n" | disklabel -E ${VND} 
-    echo "runnng newfs"
+    echo "running newfs"
     newfs ${VND_RDEV}
     mount ${VND_DEV} ${MOUNT_POINT}
 
