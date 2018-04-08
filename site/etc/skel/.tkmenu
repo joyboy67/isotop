@@ -5,20 +5,20 @@ titlebar = False
 title = True
 
 [Recent]
-1505565112.7074523 = Navigateur web,firefox, /opt/isotop/pixmaps/firefox.png
+1505565112.7074523 = Navigateur web,firefox-esr, /opt/isotop/pixmaps/firefox.png
 1505565138.6299736 = Dossier personnel,thunar ~,/usr/local/share/icons/Paper/48x48/places/user-home.png
 3.0 = Suite bureautique, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
-4.0 = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
+4.0 = Services Framasoft, firefox-esr https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 
 [Internet]
-navigateur web = Navigateur web, firefox,     /opt/isotop/pixmaps/firefox.png
+navigateur web = Navigateur web, firefox-esr,     /opt/isotop/pixmaps/firefox.png
 courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-52.7.0/chrome/icons/default/default48.png
-chercher = Chercher, firefox https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
-framasoft = Services Framasoft, firefox https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
-obsd4awiki = Wiki OBSD4*, firefox https://wiki.obsd4a.net,   /opt/isotop/pixmaps/puffysterix.png
-obsd4aforum = Forum OBSD4*, firefox https://obsd4a.net/forum/,   /opt/isotop/pixmaps/openbsdyinyang.png
-kit = Kit de survie, firefox https://wiki.obsd4a.net/doku.php?id=tips:kit_survie,   /opt/isotop/pixmaps/puffyrock.png
-faq = FAQ OpenBSD, firefox https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
+chercher = Chercher, firefox-esr https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
+framasoft = Services Framasoft, firefox-esr https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
+obsd4awiki = Wiki OBSD4*, firefox-esr https://wiki.obsd4a.net,   /opt/isotop/pixmaps/puffysterix.png
+obsd4aforum = Forum OBSD4*, firefox-esr https://obsd4a.net/forum/,   /opt/isotop/pixmaps/openbsdyinyang.png
+kit = Kit de survie, firefox-esr https://wiki.obsd4a.net/doku.php?id=tips:kit_survie,   /opt/isotop/pixmaps/puffyrock.png
+faq = FAQ OpenBSD, firefox-esr https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
 
 [Fichiers]
 dossier personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/Paper/48x48/places/user-home.png
@@ -45,5 +45,5 @@ inkscape = Images vectorielles , inkscape, /usr/local/share/icons/hicolor/48x48/
 [Isotop]
 owi = Réseaux WiFi, gdoas /opt/bin/owi, /usr/local/share/icons/gnome/48x48/devices/network-wireless.png
 opama = Gestionnaire de paquets, gdoas /opt/bin/opama, /usr/local/share/icons/gnome/48x48/apps/system-software-install.png
-senddmesg = Envoyer son dmesg, /opt/bin/send_dmesg, /usr/local/share/icons/gnome/48x48/actions/mail-reply-sender.png
+senddmesg = Envoyer son dmesg, /opt/bin/send_dmesg.sh, /usr/local/share/icons/gnome/48x48/actions/mail-reply-sender.png
 upgradeobsd = Mise à jour, xterm -e /opt/bin/openbsdupgrade, /usr/local/share/icons/gnome/48x48/apps/system-software-update.png
