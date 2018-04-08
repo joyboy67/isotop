@@ -17,10 +17,10 @@ chown -R root:wheel /etc/boot.conf
 echo "* Configuring install PATH"
 echo "---"
 # random cdn
-CDNS="cloudflare.cdn.openbsd.org/pub/OpenBSD
-mirror.leaseweb.com/pub/OpenBSD
-fastly.cdn.openbsd.org/pub/OpenBSD
-mirror.vdms.io/pub/OpenBSD"
+CDNS="https://cloudflare.cdn.openbsd.org/pub/OpenBSD/
+https://mirror.leaseweb.com/pub/OpenBSD/
+https://fastly.cdn.openbsd.org/pub/OpenBSD/
+https://mirror.vdms.io/pub/OpenBSD/"
 echo "$CDNS" | sort -R | head -n 1 > /etc/installurl
 
 # doas
