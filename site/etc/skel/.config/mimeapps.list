@@ -1,7 +1,26 @@
-
 [Default Applications]
-text/html=firefox.desktop
-x-scheme-handler/http=firefox.desktop
-x-scheme-handler/https=firefox.desktop
+text/html=userapp-Firefox-VGH0GZ.desktop
+x-scheme-handler/http=userapp-Firefox-VGH0GZ.desktop
+x-scheme-handler/https=userapp-Firefox-VGH0GZ.desktop
 x-scheme-handler/about=firefox.desktop
 x-scheme-handler/unknown=firefox.desktop
+x-scheme-handler/ftp=userapp-Firefox-VGH0GZ.desktop
+x-scheme-handler/chrome=userapp-Firefox-VGH0GZ.desktop
+application/x-extension-htm=userapp-Firefox-VGH0GZ.desktop
+application/x-extension-html=userapp-Firefox-VGH0GZ.desktop
+application/x-extension-shtml=userapp-Firefox-VGH0GZ.desktop
+application/xhtml+xml=userapp-Firefox-VGH0GZ.desktop
+application/x-extension-xhtml=userapp-Firefox-VGH0GZ.desktop
+application/x-extension-xht=userapp-Firefox-VGH0GZ.desktop
+
+[Added Associations]
+x-scheme-handler/https=userapp-Firefox-VGH0GZ.desktop;
+x-scheme-handler/ftp=userapp-Firefox-VGH0GZ.desktop;
+x-scheme-handler/chrome=userapp-Firefox-VGH0GZ.desktop;
+text/html=userapp-Firefox-VGH0GZ.desktop;
+application/x-extension-htm=userapp-Firefox-VGH0GZ.desktop;
+application/x-extension-html=userapp-Firefox-VGH0GZ.desktop;
+application/x-extension-shtml=userapp-Firefox-VGH0GZ.desktop;
+application/xhtml+xml=userapp-Firefox-VGH0GZ.desktop;
+application/x-extension-xhtml=userapp-Firefox-VGH0GZ.desktop;
+application/x-extension-xht=userapp-Firefox-VGH0GZ.desktop;
