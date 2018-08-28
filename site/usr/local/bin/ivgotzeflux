@@ -1,3 +1,0 @@
-#!/bin/sh
-python3 /usr/local/share/ivgotzeflux/ivgotzeflux.py &
-exit 0

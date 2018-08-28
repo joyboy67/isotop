@@ -1,7 +1,11 @@
 - Ajouter des alias ?
-- Ajouter un gui pour chercher/installer les paquets
-- Traduire en anglais
-- Préciser taille requise pour /usr/local
 - Bibliothèque pour les applis Tk ?
-- remplir les applications du volet pcmanfm
-- gtk-chtheme -> un port de lxappearance est en cours d'apparition?
+- Rsync ?
+- tray pour owi
+- Mettre à jour owi avec quote pour wpakey
+- Support de la webcam (gestion droits) automatique à l'ouverture de session
+- chargement de dbus en début de session
+- - firefox + iridium (session xfce : icons)
+- - owi + /openbsd-wifi-manager/ : 
+https://sourceforge.net/projects/openbsd-wifi-manager/
+- Paper : gtk + icon + cursor

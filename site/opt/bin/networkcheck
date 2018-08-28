@@ -1,0 +1,31 @@
+#!/usr/local/bin/python3
+# -*- coding:Utf-8 -*- 
+
+"""
+Auteur :      thuban <thuban@yeuxdelibad.net>  
+licence :     MIT
+Description : check if internet connexion avaiable
+"""
+
+import sys
+from urllib import request
+
+def check_connectivity():
+    try:
+        request.urlopen("https://www.openbsd.org", timeout=10)
+        return True
+    except:
+        return False
+
+def main():
+	if check_connectivity():
+		sys.exit(0)
+	else:
+		sys.exit(1)
+	return 0
+
+if __name__ == '__main__':
+	main()
+
+# vim: tabstop=4 expandtab shiftwidth=4 softtabstop=4
+

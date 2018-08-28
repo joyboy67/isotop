@@ -4,8 +4,9 @@ all:
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
 	@./bin/build_obsd_iso.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh | tee -a build.log
+	@./bin/build_obsd_fs.sh 1850000000| tee -a build.log
 	@chmod a+rw CustomOBSD.iso
+	@chmod a+rw CustomOBSD.fs
 
 iso:
 	@echo "Building OpenBSD iso"
@@ -20,8 +21,17 @@ fs:
 	@echo "-------------------------"
 	@./bin/prepare_iso.sh | tee build.log
 	@./bin/build_site.sh | tee -a build.log
-	@./bin/build_obsd_fs.sh | tee -a build.log
+	@./bin/build_obsd_fs.sh 1850000000| tee -a build.log
 	@chmod a+rw CustomOBSD.fs
+
+fsnetinst:
+	@echo "Building OpenBSD fs netinst"
+	@echo "-------------------------"
+	@./bin/prepare_iso.sh | tee build.log
+	@./bin/build_site.sh | tee -a build.log
+	@./bin/build_obsd_fs.sh 450000000| tee -a build.log
+	@chmod a+rw CustomOBSD.fs
+
 
 help:
 	@echo "Usage: as root"
@@ -30,13 +40,13 @@ help:
 	@echo "make cleanfull		: clean up build directories completely"
 	@echo "make iso		        : build iso only"
 	@echo "make fs		        : build fs only"
+	@echo "make fsnetinst	    : build a small fs only, for netinst install"
 	@echo "make download	    : download all packages"
-	@echo "make cleanfull		: clean up build directories completely"
 
 download:
 	# replace download_pkgs with get_all_pkgs if on openbsd
-	@./bin/download_pkgs.sh | tee -a build.log
-	#@./bin/get_all_pkgs.sh | tee -a build.log
+	#@./bin/download_pkgs.sh | tee -a build.log
+	@./bin/get_all_pkgs.sh | tee -a build.log
 
 prepare:
 	@echo "Setting up build environment"
@@ -48,5 +58,5 @@ clean:
 	@echo "-------------------------"
 	@rm -rf CustomOBSD.*
 	@rm -rf install*-*
-	@rm  sio2.img
+	@rm     SHA256
 

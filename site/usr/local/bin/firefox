@@ -1,5 +1,0 @@
-#!/bin/sh
-ulimit -d 4123123
-firefox-esr $@
-
-exit 0

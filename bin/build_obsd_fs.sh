@@ -8,6 +8,8 @@
 
 . ./obsdiso.conf
 
+SIZE=$1
+
 if [ "$(uname)" = "OpenBSD" ]; then
     echo "---"
     echo "* Rebuilding fs"
@@ -18,7 +20,6 @@ if [ "$(uname)" = "OpenBSD" ]; then
     BLOCKSIZE=512
     #BUF=$(expr 1024 \* 1024 \* 10) # 10M
     #FSSIZE=$(expr $(du -s ${NAME} |awk '{print $1}') + $BUF)
-    SIZE="1600000000"    # 1.5G
     FSSIZE=$(expr $SIZE / $BLOCKSIZE ) 
 
     # mount points
@@ -37,7 +38,7 @@ if [ "$(uname)" = "OpenBSD" ]; then
     fdisk -yi ${VND}
     echo "creating slice"
     echo "a\n\n\n\n\nw\nq\n" | disklabel -E ${VND} 
-    echo "runnng newfs"
+    echo "running newfs"
     newfs ${VND_RDEV}
     mount ${VND_DEV} ${MOUNT_POINT}
 

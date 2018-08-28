@@ -1,36 +1,34 @@
 [DEFAULT]
 closeafterrun = True
 theme = light
-titlebar = True
-title = False
+titlebar = False
+title = True
 
 [Recent]
-0.0 = Navigateur web, firefox,     /usr/local/lib/firefox-esr-52.0.2/browser/chrome/icons/default/default48.png
-1.0 = Dossier personnel, thunar,    /usr/local/share/icons/gnome-brave/32x32/places/user-home.png
-2.0 = Services Framasoft, firefox https://framasoft.org/,   /usr/local/share/sio2/pixmaps/internet_framasoft.png
+1.0 = Navigateur web, iridium,     /usr/local/share/icons/hicolor/48x48/apps/iridium.png
+2.0= Dossier personnel,thunar ~,/usr/local/share/icons/Paper/48x48/places/user-home.png
 3.0 = Suite bureautique, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
-
+4.0 = Services Framasoft, iridium https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
 
 [Internet]
-navigateur web = Navigateur web, firefox,     /usr/local/lib/firefox-esr-52.0.2/browser/chrome/icons/default/default48.png
-courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-45.8.0/chrome/icons/default/default48.png
-chercher = Chercher, firefox https://duckduckgo.com, /usr/local/share/sio2/pixmaps/ddg.png
-framasoft = Services Framasoft, firefox https://framasoft.org/,   /usr/local/share/sio2/pixmaps/internet_framasoft.png
-obsd4awiki = Wiki OBSD4*, firefox https://obsd4a.net/wiki/,   /usr/local/share/sio2/pixmaps/puffysterix.png
-obsd4aforum = Forum OBSD4*, https://obsd4a.net/qa/,   /usr/local/share/sio2/pixmaps/openbsdyinyang.png
-openbsd = OpenBSD, https://www.openbsd.org/,   /usr/local/share/sio2/pixmaps/puffyrock.png
-faq = FAQ OpenBSD, https://www.openbsd.org/faq/index.html,   /usr/local/share/sio2/pixmaps/puffyhood.png
-
+navigateur web = Navigateur web, iridium,     /usr/local/share/icons/hicolor/48x48/apps/iridium.png
+courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-52.7.0/chrome/icons/default/default48.png
+chercher = Chercher, iridium https://duckduckgo.com, /opt/isotop/pixmaps/ddg.png
+framasoft = Services Framasoft, iridium https://framasoft.org/,   /opt/isotop/pixmaps/internet_framasoft.png
+obsd4awiki = Wiki OBSD4*, iridium https://wiki.obsd4a.net,   /opt/isotop/pixmaps/puffysterix.png
+obsd4aforum = Forum OBSD4*, iridium https://obsd4a.net/forum/,   /opt/isotop/pixmaps/openbsdyinyang.png
+kit = Kit de survie, iridium https://wiki.obsd4a.net/doku.php?id=tips:kit_survie,   /opt/isotop/pixmaps/puffyrock.png
+faq = FAQ OpenBSD, iridium https://www.openbsd.org/faq/index.html,   /opt/isotop/pixmaps/puffyhood.png
 
 [Fichiers]
-dossier personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/gnome-brave/32x32/places/user-home.png
-mes images = Mes Images, thunar ~/Images, /usr/local/share/icons/gnome-brave/32x32/places/folder-images.png
-mes documents = Mes Documents, thunar ~/Documents, /usr/local/share/icons/gnome-brave/32x32/places/folder-documents.png
-mes musiques = Mes Musiques, thunar ~/Musiques, /usr/local/share/icons/gnome-brave/32x32/places/folder-music.png
-mes vidéos = Mes Vidéos, thunar ~/Vidéos, /usr/local/share/icons/gnome-brave/32x32/places/folder-videos.png
-téléchargements = Mes Téléchargements, thunar ~/Téléchargements, /usr/local/share/icons/gnome-brave/32x32/places/folder-downloads.png
-modeles = Mes Modèles, thunar ~/Modèles, /usr/local/share/icons/gnome-brave/32x32/places/folder-templates.png
-vérifier la poubelle = Vérifier la poubelle, thunar trash:///, /usr/local/share/icons/gnome/48x48/places/gnome-stock-trash.png
+dossier personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/Paper/48x48/places/user-home.png
+mes images = Images, thunar $(xdg-user-dir PICTURES), /usr/local/share/icons/Paper/48x48/places/folder-pictures.png
+mes documents = Documents, thunar $(xdg-user-dir DOCUMENTS), /usr/local/share/icons/Paper/48x48/places/folder-documents.png
+mes telechargements = Téléchargements, thunar $(xdg-user-dir DOWNLOAD), /usr/local/share/icons/Paper/48x48/places/folder-download.png
+mes modelete = Modèles, thunar $(xdg-user-dir TEMPLATES), /usr/local/share/icons/Paper/48x48/places/folder-templates.png
+mes videos = Vidéos, thunar $(xdg-user-dir VIDEOS), /usr/local/share/icons/Paper/48x48/places/folder-videos.png
+mes musiques = Musiques, thunar $(xdg-user-dir MUSIC), /usr/local/share/icons/Paper/48x48/places/folder-music.png
+corbeille = Corbeille, thunar Trash://, /usr/local/share/icons/Paper/48x48/places/user-trash.png
 
 [Bureautique]
 lo = Suite complète, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
@@ -43,4 +41,10 @@ simple-scan = Scanner, simple-scan, /usr/local/share/icons/gnome/48x48/devices/s
 lecteur vidéo = Lecteur vidéo, mpv, /usr/local/share/icons/hicolor/64x64/apps/mpv.png
 gimp = Editeur d'image , gimp, /usr/local/share/icons/hicolor/48x48/apps/gimp.png
 inkscape = Images vectorielles , inkscape, /usr/local/share/icons/hicolor/48x48/apps/inkscape.png
+
+[Isotop]
+owi = Réseaux WiFi, gdoas /opt/bin/owi, /usr/local/share/icons/gnome/48x48/devices/network-wireless.png
+opama = Gestionnaire de paquets, gdoas /opt/bin/opama, /usr/local/share/icons/gnome/48x48/apps/system-software-install.png
+senddmesg = Envoyer son dmesg, /opt/bin/send_dmesg, /usr/local/share/icons/gnome/48x48/actions/mail-reply-sender.png
+upgradeobsd = Mise à jour, xterm -e /opt/bin/openbsdupgrade, /usr/local/share/icons/gnome/48x48/apps/system-software-update.png
 

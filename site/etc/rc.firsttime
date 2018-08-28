@@ -2,21 +2,72 @@ echo "======================="
 echo "First boot installation"
 echo "======================="
 
+echo "This is the first time you start isotop,"
+echo "new packages will be installed."
+echo ""
+echo "Please, be patient."
+
+sleep 1
+echo "You may have a coffee, it's on me ;)"
+echo ""
+sleep 2
+
 echo "---"
 echo '* Installing packages' 
 PACKAGES="$(cat /etc/firsttime_packages)"
+
+# check if there is packages already downloaded for offline install
 # we use /home as it's often the biggest partition
-export PKG_PATH=/home/root/pkg_cache
-mkdir -p $PKG_PATH
+mkdir -p /home/root/pkg_cache
+if [ $(ls /home/root/pkg_cache |wc -l ) -gt 0 ]; then
+	export PKG_PATH=/home/root/pkg_cache
+fi
 
 pkg_add -vmz $PACKAGES | tee -a -
 
+if [ $? -eq 0 ]; then
+	echo '* Package installation finished :)'
+else
+	echo '* Package installation did not work :('
+fi
 rm -rf $PKG_PATH
 rm /etc/firsttime_packages
 
+echo ""
+echo "* Enable hotplugd"
 echo "---"
-echo "* Set default python3 path with python3.6"
-ln -sf /usr/local/bin/python3.6 /usr/local/bin/python3
+/usr/local/libexec/hotplug-diskmount init
+rcctl enable hotplugd
+rcctl start hotplugd
+echo ""
+
+echo "* Enable messagebus"
+echo "---"
+rcctl enable messagebus
+rcctl order messagebus
+rcctl start messagebus
+echo ""
+
+echo "* Enable cups"
+echo "---"
+rcctl enable cupsd cups_browsed
+rcctl start cupsd cups_browsed
+echo ""
+
+echo "* Disable ulpt to use USB printers"
+echo "---"
+config -fe /bsd << EOF
+disable ulpt
+quit
+EOF
+# recompute sha256 sum
+sha256 /bsd > /var/db/kernel.SHA256
+
+echo ""
+echo "* Restart messagebus"
+rcctl restart messagebus
+echo ""
+
 
 echo "======================="
 echo "Done"

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Youtube-dl-gui
+Comment=Download videos from youtube and other hosts
+Comment[fr]=Télécharger les vidéos depuis youtube et d'autres sites
+Exec=/opt/bin/youtube-dl-gui
+Categories=Utility;Network;
+Icon=video-x-generic
+Terminal=false
