@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Configure WiFi
+Name[fr]=Configurer le WiFi
+Comment=Configure WiFi easily
+Comment[fr]=Configurer le WiFi facilement
+Exec=gdoas /usr/local/share/isotop/bin/owi
+Categories=System;Settings;
+Terminal=false
+Icon=network-wireless

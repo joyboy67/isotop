@@ -1,0 +1,63 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<actions>
+<action>
+	<icon>utilities-terminal</icon>
+	<name>Ouvrir un terminal ici</name>
+	<unique-id>1430681774901975-6</unique-id>
+	<command>exo-open --working-directory %f --launch TerminalEmulator</command>
+	<description>lancer un terminal dans le répertoire courant</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+<action>
+	<icon>acroread</icon>
+	<name>Convertir en PDF</name>
+	<unique-id>1430681789008349-7</unique-id>
+	<command>unoconv -f pdf %f</command>
+	<description>exporte le fchier au format PDF dans le répertoire courant</description>
+	<patterns>*.odt;*.odp;*.ods</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>go-up-symbolic</icon>
+	<name>Envoyer l&apos;image sur le net</name>
+	<unique-id>1505563726571801-1</unique-id>
+	<command>/opt/bin/pixup %F</command>
+	<description></description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<image-files/>
+</action>
+<action>
+	<icon>catfish</icon>
+	<name>Recherche</name>
+	<unique-id>1505565160483836-2</unique-id>
+	<command>/usr/bin/catfish --path=%f</command>
+	<description>Effectuez une recherche dans le répertoire courant</description>
+	<patterns>*</patterns>
+	<directories/>
+	<text-files/>
+</action>
+<action>
+	<icon>edit-select-symbolic</icon>
+	<name>Modifier l&apos;image</name>
+	<unique-id>1505565152729112-1</unique-id>
+	<command>/opt/bin/imagemod %F</command>
+	<description>Pivoter, redimensionner, convertir ou imprimer une image</description>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<image-files/>
+</action>
+<action>
+	<icon>deadbeef</icon>
+	<name>Ajouter dans DeadBeef</name>
+	<unique-id>1508480644991653-3</unique-id>
+	<command>deadbeef --queue %F</command>
+	<description></description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+</action>
+</actions>

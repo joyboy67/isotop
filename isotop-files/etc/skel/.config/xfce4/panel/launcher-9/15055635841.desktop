@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=tkmenu
+Comment=
+Exec=/opt/bin/tkmenu
+Icon=/opt/isotop/pixmaps/tkmenu.png
+Path=~
+Terminal=false
+StartupNotify=false

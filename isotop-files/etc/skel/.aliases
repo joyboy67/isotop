@@ -1,0 +1,18 @@
+# Alias
+# ls
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lls='ls -s'
+
+alias c='clear'
+alias less='less --quiet'
+
+# OpenBSD
+alias upports='cd /usr/ports && cvs -q up -Pd'
+alias fetchsrc='cd /usr/src && cvs -q up -Pd -A'
+alias fetchport='cd /usr/ports && cvs -q up -Pd -A'
+
+# remaining space
+alias dh='df -h'
+

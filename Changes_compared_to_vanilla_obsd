@@ -1,0 +1,6 @@
+- Unbound set up with anti-ad list.
+- Message in /etc/boot.conf
+- Install some additional packages.
+- Enable services hotplugd, messagebus, cups, xenodm, unbound,
+- Disable ulpt for USB printers
+- Configure xenodm appearance

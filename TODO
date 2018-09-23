@@ -6,6 +6,7 @@
 - Support de la webcam (gestion droits) automatique à l'ouverture de session
 - chargement de dbus en début de session
 - - firefox + iridium (session xfce : icons)
-- - owi + /openbsd-wifi-manager/ : 
-https://sourceforge.net/projects/openbsd-wifi-manager/
-- Paper : gtk + icon + cursor
+- - owi : auto-join
+- Paper : icon + cursor
+- netsurf
+- iridium config

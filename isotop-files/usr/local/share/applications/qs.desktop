@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Search on-line
+Name[fr]=Chercher en ligne
+Comment=Choose your engine to search on Internet
+Comment[fr]=Chercher en ligne avec le moteur de son choix
+Exec=/usr/local/share/isotop/bin/qs
+Icon=system-search
+Categories=Utility;Network;
+Terminal=false
