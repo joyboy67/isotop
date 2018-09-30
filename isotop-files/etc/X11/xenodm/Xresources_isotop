@@ -5,27 +5,11 @@
 !
 !
 
+xlogin*greeting:  ___WHOAREYOU___ 
+xlogin*namePrompt:   ___LOGIN___
+xlogin*passwdPrompt: ___PASSWORD___
+xlogin*fail: ___FAILEDLOGIN___
 
-
-
-xlogin*login.translations: #override \
-	Ctrl<Key>R: abort-display()\n\
-	<Key>F1: set-session-argument(failsafe) finish-field()\n\
-	<Key>Left: move-backward-character()\n\
-	<Key>Right: move-forward-character()\n\
-	<Key>Home: move-to-begining()\n\
-	<Key>End: move-to-end()\n\
-	Ctrl<Key>KP_Enter: set-session-argument(failsafe) finish-field()\n\
-	<Key>KP_Enter: set-session-argument() finish-field()\n\
-	Ctrl<Key>Return: set-session-argument(failsafe) finish-field()\n\
-	<Key>Return: set-session-argument() finish-field()
-
-xlogin*greeting: .: Isotop login on CLIENTHOST :.
-xlogin*namePrompt:   login    =    
-xlogin*passwdPrompt: password = 
-xlogin*fail: Login incorrect or forbidden
-
-#if WIDTH > 800
 xlogin*greetFont: -adobe-helvetica-bold-o-normal--24-240-75-75-p-138-iso8859-1
 xlogin*font: -adobe-helvetica-medium-r-normal--18-180-75-75-p-98-iso8859-1
 xlogin*promptFont: -adobe-helvetica-bold-r-normal--18-180-75-75-p-103-iso8859-1
@@ -34,44 +18,8 @@ xlogin*greetFace:       DejaVu Sans Condensed-22:bold:dpi=75
 xlogin*face:            DejaVu Sans Condensed-16:dpi=75
 xlogin*promptFace:      DejaVu Sans Condensed-16:bold:dpi=75
 xlogin*failFace:        DejaVu Sans Condensed-16:bold:dpi=75
-#else
-xlogin*greetFont: -adobe-helvetica-bold-o-normal--17-120-100-100-p-92-iso8859-1
-xlogin*font: -adobe-helvetica-medium-r-normal--12-120-75-75-p-67-iso8859-1
-xlogin*promptFont: -adobe-helvetica-bold-r-normal--12-120-75-75-p-70-iso8859-1
-xlogin*failFont: -adobe-helvetica-bold-o-normal--14-140-75-75-p-82-iso8859-1
-xlogin*greetFace:       DejaVu Sans Condensed-18:bold:dpi=75
-xlogin*face:            DejaVu Sans Condensed-12:dpi=75
-xlogin*promptFace:      DejaVu Sans Condensed-12:bold:dpi=75
-xlogin*failFace:        DejaVu Sans Condensed-12:bold:dpi=75
-#endif
 
-#if !(defined(bpp1) || defined(bpp4) || defined(bpp8) || defined(bpp15))
-# if PLANES < 4
-#  ifndef bpp1
-#   define bpp1
-#  endif
-# else
-#  if PLANES > 4
-#   if PLANES > 8
-#    ifndef bpp15
-#     define bpp15
-#    endif
-#   else
-#    ifndef bpp8
-#     define bpp8
-#    endif bpp8
-#   endif
-#  else
-#   ifndef bpp4
-#    define bpp4
-#   endif
-#  endif
-# endif
-#endif  /* If manual override */
-
-#ifndef bpp1
-xlogin.Login.x: 42
-xlogin.Login.y: 42
+xlogin.Login.echoPasswd:       true
 
 xlogin*borderWidth: 3
 xlogin*frameWidth: 0
@@ -79,58 +27,22 @@ xlogin*innerFramesWidth: 0
 
 xlogin.Login.sepWidth: 0
 
-! top/left border
 xlogin*hiColor: #222222
-
-! bottom/right border
 xlogin*shdColor: #222222
-
-! 'Welcome to..' text color
 xlogin*greetColor: #eeeeee
-#if defined(bpp4) || defined(bpp8) || defined(bpp15)
-! flood fill
 xlogin*background: #222222
 xlogin*inpColor: #222222
-#endif
 xlogin*failColor: #aa0000
-
-! 'Login:' and 'Password:'
 *Foreground: #cccccc
-
-! border/shadow
 *Background: #222222
-#else
-xlogin*borderWidth: 3
-xlogin*frameWidth: 5
-xlogin*innerFramesWidth: 1
-xlogin*shdColor: white
-xlogin*hiColor: white
-xlogin*greetColor: white
-xlogin*background: black
-xlogin*failColor: white
-xlogin*promptColor: white
-*Foreground: white
-*Background: black
-#endif
-#ifdef bpp1
-xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_1bpp.xpm
-#endif
-#ifdef bpp4
-xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_4bpp.xpm
-#endif
-#ifdef bpp8
-xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_8bpp.xpm
-#endif
-#ifdef bpp15
-xlogin*logoFileName: /opt/isotop/pixmaps/xenodm/isotop_logo.xpm
-!xlogin*logoFileName: /etc/X11/xenodm/pixmaps/OpenBSD_15bpp.xpm
-#endif
+xlogin*logoFileName: /usr/local/share/isotop/data/pixmaps/xenodm/isotop_logo.xpm
 
 xlogin*useShape: true
 xlogin*logoPadding: 5
 
-! uncomment to disable logins
-! xlogin.Login.allowRootLogin:	false
+xlogin.Login.allowRootLogin:	false
+
+xlogin*geometry: 700x350+42+42
 
 XConsole*background:	black
 XConsole*foreground:	white
@@ -146,4 +58,4 @@ XClock*background:	#222222
 XClock*foreground:	#cccccc
 XClock*borderWidth:	3
 XClock*borderColor:	#000000
-XClock*geometry: 60x30+12+160
+XClock*geometry: 60x30+362+12

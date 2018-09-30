@@ -16,9 +16,17 @@ lang=$(cat /etc/kbdtype)
 case $lang in 
 	"fr")
 		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
+		XENODMWHOAREYOU='Qui êtes vous ?'
+		XENODMLOGIN='identifiant ='
+		XENODMPASSWORD=' secret ='
+		XENODMFAIL='Identification échouée :s'
 	;;
 	*)
 		REBOOTMSG='Enter "reboot" to start on you new isotop install'
+		XENODMWHOAREYOU='Who are you?'
+		XENODMLOGIN='login='
+		XENODMPASSWORD='password='
+		XENODMFAIL='Authentication failed :s'
 	;;
 esac
 
@@ -69,6 +77,16 @@ sed -i 's/rw,/rw,softdep,/g' /etc/fstab
 #####
 # FIXME
 # Get configuration files : .tgz ?
+cd /tmp
+ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
+cd /
+tar xzf /tmp/isotop-${VERSION}.tgz
+
+### set trads for xenodm
+sed -i -e "s;___WHOAREYOU___;$(XENODMWHOAREYOU);" /etc/X11/xenodm/Xresources_isotop
+sed -i -e "s;___LOGIN___;$(XENODMLOGIN);" /etc/X11/xenodm/Xresources_isotop
+sed -i -e "s;___PASSWORD___;$(XENODMPASSWORD);" /etc/X11/xenodm/Xresources_isotop
+sed -i -e "s;___FAILEDLOGIN___;$(XENODMFAIL /etc/X11/xenodm/Xresources_isotop
 
 # unbound configuration
 echo "* Configure unbound DNS resolver"

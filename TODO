@@ -1,12 +1,7 @@
-- Ajouter des alias ?
 - Bibliothèque pour les applis Tk ?
-- Rsync ?
 - tray pour owi
 - Mettre à jour owi avec quote pour wpakey
-- Support de la webcam (gestion droits) automatique à l'ouverture de session
-- chargement de dbus en début de session
-- - firefox + iridium (session xfce : icons)
 - - owi : auto-join
 - Paper : icon + cursor
-- netsurf
-- iridium config
+-configuration iridium
+- iridium navigateur par défaut ?
