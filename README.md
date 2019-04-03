@@ -1,69 +1,24 @@
 isotop
 ==========
-Une OpenBSD facilitante pour découvrir ?
+Une OpenBSD facilitante pour découvrir.
 
-
----
-
-This is a set of scripts to help building custom OpenBSD iso.
-
-Dependencies
+Installation
 ------------
-dvd+rw-tools (cdrtools)
 
-Usage
------
-
-Just run 
-
-	make download
-    make  # as root
-
-To build a `CustomOBSD.iso` and `CustomOBSD.fs` files.
-
-
-You can burn this iso file. 
-
-To copy CustomOBSD.fs on a bootable USB key : 
-
-    dd if=CustomOBSD.fs of=/dev/your_usb_device
-
-
-If you do not copy all packages inside `site`, you can build a lighter
-`.fs` file with ``make fsnetinst``.
-
-
-Simple configuration
--------------
-
-Edit the file `obdiso.conf` to customize the openbsd version, packages to install, mirror to use to download iso...
-
-Advanced configuration
-----------------------
-
-You can get the build environment with
-
-    make prepare 
-
-The configuration can be personnalized by filling up a site/ directory.
-
-Reproduce in this directory the file tree you want on your freshly
-installed system. As example : 
-
-    site/etc/skel/.profile
-    site/etc/pkg.conf
-
-You can put in the site/ directory two scripts (both must have 755
-permission): 
-
-- site/install.site : every command in this script will be executed just
-  after the installation in the new system (chrooted)
-- site/etc/rc.firsttime : this script will be executed at the first boot of
-  the fresly installed system
-
+	ftp -o- "https://yeuxdelibad.net/DL/isotop/isotop.sh" | sh
 
 isotop specific configuration
 ---------------------------
 
-- Some packages are stored in site/root/pkg_cache with their
-  dependencies to ease packages installation in rc.firsttime
+* Unbound is configured as default domain name resolver 
+* Use zerohosts script to adblock
+* Message in /etc/boot.conf
+* Enable services hotplugd, messagebus, cups, xenodm, unbound,
+* Disable ulpt for USB printers
+* Configure xenodm appearance
+* Install some additional packages.
+* iridium is the default browser. It is unveiled for better security,
+  and more privacy-aware than chromium
+  (https://github.com/iridium-browser/tracker/wiki/Differences-between-Iridium-and-Chromium).
+  Firefox is also making calls to google and can't be unveiled (see
+  <https://marc.info/?l=openbsd-misc&m=152872551609819&w=2>)
