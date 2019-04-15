@@ -6,8 +6,9 @@
 # OpenBSD system
 
 # check if root
-if [ "⁽whoami)" != "root" ]; then
+if [ $(id -u) -eq 0 ]; then
 	echo "You must run this script with root privileges"
+	exit
 fi
 
 # TRADS
@@ -16,10 +17,10 @@ lang=$(cat /etc/kbdtype)
 case $lang in 
 	"fr")
 		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
-		XENODMWHOAREYOU='Qui êtes vous ?'
+		XENODMWHOAREYOU='Qui est-ce ?'
 		XENODMLOGIN='identifiant ='
 		XENODMPASSWORD=' secret ='
-		XENODMFAIL='Identification échouée :s'
+		XENODMFAIL='Echec :s'
 	;;
 	*)
 		REBOOTMSG='Enter "reboot" to start on you new isotop install'
@@ -32,7 +33,7 @@ esac
 
 
 
-VERSION="0.4"
+VERSION="65"
 ISOTOPURL="https://yeuxdelibad.net/DL/isotop/"
 
 echo "======================="
@@ -41,16 +42,13 @@ echo "======================="
 
 echo "* Customizing boot.conf"
 echo "---"
-echo "---\nLet's boot on isotop ${VERSION}\n---" > /etc/boot.conf
+echo "echo ---" > /etc/boot.conf
+echo "echo Let's boot on isotop ${VERSION}" >> /etc/boot.conf
+echo "echo ---" >> /etc/boot.conf
 
 echo "* Configuring install PATH"
 echo "---"
-# random cdn
-CDNS="https://cloudflare.cdn.openbsd.org/pub/OpenBSD/
-https://mirror.leaseweb.com/pub/OpenBSD/
-https://fastly.cdn.openbsd.org/pub/OpenBSD/
-https://mirror.vdms.io/pub/OpenBSD/"
-echo "$CDNS" | sort -R | head -n 1 > /etc/installurl
+echo "https://cdn.openbsd.org/pub/OpenBSD" > /etc/installurl
 
 # doas
 echo "* Configure doas"
@@ -77,28 +75,37 @@ sed -i 's/rw,/rw,softdep,/g' /etc/fstab
 #####
 # FIXME
 # Get configuration files : .tgz ?
+echo "* Get isotop files"
+echo "---"
 cd /tmp
 ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
 cd /
 tar xzf /tmp/isotop-${VERSION}.tgz
+chmod +x /etc/X11/xenodm/Xsetup_0
+chmod +x /etc/X11/xenodm/*Console
+chmod +x /usr/local/share/isotop/bin/*
 
 ### set trads for xenodm
-sed -i -e "s;___WHOAREYOU___;$(XENODMWHOAREYOU);" /etc/X11/xenodm/Xresources_isotop
-sed -i -e "s;___LOGIN___;$(XENODMLOGIN);" /etc/X11/xenodm/Xresources_isotop
-sed -i -e "s;___PASSWORD___;$(XENODMPASSWORD);" /etc/X11/xenodm/Xresources_isotop
-sed -i -e "s;___FAILEDLOGIN___;$(XENODMFAIL /etc/X11/xenodm/Xresources_isotop
+sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" /etc/X11/xenodm/Xresources_isotop
+sed -i -e "s;___LOGIN___;${XENODMLOGIN};" /etc/X11/xenodm/Xresources_isotop
+sed -i -e "s;___PASSWORD___;${XENODMPASSWORD};" /etc/X11/xenodm/Xresources_isotop
+sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" /etc/X11/xenodm/Xresources_isotop
 
 # unbound configuration
 echo "* Configure unbound DNS resolver"
 echo "---"
-ftp -o /var/unbound/etc/unbound_ad_servers "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=unbound&showintro=0&mimetype=plaintext"
-touch /etc/monthly.local
-echo 'ftp -o /var/unbound/etc/unbound_ad_servers "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=unbound&showintro=0&mimetype=plaintext"' >> /etc/monthly.local
 rcctl enable unbound
 
 echo "* Configure dhclient"
 echo "---"
 echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
+
+echo "* Enable zerohosts script at boot"
+echo "---"
+ftp -o /usr/local/sbin/zerohosts "https://dev.yeuxdelibad.net/OpenBSD-stuff/zerohosts"
+echo "/usr/local/sbin/zerohosts &" >> /etc/rc.local
+chmod +x /usr/local/sbin/zerohosts
+/usr/local/sbin/zerohosts &
 
 echo "* Enable apmd"
 echo "---"
@@ -130,6 +137,11 @@ chmod +x /etc/hotplug/{attach,detach}
 rcctl enable hotplugd
 rcctl start hotplugd
 echo ""
+
+echo "* Set up ntpd"
+echo "---"
+sed -i 's/www\.google\.com/www.openbsd.org/' /etc/ntpd.conf
+
 
 echo "* Enable messagebus"
 echo "---"

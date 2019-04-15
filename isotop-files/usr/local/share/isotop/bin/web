@@ -1,0 +1,6 @@
+#!/bin/sh
+
+iridium --enable-unveil $@
+#firefox $@
+
+exit

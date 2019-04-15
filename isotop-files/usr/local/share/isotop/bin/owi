@@ -1,14 +1,15 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python3
 # -*- coding:Utf-8 -*- 
 
 
 """
 
 Auteur :      thuban <thuban@yeuxdelibad.net>  
+Contributeurs : Charlène aka julianaito
 licence :     MIT
 
 Description : Manage WiFi connections on OpenBSD
-Dependencies : python-tkinter-3.4.5 for gui 
+Dependencies : python-tkinter-3.* for gui 
 
 """
 
@@ -20,6 +21,7 @@ import queue
 import configparser
 import locale
 import subprocess 
+from shlex import quote
 from urllib import request
 from tkinter import *
 from tkinter import ttk
@@ -31,7 +33,7 @@ configfile = "/etc/owi.conf"
 appname = "OWi :: OpenBSD Wifi"
 appurl = "https://framagit.org/Thuban/owi"
 contacturl = "https://yeuxdelibad.net/Divers/Contact.html"
-version = "0.2"
+version = "0.5"
 
 green="#0DC412"
 yellow="#DFE619"
@@ -40,8 +42,9 @@ red="#FF1C1C"
 font="Sans"
 fontsize=10
 
-# trads
+# Translations
 txt_passphrase="Passphrase required : "
+txt_hiddennwid="Hidden network, enter its name: "
 txt_scanning="Scanning WiFI networks"
 txt_connect="Connect to WiFi"
 txt_wire="Wired connexion"
@@ -49,6 +52,7 @@ txt_scan = "Scan"
 txt_configuration = "Configuration"
 txt_wlanlabel="WiFi interface (i.e. rtwn0) :"
 txt_ethlabel="Ethernet interface (i.e. jme0) :"
+txt_hidden="Hidden network"
 txt_about = """
 {}
 {}
@@ -66,11 +70,13 @@ try:
     LANG=locale.getdefaultlocale()[0]
     if LANG.startswith("fr"):
         txt_passphrase="Mot de passe requis : "
+        txt_hiddennwid="Réseau caché, entrez son nom : "
         txt_scanning="Recherche de points d'accès WiFi"
         txt_connect="Connection au réseau WiFi"
         txt_wire="Connexion filaire"
         txt_scan = "Scanner"
         txt_configuration = "Configurer"
+        txt_hidden = "Réseau caché"
         txt_about = """
 {}
 {}
@@ -99,6 +105,9 @@ def help():
     sys.exit()
 
 def contact(event):
+    """
+    Open contact url in a browser to reach the author
+    """
     import webbrowser
     webbrowser.open_new("{}#encouragements".format(contacturl))
 
@@ -153,7 +162,7 @@ def get_ifaces():
         result = ifacergx.match(l)
         if result :
             iface = result.group(1)
-            if remove_numbers(iface) not in virtuals:
+            if remove_numbers(iface) not in virtuals: # don't want virtual interface
                 ifacelist.append(iface)
     return(ifacelist)
 
@@ -171,38 +180,46 @@ def get_iface_type(iface):
         if l.strip().startswith("groups"):
             if "wlan" in l :
                 iface_type = "wlan"
+        if l.startswith("urndis"):
+            # USB tethering from a smartphone
+            iface_type = "eth"
     return(iface_type)
 
 def scan(iface):
     """
-    scan avaiable networks
+    scan available networks
     networks are stored in a list
-    each AP is a dictionnary : { nwid, bssid, dbm, perc }
+    each AP is a dictionnary : { nwid, bssid, dbm, perc, sec (wpa/wep/none) }
     """
 
     nws = []
+    nwidre = re.compile("nwid \"?(.*?)\"? chan (\d{1,3}) bssid ([a-f\d:]{17}) (-\d{1,3})dBm .+ (\S+)$")
 
     print("> Scanning WiFi networks")
+    subprocess.Popen("/sbin/ifconfig {} up".format(iface), shell=True)
     scan = subprocess.Popen("/sbin/ifconfig {} scan".format(iface), shell=True, stdout=subprocess.PIPE).stdout
     for l in scan.readlines():
         l = l.decode().strip()
         if l.startswith("nwid"):
             try:
-                if not "wpa" in l:
-                    continue
-                nwid = l.split('nwid')[1]
-                if '"' in nwid:
-                    nwid = nwid.split('"')[1]
-                else:
-                    nwid = nwid.split(' ')[1]
+                nwinfos = nwidre.match(l)
+                nwid = nwinfos[1]
                 if nwid == "":
                     nwid = "?"
-                # chan = l.split('chan')[1].split(' ')[1]
-                bssid = l.split('bssid')[1].split(' ')[1]
-                dbm = l.split('bssid')[1].split(' ')[2].replace('dBm', '')
+                if nwid == "0x0000000000000000000000": # hidden networks are shown this way
+                    nwid = txt_hidden
+                bssid = nwinfos[3]
+                dbm = nwinfos[4]
                 perc = dBmtoperc(dbm)
                 dbm = "{} dBm".format(dbm)
-                ap = { 'nwid': nwid, 'bssid': bssid, 'dbm': dbm, 'perc': perc }
+                lastpart = nwinfos[5]
+                if 'wpa' in lastpart:
+                    sec = 'wpa'
+                elif 'wep' in lastpart : 
+                    sec = 'wep'
+                else:
+                    sec = None
+                ap = { 'nwid': nwid, 'bssid': bssid, 'dbm': dbm, 'perc': perc , 'sec': sec}
                 nws.append(ap)
             except Exception as e:
                 print(e)
@@ -254,14 +271,27 @@ def connectwired(iface):
     else:
         yield("> Connexion failed")
 
-def do_hostnameif(nwid, wpakey):
+def do_hostnameif(nwid, sectype, key):
+    # sectype can be False, 'wep' or 'wpa'
+    nwid = quote(nwid)
+    key = quote(key)
     wlaniface  = getconfig("wlaniface")
     ethiface  = getconfig("ethiface")
 
     with open("/etc/hostname.{}".format(wlaniface), "w") as wf:
         wf.write("up\n")
-        wf.write("nwid '{}'\n".format(nwid))
-        wf.write("wpakey {}\n".format(wpakey))
+        wf.write("nwid {}\n".format(nwid))
+        if not sectype:
+            # no key, hostpot AP ? 
+            wf.write("-wpakey \n")
+            wf.write("-nwkey \n")
+        elif sectype == 'wep':
+            wf.write("-wpakey \n")
+            wf.write("nwkey {}\n".format(key))
+        elif sectype == 'wpa':
+            # wpa, cool
+            wf.write("wpakey {}\n".format(key))
+
         if not ethiface:
             wf.write("dhcp\n")
             wf.write("inet6 autoconf\n")
@@ -275,7 +305,7 @@ def do_hostnameif(nwid, wpakey):
                 tf.write("inet6 autoconf\n")
 
 def auto_connect():
-    """check for avaiable AP
+    """check for available AP
     connect to the most powerful known AP
     """
     wlaniface  = getconfig("wlaniface")
@@ -320,6 +350,7 @@ def saveconfig(section, param, value):
     config[section][param] = value 
     with open(configfile, 'w') as c:
         config.write(c)
+    os.chmod("/etc/owi.conf", 0o600)
 
 ## gui
 
@@ -391,7 +422,7 @@ class Gui():
         try:
             msg = self.queue.get(0)
             for ap in self.aplist:
-                self.l.insert('end', "{}   {}".format(ap['perc'], ap['nwid']))
+                self.l.insert('end', "{}   {}    {}".format(ap['perc'], ap['nwid'], ap['sec']))
                 try:
                     perc = int(ap['perc'].replace('%',''))
                     if perc <= 100 and perc > 65:
@@ -414,13 +445,20 @@ class Gui():
     def getpw(self, *args):
         if len(self.l.curselection()) == 0:
             return
-        pw = simpledialog.askstring(txt_passphrase,txt_passphrase)
-        if pw :
-            i = self.l.curselection()[0]
-            nw = self.aplist[i]
-            saveconfig(nw['bssid'], "nwid", nw['nwid'])
-            saveconfig(nw['bssid'], "wpa", pw)
-            self.doconnect()
+        i = self.l.curselection()[0]
+        nw = self.aplist[i]
+
+        if nw['nwid'] == txt_hidden:
+            # ask for hidden nwid
+            nw['nwid'] = simpledialog.askstring(txt_hiddennwid,txt_hiddennwid)
+
+        saveconfig(nw['bssid'], "nwid", nw['nwid'])
+        saveconfig(nw['bssid'], "sec", nw['sec'])
+
+        if (nw['sec'] == 'wep') or (nw['sec'] == 'wpa'):
+            pw = simpledialog.askstring(txt_passphrase,txt_passphrase)
+            saveconfig(nw['bssid'], "key", pw)
+        self.doconnect()
 
     def doconnect(self,*args):
         try:
@@ -428,14 +466,18 @@ class Gui():
         except IndexError:
             return
         nw = self.aplist[i]
-        passphrase = getconfig("wpa",nw['bssid'])
-        if not passphrase:
-            self.getpw()
+        if nw['sec'] == 'wep' or nw['sec'] == 'wpa':
+            key = getconfig("key",nw['bssid'])
+            if not key:
+                self.getpw()
+        else:
+            # public hotspot doesn't require password, saving it as-is
+            saveconfig(nw['bssid'], "nwid", nw['nwid'])
 
         self.p.grid()
         self.p.start()
         self.info.set("Connecting...")
-        thread = threading.Thread(target=self.guiconnect, args=(nw['nwid'], passphrase))
+        thread = threading.Thread(target=self.guiconnect, args=(nw['bssid'],))
         thread.daemon = True
         thread.start()
         self.root.after(100, self.isconnected)
@@ -449,8 +491,16 @@ class Gui():
         thread.start()
         self.root.after(100, self.isconnected)
 
-    def guiconnect(self, nwid, wpa):
-        do_hostnameif(nwid, wpa)
+    def guiconnect(self, bssid):
+        sec = getconfig("sec", bssid)
+        nwid = getconfig("nwid", bssid)
+        key = getconfig("key", bssid)
+        if sec == False:
+            do_hostnameif(nwid, False, False)
+        elif sec == 'wep':
+            do_hostnameif(nwid, 'wep', key)
+        elif sec == 'wpa':
+            do_hostnameif(nwid, 'wpa', key)
         for message in connect():
             print(message)
             self.info.set(message)

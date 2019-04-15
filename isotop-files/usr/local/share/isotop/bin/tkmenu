@@ -13,9 +13,486 @@ Dependences : Tkinter, PIL
 
 import sys
 import os
-from tekamenu.const import *
-from tekamenu.tools import *
-from tekamenu.tkgui import *
+import sys
+import os
+import base64
+from collections import OrderedDict
+from time import time
+if sys.version_info >= (3, 0):
+    import configparser
+else:
+    import ConfigParser as configparser
+from subprocess import Popen
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+from PIL import Image, ImageTk
+from io import BytesIO
+
+
+### Config
+# default config file
+configfile = os.path.expanduser("~/.tkmenu")
+appname = "TkMeν"
+icon_w, icon_h = 48, 48
+maxcol = 3
+minw, minh = 590,100
+max_recents = 8
+abouttxt = """
+{}
+---
+Made with love by 3hg team
+http://3hg.toile-libre.org
+
+Distributed under MIT licence
+---
+To configure, right-click anywhere.
+You can use "light" or "dark" theme.
+Any image format is supported, and any command can be used.
+Just use lines like : 
+    anything = Name, command, /path/to/icon
+""".format(appname)
+
+
+defaultconfig="""
+[DEFAULT]
+closeafterrun = True
+theme = light
+titlebar = True
+title = False
+
+# [Categorie]
+# launcher_name = name, command, /path/to/icon
+[Recent]
+0.0 = Navigateur web, firefox,     /usr/local/lib/firefox-esr-45.2.0/browser/icons/mozicon128.png 
+1.0 = Dossier personnel, thunar,    /usr/local/share/icons/gnome-brave/32x32/places/user-home.png
+2.0 = Services Framasoft, firefox https://framasoft.org/,   /usr/local/share/sio2/pixmaps/internet_framasoft.png
+3.0 = Suite bureautique, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png
+
+
+[Internet]
+navigateur web = Navigateur web, firefox,     /usr/local/lib/firefox-esr-45.2.0/browser/icons/mozicon128.png 
+Courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird-45.2.0/chrome/icons/default/default48.png 
+Discuter = Discuter, st poezio, /usr/local/share/sio2/pixmaps/poezio.png
+framasoft = Services Framasoft, firefox https://framasoft.org/,   /usr/local/share/sio2/pixmaps/internet_framasoft.png
+
+[Fichiers]
+Dossier Personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/gnome-brave/32x32/places/user-home.png
+Mes Images = Mes Images, thunar ~/Images, /usr/local/share/icons/gnome-brave/32x32/places/folder-images.png
+Mes Documents = Mes Documents, thunar ~/Documents, /usr/local/share/icons/gnome-brave/32x32/places/folder-documents.png
+Mes Musiques = Mes Musiques, thunar ~/Musiques, /usr/local/share/icons/gnome-brave/32x32/places/folder-music.png
+Mes Vidéos = Mes Vidéos, thunar ~/Vidéos, /usr/local/share/icons/gnome-brave/32x32/places/folder-videos.png
+Téléchargements = Mes Téléchargements, thunar ~/Téléchargements, /usr/local/share/icons/gnome-brave/32x32/places/folder-downloads.png
+Modeles = Mes Modèles, thunar ~/Modèles, /usr/local/share/icons/gnome-brave/32x32/places/folder-templates.png
+Vérifier la poubelle = Vérifier la poubelle, thunar trash:///, /usr/local/share/icons/gnome/48x48/places/gnome-stock-trash.png
+
+[Bureautique]
+Lowriter= Texte, lowriter, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-writer.png
+Localc= Tableur , localc, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-calc.png
+#Dessin = Dessin, lodraw, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-draw.png
+Presentation = Présentation, loimpress, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-impress.png
+Gummi = Éditeur LaTeX, gummi, /usr/local/share/gummi/icons/gummi.png
+
+[Multimedia]
+Simple-scan = Scanner, simple-scan, /usr/local/share/icons/gnome/48x48/devices/scanner.png
+Lecteur vidéo = Lecteur vidéo, vlc, /usr/local/share/icons/hicolor/48x48/apps/vlc.png
+Gimp = Editeur d'image , gimp, /usr/local/share/icons/hicolor/48x48/apps/gimp.png
+Inkscape = Images vectorielles , inkscape, /usr/local/share/icons/hicolor/48x48/apps/inkscape.png
+
+"""
+
+tkmenuicon="""
+iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
+AAAA2AAAANgBXenH8QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAIsSURB
+VDiNdZFPSFRRFMa/c++MEypMikpNaUE5LRLK2WTQLCIyadEiyGg/C8FKMHHTxqBtgZbKUJm5ihwq
+F4aC9ociBpxooZkQgThmZggxOUzz5t57WsQ8Z95rzvK73/md75wLFNRirL8xEY16UaIS0ah3Mdbf
+WKgJu/lpf5Nhfm1VpT2lAAjAa5jffooNNLsAWslGJr6ZrW3Oler/XRm0mPiGMWJ/XtueJlQvgVqq
+k4mx+djto0Uxjdw43N61Up1M+KjcO8RCxQE8KwL8Sf26BSl2bTUYXbu5c64QwMRDADpzmS+WxXuv
+QJt1V4JXj+9dA6GFWD08FbleVwjwQWYAYGZ8plzI7B0w4gBixSuAJgCzkPbX5ELtV3/+7wZlVZal
+UnwfEF/t9eyY4CMAhcfOD4drJj8Hnc2BiaVDw+dGTwAU/ud1AOzyeP1Sm0eB5/P1eWn35OI+TXpU
+ecr8LrtNIn7ARBc6Ri7+gFELgkVTD5AEgO6B000MXhDkWTeENwI87krQM702CyAttD4IUEQLLvzK
+EEARY1QQTLn08bWXrgQEMKa+dd89uyeYNtxJ7I3n3xSJKQG9WSHp3eUXqyOY3ia7bpBRHCKmQSZ1
+xp7Cpo2YBjOKQyVvYE/bIRKU4Q6PkonWA9X1AEAkprQ2G6JCzjn9rgTZ1OqyFDimfbpVSvVRSvWB
+2bQJyWF/sm7F6SenAAB9fRCV7wPB2eWtSwyYkw0VT3pnvi8RwE7vX7Rw5QJcMGEJAAAAAElFTkSu
+QmCC
+"""
+
+def help():
+    print("usage : ")
+    print("tkmenu -c config_file")
+    print("If no config file is specified, ~/.tkmenu.conf is used and generated")
+    sys.exit()
+
+def get_config(cf):
+    try:
+        config = configparser.ConfigParser()
+        config.read(cf)
+        return config
+    except:
+        print("Unable to read configuration file")
+        sys.exit(1)
+
+def save_config(config, cf):
+    with open(cf, 'w') as configfile:
+        config.write(configfile)
+
+def read_config(config):
+    """Parse config (configparser) and return a dict of sections : 
+    {'section_name' : [list of launchers] }
+
+    Each launcher is : 
+    launcher = ['name','cmd','icon']
+
+    In the end : 
+    config = {'section_name' [ [name, cmd, icon], [name, cmd, icon]] ... }
+    """
+
+    cf = OrderedDict()
+    for s in config.sections():
+        cf[s] = [ [i.strip() for i in infos.split(',') ] 
+                        for option, infos in config.items(s)
+                        if option != "closeafterrun" \
+                                and option != "theme" \
+                                and option != "titlebar" \
+                                and option != "title" ]
+    return cf
+
+
+
+def toggle_closeafter(config_file):
+    config = get_config(config_file)
+    if config.has_option("DEFAULT","closeafterrun"):
+        closeafterrun =  config.getboolean("DEFAULT","closeafterrun")
+
+        config.set("DEFAULT","closeafterrun", str(not closeafterrun))
+        save_config(config, config_file)
+
+def toggle(config_file,option):
+    """return True if  option is set"""
+    config = get_config(config_file)
+    if config.has_option("DEFAULT",option):
+        return config.getboolean("DEFAULT",option)
+
+
+def add_recent(name, cmd, icon, cf):
+    # add new entry in recents
+    conf = get_config(cf)
+    if len(conf['Recent']) == max_recents:
+        # find oldest entry
+        oldest = str(min(float(entry) for entry in conf.options('Recent') if is_number(entry)))
+        # delete oldest entry
+        conf.remove_option('Recent', oldest)
+
+    # add recent entry
+    # this is all the launcher names :[ l[1].split(',')[0].strip() for l in conf.items('Recent') ]
+    # to avoid doubles
+    if name not in [ l[1].split(',')[0].strip() for l in conf.items('Recent') ]:
+        conf['Recent'][str(time())] = "{},{},{}".format(name, cmd, icon)
+    save_config(conf, cf)
+
+
+def which(program):
+    #https://stackoverflow.com/questions/377017/test-if-executable-exists-in-python/377028#377028
+    def is_exe(fpath):
+        return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+
+    fpath, fname = os.path.split(program)
+    if fpath:
+        if is_exe(program):
+            return program
+    else:
+        for path in os.environ["PATH"].split(os.pathsep):
+            path = path.strip('"')
+            exe_file = os.path.join(path, program)
+            if is_exe(exe_file):
+                return exe_file
+
+    return False
+
+def try_to_run(app_list):
+    """
+    return the application in app_list if avaiable
+    return False if no app found
+    """
+    for app in app_list:
+        APP = which(app)
+        if APP:
+            return APP
+    return False
+
+
+def edit_config(cf):
+    EDITOR = try_to_run(["geany","gedit","scite","kate", "mousepad", "leafpad","xedit"])
+    if EDITOR:
+        Popen([EDITOR, cf])
+
+
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        return False
+
+def change_colors(style, color="light"):
+    if color == "dark":
+        theme = {
+            'disabledfg':"#111111",
+            'selectbg': "#28952D",
+            'selectfg': "#444444",
+            'foreground': "#dddddd",
+            'background': "#111111",
+            'dark': "#111111",
+            'lighter': "#111111",
+            'borderwidth': 0,
+            'font': ("DejaVu Sans", 10),
+            'tabfont': ("DejaVu Sans", 10, "bold")
+            }
+    else:
+        theme = {
+            'disabledfg':"#eeeeee",
+            'selectbg': "#5294e2",
+            'selectfg': "#000000",
+            'foreground': "#151515",
+            'background': "#e1e5ea",
+            'lighter': "#b3bdcb",
+            'dark': "#b3bdcb",
+            'borderwidth': 0,
+            'font': ("DejaVu Sans", 10),
+            'tabfont': ("DejaVu Sans", 10, "bold")
+            }
+
+    style.configure(".", padding=5, relief="flat", 
+            background=theme['background'],
+            foreground=theme['foreground'],
+            window=theme['background'],
+            frame=theme['foreground'],
+            bordercolor=theme['foreground'],
+            indicatorcolor=theme['selectbg'],
+            focuscolor=theme['selectbg'],
+            darkcolor=theme['dark'],
+            lightcolor=theme['lighter'],
+            selectbackground=theme['selectbg'],
+            selectforeground=theme['selectfg'],
+            troughtcolor=theme['selectbg'],
+            highlightcolor=theme['selectbg'],
+            selectborderwidth=theme['borderwidth'],
+            font=theme['font']
+            )
+
+    style.configure("TButton", relief="flat")
+    style.map("TButton", 
+        background=[('disabled', theme['disabledfg']), ('pressed', theme['selectbg']), ('active', theme['selectbg']) ],
+        foreground=[('disabled', theme['disabledfg']), ('pressed', theme['selectfg']), ('active', theme['selectfg'])],
+        )
+    style.configure("TLabel", borderwidth=0)
+    style.configure("TFrame", borderwidth=0)
+
+    style.configure('TNotebook', tabposition='n', bordercolor=theme['background'], borderwidth=0)
+    style.configure('TNotebook.Tab', borderwidth=0, font=theme['tabfont'])
+    style.map("TNotebook.Tab", 
+        background=[('selected', theme['selectbg']), ('active', theme['background'])],
+        foreground=[('selected', theme['selectfg']), ('active', theme['selectbg'])],
+        lightcolor=[('selected', theme['selectbg']), ('active', theme['background'])],
+        )
+
+
+
+
+def Popup(txt):
+    messagebox.showinfo(message = txt)
+
+class Executor():
+    def __init__(self, name, cmd, icon, cf):
+        self.name = name
+        self.cmd = cmd
+        self.icon = icon
+        self.cf = cf
+
+    def start(self):
+        Popen(self.cmd, shell="True")
+
+        add_recent(self.name, self.cmd, self.icon, self.cf)
+
+        config = get_config(self.cf)
+        if config.has_option("DEFAULT","closeafterrun"):
+            closeafterrun =  config.getboolean("DEFAULT","closeafterrun")
+            if closeafterrun:
+                sys.exit()
+
+
+class TKMenu():
+    def __init__(self, configfile):
+        fullconfig = get_config(configfile)
+        self.config = read_config(fullconfig)
+
+        # main window
+        self.root = Tk()
+        # hide window for now
+        self.root.withdraw()
+
+        # set window icon
+        imgicon = Image.open(BytesIO(base64.b64decode(tkmenuicon)))
+        imgicon = ImageTk.PhotoImage(imgicon)
+        self.root.tk.call('wm', 'iconphoto', self.root._w, imgicon)  
+        # style
+        #('clam', 'alt', 'default', 'classic')
+        style = ttk.Style()
+        style.theme_use("clam")
+                
+        theme = "light"
+        if fullconfig.has_option("DEFAULT","theme"):
+            theme = fullconfig.get("DEFAULT","theme")
+        change_colors(style, theme)
+
+        self.root.title(appname)
+        if not toggle(configfile,"titlebar"):
+            # no title bar
+            self.root.overrideredirect(True)
+
+        # to have a border
+        self.root.configure(background='#336699')
+
+        mainframe = ttk.Frame(self.root)
+        mainframe.pack(fill=BOTH,expand=True, padx=1, pady=1)
+
+        # Décommenter pour avoir un titre
+        if toggle(configfile,"title"):
+            label = ttk.Label(mainframe,text=appname, font=("DejaVu Sans", 32))
+            label.pack()
+
+        self.ntbk = ttk.Notebook(mainframe)
+        self.ntbk.enable_traversal()
+        self.ntbk.pack(fill=BOTH,expand=True)
+
+        # to show the box checked if necessary
+        closeaftervar=IntVar(self.root)
+        if fullconfig.has_option("DEFAULT","closeafterrun"):
+            closeaftervar.set(fullconfig.getboolean("DEFAULT","closeafterrun"))
+
+        # bottom box
+        btmbox = ttk.Frame(mainframe)
+        btmbox.pack(fill=X, expand=True)
+
+        chk = ttk.Checkbutton(btmbox, text="Fermer",
+                command=lambda: toggle_closeafter(configfile), variable=closeaftervar)
+        chk.pack(side=LEFT)
+
+        exitbtn = ttk.Button(btmbox, text="✗", width=3, command=self.stop)
+        exitbtn.pack(side=RIGHT)
+
+        aboutbtn = ttk.Button(btmbox, text="?", width=3, command=lambda: Popup(abouttxt))
+        aboutbtn.pack(side=RIGHT)
+
+        allappbtn = ttk.Button(btmbox, text="Toutes les applications", 
+                command=self.full_app_launcher)
+        allappbtn.pack(side=RIGHT)
+
+        # create a popup menu
+        self.menu = Menu(self.root, tearoff=0)
+        self.menu.add_command(label="Configurer", command=lambda:edit_config(configfile))
+
+        # to drag the window
+        #for widget in [mainframe, label]:
+        for widget in [mainframe]:
+            widget.bind("<ButtonPress-1>", self.StartMove)
+            widget.bind("<ButtonRelease-1>", self.StopMove)
+            widget.bind("<B1-Motion>", self.OnMotion)
+
+        self.make_tabs()
+        self.center()
+        self.root.deiconify()
+        self.root.mainloop()
+
+    def make_tabs(self):
+        for s in self.config.keys():
+            self.make_tab(s)
+        self.root.update_idletasks()
+        self.root.geometry("{}x{}".format(
+            self.root.winfo_reqwidth() , self.root.winfo_reqheight()))
+
+    def make_tab(self,s):
+        col, r= 0, 0
+
+        frame = ttk.Frame(self.ntbk)
+        frame.grid_rowconfigure(0, weight=1)
+        frame.grid_columnconfigure(0, weight=1)
+
+        self.ntbk.add(frame, text = s)
+
+        btn_container = ttk.Frame(frame)
+        btn_container.grid()
+
+        # pour la configuration
+        frame.bind("<Button-3>", self.popup)
+        btn_container.bind("<Button-3>", self.popup)
+
+
+        for l in self.config[s]:
+            name, cmd, icon_path = l
+        
+            if os.path.isfile(icon_path):
+                image = Image.open(icon_path)
+                image = image.resize((icon_w, icon_h), Image.ANTIALIAS)
+                icon = ImageTk.PhotoImage(image)
+            else:
+                icon=None
+
+            e = Executor(name, cmd, icon_path, configfile)
+
+            b = ttk.Button(btn_container, text=name, 
+                    compound=TOP, image=icon,
+                    command=e.start)
+            b.image = icon
+            b.bind("<Button-3>", self.popup)
+            b.grid(column=col, row=r, sticky=(E,W))
+
+            col += 1
+            if col > maxcol:
+                col = 0
+                r += 1
+
+    def full_app_launcher(self):
+        app = try_to_run(['thelauncher', 'xfce4-appfinder', 'krunner', 'gnome-run', 'fbrun'])
+        if app:
+            Popen(app)
+        else:
+            Popup("Désolé, aucun lanceur trouvé")
+
+
+    def StartMove(self, event):
+        self.x = event.x
+        self.y = event.y
+
+    def StopMove(self, event):
+        self.x = None
+        self.y = None
+
+    def OnMotion(self, event):
+        deltax = event.x - self.x
+        deltay = event.y - self.y
+        x = self.root.winfo_x() + deltax
+        y = self.root.winfo_y() + deltay
+        self.root.geometry("+%s+%s" % (x, y))
+
+    def stop(self):
+        self.root.destroy()
+
+    def popup(self,event):
+        self.menu.post(event.x_root, event.y_root)
+
+    def center(self):
+        self.root.update_idletasks()
+        w = self.root.winfo_screenwidth()
+        h = self.root.winfo_screenheight()
+        size = tuple(int(_) for _ in self.root.geometry().split('+')[0].split('x'))
+        x = w/2 - size[0]/2
+        y = h/2 - size[1]/2
+        self.root.geometry("%dx%d+%d+%d" % (size + (x, y)))
+
+
+        
+
 
 
 def main():
