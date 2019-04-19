@@ -1,0 +1,101 @@
+# CWM appearance
+color inactiveborder "#b3bdcb"
+color activeborder "#009AC2"
+color font "#8d8d8d"
+color selfont "#1c1c1c"
+color menubg "#151515"
+color menufg "#009AC2"
+color groupborder "#686868"
+color ungroupborder "#7c7c7c"
+
+borderwidth 2
+gap 1 1 1 1     # margin all around to click on desktop
+fontname "DejaVu Sans Mono:pixelsize=14"
+
+# Options
+snapdist 20
+sticky yes
+command term xterm
+command lock "xlock -mode space"
+
+# Windows rules
+ignore "dmenu"
+ignore "Dunst"
+ignore "xclock"
+ignore "netwmpager"
+ignore conky
+
+# Groups, à retrouver avec xprop et clic sur fenêtre
+# autogroup n "name,class"
+#autogroup 2 Mail
+#autogroup 1 "Navigator", "Firefox"
+#autogroup 1 "chromium-browser", "Chromium-browser"
+
+# Souris
+# Disable resize with middle button
+unbind-mouse M-2 
+unbind-mouse M-3
+# Alt+ right click to resize
+bind-mouse M-3 window-resize
+
+# scroll on background change volume
+bind-mouse 0-4 "mixerctl outputs.master=+10"
+bind-mouse 0-5 "mixerctl outputs.master=-10"
+
+# keyboard
+bind-key M-F4  window-delete
+
+# Move simple : M-h/j/k/l
+# Resize simple : M-S-h/j/k/l
+# Move on screen edge
+bind-key MS-j window-snap-down
+bind-key MS-k window-snap-up
+bind-key MS-h window-snap-left
+bind-key MS-l window-snap-right
+
+# alt-space cycle groups
+bind-key M-space group-cycle
+bind-key MS-space group-rcycle
+
+# tiling !!!
+bind-key M-t window-vtile
+bind-key MS-t window-htile
+
+## apps
+# menu comme dwm. Tout ce qui est dans $PATH est dispo
+bind-key M-p menu-exec 
+# menu alt-f2
+bind-key M-F2 menu-exec
+# find wondow
+bind-key M-f menu-window
+# label with M-C-n
+
+# shortcuts
+bind-key M-equal "mixerctl outputs.master=+10"
+bind-key M-parenright "mixerctl outputs.master=-10"
+
+# MENU
+command " CWM" ""
+command "   -  Min win " "xdotool selectwindow windowminimize"
+command "   +  Max win " "xdotool selectwindow windowsize 100% 100% windowmove 0 0"
+command "   x  Close win " "xdotool selectwindow windowclose"
+command "   -* Desktop  " "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
+command " APPS" ""
+command "   ▸ Web" 'iridium --enable-unveil' 
+command "   ▸ Fichiers" 'rox'
+command "   ▸ Office" 'libreoffice'
+command "   ▸ xterm" xterm
+command "   ▸ weather" 'xterm -maximized -e weather'
+command " TEMPERATURE" ""
+command "   ▪ mars" "sct 2700"
+command "   ▪ firecamp" "sct 4500"
+command "   ▪ day" "sct"
+command "   ▪ coffee" "sct 8000"
+command " SYSTEM" ""
+command "   . Edit cwm config " "sh -c 'xedit ~/.cwmrc'"
+command "   . lock " 'xscreensaver-command -lock'
+command "   . suspend " "zzz"
+command "   . reboot " "doas /sbin/reboot now"
+command "   . halt " "doas /sbin/shutdown -hp now"
+
+

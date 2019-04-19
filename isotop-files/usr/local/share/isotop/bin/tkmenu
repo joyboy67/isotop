@@ -16,8 +16,8 @@ import os
 import sys
 import os
 import base64
+import time
 from collections import OrderedDict
-from time import time
 if sys.version_info >= (3, 0):
     import configparser
 else:
@@ -187,7 +187,7 @@ def add_recent(name, cmd, icon, cf):
     # this is all the launcher names :[ l[1].split(',')[0].strip() for l in conf.items('Recent') ]
     # to avoid doubles
     if name not in [ l[1].split(',')[0].strip() for l in conf.items('Recent') ]:
-        conf['Recent'][str(time())] = "{},{},{}".format(name, cmd, icon)
+        conf['Recent'][str(time.time())] = "{},{},{}".format(name, cmd, icon)
     save_config(conf, cf)
 
 
@@ -358,7 +358,9 @@ class TKMenu():
 
         # Décommenter pour avoir un titre
         if toggle(configfile,"title"):
-            label = ttk.Label(mainframe,text=appname, font=("DejaVu Sans", 32))
+            thetime = time.strftime('%H:%M')
+            label = ttk.Label(mainframe, text=thetime, \
+                    font=("DejaVu Sans Mono", 28))
             label.pack()
 
         self.ntbk = ttk.Notebook(mainframe)

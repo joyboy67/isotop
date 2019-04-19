@@ -1,0 +1,86 @@
+!-- colors --!                                                                  
+*.cursorColor:  #b3bdcb
+*.background: #151515
+*.foreground: #e1e5ea
+!! Black + DarkGrey                                                              
+*color0:     #151515
+*color8:     #5294e2
+!! DarkRed + Red                                                                
+*.color1:  #cc575d
+*.color9:  #a3464a
+!! DarkGreen + Green                                                            
+*.color2:  #2679db
+*.color10: #75a9e8
+!! DarkYellow + Yellow                                                          
+*.color3:  #b3bdcb
+*.color11: #CAD1DB
+!! DarkBlue + Blue                                                              
+*.color4:  #5294e2
+*.color12: #5294e2
+!! DarkMagenta + Magenta                                                        
+*.color5:  #404552
+*.color13: #686d79
+!! DarkCyan + Cyan                                                              
+*.color6:  #b3bdcb
+*.color14: #5294e2
+!! LightGrey + White                                                            
+*.color7:  #E1E5EA
+*.color15: #ffffff
+
+! Xterm config
+XTerm.vt100.scrollBar: false
+xterm*faceName: Hack:pixelsize=14:antialias=true
+!xterm*faceName: spleen:pixelsize=16:antialias=false
+
+XTerm.vt100.bellIsUrgent: true
+XTerm.vt100.translations: #override \n\
+Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
+Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+XTerm.vt100.geometry:80x24
+XTerm*loginShell:true
+XTerm*locale: utf8
+XTerm*renderFont: true
+XTerm*saveLines: 1250
+XTerm*Geometry: 90x25
+
+
+! ===== xlock
+! plain white-on-black lock screen
+xlock.description : off
+xlock.echokeys    : off
+xlock.info        :
+xlock.background  : black
+xlock.foreground  : white
+xlock.mode        : blank
+xlock.username    : "?: "
+xlock.password    : "pass: "
+
+! xmessage
+Xmessage.form.okay.shapeStyle:         rectangle
+Xmessage*buttons:                       OK
+Xmessage*defaultButton:                 OK
+Xmessage.form.message.Scroll:          WhenNeeded
+Xmessage*borderWidth:                  0
+Xmessage*Text.borderWidth:             0
+Xmessage*Command.shapeStyle:           rectangle
+Xmessage*Command.highlightThickness:    3
+Xmessage*Command.internalWidth:         5
+Xmessage*Command.internalHeight:        3
+Xmessage*Command.borderColor:            #75a9e8
+Xmessage*font:-misc-fixed-bold-r-normal-*-18-*-*-*-*-*-iso10646-1
+
+
+
+
+! all
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+!*font:-misc-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
+*font:-misc-spleen-medium-r-normal--16-160-72-72-c-80-iso10646-1
+
+

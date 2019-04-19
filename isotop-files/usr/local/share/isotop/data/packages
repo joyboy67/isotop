@@ -6,8 +6,6 @@ optipng
 xdg-user-dirs
 xdg-utils
 ImageMagick
-GraphicsMagick
-aspell-fr
 ntfs_3g
 p7zip
 xdotool
@@ -34,13 +32,13 @@ gstreamer1-plugins-ugly
 deadbeef
 gimp
 simple-scan
-geany
 tktray
 python-tkinter-3.6.6p1
 py3-Pillow
 mupdf-1.13.0p2
 libreoffice
 libreoffice-i18n-fr
+spleen
 liberation-fonts
 hack-fonts
 dina-fonts
@@ -58,9 +56,9 @@ cowsay
 teeworlds
 xboard
 gnuchess
-chocolate-doom
-doomdata
 minetest
+stone-soup
+Xonotic
 cups
 cups-filters-1.20.1
 cups-libs
@@ -72,4 +70,4 @@ gtk+3-cups
 hplip
 sct
 dunst
-conky-1.9.0p17
+numlockx

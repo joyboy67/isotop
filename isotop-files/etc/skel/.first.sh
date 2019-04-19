@@ -34,8 +34,6 @@ esac
 export XDG_CONFIG_DIRS=$HOME/.config/user-dirs.dirs
 xdg-user-dirs-update
 
-
-
 # link to /vol for automounting
 ln -s /vol/ ~/${MOUNTPOINTNAME}
 

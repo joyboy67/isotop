@@ -73,8 +73,6 @@ sed -i 's/rw,/rw,softdep,/g' /etc/fstab
 
 ######
 #####
-# FIXME
-# Get configuration files : .tgz ?
 echo "* Get isotop files"
 echo "---"
 cd /tmp
