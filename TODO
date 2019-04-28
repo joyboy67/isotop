@@ -1,7 +1,12 @@
-- Bibliothèque pour les applis Tk ?
 - tray pour owi
-- Mettre à jour owi avec quote pour wpakey
 - - owi : auto-join
-- Paper : icon + cursor
--configuration iridium
-- iridium navigateur par défaut ?
+- documentation pour changer de wm
+- explication pour utiliser cwm : gestion fenetres via script win,
+  appel du tkmenu... : script au démarrage, appelable via le menu.
+- trads : tkmenu, cwm
+
+A reflechir
+----------
+
+- préparer sessions pour autres wm ?
+- Bibliothèque pour les applis Tk ?
