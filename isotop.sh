@@ -54,6 +54,8 @@ echo "https://cdn.openbsd.org/pub/OpenBSD" > /etc/installurl
 echo "* Configure doas"
 echo "---"
 echo "permit keepenv persist :wheel " >> /etc/doas.conf
+echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
+echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
 
 # softdep
 echo "* Enable softdeps"
@@ -156,12 +158,13 @@ echo ""
 
 echo "* Disable ulpt to use USB printers"
 echo "---"
-config -fe /bsd << EOF
+config -e -o /bsd.isotopmod /bsd << EOF
 disable ulpt
 quit
 EOF
 # recompute sha256 sum
-sha256 /bsd > /var/db/kernel.SHA256
+sha256 /bsd.isotopmod | sed -e 's;/bsd.isotopmod;/bsd;' > /var/db/kernel.SHA256
+mv /bsd.isotopmod /bsd
 
 # Reboot
 echo "${REBOOTMSG}"
