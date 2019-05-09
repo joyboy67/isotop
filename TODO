@@ -4,7 +4,6 @@
 - explication pour utiliser cwm : gestion fenetres via script win,
   appel du tkmenu... : script au démarrage, appelable via le menu.
 - trads : tkmenu, cwm
-- sha256 /bsd.booted puis remplacer par /bsd dans fichier
 
 A reflechir
 ----------

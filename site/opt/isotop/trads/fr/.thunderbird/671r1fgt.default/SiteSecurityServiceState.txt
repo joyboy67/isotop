@@ -1,4 +1,0 @@
-services.addons.mozilla.org:HSTS	0	17320	1528040807820,1,0
-services.addons.mozilla.org:HPKP	0	17320	1501688807825,1,1,WoiWRyIOVNa9ihaBciRSC7XHjliYS9VwUGOIud4PB18=r/mIkG3eEpVdm+u/ko/cwxzOMo1bk4TyHIlByibiA5E=
-addons.cdn.mozilla.net:HSTS	0	17320	1528040800528,1,0
-www.gandi.net:HSTS	0	17320	1512272598076,1,0

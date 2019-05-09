@@ -55,6 +55,13 @@ xlock.mode        : blank
 xlock.username    : "?: "
 xlock.password    : "pass: "
 
+! === xclock
+xclock*foreground: #e1e5ea
+xclock*background: #151515
+xclock*highlight: #75a9e8
+xclock*hands: #75a9e8
+
+
 ! xmessage
 Xmessage.form.okay.shapeStyle:         rectangle
 Xmessage*buttons:                       OK

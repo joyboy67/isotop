@@ -1,4 +1,4 @@
 #!/bin/sh
-VERSION="0.4"
+VERSION="65"
 cd isotop-files
 tar cvzf ../isotop-${VERSION}.tgz *

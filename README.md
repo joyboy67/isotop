@@ -17,8 +17,10 @@ isotop specific configuration
 * Disable ulpt for USB printers
 * Configure xenodm appearance
 * Install some additional packages.
-* iridium is the default browser. It is unveiled for better security,
-  and more privacy-aware than chromium
-  (https://github.com/iridium-browser/tracker/wiki/Differences-between-Iridium-and-Chromium).
+* chromium is the default browser. Are disabled every option related to
+  google and tracking just like in iridium. It is unveiled by default :
+  this means the browser can't read files on your computer except in
+  ~/Downloads. It keeps you ssh keys and passwords in configuration
+  files safes. 
   Firefox is also making calls to google and can't be unveiled (see
   <https://marc.info/?l=openbsd-misc&m=152872551609819&w=2>)

@@ -25,13 +25,14 @@ ignore "xclock"
 ignore "netwmpager"
 ignore conky
 
-# Groups, à retrouver avec xprop et clic sur fenêtre
+# Groups, find them by clicking ong a window after running "xprop"
 # autogroup n "name,class"
 #autogroup 2 Mail
 #autogroup 1 "Navigator", "Firefox"
 #autogroup 1 "chromium-browser", "Chromium-browser"
 
-# Souris
+
+# Mouse
 # Disable resize with middle button
 unbind-mouse M-2 
 unbind-mouse M-3
@@ -45,8 +46,8 @@ bind-mouse 0-5 "mixerctl outputs.master=-10"
 # keyboard
 bind-key M-F4  window-delete
 
-# Move simple : M-h/j/k/l
-# Resize simple : M-S-h/j/k/l
+# Move : M-h/j/k/l
+# Resize : M-S-h/j/k/l
 # Move on screen edge
 bind-key MS-j window-snap-down
 bind-key MS-k window-snap-up
@@ -61,18 +62,11 @@ bind-key MS-space group-rcycle
 bind-key M-t window-vtile
 bind-key MS-t window-htile
 
-## apps
-# menu comme dwm. Tout ce qui est dans $PATH est dispo
-bind-key M-p menu-exec 
-# menu alt-f2
+# app menu alt-f2
 bind-key M-F2 menu-exec
-# find wondow
+# Find window
 bind-key M-f menu-window
 # label with M-C-n
-
-# shortcuts
-bind-key M-equal "mixerctl outputs.master=+10"
-bind-key M-parenright "mixerctl outputs.master=-10"
 
 # MENU
 command " CWM" ""
@@ -85,7 +79,6 @@ command "   ▸ Web" 'iridium --enable-unveil'
 command "   ▸ Fichiers" 'rox'
 command "   ▸ Office" 'libreoffice'
 command "   ▸ xterm" xterm
-command "   ▸ weather" 'xterm -maximized -e weather'
 command " TEMPERATURE" ""
 command "   ▪ mars" "sct 2700"
 command "   ▪ firecamp" "sct 4500"
