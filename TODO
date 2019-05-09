@@ -1,8 +1,10 @@
-- tray pour owi
+- tray pour owi ?
 - - owi : auto-join
 - documentation pour changer de wm
-- explication pour utiliser cwm : gestion fenetres via script win,
-  appel du tkmenu... : script au démarrage, appelable via le menu.
+- explication pour utiliser cwm : gestion fenetres via le menu principal
+  avec clic gauche sur root,
+  appel du tkmenu avec la souris en bas à gauche, pager avec la souris
+  en bas à droite... : script au démarrage, appelable via le menu.
 - trads : tkmenu, cwm
 
 A reflechir
@@ -10,3 +12,10 @@ A reflechir
 
 - préparer sessions pour autres wm ?
 - Bibliothèque pour les applis Tk ?
+
+
+à développer
+-----------
+Replacement pour tout ce qui est python et tk...
+En C ?
+En cli ?
