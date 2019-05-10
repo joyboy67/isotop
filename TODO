@@ -2,7 +2,7 @@
 - - owi : auto-join
 - documentation pour changer de wm
 - explication pour utiliser cwm : gestion fenetres via le menu principal
-  avec clic gauche sur root,
+  avec clic gauche sur root, raccourcis clavier...
   appel du tkmenu avec la souris en bas à gauche, pager avec la souris
   en bas à droite... : script au démarrage, appelable via le menu.
 - trads : tkmenu, cwm
@@ -16,6 +16,6 @@ A reflechir
 
 à développer
 -----------
-Replacement pour tout ce qui est python et tk...
+Replacement pour tout ce qui est python...
 En C ?
 En cli ?

@@ -13,6 +13,7 @@ gap 1 1 1 1     # margin all around to click on desktop
 fontname "DejaVu Sans Mono:pixelsize=14"
 
 # Options
+moveamout 10
 snapdist 20
 sticky yes
 command term xterm
@@ -23,14 +24,13 @@ ignore "dmenu"
 ignore "Dunst"
 ignore "xclock"
 ignore "netwmpager"
-ignore conky
+ignore "conky"
 
 # Groups, find them by clicking ong a window after running "xprop"
 # autogroup n "name,class"
 #autogroup 2 Mail
 #autogroup 1 "Navigator", "Firefox"
 #autogroup 1 "chromium-browser", "Chromium-browser"
-
 
 # Mouse
 # Disable resize with middle button
@@ -70,10 +70,10 @@ bind-key M-f menu-window
 
 # MENU
 command " CWM" ""
-command "   -  Min win " "xdotool selectwindow windowminimize"
-command "   +  Max win " "xdotool selectwindow windowsize 100% 100% windowmove 0 0"
-command "   x  Close win " "xdotool selectwindow windowclose"
-command "   -* Desktop  " "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
+command "   -  ___CWMMINWIN " "xdotool selectwindow windowminimize"
+command "   +  ___CWMMAXMIN " "xdotool selectwindow windowsize 100% 100% windowmove 0 0"
+command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowclose"
+command "   -* ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
 command " APPS" ""
 command "   ▸ Web" 'iridium --enable-unveil' 
 command "   ▸ Fichiers" 'rox'

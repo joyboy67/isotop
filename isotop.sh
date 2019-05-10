@@ -156,15 +156,16 @@ rcctl enable cupsd cups_browsed
 rcctl start cupsd cups_browsed
 echo ""
 
-echo "* Disable ulpt to use USB printers"
-echo "---"
-config -e -o /bsd.isotopmod /bsd << EOF
-disable ulpt
-quit
-EOF
+# FIXME
+#echo "* Disable ulpt to use USB printers"
+#echo "---"
+#config -e -o /bsd.isotopmod /bsd << EOF
+#disable ulpt
+#quit
+#EOF
 # recompute sha256 sum
-sha256 /bsd.isotopmod | sed -e 's;/bsd.isotopmod;/bsd;' > /var/db/kernel.SHA256
-mv /bsd.isotopmod /bsd
+#sha256 /bsd.isotopmod | sed -e 's;/bsd.isotopmod;/bsd;' > /var/db/kernel.SHA256
+#mv /bsd.isotopmod /bsd
 
 # Reboot
 echo "${REBOOTMSG}"
