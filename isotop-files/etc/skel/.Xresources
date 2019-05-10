@@ -87,7 +87,6 @@ Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
 
-!*font:-misc-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
-*font:-misc-spleen-medium-r-normal--16-160-72-72-c-80-iso10646-1
+*font:-misc-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
 
 

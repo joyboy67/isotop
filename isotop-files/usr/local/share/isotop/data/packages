@@ -1,6 +1,5 @@
 ImageMagick
 Xonotic
-cowsay
 cups
 cups-filters-1.20.1
 cups-libs
@@ -15,16 +14,9 @@ ghostscript-fonts
 gimp
 gnome-themes-standard
 gnuchess
-gstreamer1
-gstreamer1-plugins-bad
-gstreamer1-plugins-base
-gstreamer1-plugins-good
-gstreamer1-plugins-libav
-gstreamer1-plugins-ugly
 gtk+2-cups
 gtk+3-cups
 gutenprint
-gvfs-smb
 hack-fonts
 hotplug-diskmount
 hplip
@@ -55,13 +47,10 @@ python-tkinter-3.6.6p1
 roboto-fonts
 sct
 simple-scan
-spleen
-stone-soup
 system-config-printer
 teeworlds
 thunderbird
 thunderbird-i18n-fr
-transmission-gtk
 xboard
 xclip
 xdg-user-dirs
