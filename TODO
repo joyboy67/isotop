@@ -7,12 +7,16 @@
   en bas à droite... : script au démarrage, appelable via le menu.
 - trads : tkmenu, cwm
 - FAQ pour répondre aux besoins : smb, cups ?
+- pixup copy url : xmessage ? xedit ? autre ?
 
 A reflechir
-----------
 
 - préparer sessions pour autres wm ?
-- Bibliothèque pour les applis Tk ?
+- Reecrire les outils en tcl/Tk et virer tkinter
+- Garder ffom ?
+- gdoas ?
+- opama en cli ? (+ couleurs)
+
 
 
 à développer
