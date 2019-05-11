@@ -1,6 +1,6 @@
 isotop
 ==========
-Une OpenBSD facilitante pour découvrir.
+An OpenBSD easier to discover
 
 Installation
 ------------
