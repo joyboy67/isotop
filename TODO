@@ -3,7 +3,8 @@
 ## Now
 
 * explanation to use cwm and isotop specific configuration : menus, key,
-* mouse...
+  mouse...
+* choose ports wisely and modify tkmenu
 * translate : tkmenu, cwm
 * FAQ to answer some specific needs: smb, cups ?
 * pixup copy url : xmessage ? xedit ? autre ?
