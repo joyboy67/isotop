@@ -10,6 +10,7 @@
 * pixup copy url : xmessage ? xedit ? autre ?
 * port isotop-tools : .tgz ? 
 * write doc to use another wm
+* modify optimize script to use Imagemagick only : remove optipng
 * Test, test and test again.
 
 
