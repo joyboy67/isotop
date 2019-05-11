@@ -1,26 +1,24 @@
-- tray pour owi ?
-- - owi : auto-join
-- documentation pour changer de wm
-- explication pour utiliser cwm : gestion fenetres via le menu principal
-  avec clic gauche sur root, raccourcis clavier...
-  appel du tkmenu avec la souris en bas à gauche, pager avec la souris
-  en bas à droite... : script au démarrage, appelable via le menu.
-- trads : tkmenu, cwm
-- FAQ pour répondre aux besoins : smb, cups ?
-- pixup copy url : xmessage ? xedit ? autre ?
+# TODO
 
-A reflechir
+## Now
 
-- préparer sessions pour autres wm ?
-- Reecrire les outils en tcl/Tk et virer tkinter
-- Garder ffom ?
-- gdoas ?
-- opama en cli ? (+ couleurs)
+* explanation to use cwm and isotop specific configuration : menus, key,
+* mouse...
+* translate : tkmenu, cwm
+* FAQ to answer some specific needs: smb, cups ?
+* pixup copy url : xmessage ? xedit ? autre ?
+* port isotop-tools : .tgz ? 
+* write doc to use another wm
 
 
+## Later
 
-à développer
------------
-Replacement pour tout ce qui est python...
-En C ?
-En cli ?
+* Revrite python tools into tcl/Tk 
+* keep ffom ?
+* gdoas safe ?
+* opama cli ? (+ colors)
+
+* Add tray for owi ?
+* owi : add auto-join
+
+
