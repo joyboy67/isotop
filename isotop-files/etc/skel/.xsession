@@ -24,6 +24,8 @@ setwall "$(find /usr/local/share/isotop/walls | sort -R | head -n 1)"
 # numpad
 numlockx &
 # Auto-lock the screen
+xcape -e 'Alt_L=Escape'
+# Vi user, be grateful
 xidle -timeout 900 -program "/usr/X11R6/bin/xlock -mode space" &
 # notification
 dunst &
