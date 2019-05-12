@@ -6,9 +6,9 @@
 # OpenBSD system
 
 # check if root
-if [ $(id -u) -eq 0 ]; then
+if [ $(id -u) -ne 0 ]; then
 	echo "You must run this script with root privileges"
-	exit
+	exit 1
 fi
 
 # TRADS
