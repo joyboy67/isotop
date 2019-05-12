@@ -75,19 +75,19 @@ command "   +  ___CWMMAXMIN " "xdotool selectwindow windowsize 100% 100% windowm
 command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowclose"
 command "   -* ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
 command " APPS" ""
-command "   ▸ Web" 'iridium --enable-unveil' 
-command "   ▸ Fichiers" 'rox'
-command "   ▸ Office" 'libreoffice'
+command "   ▸ Web" iridium 
+command "   ▸ Fichiers" pcmanfm
+command "   ▸ Office" libreoffice
 command "   ▸ xterm" xterm
 command " TEMPERATURE" ""
 command "   ▪ mars" "sct 2700"
 command "   ▪ firecamp" "sct 4500"
-command "   ▪ day" "sct"
+command "   ▪ day" sct
 command "   ▪ coffee" "sct 8000"
 command " SYSTEM" ""
 command "   . Edit cwm config " "sh -c 'xedit ~/.cwmrc'"
 command "   . lock " 'xscreensaver-command -lock'
-command "   . suspend " "zzz"
+command "   . suspend " zzz
 command "   . reboot " "doas /sbin/reboot now"
 command "   . halt " "doas /sbin/shutdown -hp now"
 
