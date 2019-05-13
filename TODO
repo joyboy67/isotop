@@ -13,6 +13,7 @@
 * modify optimize script to use Imagemagick only : remove optipng
 * Tool to stream with youtube-dl
 * Test, test and test again.
+* Doc for included scripts (optimize, setwall...)
 
 
 ## Later
