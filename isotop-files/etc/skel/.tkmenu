@@ -7,7 +7,7 @@ title = True
 [Recent]
 
 [Internet]
-navigateur web = Navigateur web, iridium --enable-unveil ,     /usr/local/share/icons/hicolor/48x48/apps/iridium.png
+navigateur web = Navigateur web, iridium ,     /usr/local/share/icons/hicolor/48x48/apps/iridium.png
 courriels = Courriels, thunderbird,     /usr/local/lib/thunderbird/chrome/icons/default/default48.png
 chercher = Chercher, iridium https://duckduckgo.com, /usr/local/share/isotop/data/pixmaps/qwant.png
 framasoft = Services Framasoft, iridium https://framasoft.org/,   /usr/local/share/isotop/data/pixmaps/internet_framasoft.png
@@ -17,14 +17,14 @@ kit = Kit de survie, iridium https://wiki.obsd4a.net/doku.php?id=tips:kit_survie
 faq = FAQ OpenBSD, iridium https://www.openbsd.org/faq/index.html,   /usr/local/share/isotop/data/pixmaps/puffyhood.png
 
 [Fichiers]
-dossier personnel = Dossier Personnel, thunar ~, /usr/local/share/icons/Paper/48x48/places/user-home.png
-mes images = Images, thunar $(xdg-user-dir PICTURES), /usr/local/share/icons/Paper/48x48/places/folder-pictures.png
-mes documents = Documents, thunar $(xdg-user-dir DOCUMENTS), /usr/local/share/icons/Paper/48x48/places/folder-documents.png
-mes telechargements = Téléchargements, thunar $(xdg-user-dir DOWNLOAD), /usr/local/share/icons/Paper/48x48/places/folder-download.png
-mes modelete = Modèles, thunar $(xdg-user-dir TEMPLATES), /usr/local/share/icons/Paper/48x48/places/folder-templates.png
-mes videos = Vidéos, thunar $(xdg-user-dir VIDEOS), /usr/local/share/icons/Paper/48x48/places/folder-videos.png
-mes musiques = Musiques, thunar $(xdg-user-dir MUSIC), /usr/local/share/icons/Paper/48x48/places/folder-music.png
-corbeille = Corbeille, thunar Trash://, /usr/local/share/icons/Paper/48x48/places/user-trash.png
+dossier personnel = Dossier Personnel, pcmanfm ~, /usr/local/share/icons/Paper/48x48/places/user-home.png
+mes images = Images, pcmanfm $(xdg-user-dir PICTURES), /usr/local/share/icons/Paper/48x48/places/folder-pictures.png
+mes documents = Documents, pcmanfm $(xdg-user-dir DOCUMENTS), /usr/local/share/icons/Paper/48x48/places/folder-documents.png
+mes telechargements = Téléchargements, pcmanfm $(xdg-user-dir DOWNLOAD), /usr/local/share/icons/Paper/48x48/places/folder-download.png
+mes modelete = Modèles, pcmanfm $(xdg-user-dir TEMPLATES), /usr/local/share/icons/Paper/48x48/places/folder-templates.png
+mes videos = Vidéos, pcmanfm $(xdg-user-dir VIDEOS), /usr/local/share/icons/Paper/48x48/places/folder-videos.png
+mes musiques = Musiques, pcmanfm $(xdg-user-dir MUSIC), /usr/local/share/icons/Paper/48x48/places/folder-music.png
+corbeille = Corbeille, pcmanfm Trash://, /usr/local/share/icons/Paper/48x48/places/user-trash.png
 
 [Bureautique]
 lo = Suite complète, libreoffice, /usr/local/share/icons/hicolor/48x48/apps/libreoffice-startcenter.png

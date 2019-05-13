@@ -1,5 +1,6 @@
 ImageMagick
 Xonotic
+bgs
 cups
 cups-filters-1.20.1
 cups-libs
@@ -53,6 +54,7 @@ teeworlds
 thunderbird
 thunderbird-i18n-fr
 xboard
+xcape
 xclip
 xdg-user-dirs
 xdg-utils

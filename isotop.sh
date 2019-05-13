@@ -6,9 +6,9 @@
 # OpenBSD system
 
 # check if root
-if [ $(id -u) -eq 0 ]; then
+if [ $(id -u) -ne 0 ]; then
 	echo "You must run this script with root privileges"
-	exit
+	exit 1
 fi
 
 # TRADS
@@ -118,9 +118,9 @@ echo "---"
 rcctl enable xenodm
 
 echo '* Installing packages' 
-PACKAGES="$(cat /usr/local/share/isotop/data/packages)"
+PACKAGES=/usr/local/share/isotop/data/packages
 
-pkg_add -vmz $PACKAGES | tee -a -
+pkg_add -vlmz $PACKAGES | tee -a -
 
 if [ $? -eq 0 ]; then
 	echo '* Package installation finished :)'
