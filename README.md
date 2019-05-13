@@ -28,6 +28,7 @@ isotop specific configuration
   files safes. 
   Firefox is also making calls to google and can't be unveiled for now (see
   <https://marc.info/?l=openbsd-misc&m=152872551609819&w=2>)
+* Alt_L is mapped as Esc for vi users :)
 
 Why this name ?
 ---------------
