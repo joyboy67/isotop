@@ -2,15 +2,20 @@
 
 set -e
 
+db=/var/db/man.db
+sp='/usr/share/man/ /usr/local/man/ /usr/X11R6/man/'
+
 [ "$1" = "-h" ] && cat << EOF && exit 0
 ${0##*/} :
     populates the db used by dman
     run this after system and package upgrade
     or package installation
+    
+    dman calls ${0##*/} if $db is inexistent or empty.
+    Add an entry in doas.conf for your user to call ${0##*/} 
+    to populate the manpage db as it lays with other system db
+    in /var/db which is not a place open for everyone to write in.
 EOF
-
-db=/var/db/man.db
-sp='/usr/share/man/ /usr/local/man/ /usr/X11R6/man/'
 
 /usr/libexec/locate.updatedb \
 	--fcodes=$db \
