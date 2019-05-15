@@ -10,10 +10,11 @@
 * pixup copy url : xmessage ? xedit ? autre ?
 * port isotop-tools : .tgz ? 
 * write doc to use another wm
-* modify optimize script to use Imagemagick only : remove optipng
+* modify optimize script to use Graphicsmagic only : remove optipng
 * Tool to stream with youtube-dl
 * Test, test and test again.
 * Doc for included scripts (optimize, setwall...)
+* fix setwalls cript to remove white background
 
 
 ## Later
