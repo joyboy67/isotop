@@ -156,6 +156,11 @@ rcctl enable cupsd cups_browsed
 rcctl start cupsd cups_browsed
 echo ""
 
+echo "* Build manpage database"
+echo "---"
+mandb
+echo ""
+
 # Reboot
 echo "${REBOOTMSG}"
 
