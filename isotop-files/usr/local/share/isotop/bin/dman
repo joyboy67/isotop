@@ -16,7 +16,7 @@ EOF
 
 mandb=/var/db/man.db
 
-[[ -s $mandb ]] || mandb
+[[ -s $mandb ]] || doas mandb
 [[ -x $(which mandb) ]] || {
     print 'mandb not found!
     unable to build manpage database
