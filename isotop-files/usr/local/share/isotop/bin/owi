@@ -4,7 +4,7 @@
 
 """
 
-Auteur :      thuban <thuban@yeuxdelibad.net>  
+Auteur :      prx <prx@ybad.name>  
 Contributeurs : Charlène aka julianaito
 licence :     MIT
 
@@ -32,7 +32,7 @@ configfile = "/etc/owi.conf"
 
 appname = "OWi :: OpenBSD Wifi"
 appurl = "https://framagit.org/Thuban/owi"
-contacturl = "https://yeuxdelibad.net/Divers/Contact.html"
+contacturl = "https://ybad.name/Divers/Contact.html"
 version = "0.5"
 
 green="#0DC412"
@@ -58,7 +58,7 @@ txt_about = """
 {}
 {}
 
-Made with ♥ by thuban <thuban@yeuxdelibad.net>
+Made with ♥ by prx <prx@ybad.name>
 
 Distributed under MIT licence
 
@@ -82,7 +82,7 @@ try:
 {}
 {}
 
-Fait avec ♥ par thuban <thuban@yeuxdelibad.net>
+Fait avec ♥ par prx <prx@ybad.name>
 Distribué sous licence MIT
 
 Choisissez un réseau puis double-cliquez dessus pour vous connecter.

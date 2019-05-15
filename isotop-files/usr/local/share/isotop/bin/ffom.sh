@@ -1,6 +1,6 @@
 #!/bin/sh
 # ffom : find fast openbsd mirror
-# Auteur :      thuban <thuban@yeuxdelibad.net>
+# Auteur :      prx <prx@ybad.name>
 # Improved by vincentdelft
 # licence :     MIT
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 # requiert zenity, curl et scrot
 # capture d'écran améliorée
-# thuban@yeuxdelibad.net
+# prx@ybad.name
 IMAGE=/tmp/scrotup-$(date +%d-%m-%y).png
 
 R=$(zenity --list --height=250 --width=300 --text "Capture d'écran"\

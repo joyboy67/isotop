@@ -4,7 +4,7 @@
 
 """
 
-Auteur :      thuban <thuban@yeuxdelibad.net>  
+Auteur :      prx <prx@ybad.name>  
 licence :     MIT
 
 Description : OpenBSD Package Manager
@@ -49,7 +49,7 @@ txt_aboutfull = """
 
 OpenBSD Package Manager
 
-Made with ♥ by thuban <thuban@yeuxdelibad.net>
+Made with ♥ by prx <prx@ybad.name>
 
 Distributed under MIT licence
 """.format(appname, version, appurl)
@@ -85,7 +85,7 @@ if LANG.startswith("fr"):
 
 OpenBSD Package Manager
 
-Fait avec ♥ par thuban <thuban@yeuxdelibad.net>
+Fait avec ♥ par prx <prx@ybad.name>
 
 Distribué sous license MIT 
 """.format(appname, version, appurl)

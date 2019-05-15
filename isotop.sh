@@ -1,5 +1,5 @@
 #!/bin/sh
-# Auteur :      thuban <thuban@yeuxdelibad.net>
+# Auteur :      prx <prx@ybad.name>
 # licence :     MIT
 
 # Description : This will install the isotop preconfiguration on an
@@ -34,7 +34,7 @@ esac
 
 
 VERSION="65"
-ISOTOPURL="https://yeuxdelibad.net/DL/isotop/"
+ISOTOPURL="https://ybad.name/DL/isotop/"
 
 echo "======================="
 echo "     isotop install    "
@@ -102,7 +102,7 @@ echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
 
 echo "* Enable zerohosts script at boot"
 echo "---"
-ftp -o /usr/local/sbin/zerohosts "https://dev.yeuxdelibad.net/OpenBSD-stuff/zerohosts"
+ftp -o /usr/local/sbin/zerohosts "https://dev.ybad.name/OpenBSD-stuff/zerohosts"
 echo "/usr/local/sbin/zerohosts &" >> /etc/rc.local
 chmod +x /usr/local/sbin/zerohosts
 /usr/local/sbin/zerohosts &
