@@ -6,6 +6,7 @@ cups-filters-1.20.1
 cups-libs
 curl
 deadbeef
+dmenu
 dunst
 ffmpeg
 fira-fonts
