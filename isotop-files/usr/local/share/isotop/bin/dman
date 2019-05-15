@@ -12,6 +12,12 @@ ${0##*/} :
     User can select one or more man page thanks
     to dmenu multiselection.
     Read dmenu(1) for more information ;)
+
+    You can customize the window using the "man" class in ~/.Xdefaults
+    with line such as:
+        man*scrollBar: false
+        man*reverseVideo: true
+    
 EOF
 
 mandb=/var/db/man.db
