@@ -56,6 +56,7 @@ echo "---"
 echo "permit keepenv persist :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
+echo "permit nopass :wheel cmd mandb" >> /etc/doas.conf
 
 # softdep
 echo "* Enable softdeps"
@@ -154,6 +155,11 @@ echo "* Enable cups"
 echo "---"
 rcctl enable cupsd cups_browsed
 rcctl start cupsd cups_browsed
+echo ""
+
+echo "* Build manpage database"
+echo "---"
+mandb
 echo ""
 
 # Reboot
