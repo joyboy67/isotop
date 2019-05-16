@@ -5,6 +5,8 @@
 # For a simpler interface, this is not handled as only
 # the last component of path is displayed in dmenu
 
+MANDBPATH="/usr/local/share/isotop/bin/mandb" # isotop specific
+
 [ "$1" = "-h" ] && cat << EOF && exit 0
 ${0##*/} :
     pipe locate output from /var/db/man.db
@@ -22,7 +24,7 @@ EOF
 
 mandb=/var/db/man.db
 
-[[ -s $mandb ]] || doas mandb
+[[ -s $mandb ]] || doas "${MANDBPATH}"
 [[ -x $(which mandb) ]] || {
     print 'mandb not found!
     unable to build manpage database
