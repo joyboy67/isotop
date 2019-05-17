@@ -53,7 +53,7 @@ echo "https://cdn.openbsd.org/pub/OpenBSD" > /etc/installurl
 # doas
 echo "* Configure doas"
 echo "---"
-echo "permit keepenv persist :wheel " >> /etc/doas.conf
+echo "permit persist :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
 echo "permit nopass :wheel cmd mandb" >> /etc/doas.conf
