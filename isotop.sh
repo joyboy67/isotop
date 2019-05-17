@@ -85,6 +85,7 @@ tar xzf /tmp/isotop-${VERSION}.tgz
 chmod +x /etc/X11/xenodm/Xsetup_0
 chmod +x /etc/X11/xenodm/*Console
 chmod +x /usr/local/share/isotop/bin/*
+PATH=$PATH:/usr/local/share/isotop/bin
 
 ### set trads for xenodm
 sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" /etc/X11/xenodm/Xresources_isotop
