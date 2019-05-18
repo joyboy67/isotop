@@ -41,8 +41,9 @@ XTerm*loginShell:true
 XTerm*locale: utf8
 XTerm*renderFont: true
 XTerm*saveLines: 1250
-XTerm*Geometry: 90x25
-
+XTerm*internalBorder:		10
+XTerm*scrollBar:		false
+XTerm*selectToClipboard:	true
 
 ! ===== xlock
 ! plain white-on-black lock screen
