@@ -21,6 +21,8 @@ isotop specific configuration
 * ntpd does'nt use google as a reference
 * Configure xenodm appearance
 * Install additional packages.
+* doas is configured to avoid entering password for some commands such
+  as mandb.
 * iridium is the default browser. Are disabled every option related to
   google and tracking. It is unveiled by default :
   this means the browser can't read files on your computer except in
