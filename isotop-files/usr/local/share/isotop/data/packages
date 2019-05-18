@@ -11,7 +11,6 @@ dunst
 ffmpeg
 fira-fonts
 foomatic-db
-freefont-ttf
 ghostscript-fonts
 gimp
 gnome-themes-standard
@@ -31,8 +30,6 @@ libdvdread
 liberation-fonts
 libreoffice
 libreoffice-i18n-fr
-linuxlibertine-fonts-otf
-linuxlibertine-fonts-ttf
 minetest
 mpv
 mupdf-1.13.0p2
