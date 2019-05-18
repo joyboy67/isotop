@@ -56,7 +56,7 @@ echo "---"
 echo "permit persist :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
-echo "permit nopass :wheel cmd /usr/local/share/isotop/bin/mandb" >> /etc/doas.conf
+echo "permit nopass :wheel cmd mandb" >> /etc/doas.conf
 
 # softdep
 echo "* Enable softdeps"
@@ -85,6 +85,7 @@ tar xzf /tmp/isotop-${VERSION}.tgz
 chmod +x /etc/X11/xenodm/Xsetup_0
 chmod +x /etc/X11/xenodm/*Console
 chmod +x /usr/local/share/isotop/bin/*
+PATH=$PATH:/usr/local/share/isotop/bin
 
 ### set trads for xenodm
 sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" /etc/X11/xenodm/Xresources_isotop
