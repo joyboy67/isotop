@@ -29,8 +29,8 @@
 
 ! Xterm config
 XTerm.vt100.scrollBar: false
-xterm*faceName: Hack:pixelsize=14:antialias=true
-!xterm*faceName: spleen:pixelsize=16:antialias=false
+! use default font
+XTerm*faceName:		DejaVu Sans Mono:size=11
 
 XTerm.vt100.bellIsUrgent: true
 XTerm.vt100.translations: #override \n\
