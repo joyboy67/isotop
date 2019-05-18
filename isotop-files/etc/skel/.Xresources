@@ -1,31 +1,24 @@
 !-- colors --!                                                                  
 *.cursorColor:  #b3bdcb
-*.background: #151515
-*.foreground: #e1e5ea
-!! Black + DarkGrey                                                              
-*color0:     #151515
-*color8:     #5294e2
-!! DarkRed + Red                                                                
-*.color1:  #cc575d
-*.color9:  #a3464a
-!! DarkGreen + Green                                                            
-*.color2:  #2679db
-*.color10: #75a9e8
-!! DarkYellow + Yellow                                                          
-*.color3:  #b3bdcb
-*.color11: #CAD1DB
-!! DarkBlue + Blue                                                              
-*.color4:  #5294e2
-*.color12: #5294e2
-!! DarkMagenta + Magenta                                                        
-*.color5:  #404552
-*.color13: #686d79
-!! DarkCyan + Cyan                                                              
-*.color6:  #b3bdcb
-*.color14: #5294e2
-!! LightGrey + White                                                            
-*.color7:  #E1E5EA
-*.color15: #ffffff
+*background:	#000
+*foreground:	#fff
+*color0:		#000000
+*color1:		#ff6c60
+*color2:		#a8ff60
+*color3:		#ffffb6
+*color4:		#6a96ca
+*color5:		#ff73fd
+*color6:		#c6c5fe
+*color7:		#eeeeee
+*color8:		#7c7c7c
+*color9:		#ffb6b0
+*color10:		#ceffab
+*color11:		#ffffcb
+*color12:		#b6dcfe
+*color13:		#ff9cfe
+*color14:		#dfdffe
+*color15:		#ffffff
+
 
 ! Xterm config
 XTerm.vt100.scrollBar: false
@@ -43,6 +36,10 @@ XTerm*saveLines: 1250
 XTerm*internalBorder:		10
 XTerm*scrollBar:		false
 XTerm*selectToClipboard:	true
+XTerm*utf8: 1
+! xterm triple click selection
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+XTerm*on3Clicks: regex ([[:alpha:]]+://)?([[:alnum:]!#+,./=?@_~-]|(%[[:xdigit:]][[:xdigit:]]))+
 
 ! ===== xlock
 ! plain white-on-black lock screen
