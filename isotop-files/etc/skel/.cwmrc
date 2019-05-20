@@ -72,7 +72,7 @@ bind-key M-f menu-window
 command " CWM" ""
 command "   -  ___CWMMINWIN " "xdotool selectwindow windowminimize"
 command "   +  ___CWMMAXMIN " "xdotool selectwindow windowsize 100% 100% windowmove 0 0"
-command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowclose"
+command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowkill"
 command "   -* ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
 command " APPS" ""
 command "   ▸ Web" iridium 
