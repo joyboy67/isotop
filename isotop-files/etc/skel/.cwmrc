@@ -9,7 +9,7 @@ color groupborder "#686868"
 color ungroupborder "#7c7c7c"
 
 borderwidth 2
-gap 1 1 1 1     # margin all around to click on desktop
+gap 0 0 0 0     # no margin
 fontname "DejaVu Sans Mono:pixelsize=14"
 
 # Options
