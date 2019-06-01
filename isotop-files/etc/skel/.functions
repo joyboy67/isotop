@@ -23,4 +23,7 @@ mk7z() { 7z a -t7z -m0=lzma2 -mx=9 "${1%%/}.7z" "${1%%/}/"; }
 # Uncompress any
 unpack() { 7z x "${1}"; }
 
+# find pattern in files in current directory
+findcontent () { grep -IlRs "$1" . }
+
 
