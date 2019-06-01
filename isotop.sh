@@ -57,7 +57,6 @@ echo "permit persist :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
 echo "permit nopass :wheel cmd env" >> /etc/doas.conf
-echo "permit nopass :wheel cmd mandb" >> /etc/doas.conf
 
 
 # softdep

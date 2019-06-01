@@ -2,8 +2,8 @@
 
 set -e
 
-db=/var/db/man.db
-sp='/usr/share/man/ /usr/local/man/ /usr/X11R6/man/'
+DB=$HOME/.man.db
+SP='/usr/share/man/ /usr/local/man/ /usr/X11R6/man/'
 
 [ "$1" = "-h" ] && cat << EOF && exit 0
 ${0##*/} :
@@ -18,5 +18,5 @@ ${0##*/} :
 EOF
 
 /usr/libexec/locate.updatedb \
-	--fcodes=$db \
-	--searchpaths="$sp"
+	--fcodes="$DB" \
+	--searchpaths="$SP"

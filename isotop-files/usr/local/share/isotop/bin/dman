@@ -21,9 +21,9 @@ ${0##*/} :
     
 EOF
 
-mandb=/var/db/man.db
+mandb=$HOME/.man.db
 
-[[ -s $mandb ]] || doas env PATH=$PATH mandb
+[[ -s $mandb ]] || mandb
 [[ -x $(which mandb) ]] || {
     print 'mandb not found!
     unable to build manpage database
