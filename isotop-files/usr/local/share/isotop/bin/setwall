@@ -1,3 +1,3 @@
 #!/bin/sh
-display -backdrop -window root "${1}"
+display -foreground black -window root -backdrop "${1}"
 exit 0
