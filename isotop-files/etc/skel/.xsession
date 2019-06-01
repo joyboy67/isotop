@@ -23,6 +23,8 @@ xset b off &
 setwall "$(find /usr/local/share/isotop/walls | sort -R | head -n 1)"
 # numpad
 numlockx &
+# Vi user, be grateful
+xcape -e 'Alt_L=Escape'
 # Auto-lock the screen
 xidle -timeout 900 -program "/usr/X11R6/bin/xlock -mode space" &
 # notification

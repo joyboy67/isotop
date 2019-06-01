@@ -3,7 +3,7 @@
 #A Python script to set the theme for GTK+ 2 and GTK+ 3 applications in minimal environments
 # By Charles Bos
 # https://raw.githubusercontent.com/charlesbos/my-scripts/master/setgtktheme.py
-# mot by thuban <thuban@yeuxdelibad.net>
+# mot by prx <prx@ybad.name>
 
 from tkinter import *
 from tkinter import messagebox

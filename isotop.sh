@@ -1,14 +1,14 @@
 #!/bin/sh
-# Auteur :      thuban <thuban@yeuxdelibad.net>
+# Auteur :      prx <prx@ybad.name>
 # licence :     MIT
 
 # Description : This will install the isotop preconfiguration on an
 # OpenBSD system
 
 # check if root
-if [ $(id -u) -eq 0 ]; then
+if [ $(id -u) -ne 0 ]; then
 	echo "You must run this script with root privileges"
-	exit
+	exit 1
 fi
 
 # TRADS
@@ -34,7 +34,7 @@ esac
 
 
 VERSION="65"
-ISOTOPURL="https://yeuxdelibad.net/DL/isotop/"
+ISOTOPURL="https://ybad.name/DL/isotop/"
 
 echo "======================="
 echo "     isotop install    "
@@ -53,9 +53,10 @@ echo "https://cdn.openbsd.org/pub/OpenBSD" > /etc/installurl
 # doas
 echo "* Configure doas"
 echo "---"
-echo "permit keepenv persist :wheel " >> /etc/doas.conf
+echo "permit persist :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
+echo "permit nopass :wheel cmd mandb" >> /etc/doas.conf
 
 # softdep
 echo "* Enable softdeps"
@@ -84,6 +85,7 @@ tar xzf /tmp/isotop-${VERSION}.tgz
 chmod +x /etc/X11/xenodm/Xsetup_0
 chmod +x /etc/X11/xenodm/*Console
 chmod +x /usr/local/share/isotop/bin/*
+PATH=$PATH:/usr/local/share/isotop/bin
 
 ### set trads for xenodm
 sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" /etc/X11/xenodm/Xresources_isotop
@@ -102,7 +104,7 @@ echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
 
 echo "* Enable zerohosts script at boot"
 echo "---"
-ftp -o /usr/local/sbin/zerohosts "https://dev.yeuxdelibad.net/OpenBSD-stuff/zerohosts"
+ftp -o /usr/local/sbin/zerohosts "https://dev.ybad.name/OpenBSD-stuff/zerohosts"
 echo "/usr/local/sbin/zerohosts &" >> /etc/rc.local
 chmod +x /usr/local/sbin/zerohosts
 /usr/local/sbin/zerohosts &
@@ -118,9 +120,9 @@ echo "---"
 rcctl enable xenodm
 
 echo '* Installing packages' 
-PACKAGES="$(cat /usr/local/share/isotop/data/packages)"
+PACKAGES=/usr/local/share/isotop/data/packages
 
-pkg_add -vmz $PACKAGES | tee -a -
+pkg_add -vlmz $PACKAGES | tee -a -
 
 if [ $? -eq 0 ]; then
 	echo '* Package installation finished :)'
@@ -156,15 +158,10 @@ rcctl enable cupsd cups_browsed
 rcctl start cupsd cups_browsed
 echo ""
 
-echo "* Disable ulpt to use USB printers"
+echo "* Build manpage database"
 echo "---"
-config -e -o /bsd.isotopmod /bsd << EOF
-disable ulpt
-quit
-EOF
-# recompute sha256 sum
-sha256 /bsd.isotopmod | sed -e 's;/bsd.isotopmod;/bsd;' > /var/db/kernel.SHA256
-mv /bsd.isotopmod /bsd
+mandb
+echo ""
 
 # Reboot
 echo "${REBOOTMSG}"

@@ -1,13 +1,37 @@
-- tray pour owi
-- - owi : auto-join
-- documentation pour changer de wm
-- explication pour utiliser cwm : gestion fenetres via script win,
-  appel du tkmenu... : script au démarrage, appelable via le menu.
-- trads : tkmenu, cwm
-- sha256 /bsd.booted puis remplacer par /bsd dans fichier
+# TODO
 
-A reflechir
-----------
+## Now
 
-- préparer sessions pour autres wm ?
-- Bibliothèque pour les applis Tk ?
+* explanation to use cwm and isotop specific configuration : menus, key,
+  mouse...
+* choose ports wisely 
+* translate : cwm
+* FAQ to answer some specific needs: smb, cups ?
+* pixup copy url : xmessage ? xedit ? autre ?
+* port isotop-tools : .tgz ? 
+* write doc to use another wm
+* modify optimize script to use Graphicsmagic only : remove optipng
+* Tool to stream with youtube-dl
+* Test, test and test again.
+* Doc for included scripts (optimize, setwall...)
+* fix setwalls cript to remove white background
+* Add CONTRIBUTING file
+* Add custom actions in pcmanfm (rotate image, resize...) https://wiki.lxde.org/en/PCManFM#Run_as_root
+* Check scripts using imagemagick > GraphicsMagick
+* + unwind - unbound
+* - tkmenu (- python-tk ?) , + jgmenu in ports
+* openbsd-backgrounds port ?
+
+
+## Later
+
+* Rewrite python tools into tcl/Tk 
+* keep ffom ?
+* gdoas safe ?
+* opama cli ? (+ colors)
+
+* Add tray for owi ?
+* owi : add auto-join
+* edbrowse for blind users ?
+
+

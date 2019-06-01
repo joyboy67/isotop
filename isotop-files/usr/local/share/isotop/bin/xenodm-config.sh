@@ -1,5 +1,5 @@
 #!/bin/sh
-# Auteur :      thuban <thuban@yeuxdelibad.net>
+# Auteur :      prx <prx@ybad.name>
 # licence :     MIT
 
 # Description : configure xenodm
