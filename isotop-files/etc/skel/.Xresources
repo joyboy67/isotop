@@ -1,30 +1,37 @@
 !-- colors --!                                                                  
-*.cursorColor:  #b3bdcb
+*.cursorColor:  #7c7c7c
 *background:	#000
-*foreground:	#fff
+*foreground:	#eeeeee
+! black
 *color0:		#000000
-*color1:		#ff6c60
-*color2:		#a8ff60
-*color3:		#ffffb6
-*color4:		#6a96ca
-*color5:		#ff73fd
-*color6:		#c6c5fe
-*color7:		#eeeeee
 *color8:		#7c7c7c
+! red
+*color1:		#ff6c60
 *color9:		#ffb6b0
+! green
+*color2:		#a8ff60
 *color10:		#ceffab
+! yellow
+*color3:		#ffffb6
 *color11:		#ffffcb
+! blue
+*color4:		#6a96ca
 *color12:		#b6dcfe
+! purple
+*color5:		#ff73fd
 *color13:		#ff9cfe
+! cyan
+*color6:		#c6c5fe
 *color14:		#dfdffe
+! grey
+*color7:		#eeeeee
 *color15:		#ffffff
 
+xterm*colorUL:          #8ae234
+xterm*underlineColor:   #92659a
 
 ! Xterm config
-XTerm.vt100.scrollBar: false
-! use default font
-XTerm*faceName:		DejaVu Sans Mono:size=11
-
+xterm*faceName: Hack:pixelsize=12:antialias=true
 XTerm.vt100.bellIsUrgent: true
 XTerm.vt100.translations: #override \n\
 Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
@@ -32,8 +39,8 @@ Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
 XTerm*loginShell:true
 XTerm*locale: utf8
 XTerm*renderFont: true
-XTerm*saveLines: 1250
-XTerm*internalBorder:		10
+XTerm*saveLines: 4242
+XTerm*internalBorder:		12
 XTerm*scrollBar:		false
 XTerm*selectToClipboard:	true
 XTerm*utf8: 1
@@ -43,17 +50,13 @@ XTerm*utf8: 1
 xlock.description : off
 xlock.echokeys    : off
 xlock.info        :
-xlock.background  : black
-xlock.foreground  : white
 xlock.mode        : blank
 xlock.username    : "?: "
 xlock.password    : "pass: "
 
 ! === xclock
-xclock*foreground: #e1e5ea
-xclock*background: #151515
-xclock*highlight: #75a9e8
-xclock*hands: #75a9e8
+xclock*highlight: #ffffff
+xclock*hands: #eeeeee
 
 
 ! xmessage
@@ -71,8 +74,6 @@ Xmessage*Command.borderColor:            #75a9e8
 Xmessage*font:-misc-fixed-bold-r-normal-*-18-*-*-*-*-*-iso10646-1
 
 
-
-
 ! all
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
@@ -82,5 +83,4 @@ Xft.antialias: 1
 Xft.rgba: rgb
 
 *font:-misc-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
-
 
