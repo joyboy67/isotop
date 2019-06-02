@@ -70,22 +70,23 @@ bind-key M-f menu-window
 # label with M-C-n
 
 # MENU
-command " CWM" ""
+command " ___CWMWINMENU" ""
 command "   -  ___CWMMINWIN " "xdotool selectwindow windowminimize"
 command "   +  ___CWMMAXMIN " "xdotool selectwindow windowsize 100% 100% windowmove 0 0"
 command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowkill"
-command "   -* ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
-command " APPS" ""
-command "   ▸ Web" iridium 
-command "   ▸ Files" pcmanfm
-command "   ▸ Office" libreoffice
-command "   ▸ xterm" xterm
-command "   ▸ Music" deadbeef
-command " SYSTEM" ""
-command "   . Edit cwm config " "xterm -e '$EDITOR ~/.cwmrc'"
-command "   . lock " 'xscreensaver-command -lock'
-command "   . suspend " zzz
-command "   . reboot " "doas /sbin/reboot now"
-command "   . halt " "doas /sbin/shutdown -hp now"
+command "   =  ___CWMGROUPWIN " "dgroupwin"
+command "  [ ] ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
+command " ___CWMSHORTCUTS" ""
+command "   ▸ ___CWMWEB " web 
+command "   ▸ ___CWMFILES " pcmanfm
+command "   ▸ ___CWMOFFICE " libreoffice
+command "   ▸ ___CWMMUSIC " deadbeef
+command "   ▸ ___CWMXTERM " xterm
+command " ___CWMSESSION" ""
+command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR ~/.cwmrc'"
+command "   . ___CWMLOCK " 'xscreensaver-command -lock'
+command "   . ___CWMSUSPEND " zzz
+command "   . ___CWMREBOOT " "doas /sbin/reboot now"
+command "   . ___CWMHALT " "doas /sbin/shutdown -hp now"
 
 

@@ -39,8 +39,10 @@ fi
     exit 1
 }
 
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
 manpage=$(locate -b -d "${MANDB}" . |sed 's,.*/,,;/mandoc.db/d' \
-	|dmenu -p 'Man page : ' |uniq)
+	|dmenu $COLORS -p 'Man page : ' |uniq)
 
 IFS='
 '

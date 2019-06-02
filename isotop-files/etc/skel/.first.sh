@@ -19,10 +19,26 @@ case $lang in
 		# hotplug
 		MOUNTPOINTNAME="Disques"
 		# cwm
-		sed -i -e "s;___CWMMINWIN;Minimiser une fenêtre;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMMAXMIN;Maximiser une fenêtre;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMCLOSEWIN;Fermer une fenêtre;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMSHOWDESKTOP;Voir le bureau;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWINMENU;FENÊTRES;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMINWIN;Minimiser;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMAXMIN;Maximiser;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMCLOSEWIN;Fermer;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMGROUPWIN;Groupe;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMSHOWDESKTOP;Bureau;" ${HOME}/.cwmrc
+
+		sed -i -e "s;___CWMSHORTCUTS;RACCOURCIS;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWEB;Navigateur web;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMFILES;Fichiers;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMOFFICE;Bureautique;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMUSIC;Musique;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMXTERM;Terminal;" ${HOME}/.cwmrc
+
+		sed -i -e "s;___CWMSESSION;SESSION;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMEDITCONFIG;Configurer cwm;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMLOCK;Verouiller;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMSUSPEND;Suspendre;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMREBOOT;Redémarrer;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMHALT;Éteindre;" ${HOME}/.cwmrc
 	;;
 	*)
 		echo 'LC_CTYPE="en_EN.UTF-8"' >> ${HOME}/.profile
@@ -34,6 +50,28 @@ case $lang in
 		# No translation to do for thunderbird, default to en_EN
 		# hotplug
 		MOUNTPOINTNAME="Disks"
+		# cwm
+		sed -i -e "s;___CWMWINMENU;Windows;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMINWIN;Minimize;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMAXMIN;Maximize;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMCLOSEWIN;Close;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMGROUPWIN;Group;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMSHOWDESKTOP;Desktop;" ${HOME}/.cwmrc
+
+		sed -i -e "s;___CWMSHORTCUTS;SHORTCUTS;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWEB;Web;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMFILES;Files;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMOFFICE;Office;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMUSIC;Music;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMXTERM;Term;" ${HOME}/.cwmrc
+
+		sed -i -e "s;___CWMSESSION;SESSION;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMEDITCONFIG;Configure cwm;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMLOCK;Lock;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMSUSPEND;Suspend;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMREBOOT;Reboot;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMHALT;Halt;" ${HOME}/.cwmrc
+
 	;;
 esac
 

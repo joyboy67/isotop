@@ -1,0 +1,16 @@
+#!/bin/sh
+# dmenu_run improved
+# if a command ends with "!", it is started in term.
+
+# in .dmenurc, set colors and font with variables
+# $NB $NF $SB $SF $FN are passed to these dmenu opts : -nb -nf -sb -sf -fn
+TERMCMD="xterm -e"
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+CMD="$(dmenu_path | dmenu -fn $FN -sb $SB -sf $SF -nb $NB -nf $NF)"
+case $CMD in
+    *\! ) ${TERMCMD} "$(printf "%s" "${CMD}" | cut -d'!' -f1)";;
+    * ) ${CMD} ;;
+esac
+exit
+

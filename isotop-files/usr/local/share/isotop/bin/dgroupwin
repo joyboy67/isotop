@@ -1,0 +1,16 @@
+#!/bin/sh
+# send a window to a group
+# require dmenu and xdotool
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+WIN=$(xdotool selectwindow)
+CURGROUP=$(xdotool get_desktop_for_window $WIN)
+P="Group $CURGROUP > ?"
+GROUP="$(jot $(xdotool get_num_desktops) | \
+    dmenu -fn $FN -sb $SB -sf $SF -nb $NB -nf $NF -l $L -p "$P")"
+
+test -z "$GROUP" && exit
+
+xdotool set_desktop_for_window "${WIN}" "${GROUP}"
+
+
