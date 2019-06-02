@@ -1,0 +1,61 @@
+#!/bin/sh
+#search engines with dmenu
+# If any text is selected, it is directly pasted at input
+
+#dmenu colors
+. ~/.dmenurc
+# prompt
+P="engine <search>:"
+
+# web browser
+BROWSER="web"
+# Moteur de recherche par défaut
+#DEFAULT="https://duckduckgo.com/?kh=1&q="
+#DEFAULT="https://lite.qwant.com/?l=fr&h=1&hc=0&a=1&s=0&b=1&i=1&r=FR&sr=fr&q="
+#DEFAULT="https://framabee.org/?q="
+#DEFAULT="https://eu.ixquick.com/do/metasearch.pl?prf=c37b0be54bf60dc6d88009f5491dcc4a&query="
+DEFAULT="https://www.qwant.com/?q="
+
+INPUT=$(echo "ixquick
+qwant
+duckduckgo
+obsdmisc
+obsdports
+wiki
+dic
+synonyme
+youtube
+en2fr
+fr2en
+amazon
+google
+image" |dmenu -i -fn $FN -nb $NB -nf $NF -sb $SB -sf $SF -p "$P")
+ENGINE=$(echo $INPUT |cut -d ' ' -f 1 )
+SEARCH=$(echo $INPUT |cut -d ' ' -f2- |sed 's/ /+/g')
+if [ -n "$SEARCH" ]; then
+   case $ENGINE in
+      ix | ixquick ) RES="https://eu.ixquick.com/do/metasearch.pl?query=$SEARCH" ;;
+      qwant) RES="https://www.qwant.com/?q=$SEARCH&t=all" ;;
+      d | duckduckgo) RES="https://duckduckgo.com/html/q=$SEARCH";;
+      obsdmisc ) RES="https://marc.info/?l=openbsd-misc&w=2&r=1&q=b&s=$SEARCH" ;;
+      obsdports ) RES="https://marc.info/?l=openbsd-ports&w=2&r=1&q=b&s=$SEARCH" ;;
+	  i | image ) RES="https://www.qwant.com/?t=images&q=$SEARCH" ;;
+      wiki | w )  RES="http://en.wikipedia.org/w/index.php?title=Spécial%3ARecherche&search=$SEARCH&go=Lire" ;;
+      dic )  RES="http://www.le-dictionnaire.com/definition.php?mot=$SEARCH" ;;
+      syn | synonyme ) RES="http://www.synonymes.com/synonyme.php?mot=$SEARCH&x=0&y=0";;
+      you | youtube ) RES="http://www.youtube.com/results?search_query=$SEARCH&aq=f" ;;
+      en2fr ) RES="http://www.wordreference.com/enfr/$SEARCH";;
+      fr2en ) RES="http://www.wordreference.com/fren/$SEARCH";;
+      amazon | a ) RES="http://www.amazon.fr/s/ref=nb_sb_noss?__mk_fr_FR=%C5M%C5Z%D5%D1&url=search-alias%3Daps&field-keywords=$SEARCH&x=0&y=0" ;;
+      g | google ) RES="https://startpage.com/do/search?query=$SEARCH";;
+      # Le suivant est le choix par défaut
+      * ) 
+		SEARCH=$(echo $INPUT |cut -d ' ' -f1- |sed 's/ /+/g')
+	      RES="$DEFAULT$SEARCH" ;;
+   esac
+fi
+
+if [ "$RES" != "" ]; then
+	"$BROWSER" $RES
+fi
+exit
