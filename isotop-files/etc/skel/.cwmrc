@@ -1,19 +1,18 @@
 # CWM appearance
-color inactiveborder "#b3bdcb"
-color activeborder "#009AC2"
-color font "#8d8d8d"
-color selfont "#1c1c1c"
-color menubg "#151515"
-color menufg "#009AC2"
-color groupborder "#686868"
-color ungroupborder "#7c7c7c"
+color activeborder "#719611"
+color inactiveborder "#111"
+color font "#eee"
+color selfont "#111"
+color menubg "#111"
+color menufg "#719411"
+color urgencyborder "#ff6a6a"
 
 borderwidth 2
-gap 0 0 0 0     # no margin
+gap 1 1 1 1     # 1px margin
 fontname "DejaVu Sans Mono:pixelsize=14"
 
 # Options
-moveamout 10
+moveamout 30
 snapdist 20
 sticky yes
 command term xterm
@@ -64,6 +63,8 @@ bind-key MS-t window-htile
 
 # app menu alt-f2
 bind-key M-F2 menu-exec
+# dmenu_run
+bind-key M-p 'dmenu_run_i' 
 # Find window
 bind-key M-f menu-window
 # label with M-C-n
@@ -76,16 +77,12 @@ command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowkill"
 command "   -* ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
 command " APPS" ""
 command "   ▸ Web" iridium 
-command "   ▸ Fichiers" pcmanfm
+command "   ▸ Files" pcmanfm
 command "   ▸ Office" libreoffice
 command "   ▸ xterm" xterm
-command " TEMPERATURE" ""
-command "   ▪ mars" "sct 2700"
-command "   ▪ firecamp" "sct 4500"
-command "   ▪ day" sct
-command "   ▪ coffee" "sct 8000"
+command "   ▸ Music" deadbeef
 command " SYSTEM" ""
-command "   . Edit cwm config " "sh -c 'xedit ~/.cwmrc'"
+command "   . Edit cwm config " "xterm -e '$EDITOR ~/.cwmrc'"
 command "   . lock " 'xscreensaver-command -lock'
 command "   . suspend " zzz
 command "   . reboot " "doas /sbin/reboot now"
