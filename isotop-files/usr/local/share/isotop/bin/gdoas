@@ -1,22 +1,19 @@
 #!/bin/sh
 # gdoas : run doas in xterm
 
-MSG="To run this command, enter your password thanks to 'doas'"
+MSG="[doas]: Great power comes with great password:"
 case $LANG in
 	fr*)
-		MSG="Pour lancer cette commande, entrez votre mot de passe.
-'doas' se charge du reste"
+		MSG="[doas]: Un grand pouvoir implique une bonne passphrase:"
 	;;
 esac
 
-TXT="
-=======================================================================
-
+TXT="exec: $(echo "$@")
+- - -
 $MSG
+- - -
+" 
 
-=======================================================================
-"
-
-xterm -e "echo \"$TXT\" && doas $@"
+xterm -e "printf \"%s\" \"$TXT\" && doas $@"
 
 exit 0
