@@ -1,10 +1,6 @@
 #!/bin/sh
 # choose how to modify an image
-# requires zeniTK and imagemagick 
-# and photoprint 
-
-# action personnalisée dans thunar : 
-# imagemod-hl.sh %F
+# requires zeniTK and GraphicsMagick 
 
 OLDIFS=$IFS
 IFS='
@@ -73,35 +69,35 @@ R=$(zeniTK --text "$scaletext" --list \
 case $R in 
     $TOJPG ) 
         for i in $@; do
-            convert -interlace line "$i" "${i%.*}.jpg"
+            gm convert -interlace line "$i" "${i%.*}.jpg"
         done
         ;;
     $TOPNG ) 
         for i in $@; do
-            convert -interlace line "$i" "${i%.*}.png"
+            gm convert -interlace line "$i" "${i%.*}.png"
         done
         ;;
     $TOGIF ) 
         for i in $@; do
-            convert -interlace line "$i" "${i%.*}.gif"
+            gm convert -interlace line "$i" "${i%.*}.gif"
         done
         ;;
     $RESIZE ) 
         imgsize=$(zeniTK --title "$scaletitle" --entry --entry-text="100x100" --text="$scalemsg")
         for i in $@; do
             if [ -n "$imgsize" ]; then
-                convert -scale $imgsize "$i" "${i%.*}-$imgsize.${i##*.}" 
+                gm convert -scale $imgsize "$i" "${i%.*}-$imgsize.${i##*.}" 
             fi
         done
         ;;
     $TURNR ) 
         for i in $@; do
-            convert -rotate 90 $i $i
+            gm convert -rotate 90 $i $i
         done
         ;;
     $TURNL ) 
         for i in $@; do
-            convert -rotate -90 $i $i
+            gm convert -rotate -90 $i $i
         done
         ;;
 esac
