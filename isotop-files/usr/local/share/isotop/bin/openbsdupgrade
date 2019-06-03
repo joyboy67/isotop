@@ -1,16 +1,20 @@
 #!/bin/sh
-# download openup and run it after syspatch
+# download openup and run it after syspatch and fw_update
 
-networkcheck
+networkcheck || 
 if [ $? -ne 0 ]; then
 	echo "No internet connexion avaiable..."
-	sleep 3
+	echo "Press enter to exit"
+	read a
 	exit 1
 else
-
-	echo "> Running syspatch"
+	echo "> syspatch"
 	doas syspatch
 
+	echo "> fw_update"
+	doas fw_update
+
+	echo "> openup"
 	if [ ! -f /usr/local/bin/openup ]; then
 		doas ftp -o /usr/local/bin/openup https://stable.mtier.org/openup 
 		doas chmod +x /usr/local/bin/openup
@@ -18,8 +22,8 @@ else
 	else
 		doas openup
 	fi
-	echo "Press any key..."
-	read 
-
+	echo "Done! :)"
+	echo "Press enter to exit"
+	read a
 fi
 exit 0

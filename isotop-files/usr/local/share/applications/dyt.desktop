@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Youtube-dl-gui
+Name=dmenu-Youtube-dl
 Comment=Download videos from youtube and other hosts
 Comment[fr]=Télécharger les vidéos depuis youtube et d'autres sites
-Exec=/usr/local/share/isotop/bin/youtube-dl-gui
+Exec=/usr/local/share/isotop/bin/dyt
 Categories=Utility;Network;
 Icon=video-x-generic
 Terminal=false

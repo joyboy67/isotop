@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Search on-line
+Name[fr]=Chercher en ligne
+Comment=Choose your engine to search on the web with dmenu.
+Comment[fr]=Chercher en ligne avec le moteur de son choix avec dmenu.
+Exec=/usr/local/share/isotop/bin/dsch
+Icon=system-search
+Categories=Utility;Network;
+Terminal=false

@@ -1,6 +1,6 @@
 GraphicsMagick
 cups
-cups-filters-1.20.1
+cups-filters*
 cups-libs
 curl
 deadbeef
@@ -30,7 +30,7 @@ libreoffice
 libreoffice-i18n-fr
 minetest
 mpv
-mupdf-1.13.0p2
+mupdf*
 netsurf
 noto-emoji
 noto-fonts

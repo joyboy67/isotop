@@ -28,6 +28,7 @@ case $lang in
 
 		sed -i -e "s;___CWMSHORTCUTS;RACCOURCIS;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMWEB;Navigateur web;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMAILS;Client de messagerie;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMFILES;Fichiers;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMOFFICE;Bureautique;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMUSIC;Musique;" ${HOME}/.cwmrc
@@ -60,6 +61,7 @@ case $lang in
 
 		sed -i -e "s;___CWMSHORTCUTS;SHORTCUTS;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMWEB;Web;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMAILS;Mails;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMFILES;Files;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMOFFICE;Office;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMUSIC;Music;" ${HOME}/.cwmrc

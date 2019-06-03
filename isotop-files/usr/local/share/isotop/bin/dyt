@@ -1,0 +1,17 @@
+#!/bin/sh
+# download youtube video
+# require dmenu, xclip, youtube-dl
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+prompt="Video url:"
+
+url=$(xclip -o | dmenu -l ${l} \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "${prompt}")
+
+xterm -e youtube-dl "${url} && echo "...enter to exit" && read a" &
+
+exit
