@@ -1,11 +1,10 @@
-# CWM appearance
-color activeborder "#719611"
-color inactiveborder "#111"
-color font "#eee"
-color selfont "#111"
-color menubg "#111"
-color menufg "#719411"
-color urgencyborder "#ff6a6a"
+color activeborder "#6a96ca"
+color inactiveborder "#000"
+color font "#fff"
+color selfont "#000"
+color menubg "#000"
+color menufg "#6a96ca"
+color urgencyborder "#ffb6b0"
 
 borderwidth 2
 gap 1 1 1 1     # 1px margin
@@ -83,7 +82,7 @@ command "   ▸ ___CWMOFFICE " libreoffice
 command "   ▸ ___CWMMUSIC " deadbeef
 command "   ▸ ___CWMXTERM " xterm
 command " ___CWMSESSION" ""
-command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR ~/.cwmrc'"
+command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR $HOME/.cwmrc'"
 command "   . ___CWMLOCK " 'xscreensaver-command -lock'
 command "   . ___CWMSUSPEND " zzz
 command "   . ___CWMREBOOT " "doas /sbin/reboot now"

@@ -222,10 +222,10 @@ def try_to_run(app_list):
 
 
 def edit_config(cf):
-    EDITOR = try_to_run(["geany","gedit","scite","kate", "mousepad", "leafpad","xedit"])
+    EDITOR = try_to_run(["geany","gedit","scite","kate",
+        "mousepad","leafpad", "xedit"])
     if EDITOR:
         Popen([EDITOR, cf])
-
 
 def is_number(s):
     try:
@@ -238,9 +238,9 @@ def change_colors(style, color="light"):
     if color == "dark":
         theme = {
             'disabledfg':"#111111",
-            'selectbg': "#28952D",
-            'selectfg': "#444444",
-            'foreground': "#dddddd",
+            'selectbg': "#6a96ca",
+            'selectfg': "#111111",
+            'foreground': "#c2c2b0",
             'background': "#111111",
             'dark': "#111111",
             'lighter': "#111111",
@@ -250,13 +250,13 @@ def change_colors(style, color="light"):
             }
     else:
         theme = {
-            'disabledfg':"#eeeeee",
-            'selectbg': "#5294e2",
+            'disabledfg':"#ffffff",
+            'selectbg': "#6a96ca",
             'selectfg': "#000000",
-            'foreground': "#151515",
-            'background': "#e1e5ea",
-            'lighter': "#b3bdcb",
-            'dark': "#b3bdcb",
+            'foreground': "#000000",
+            'background': "#eeeeee",
+            'lighter': "#eeeeee",
+            'dark': "#eeeeee",
             'borderwidth': 0,
             'font': ("DejaVu Sans", 10),
             'tabfont': ("DejaVu Sans", 10, "bold")
@@ -351,16 +351,16 @@ class TKMenu():
             self.root.overrideredirect(True)
 
         # to have a border
-        self.root.configure(background='#336699')
+        self.root.configure(background='#111111')
 
         mainframe = ttk.Frame(self.root)
         mainframe.pack(fill=BOTH,expand=True, padx=1, pady=1)
 
         # Décommenter pour avoir un titre
         if toggle(configfile,"title"):
-            thetime = time.strftime('%H:%M')
+            thetime = time.strftime('%R - %d/%m')
             label = ttk.Label(mainframe, text=thetime, \
-                    font=("DejaVu Sans Mono", 28))
+                    font=("DejaVu Sans", 22))
             label.pack()
 
         self.ntbk = ttk.Notebook(mainframe)
@@ -455,7 +455,7 @@ class TKMenu():
                 r += 1
 
     def full_app_launcher(self):
-        app = try_to_run(['thelauncher', 'xfce4-appfinder', 'krunner', 'gnome-run', 'fbrun'])
+        app = try_to_run(['thelauncher', 'jgmenu', 'xfce4-appfinder', 'krunner', 'gnome-run', 'fbrun'])
         if app:
             Popen(app)
         else:

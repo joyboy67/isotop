@@ -1,6 +1,9 @@
 isotop
 ==========
-An OpenBSD easier to discover
+OpenBSD easier to explore and use at first.
+
+Available from OpenBSD > 6.5
+
 
 Installation
 ------------
@@ -11,18 +14,20 @@ Installation
 isotop specific configuration
 ---------------------------
 
-* Unbound is configured as default domain name resolver 
-* Use zerohosts script to adblock
-* Message in /etc/boot.conf
+* unwind(8) is configured as default domain name resolver 
+* Use unwind-block script to adblock some domains
+* Customized message in /etc/boot.conf
 * Enable services hotplugd, messagebus, cups, xenodm, unbound,
 * Disable ulpt for USB printers. This happens in rc.shutdown to enjoy
   KARL at reboot. 
   See [this thread](https://marc.info/?l=openbsd-misc&m=155746672110488&w=2)
-* ntpd does'nt use google as a reference
+* ntpd configuration does'nt use google as a reference
 * Configure xenodm appearance
-* Install additional packages.
-* doas is configured to avoid entering password for some commands such
-  as mandb.
+* Install additional packages 
+  (see /usr/local/share/isotop/data/packages).
+* doas is configured to avoid entering password for some commands.
+* cwm is the default window manager. It is pre-configured and shipped
+  with various script to ease window management for non-keyboard users.
 * iridium is the default browser. Are disabled every option related to
   google and tracking. It is unveiled by default :
   this means the browser can't read files on your computer except in
@@ -31,6 +36,7 @@ isotop specific configuration
   Firefox is also making calls to google and can't be unveiled for now (see
   <https://marc.info/?l=openbsd-misc&m=152872551609819&w=2>)
 * Alt_L is mapped as Esc for vi users :)
+* Translations are included : english and french for now.
 
 Why this name ?
 ---------------

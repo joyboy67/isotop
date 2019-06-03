@@ -30,7 +30,7 @@ xidle -timeout 900 -program "/usr/X11R6/bin/xlock -mode space" &
 # notification
 dunst &
 # screen corners start menu 
-xdotool behave_screen_edge --delay 800 bottom-left exec jgmenu_run &
+xdotool behave_screen_edge --delay 800 bottom-left exec tkmenu &
 
 # start cwm. No & here
 cwm

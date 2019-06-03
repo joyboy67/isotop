@@ -1,8 +1,9 @@
-NB="#111"
-NF="#c2c2b0"
-SF="#111"
-SB="#719611"
+NB="#000"
+NF="#fff"
+SF="#000"
+SB="#6a96ca"
+L=15
 
-FN="Mono-12"
-COLORS="-fn $FN -nb $NB -nf $NF -sb $SB -sf $SF"
+FN="Hack-9"
+DCOLORS="-fn $FN -nb $NB -nf $NF -sb $SB -sf $SF"
 

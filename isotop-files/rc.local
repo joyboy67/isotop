@@ -1,0 +1,4 @@
+days=7
+if [ -n "$(find /var/unwind.block -mtime +${days} )" ]; then
+    /usr/local/sbin/unwind-block > /var/unwind.block &
+fi

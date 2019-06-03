@@ -5,7 +5,6 @@
 * explanation to use cwm and isotop specific configuration : menus, key,
   mouse...
 * choose ports wisely 
-* translate : cwm
 * FAQ to answer some specific needs: smb, cups ?
 * pixup copy url : xmessage ? xedit ? autre ?
 * port isotop-tools : .tgz ? 
@@ -17,9 +16,6 @@
 * fix setwalls cript to remove white background
 * Add CONTRIBUTING file
 * Add custom actions in pcmanfm (rotate image, resize...) https://wiki.lxde.org/en/PCManFM#Run_as_root
-* Check scripts using imagemagick > GraphicsMagick
-* + unwind - unbound
-* - tkmenu (- python-tk ?) , + jgmenu in ports
 * openbsd-backgrounds port ?
 * documenter scripts dmenu...
 

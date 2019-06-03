@@ -23,7 +23,6 @@ hplip
 iridium
 ja-fonts-funet
 ja-fonts-gnu
-jgmenu
 libdvdcss
 libdvdnav
 libdvdread
@@ -43,7 +42,7 @@ p7zip
 paper-icon-theme
 pcmanfm
 py3-Pillow
-python-tkinter-3.6.6p1
+python-tkinter-3.7*
 roboto-fonts
 sct
 simple-scan

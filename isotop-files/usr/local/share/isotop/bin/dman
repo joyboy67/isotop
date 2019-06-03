@@ -42,7 +42,7 @@ fi
 test -s $HOME/.dmenurc && . $HOME/.dmenurc
 
 manpage=$(locate -b -d "${MANDB}" . |sed 's,.*/,,;/mandoc.db/d' \
-	|dmenu $COLORS -p 'Man page : ' |uniq)
+	|dmenu $DCOLORS -p 'Man page : ' |uniq)
 
 IFS='
 '
