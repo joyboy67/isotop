@@ -1,0 +1,109 @@
+#!/bin/sh
+# choose how to modify an image
+# requires dmenu and GraphicsMagick 
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+OLDIFS=$IFS
+IFS='
+'
+
+# trads
+questiontxt="What do you want to do ?"
+scalemsg="Size to scale to <length>x<height>"
+tojpg="Convert to JPG"
+topng="Convert to PNG"
+togif="Convert to GIF"
+resize="Resize"
+turnr="Turn right"
+turnl="Turn left"
+
+case $LANG in
+	fr*)
+        questiontxt="Que voulez-vous faire ?"
+		scalemsg="Taille de redimensionnement <largeur>x<hauteur>"
+        tojpg="Convertir en JPG"
+        topng="Convertir en PNG"
+        togif="Convertir en GIF"
+        resize="Redimensionner l'image"
+        turnr="Tourner à droite"
+        turnl="Tourner à gauche"
+        ;;
+    de*)
+        questiontxt="Was möchten Sie tun ?"
+		scalemsg="Neue Größe <länge>x<höhe>"
+        tojpg="Konvertieren JPG"
+        topng="Konvertieren PNG"
+        togif="Konvertieren GIF"
+        resize="Größe ändern bild"
+        turnr="Nach rechts drehen"
+        turnl="Nach links drehen"
+        ;;
+    es*)
+        questiontxt="Qué quieres hacer ?"
+        scalemsg="Tamaño de escalar a <longitud> x <altura>"
+        tojpg="Convertir a JPG"
+        topng="Convertir a PNG"
+        togif="Convertir a GIF"
+        resize="Redimensionar"
+        turnr="Gire a la derecha"
+        turnl="Gire a la izquierda"
+        ;;
+esac
+
+if [ $# -eq 0 ]; then
+	echo "Nothing to do"
+	exit
+fi
+
+r=$(echo "$tojpg 
+$topng 
+$togif 
+$resize
+$turnr 
+$turnl" | dmenu -l ${l} \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "${questiontxt}")
+
+case $r in 
+    $tojpg ) 
+        for i in $@; do
+            gm convert -interlace line "$i" "${i%.*}.jpg"
+        done
+        ;;
+    $topng ) 
+        for i in $@; do
+            gm convert -interlace line "$i" "${i%.*}.png"
+        done
+        ;;
+    $togif ) 
+        for i in $@; do
+            gm convert -interlace line "$i" "${i%.*}.gif"
+        done
+        ;;
+    $resize ) 
+        imgsize=$(echo "100x100" | dmenu $DCOLORS -p "$scalemsg")
+        for i in $@; do
+            if [ -n "$imgsize" ]; then
+                gm convert -scale $imgsize "$i" "${i%.*}-$imgsize.${i##*.}" 
+            fi
+        done
+        ;;
+    $turnr ) 
+        for i in $@; do
+            gm convert -rotate 90 $i $i
+        done
+        ;;
+    $turnl ) 
+        for i in $@; do
+            gm convert -rotate -90 $i $i
+        done
+        ;;
+esac
+    
+IFS=$OLDIFS
+exit 0

@@ -8,15 +8,11 @@
 * FAQ to answer some specific needs: smb, cups ?
 * pixup copy url : xmessage ? xedit ? autre ?
 * port isotop-tools : .tgz ? 
-* write doc to use another wm
-* modify optimize script to use Graphicsmagic only : remove optipng
-* Tool to stream with youtube-dl
-* Test, test and test again.
+* write doc to install another wm
 * Doc for included scripts (optimize, setwall...)
 * fix setwalls cript to remove white background
 * Add CONTRIBUTING file
 * Add custom actions in pcmanfm (rotate image, resize...) https://wiki.lxde.org/en/PCManFM#Run_as_root
-* openbsd-backgrounds port ?
 * documenter scripts dmenu...
 
 

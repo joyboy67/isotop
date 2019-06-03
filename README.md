@@ -37,6 +37,8 @@ isotop specific configuration
   <https://marc.info/?l=openbsd-misc&m=152872551609819&w=2>)
 * Alt_L is mapped as Esc for vi users :)
 * Translations are included : english and french for now.
+* A few scripts and tools are included in /usr/local/share/isotop/bin
+  and set up in your PATH.
 
 Why this name ?
 ---------------

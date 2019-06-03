@@ -3,6 +3,7 @@
 # licence :     MIT
 
 # Description : send dmesg to dmesg@openbsd.org
+# Depends : dmenu
 
 case $LANG in
 	fr_FR*)
@@ -26,9 +27,17 @@ ex : Dell XPS M1330, SD card not working, everything else works."
 	;;
 esac
 
-SUBJECT="$(zeniTK --entry --title "dmesg@openbsd.org" --text "$TXT_SUBJECT")"
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+dmenucmd='dmenu -l ${l} 
+-fn "${fn}" 
+-nb "${nb}" 
+-nf "${nf}" 
+-sb "${sb}" 
+-sf "${sf}"'
+
+SUBJECT="$(echo "$TXT_SUBJECT" | eval $dmenucmd )"
 if [ -n "$SUBJECT" ]; then
-	REALMAIL="$(zeniTK --entry --title "dmesg@openbsd.org" --text "$TXT_REALMAIL")"
+	REALMAIL="$(echo "$TXT_REALMAIL" | eval $dmenucmd )"
 else
 	exit
 fi
@@ -37,9 +46,9 @@ if [ -n "$SUBJECT" -a -n "$REALMAIL" ]; then
 	echo "Sending dmesg"
 	(dmesg; sysctl hw.sensors) | mail -r "$REALMAIL" -s "$SUBJECT" dmesg@openbsd.org
 	if [ $? -eq 0 ]; then
-		zeniTK --info --title "dmesg@openbsd.org" --text "$TXT_THX"
+		notify-send "$TXT_THX"
 	else
-		zeniTK --error --title "dmesg@openbsd.org" --text "$TXT_ERR"
+		notify-send "$TXT_ERR"
 	fi
 fi
 

@@ -3,59 +3,75 @@
 # licence :     MIT
 
 # Description : configure xenodm
-# Depends : zeniTK
+# Depends : dmenu
 
-WIDTH=400
-HEIGHT=300
-DEFAULTBG=/opt/isotop/walls/loginbg.jpg
+defaultbg=/usr/local/share/isotop/walls/loginbg.jpg
 
-TITLE="Xenodm configuration"
-QUESTION="What do you wan't to configure?"
-TXT_CHGBG="Choose background image"
-TXT_RDMBG="Choose random background image directory"
-TXT_AUTOLOGIN="Set up autologin"
-TXT_DISABLEAUTOLOGIN="Disable autologin"
-TXT_AUTOLOGIN_WARN="Enter username to automatically log in.
-Warning, this leaves your machine open to the world"
+title="Xenodm configuration"
+question="What do you wan't to configure?"
+txt_chgbg="Choose background image"
+txt_rdbmg="Choose random background image directory"
+txt_disableautologin="Disable autologin"
+txt_autologin="Set up autologin. Warning, this leaves your machine open to the world"
 
 
 case $LANG in
 	fr*)
-		TITLE="Configuration de Xenodm"
-		QUESTION="Que souhaitez-vous configurer ?"
-		TXT_CHGBG="Choisir l'image d'arrière-plan"
-		TXT_RDMBG="Choisir un répertoire contenant les arrières-plans choisis au hasard"
-		TXT_AUTOLOGIN="Activer la connexion automatique"
-		TXT_DISABLEAUTOLOGIN="Désactiver la connexion automatique"
-		TXT_AUTOLOGIN_WARN="Entrez le nom de l'utilisateur à connecter automatiquement.
-Attention, cela laisse votre ordinateur ouvert pour tous."
+		title="Configuration de Xenodm"
+		question="Que souhaitez-vous configurer ?"
+		txt_chgbg="Choisir l'image d'arrière-plan"
+		txt_rdbmg="Choisir un répertoire contenant les arrières-plans choisis au hasard"
+		txt_disableautologin="Désactiver la connexion automatique"
+		txt_autologin="Activer la connexion automatique. Attention, cela laisse votre ordinateur ouvert pour tous."
         ;;
 esac
 
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
 
-RES=$(zeniTK --width $WIDTH --height $HEIGHT --text "$QUESTION" --list "$TXT_CHGBG" "$TXT_RDMBG" "$TXT_AUTOLOGIN" "$TXT_DISABLEAUTOLOGIN")
+res=$(echo "$txt_chgbg
+$txt_rdbmg
+$txt_autologin
+$txt_disableautologin" |\
+	dmenu -l ${l} \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "$question") 
 
-case "$RES" in
-	"$TXT_CHGBG") 
-		BG=$(zeniTK --file-selection --file-filter "*JPG | *.jpg")
-		if [ -f "$BG" ]; then
-			cp "$BG" "$DEFAULTBG"
+case "$res" in
+	"$txt_chgbg") 
+		bg=$(find $HOME -type f -iname "*.jpg" |\
+			dmenu -l ${l} \
+			-fn "${fn}" \
+			-nb "${nb}" \
+			-nf "${nf}" \
+			-sb "${sb}" \
+			-sf "${sf}" \
+			-p "image ?") 
+		if [ -f "$bg" ]; then
+			cp "$bg" "$defaultbg"
 		fi
 		;;
-	"$TXT_RDMBG") 
-		BGDIR=$(zeniTK --directory --file-selection)
-		if [ -d "$BGDIR" ]; then
-			sed -i "s;WALLDIR=.*$;WALLDIR=$BGDIR;" /etc/X11/xenodm/Xsetup_0
+	"$txt_rdbmg") 
+		bgdir=$(echo "" |\
+			dmenu -l ${l} \
+			-fn "${fn}" \
+			-nb "${nb}" \
+			-nf "${nf}" \
+			-sb "${sb}" \
+			-sf "${sf}" \
+			-p "path ?") 
+		if [ -d "$bgdir" ]; then
+			sed -i "s;WALLDIR=.*$;WALLDIR=$bgdir;" /etc/X11/xenodm/Xsetup_0
 		fi
 		;;
-	"$TXT_AUTOLOGIN") 
-		U=$(zeniTK --entry --text "$TXT_AUTOLOGIN_WARN")
-		if [ -n "$U" ]; then
-			sed -i "s/DisplayManager._0.autoLogin:.*$//" /etc/X11/xenodm/xenodm-config
-			echo "DisplayManager._0.autoLogin:    $U" >> /etc/X11/xenodm/xenodm-config
-		fi
+	"$txt_autologin") 
+		sed -i "s/DisplayManager._0.autoLogin:.*$//" /etc/X11/xenodm/xenodm-config
+		echo "DisplayManager._0.autoLogin:    $USER" >> /etc/X11/xenodm/xenodm-config
 		;;
-	"$TXT_DISABLEAUTOLOGIN") 
+	"$txt_disableautologin") 
 		sed -i "s/DisplayManager._0.autoLogin:.*$//" /etc/X11/xenodm/xenodm-config
 		;;
 esac
