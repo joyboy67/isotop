@@ -55,7 +55,15 @@ do_need_update() {
 manpage_choose() {
 	test -s $HOME/.dmenurc && . $HOME/.dmenurc
 	locate -b -d "${mandb}" . |sed 's,.*/,,;/mandoc.db/d' \
-	|dmenu $COLORS -p 'Man page : ' |uniq
+	| dmenu -l ${l} \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "Man page : " |uniq
+
+
 }
 
 manpage_show() {
