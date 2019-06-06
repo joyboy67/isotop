@@ -31,7 +31,7 @@ esac
 
 genhtml() {
     # create an html page
-    TEMP="$(mktemp)"
+    TEMP="$(mktemp).html"
     echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">" >> $TEMP 
     echo '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">' >> $TEMP
     echo '<head>' >> $TEMP

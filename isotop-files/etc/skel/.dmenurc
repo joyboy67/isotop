@@ -1,9 +1,6 @@
-NB="#000"
-NF="#fff"
-SF="#000"
-SB="#6a96ca"
-L=15
-
-FN="Hack-9"
-DCOLORS="-fn $FN -nb $NB -nf $NF -sb $SB -sf $SF"
-
+nb="#000"
+nf="#fff"
+sf="#000"
+sb="#6a96ca"
+l=15
+fn="DejaVuSans-12"

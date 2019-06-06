@@ -1,0 +1,33 @@
+# How to contribute ?
+
+First, thank you :)
+
+
+## Using git
+
+1. Clone the repository
+2. Create a new branch
+3. Apply your changes
+4. Create a new pull request
+
+## About dmenu
+
+[dmenu](https://tools.suckless.org/dmenu/) is preferred for menus and
+scripts.
+
+As much as possible, try to : 
+
+- Load user configuration located in ``$HOME/.dmenurc`` this way : 
+
+	test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+- Call dmenu following this example : 
+
+	dmenu -l ${l} \
+		-fn "${fn}" \
+		-nb "${nb}" \
+		-nf "${nf}" \
+		-sb "${sb}" \
+		-sf "${sf}" \
+		-p "${PROMPT}")
+
