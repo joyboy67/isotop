@@ -1,0 +1,148 @@
+.Dd $Mdocdate$
+.Dt isotop FAQ
+.OS
+.Sh NAME
+.Nm isotop
+.Nd a simple, fun (?) and pre-configured OpenBSD.
+
+.Sh DESCRIPTION
+.Nm 
+is a script to configure OpenBSD into a great desktop.
+As much as possible, tools included in base installation are used.
+Therefore, some choice have been made to focus on simplicity and
+efficiency.
+
+.Sh FAQ
+.Ss Where is my desktop ?
+In front of your eyes.
+The default window manager in isotop is
+.Xr cwm 5
+Its simplicity help to focus and be
+efficient.
+Before installing another window manager or desktop environment, give
+cwm a try. We tried to make is nice to use 
+(see 
+.Sx How to use my desktop ?
+).
+
+.Ss What are the differences with a vanilla OpenBSD ?
+.Bl -bullet
+.It 
+.Xr unwind 8
+is configured as default domain name resolver.
+.It 
+A script called unwind-block is used to adblock some domains. It updates
+the "bad domains" list weekly and is called with 
+.Pa
+/etc/rc.local
+See
+.Sx What does unwind-block do ?
+.It
+Customized message in 
+.Pa /etc/boot.conf
+.It
+.Xr hotplugd 8
+is configured to automount your USB strick in /vol. A link is available
+in your $HOME directory.
+.It
+Enabled services : hotplugd, messagebus, cups, xenodm, unwind.
+.It
+Disable ulpt for USB printers. This happens in rc.shutdown to enjoy
+KARL at reboot. 
+See 
+.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 this thread
+.It
+ntpd configuration does'nt use google as a constraints
+.It
+Xenodm appearance is configured and configurable with a script called
+xenodm-config.
+.It 
+Additional packages are installed
+See 
+.Pa /usr/local/share/isotop/data/packages
+.It
+doas is configured to avoid entering password for some commands. See
+.Pa /etc/doas.conf
+.It
+.Xr cwm 5
+is the default window manager. It is pre-configured and shipped
+with various script to ease window management for non-keyboard users.
+.It
+iridium is the default browser. Are disabled every option related to
+google and tracking. It is unveiled by default :
+this means the browser can\(cqt read files on your computer except in
+\(ti/Downloads. It keeps your ssh keys and passwords in configuration
+files safes. 
+Firefox is also making calls to google and can\(cqt be unveiled for now 
+(see
+.Lk https://marc.info/?l=openbsd-misc&m=152872551609819&w=2 this thread
+)
+.It
+Alt-L is mapped as Esc for vi users :)
+.It 
+Translations are included : english and french for now.
+.It 
+A few scripts and tools are included in 
+.Pa /usr/local/share/isotop/bin
+and available in your 
+.Ev PATH
+.No .
+See 
+.Sx What scripts are shipped ?
+.It
+.Pa $HOME/.aliases 
+and 
+.Pa $HOME/.functions 
+are filled with some (useful ?) stuff.
+.It
+$HOME/.kshrc contains some autocompletion for OpenBSD.
+.El
+
+.Ss Why this name ?
+
+At first, isotop was a iso file containing all packages and
+configuration for intallation.
+Now it\(cqs just a script to configure a vanilla OpenBSD.
+
+.Pp
+Like an isotope it is a
+variant of OpenBSD with a few more things inside, but still OpenBSD.
+
+.Ss Can I install another web browser ?
+
+Of course.
+Firefox and chromium, amongst others, are available in ports.
+However, we choosed iridium because it is unveiled, meaning it can\(cqt access your personal files that might
+contains password or ssh keys and it is more privacy friendly than chromium.
+
+.Ss Can I install another desktop environment ?
+Of course.
+
+Gnome, kde, lxde, xfce and more are availables for OpenBSD via ports.
+
+.Ss What does unwind-block do ?
+
+In order to save your bandwidth and filter ads without any browser
+addon, a script called unwind-block is executed at boot (see
+.Pa /etc/rc.local
+)
+
+Every 7 days, the script download a list of bad domains and record
+them in 
+.Pa /var/unwind.block
+Thus, unwind can choose not to resolve
+them.
+If you try to access one of these domains (why?), you\(cqll get an error.
+
+.Sh How to use my desktop 
+
+FIXME
+
+.Sh What scripts are shipped ?
+
+.Ss BUGS
+Of course.
+
+Please report them to 
+.An prx 
+.Mt prx@ybad.name
