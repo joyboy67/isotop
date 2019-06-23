@@ -96,6 +96,8 @@ and
 are filled with some (useful ?) stuff.
 .It
 $HOME/.kshrc contains some autocompletion for OpenBSD.
+.It
+A random wallpaper is set a each session.
 .El
 
 .Ss Why this name ?
@@ -104,7 +106,6 @@ At first, isotop was a iso file containing all packages and
 configuration for intallation.
 Now it\(cqs just a script to configure a vanilla OpenBSD.
 
-.Pp
 Like an isotope it is a
 variant of OpenBSD with a few more things inside, but still OpenBSD.
 
@@ -132,13 +133,147 @@ them in
 .Pa /var/unwind.block
 Thus, unwind can choose not to resolve
 them.
-If you try to access one of these domains (why?), you\(cqll get an error.
+If you try to access one of these domains (why?), you\(cqll get a
+message
+.Dq website unavailable
 
-.Sh How to use my desktop 
+.Sh How to use my desktop ?
+
+.Ss Beginning
+
+At first, the desktop is empty.
+
+Right-click on the background to see the application menu and select, by
+example, xterm. You can also press Alt-p to show 
+.Cm dmenu 
+and type 
+.Dq xterm
+then press return.
+
+You can drag the window by pressing Alt and left-clicking on the window
+to move it around. 
+
+To resize the window, press Alt and left-click.
+
+You probably don't need to move and resize windows but to see maximized
+instead, or hide it. Right-click on the desktop or on a window border to
+see shortcuts to :
+
+.Bl -bullet
+.It
+Minimize
+.It 
+Maximize
+.It 
+Close
+.It 
+Show desktop
+.It 
+Show group assing menu
+.El
+
+Then, click on the target window.
+
+.Ss Bindings
+
+Keyboard and mouse bindings are 
+.Xr cwm 1 
+defaults. 
+
+Some other are added : 
+
+.Bl -bullet
+.It
+Alt-F4 : close window
+.It
+Alt-Shift-h/j/k/l : move window to the left/bottom/top/right of the
+screen.
+.It
+Alt-t and Alt-Shift-t : tile windows
+.It
+Alt-Space and Alt-Shift-Space : cycle through groups.
+.It
+Alt-p : shown dmenu to start application
+.It
+Alt-f : show window menu
+.El
+
+See
+.Xr cwmrc 5
+to customize according your needs.
+
+.Ss Mouse bindings
+
+You can popup menus by clicking on the desktop or on the border of a
+window (quite big by default).
+
+.Bl -bullet
+.It
+Right click : Application menu. you can start an application or deal
+with you windows.
+.It
+Middle click : group menu : show active group to toggle visibility of
+groups.
+.It
+Left click : window menu, to select a window.
+.It 
+Scroll on the background to change volume.
+.It 
+Alt + Left click : resize window
+.It 
+Alt + Right click : drag window
+.El
+
+
+.Ss About window menu
+
+The window menu looks like this : 
+
+.Bd -literal
+(4) ![] window name
+(4)  [] other window name
+(2) &[] another window name
+(1) &[] again a window name
+.Ed
+
+Between parenthesis, the group assigned to the window.
+
+! means the window is selected.
+& means the window is hidden.
+
+.Ss About workspaces
+
+There are no workspaces. They are just a way to increase the size of the
+screen, and if you need a bigger screen, the window manager is probably
+wrong somewhere.
+Instead, cwm uses 
+.Em groups
+\(.
+You can choose to show one ore more grouped windows depending on your
+needs.
+
+You can automatically assign a group to a window in 
+.Pa $HOME/.cwmrc
+or you can use the 
+.Cm dgroupwin
+to assing a group to a window.
+
+At any time, a middle click on the desktop will shoiw the group menu to
+toggle the visibility of active groups.
+
+.Sh About dmenu
+Tools included use dmenu.
+
+It is a menu printed at the top of your screen.
+Write what you need, on only part of it, then press return to select.
+Escape exit dmenu.
+
+See 
+.Lk https://tools.suckless.org/dmenu/ dmenu website
+
+.Sh What scripts are included ?
 
 FIXME
-
-.Sh What scripts are shipped ?
 
 .Ss BUGS
 Of course.
