@@ -1,0 +1,35 @@
+#!/bin/sh
+# dmenu alarm
+# Author:      prx <prx@ybad.name>
+# licence:     MIT
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+prompttime=10
+case $LANG in
+    fr* ) promptreason="Alarme: " ;;
+	* ) promptreason="Alarm: " ;;
+esac
+
+reason=$(echo "" | dmenu \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "${promptreason}" )
+
+min=$(echo "" | dmenu \
+	-l ${l} \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "min:" )
+
+[ -z $min ] && exit
+sec=$(( $min * 60 ))
+sleep $sec
+
+notify-send "$reason"
