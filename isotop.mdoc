@@ -98,6 +98,8 @@ are filled with some (useful ?) stuff.
 $HOME/.kshrc contains some autocompletion for OpenBSD.
 .It
 A random wallpaper is set a each session.
+.It
+The file browser is pcmanfm. It is configured to have custom actions (edit image, upload a file...).
 .El
 
 .Ss Why this name ?
@@ -197,6 +199,12 @@ Alt-F4 : close window
 Alt-Shift-h/j/k/l : move window to the left/bottom/top/right of the
 screen.
 .It
+Alt-s : start 
+.Cm dsch 
+.It
+Alt-x : start
+.Cm dfm 
+.It
 Alt-t and Alt-Shift-t : tile windows
 .It
 Alt-Space and Alt-Shift-Space : cycle through groups.
@@ -287,13 +295,15 @@ Write what you need, on only part of it, then press return to select.
 See 
 .Lk https://tools.suckless.org/dmenu/ dmenu website
 
-.Sh Where are isotop files stored
+.Sh Where are isotop files stored ?
 
 .Pa /usr/local/share/isotop
 
 .Sh What scripts are included ?
 
 .Bl -bullet
+.It
+dfm : a file launcher using dmenu.
 .It
 dgroupwin : select a window and assign a group
 .It
@@ -366,12 +376,24 @@ rdmwall : set a random wallpaper. Backgrounds are searched in :
 ;
 .Pa /usr/local/share/openbsd-backgrounds/pictures from
 openbsd-backgrounds port.
-
+.It
+scrot : take a screenshot, saved in $HOME
+.It
+scrotup : take a screenshot with scrot and upload with pixup
+.It
+send_dmesg.sh : send your dmesg to OpenBSd developers to help hardware supporte.
+.It
+setwall : set desktop background.
+.It
+tkmenu : a launcher callable if you let your mouse pointer at the bottom left border of the screen.
+Edit 
+.Pa $HOME/.tkmenu
+to suit your needs
+.It
+web : a wrapper to start a web browser.
+.It
+xenodm-config : edit xenodm configuration and appearance.
 .El
-
-
-
-FIXME
 
 .Sh BUGS
 Of course.

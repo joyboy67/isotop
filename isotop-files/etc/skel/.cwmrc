@@ -7,7 +7,7 @@ color menufg "#6a96ca"
 color urgencyborder "#ffb6b0"
 
 borderwidth 2
-gap 1 1 1 1     # 1px margin
+gap 0 0 0 0     # no margin
 fontname "DejaVu Sans Mono:pixelsize=14"
 
 # Options
@@ -67,6 +67,10 @@ bind-key M-p 'dmenu_run_i'
 # Find window
 bind-key M-f menu-window
 # label with M-C-n
+
+# shortcuts
+M-s dsch
+M-x dfm
 
 # MENU
 command " ___CWMWINMENU" ""

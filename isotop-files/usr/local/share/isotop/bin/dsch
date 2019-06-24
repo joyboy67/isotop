@@ -3,25 +3,24 @@
 # If any text is selected, it is directly pasted at input
 
 #dmenu colors
-. ~/.dmenurc
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
 # prompt
 P="engine <search>:"
 
 # web browser
 BROWSER="web"
-# Moteur de recherche par défaut
-#DEFAULT="https://duckduckgo.com/?kh=1&q="
+
+DEFAULT="https://duckduckgo.com/?kh=1&q="
 #DEFAULT="https://lite.qwant.com/?l=fr&h=1&hc=0&a=1&s=0&b=1&i=1&r=FR&sr=fr&q="
 #DEFAULT="https://framabee.org/?q="
-#DEFAULT="https://eu.ixquick.com/do/metasearch.pl?prf=c37b0be54bf60dc6d88009f5491dcc4a&query="
-DEFAULT="https://www.qwant.com/?q="
+#DEFAULT="https://www.qwant.com/?r=FR&sr=fr&l=fr_fr&h=1&s=0&a=1&b=1&hc=0&smartNews=0&smartVideos=1&smartSocial=0&i=1&q="
 
-INPUT=$(echo "ixquick
-qwant
+INPUT=$(echo "qwant
 duckduckgo
 obsdmisc
 obsdports
 wiki
+wikien
 dic
 synonyme
 youtube
@@ -29,18 +28,18 @@ en2fr
 fr2en
 amazon
 google
-image" |dmenu -i -fn $FN -nb $NB -nf $NF -sb $SB -sf $SF -p "$P")
+image" |dmenu -i -fn $fn -nb $nb -nf $nf -sb $sb -sf $sf -p "$P")
 ENGINE=$(echo $INPUT |cut -d ' ' -f 1 )
 SEARCH=$(echo $INPUT |cut -d ' ' -f2- |sed 's/ /+/g')
 if [ -n "$SEARCH" ]; then
    case $ENGINE in
-      ix | ixquick ) RES="https://eu.ixquick.com/do/metasearch.pl?query=$SEARCH" ;;
       qwant) RES="https://www.qwant.com/?q=$SEARCH&t=all" ;;
-      d | duckduckgo) RES="https://duckduckgo.com/html/q=$SEARCH";;
+      d | duckduckgo) RES="https://duckduckgo.com/html/?kh=1&kl=fr-fr&ks=m&kj=kt&ky=-1&kad=fr_FR&q=$SEARCH";;
       obsdmisc ) RES="https://marc.info/?l=openbsd-misc&w=2&r=1&q=b&s=$SEARCH" ;;
       obsdports ) RES="https://marc.info/?l=openbsd-ports&w=2&r=1&q=b&s=$SEARCH" ;;
+      wiki)  RES="http://fr.wikipedia.org/w/index.php?title=Spécial%3ARecherche&search=$SEARCH&go=Lire" ;;
 	  i | image ) RES="https://www.qwant.com/?t=images&q=$SEARCH" ;;
-      wiki | w )  RES="http://en.wikipedia.org/w/index.php?title=Spécial%3ARecherche&search=$SEARCH&go=Lire" ;;
+      wikien | ew )  RES="http://en.wikipedia.org/w/index.php?title=Spécial%3ARecherche&search=$SEARCH&go=Lire" ;;
       dic )  RES="http://www.le-dictionnaire.com/definition.php?mot=$SEARCH" ;;
       syn | synonyme ) RES="http://www.synonymes.com/synonyme.php?mot=$SEARCH&x=0&y=0";;
       you | youtube ) RES="http://www.youtube.com/results?search_query=$SEARCH&aq=f" ;;

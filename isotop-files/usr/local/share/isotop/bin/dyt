@@ -11,7 +11,8 @@ url=$(xclip -o | dmenu -l ${l} \
 	-sb "${sb}" \
 	-sf "${sf}" \
 	-p "${prompt}")
-
-xterm -e youtube-dl "${url} && echo "...enter to exit" && read a" &
+if [ -n "$url" ]; then
+	xterm -e youtube-dl "${url} && echo "...enter to exit" && read a" &
+fi
 
 exit

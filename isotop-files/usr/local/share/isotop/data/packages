@@ -15,6 +15,8 @@ gnome-themes-standard
 gnuchess
 gtk+2-cups
 gtk+3-cups
+gtk+4-cups
+gtk-engines2
 gutenprint
 hack-fonts
 hotplug-diskmount
@@ -28,7 +30,7 @@ libdvdread
 liberation-fonts
 libreoffice
 libreoffice-i18n-fr
-minetest
+lynx
 mpv
 mupdf*
 netsurf
@@ -50,6 +52,7 @@ system-config-printer
 teeworlds
 thunderbird
 thunderbird-i18n-fr
+wesnoth
 xboard
 xcape
 xclip

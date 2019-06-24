@@ -10,8 +10,6 @@
 * port isotop-tools : .tgz ? 
 * write doc to install another wm
 * Doc for included scripts (optimize, setwall...)
-* fix setwalls cript to remove white background
-* Add CONTRIBUTING file
 * Add custom actions in pcmanfm (rotate image, resize...) https://wiki.lxde.org/en/PCManFM#Run_as_root
 * documenter scripts dmenu...
 * add .desktop files
@@ -27,5 +25,4 @@
 * Add tray for owi ?
 * owi : add auto-join
 * edbrowse for blind users ?
-
-
+* use solene's repos instead of openup
