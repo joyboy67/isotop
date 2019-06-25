@@ -26,3 +26,6 @@
 * owi : add auto-join
 * edbrowse for blind users ?
 * use solene's repos instead of openup
+
+## 6.6 
+* remove test in isotop.sh for unwind

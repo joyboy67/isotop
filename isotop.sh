@@ -10,6 +10,11 @@ if [ $(id -u) -ne 0 ]; then
 	echo "You must run this script with root privileges"
 	exit 1
 fi
+OBSDVER=$(uname -r | tr -d '.') # 65
+if [ $OBSDVER -lt 65 ]; then
+	echo "isotop support only OpenBSD > 6.5"
+	exit 1
+fi
 
 # TRADS
 lang=$(cat /etc/kbdtype)
@@ -91,7 +96,11 @@ sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" /etc/X11/xenodm/Xresources_isotop
 # unwind configuration
 echo "* Configure unwind DNS resolver"
 rcctl enable unwind
-touch /var/unwind.block
+if [ ${OBSDVER} -gt 65 ]; then
+	# FIXME : remove test after 6.6
+	touch /var/unwind.block
+	echo 'block list "/var/unwind.block"' > /etc/unwind.conf
+fi
 
 echo "* Configure dhclient"
 echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
