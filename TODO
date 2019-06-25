@@ -2,17 +2,12 @@
 
 ## Now
 
-* explanation to use cwm and isotop specific configuration : menus, key,
-  mouse...
-* choose ports wisely 
-* FAQ to answer some specific needs: smb, cups ?
-* pixup copy url : xmessage ? xedit ? autre ?
+* - thunderbird trad + claws-mail
 * port isotop-tools : .tgz ? 
-* write doc to install another wm
-* Doc for included scripts (optimize, setwall...)
 * Add custom actions in pcmanfm (rotate image, resize...) https://wiki.lxde.org/en/PCManFM#Run_as_root
-* documenter scripts dmenu...
 * add .desktop files
+* owi avec dmenu
+* choix wallpaper avec dmenu ?
 
 
 ## Later
@@ -26,6 +21,8 @@
 * owi : add auto-join
 * edbrowse for blind users ?
 * use solene's repos instead of openup
+* man pages for included scripts ?
 
 ## 6.6 
 * remove test in isotop.sh for unwind
+
