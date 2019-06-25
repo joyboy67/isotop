@@ -6,19 +6,18 @@
 * port isotop-tools : .tgz ? 
 * Add custom actions in pcmanfm (rotate image, resize...) https://wiki.lxde.org/en/PCManFM#Run_as_root
 * add .desktop files
-* owi avec dmenu
 * choix wallpaper avec dmenu ?
 
 
 ## Later
 
-* Rewrite python tools into tcl/Tk 
+* remove owi and write a dmenu wireless connexion manager (I don't have
+wifi...)
+* Rewrite python tools into tcl/Tk  ?
 * keep ffom ?
 * gdoas safe ?
 * opama cli ? (+ colors)
 
-* Add tray for owi ?
-* owi : add auto-join
 * edbrowse for blind users ?
 * use solene's repos instead of openup
 * man pages for included scripts ?
