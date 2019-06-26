@@ -2,13 +2,9 @@
 
 ## Now
 
-* add .desktop files
-
-
 ## Later
 
 * port isotop-tools : .tgz ? 
-* dwallpaper?
 * remove owi and write a dmenu wireless connexion manager (I don't have
 wifi...)
 * Rewrite python tools into tcl/Tk  ?

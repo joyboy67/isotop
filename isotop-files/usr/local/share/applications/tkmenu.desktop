@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Tkmenu
-Comment=Simple and quick menu
-Comment[fr]=Menu simple et rapide
-Exec=/usr/local/share/isotop/bin/tkmenu
-Icon=/usr/local/share/isotop/isotop/pixmaps/tkmenu.png
-Categories=Utility;
-Terminal=false
