@@ -1,16 +1,14 @@
 # TODO
 
 ## Now
+Translate doc to fr
 
 ## Later
 
 * port isotop-tools : .tgz ? 
-* remove owi and write a dmenu wireless connexion manager (I don't have
+* rewrite owi and write a dmenu wireless connexion manager (I don't have
 wifi...)
-* Rewrite python tools into tcl/Tk  ?
-* keep ffom ?
 * gdoas safe ?
-* opama cli ? (+ colors)
 
 * edbrowse for blind users ?
 * use solene's repos instead of openup
