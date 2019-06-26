@@ -1,11 +1,11 @@
 GraphicsMagick
+claws-mail-*
 cups
 cups-filters*
 cups-libs
 curl
 deadbeef
 dmenu
-dunst
 ffmpeg
 fira-fonts
 foomatic-db
@@ -50,8 +50,6 @@ sct
 simple-scan
 system-config-printer
 teeworlds
-thunderbird
-thunderbird-i18n-fr
 wesnoth
 xboard
 xcape

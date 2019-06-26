@@ -3,14 +3,15 @@
 ## Now
 
 * - thunderbird trad + claws-mail
-* port isotop-tools : .tgz ? 
 * Add custom actions in pcmanfm (rotate image, resize...) https://wiki.lxde.org/en/PCManFM#Run_as_root
 * add .desktop files
-* choix wallpaper avec dmenu ?
+* insert FAQ in cwm menu
 
 
 ## Later
 
+* port isotop-tools : .tgz ? 
+* dwallpaper?
 * remove owi and write a dmenu wireless connexion manager (I don't have
 wifi...)
 * Rewrite python tools into tcl/Tk  ?

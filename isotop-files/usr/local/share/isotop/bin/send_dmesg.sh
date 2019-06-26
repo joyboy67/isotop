@@ -46,9 +46,9 @@ if [ -n "$SUBJECT" -a -n "$REALMAIL" ]; then
 	echo "Sending dmesg"
 	(dmesg; sysctl hw.sensors) | mail -r "$REALMAIL" -s "$SUBJECT" dmesg@openbsd.org
 	if [ $? -eq 0 ]; then
-		notify-send "$TXT_THX"
+		 xmessage -center "$TXT_THX"
 	else
-		notify-send "$TXT_ERR"
+		xmessage -center "$TXT_ERR"
 	fi
 fi
 

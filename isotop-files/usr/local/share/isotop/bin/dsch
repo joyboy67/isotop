@@ -15,8 +15,9 @@ DEFAULT="https://duckduckgo.com/?kh=1&q="
 #DEFAULT="https://framabee.org/?q="
 #DEFAULT="https://www.qwant.com/?r=FR&sr=fr&l=fr_fr&h=1&s=0&a=1&b=1&hc=0&smartNews=0&smartVideos=1&smartSocial=0&i=1&q="
 
-INPUT=$(echo "qwant
-duckduckgo
+INPUT=$(echo "duckduckgo
+qwant
+openstreetmap
 obsdmisc
 obsdports
 wiki
@@ -33,8 +34,10 @@ ENGINE=$(echo $INPUT |cut -d ' ' -f 1 )
 SEARCH=$(echo $INPUT |cut -d ' ' -f2- |sed 's/ /+/g')
 if [ -n "$SEARCH" ]; then
    case $ENGINE in
-      qwant) RES="https://www.qwant.com/?q=$SEARCH&t=all" ;;
       d | duckduckgo) RES="https://duckduckgo.com/html/?kh=1&kl=fr-fr&ks=m&kj=kt&ky=-1&kad=fr_FR&q=$SEARCH";;
+      qwant) RES="https://www.qwant.com/?q=$SEARCH&t=all" ;;
+	  osm | openstreetmap ) RES="https://www.openstreetmap.org/search?query=$SEARCH"
+	  ;;
       obsdmisc ) RES="https://marc.info/?l=openbsd-misc&w=2&r=1&q=b&s=$SEARCH" ;;
       obsdports ) RES="https://marc.info/?l=openbsd-ports&w=2&r=1&q=b&s=$SEARCH" ;;
       wiki)  RES="http://fr.wikipedia.org/w/index.php?title=Spécial%3ARecherche&search=$SEARCH&go=Lire" ;;

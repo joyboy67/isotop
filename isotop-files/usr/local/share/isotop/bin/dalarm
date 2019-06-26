@@ -32,4 +32,4 @@ min=$(echo "" | dmenu \
 sec=$(( $min * 60 ))
 sleep $sec
 
-notify-send "$reason"
+xmessage -center -timeout 10 "$reason"
