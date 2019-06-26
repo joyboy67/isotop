@@ -81,11 +81,12 @@ command "   =  ___CWMGROUPWIN " "dgroupwin"
 command "  [ ] ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
 command " ___CWMSHORTCUTS" ""
 command "   ▸ ___CWMWEB " web 
-command "   ▸ ___CWMMAILS " thunderbird 
+command "   ▸ ___CWMMAILS " claws-mail 
 command "   ▸ ___CWMFILES " pcmanfm
 command "   ▸ ___CWMOFFICE " libreoffice
 command "   ▸ ___CWMMUSIC " deadbeef
 command "   ▸ ___CWMXTERM " xterm
+command "   ▸ man isotop " xterm -rv -e man isotop
 command " ___CWMSESSION" ""
 command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR $HOME/.cwmrc'"
 command "   . ___CWMLOCK " 'xscreensaver-command -lock'
