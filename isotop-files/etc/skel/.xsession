@@ -28,7 +28,7 @@ xcape -e 'Alt_L=Escape' &
 # Auto-lock the screen
 xidle -timeout 900 -program "/usr/X11R6/bin/xlock -mode space" &
 # screen corners start menu 
-xdotool behave_screen_edge --delay 800 bottom-left exec tkmenu &
+xdotool behave_screen_edge --delay 800 bottom-left exec jgmenu_run &
 
 # start cwm. No & here
 cwm
