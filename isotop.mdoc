@@ -24,15 +24,30 @@ cwm a try. We tried to make is nice to use
 (see 
 .Sx How to use my desktop ?
 ).
+.Ss How can I configure WiFi ?
+Read
+.Xr hostname.if 5
+and
+.Lk https://www.openbsd.org/faq/faq6.html#Wireless FAQ-Wireless
+A tool will be included in next version of isotop to ease this task.
+.Ss How can I add/remove packages ?
+A link to pkg_mgr is in cwm menu.
+
+Else, read
+.Lk https://www.openbsd.org/faq/faq15.html FAQ-Package management
 
 .Ss What notification daemon can I use?
 You can install dunst and add in 
 .Pa $HOME/.xsession
 .Dl dunst &
-.Ss Why cmus is the default music player
+.Ss Why cmus is the default music player ?
 It is light, don't need huge dependencies. It is hackable, and even
 usable with the mouse if you don't like keyboard. You cas of course
 install any other music player you might prefer.
+.Ss How to exit cmus without closing it ?
+If you start cmus with cwm root menu, it is started in tmux, so it can be detached or opened in
+multiple terminals.
+To detach, press "ctrl-b" then "d".
 .Ss What are the differences with a vanilla OpenBSD ?
 .Bl -bullet
 .It 
@@ -367,20 +382,11 @@ imgopti : optimize an image to reduce its size.
 .It
 networkcheck : check internet access
 .It
-opama : graphical package manager
-.It
 openbsdupgrade : upgrade to last -stable changes with
 .Xr syspatch 8
 .Xr fw_update 1
 and 
 .Lk https://www.mtier.org/solutions/apps/openup/ openup
-.It
-ovol : change volume
-.It
-owi : wifi manager. You might prefer edit 
-.Xr hostname.if 5
-by hand since it's now very easy. owi is still here, waiting to be
-upgraded.
 .It
 pixcol : show the html color code under the pointer 
 .It

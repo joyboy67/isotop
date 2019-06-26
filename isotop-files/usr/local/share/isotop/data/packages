@@ -1,5 +1,6 @@
 GraphicsMagick
 claws-mail-*
+cmixer
 cmus
 cups
 cups-filters*
@@ -44,8 +45,6 @@ optipng
 p7zip
 paper-icon-theme
 pcmanfm
-py3-Pillow
-python-tkinter-3.7*
 roboto-fonts
 sct
 simple-scan

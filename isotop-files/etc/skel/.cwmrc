@@ -85,7 +85,9 @@ command "   ▸ ___CWMMAILS " claws-mail
 command "   ▸ ___CWMFILES " pcmanfm
 command "   ▸ ___CWMOFFICE " libreoffice
 command "   ▸ ___CWMMUSIC " xterm -e cmus-in-tmux
+command "   ▸ ___CWMMIXER " xterm -e cmixer
 command "   ▸ ___CWMXTERM " xterm
+command "   ▸ ___CWMPKGMGR " gdoas pkg_mgr
 command "   ▸ man isotop " xterm -rv -e man isotop
 command " ___CWMSESSION" ""
 command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR $HOME/.cwmrc'"
