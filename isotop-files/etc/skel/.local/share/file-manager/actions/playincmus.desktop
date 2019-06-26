@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name = Play in cmus 
+Name[fr]=Jouer dans cmus 
+Icon = music-player
+Profiles = on_music;
+
+[X-Action-Profile on_music]
+Name = Play in cmus 
+Name[fr]=Jouer dans cmus 
+MimeTypes = audio/*;inode/directory;
+Exec = playincmus %f

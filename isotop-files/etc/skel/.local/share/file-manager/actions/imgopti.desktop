@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name = Optimize 
+Name[fr]=Optimize 
+Tooltip = Optimize image
+Tooltip[fr] = Optimiser l'image
+Icon = image
+Profiles = on_image;
+
+[X-Action-Profile on_image]
+Name = Optimize
+Name[fr]=Optimier 
+MimeTypes = image/*;
+Exec = imgopti %F

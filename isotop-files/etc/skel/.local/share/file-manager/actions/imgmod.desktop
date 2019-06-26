@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name = Modify 
+Name[fr]=Modifier 
+Tooltip = Modify the image
+Tooltip[fr] = Modifier l'image
+Icon = image
+Profiles = on_image;
+
+[X-Action-Profile on_image]
+Name = Modify 
+Name[fr]=Modifier 
+MimeTypes = image/*;
+Exec = imgmod %F

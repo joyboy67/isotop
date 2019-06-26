@@ -69,23 +69,24 @@ $turnl" | dmenu -l ${l} \
 	-sf "${sf}" \
 	-p "${questiontxt}")
 
-case $r in 
-    $tojpg ) 
+
+case "$r" in 
+    $tojpg* ) 
         for i in $@; do
             gm convert -interlace line "$i" "${i%.*}.jpg"
         done
         ;;
-    $topng ) 
+    $topng* ) 
         for i in $@; do
             gm convert -interlace line "$i" "${i%.*}.png"
         done
         ;;
-    $togif ) 
+    $togif* ) 
         for i in $@; do
             gm convert -interlace line "$i" "${i%.*}.gif"
         done
         ;;
-    $resize ) 
+    $resize* ) 
         imgsize=$(echo "100x100" | dmenu $DCOLORS -p "$scalemsg")
         for i in $@; do
             if [ -n "$imgsize" ]; then
@@ -93,12 +94,12 @@ case $r in
             fi
         done
         ;;
-    $turnr ) 
+    $turnr* ) 
         for i in $@; do
             gm convert -rotate 90 $i $i
         done
         ;;
-    $turnl ) 
+    $turnl* ) 
         for i in $@; do
             gm convert -rotate -90 $i $i
         done

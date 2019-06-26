@@ -1,0 +1,9 @@
+#!/bin/sh
+# add and play in cmus
+
+if [ ! -e "$1" ]; then
+    exit
+fi
+
+cmus-remote -C "a $1"
+cmus-remote -C "player-play $1"

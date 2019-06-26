@@ -3,8 +3,8 @@
 WALLSETTER="setwall" # feh --bg-scale, bgs or any
 
 DIRS="$HOME/Images/Wallpapers
-/usr/local/share/openbsd-backgrounds/pictures
-/usr/local/share/isotop/walls
+/usr/local/share/isotop/walls/
+/usr/local/share/openbsd-backgrounds/landscape
 "
 
 getrdmwall() {
@@ -15,4 +15,8 @@ for D in $DIRS; do
 done | sort -R | head -n 1
 }
 
-$WALLSETTER "$(getrdmwall)"
+img=""
+while [ ! -f "${img}" ]; do
+	img="$(getrdmwall)"
+done
+$WALLSETTER "${img}"

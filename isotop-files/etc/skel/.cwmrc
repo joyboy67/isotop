@@ -84,7 +84,7 @@ command "   ▸ ___CWMWEB " web
 command "   ▸ ___CWMMAILS " claws-mail 
 command "   ▸ ___CWMFILES " pcmanfm
 command "   ▸ ___CWMOFFICE " libreoffice
-command "   ▸ ___CWMMUSIC " deadbeef
+command "   ▸ ___CWMMUSIC " xterm -e cmus
 command "   ▸ ___CWMXTERM " xterm
 command "   ▸ man isotop " xterm -rv -e man isotop
 command " ___CWMSESSION" ""
