@@ -232,11 +232,11 @@ Alt-x : start
 .It
 Alt-t and Alt-Shift-t : tile windows
 .It
-Alt-Space and Alt-Shift-Space : cycle through groups.
-.It
 Alt-p : shown dmenu to start application
 .It
 Alt-f : show window menu
+.It
+Alt-g : assing a new group to focused window
 .El
 
 See
@@ -278,13 +278,14 @@ The window menu looks like this :
 (4) ![] window name
 (4)  [] other window name
 (2) &[] another window name
-(1) &[] again a window name
+(1) &[foo] again a window name
 .Ed
 
 Between parenthesis, the group assigned to the window.
 
-.D1 ! means the window is selected.
+.D1 ! means the window is focused.
 .D1 & means the window is hidden.
+.D1 [foo] : the window get the label "foo" with Ctrl-alt-n shortcut
 
 .Ss About workspaces
 
@@ -419,3 +420,10 @@ Of course.
 Please report them to 
 .An prx 
 .Mt prx@ybad.name
+
+.Sh SEE ALSO
+
+.Xr cwm 1
+.Xr cwmrc 5
+.Xr dmenu 1
+

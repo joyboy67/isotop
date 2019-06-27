@@ -19,10 +19,7 @@ command lock "xlock -mode space"
 
 # Windows rules
 ignore "dmenu"
-ignore "Dunst"
 ignore "xclock"
-ignore "netwmpager"
-ignore "conky"
 
 # Groups, find them by clicking ong a window after running "xprop"
 # autogroup n "name,class"
@@ -52,10 +49,6 @@ bind-key MS-k window-snap-up
 bind-key MS-h window-snap-left
 bind-key MS-l window-snap-right
 
-# alt-space cycle groups
-bind-key M-space group-cycle
-bind-key MS-space group-rcycle
-
 # tiling !!!
 bind-key M-t window-vtile
 bind-key MS-t window-htile
@@ -65,8 +58,11 @@ bind-key M-F2 menu-exec
 # dmenu_run
 bind-key M-p 'dmenu_run_i' 
 # Find window
+# label with M-C-n to find window with this menu
 bind-key M-f menu-window
-# label with M-C-n
+# Send to group
+bind-key M-g "dgroupwin focused"
+
 
 # shortcuts
 M-s dsch

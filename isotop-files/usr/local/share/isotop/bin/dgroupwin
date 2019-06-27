@@ -1,13 +1,20 @@
 #!/bin/sh
 # send a window to a group
 # require dmenu and xdotool
+# usage : dgroupwin <without option> : select window.
+#         dgroupwin focused : use the focused window
 
 test -s $HOME/.dmenurc && . $HOME/.dmenurc
-WIN=$(xdotool selectwindow)
+if [ "$1" = "focused" ]; then
+	WIN=$(xdotool getactivewindow)
+else
+	WIN=$(xdotool selectwindow)
+fi
+WINNAME=$(xdotool getwindowname $WIN)
 CURGROUP=$(xdotool get_desktop_for_window $WIN)
-P="Group $CURGROUP > ?"
+P="[$WINNAME] in $CURGROUP > ?"
 GROUP="$(jot $(( $(xdotool get_num_desktops) - 1 )) | \
-    dmenu -fn $FN -sb $SB -sf $SF -nb $NB -nf $NF -l $L -p "$P")"
+    dmenu -fn ${fn} -sb ${sb} -sf ${sf} -nb ${nb} -nf ${nf} -l ${l} -p "$P")"
 
 test -z "$GROUP" && exit
 
