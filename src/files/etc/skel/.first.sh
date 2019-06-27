@@ -33,8 +33,9 @@ case $lang in
 		sed -i -e "s;___CWMOFFICE;Bureautique;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMUSIC;Musique;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMIXER;Volume;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMPKGMGR;Gestionnaire de paquets;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMXTERM;Terminal;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMPKGMGR;Gestionnaire de paquets;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMANISOTOP;man isotop-fr;" ${HOME}/.cwmrc
 
 		sed -i -e "s;___CWMSESSION;SESSION;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMEDITCONFIG;Configurer cwm;" ${HOME}/.cwmrc
@@ -69,6 +70,7 @@ case $lang in
 		sed -i -e "s;___CWMMUSIC;Music;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMIXER;Mixer;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMPKGMGR;pkg_mgr;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMANISOTOP;man isotop;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMXTERM;Term;" ${HOME}/.cwmrc
 
 		sed -i -e "s;___CWMSESSION;SESSION;" ${HOME}/.cwmrc
