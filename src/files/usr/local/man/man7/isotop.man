@@ -1,5 +1,5 @@
 .\" Automatically generated from an mdoc input file.  Do not edit.
-.TH "isotop" "FAQ" "June 25, 2019" "" "FAQ"
+.TH "isotop" "FAQ" "June 27, 2019" "" "FAQ"
 .nh
 .if n .ad l
 .SH "NAME"
@@ -20,12 +20,46 @@ The default window manager in isotop is
 cwm(5)
 Its simplicity help to focus and be
 efficient.
+.sp
 Before installing another window manager or desktop environment, give
 cwm a try. We tried to make is nice to use
 (see
 \fIHow to use my desktop\fR?
 ).
+.SS "How can I configure WiFi?"
+Read
+hostname.if(5)
+and
+\fIFAQ-Wireless\fR: \fBhttps://www.openbsd.org/faq/faq6.html#Wireless\fR
+A tool will be included in next version of isotop to ease this task.
+.SS "How can I add/remove packages?"
+A link to
+\fIpkg_mgr\fR
+is in cwm menu.
 .sp
+Else, read
+\fIPackage Managemen\fR: \fBhttps://www.openbsd.org/faq/faq15.html\fR
+https://www.openbsd.org/faq/faq15.html Package Management
+.sp
+.SS "What notification daemon can I use?"
+You can install
+\fIdunst\fR
+a
+nd add in
+\fI$HOME/.xsession\fR
+.RS 6n
+dunst &
+.RE
+.SS "Why cmus is the default music player?"
+It is light, don't need huge dependencies. It is hackable, and even
+usable with the mouse if you don't like keyboard. You cas of course
+install any other music player you might prefer.
+.SS "How to exit cmus without closing it?"
+If you start cmus with cwm root menu, it is started in
+tmux(1)
+, so it can be detached or opened in
+multiple terminals.
+To detach, press "ctrl-b" then "d".
 .SS "What are the differences with a vanilla OpenBSD?"
 .TP 4n
 \fB\(bu\fR
@@ -46,7 +80,9 @@ Customized message in
 .TP 4n
 \fB\(bu\fR
 hotplugd(8)
-is configured to automount your USB strick in /vol. A link is available
+is configured to automount your USB strick in
+\fI/vol\fR
+A link is available
 in your $HOME directory.
 .TP 4n
 \fB\(bu\fR
@@ -118,7 +154,8 @@ $HOME/.kshrc contains some autocompletion for OpenBSD.
 A random wallpaper is set a each session.
 .TP 4n
 \fB\(bu\fR
-The file browser is pcmanfm. It is configured to have custom actions (edit image, upload a file...).
+The file browser is pcmanfm. It is configured to have custom actions
+accessible with a right click (edit image, upload a file...).
 .PP
 .SS "Why this name?"
 At first, isotop was a iso file containing all packages and
@@ -159,184 +196,20 @@ message
 See and edit
 \fI$HOME/.xsession\fR
 .sp
-.SH "How to use my desktop?"
-.SS "Beginning"
-At first, the desktop is empty.
-.sp
-Right-click on the background to see the application menu and select, by
-example, xterm. You can also press Alt-p to show
-\fBdmenu\fR
-and type
-\(lqxterm\(rq
-then press return.
-Last, you can move the pointer to the bottom-left corner to popup
-tkmenu.
-.sp
-You can drag the window by pressing Alt and left-clicking on the window
-to move it around.
-.sp
-To resize the window, press Alt and left-click.
-.sp
-You probably don't need to move and resize windows but to see maximized
-instead, or hide it. All of this can be done with keystrokes thanks to
-cwm(1)
-but you might not remember them all the time. Right-click on the desktop or on a window border to
-see shortcuts :
-.sp
-.TP 4n
-\fB\(bu\fR
-Minimize
-.TP 4n
-\fB\(bu\fR
-Maximize
-.TP 4n
-\fB\(bu\fR
-Close
-.TP 4n
-\fB\(bu\fR
-Show desktop
-.TP 4n
-\fB\(bu\fR
-Show group assing menu
-.PP
-Then, click on the target window.
-.sp
-.SS "Bindings"
-Keyboard and mouse bindings are
-cwm(1)
-defaults.
-.sp
-Some other are added :
-.sp
-.TP 4n
-\fB\(bu\fR
-Alt-F4 : close window
-.TP 4n
-\fB\(bu\fR
-Alt-Shift-h/j/k/l : move window to the left/bottom/top/right of the
-screen.
-.TP 4n
-\fB\(bu\fR
-Alt-s : start
-\fBdsch\fR
-.TP 4n
-\fB\(bu\fR
-Alt-x : start
-\fBdfm\fR
-.TP 4n
-\fB\(bu\fR
-Alt-t and Alt-Shift-t : tile windows
-.TP 4n
-\fB\(bu\fR
-Alt-Space and Alt-Shift-Space : cycle through groups.
-.TP 4n
-\fB\(bu\fR
-Alt-p : shown dmenu to start application
-.TP 4n
-\fB\(bu\fR
-Alt-f : show window menu
-.PP
-See
-cwmrc(5)
-to customize according your needs.
-.sp
-.SS "Mouse bindings"
-You can popup menus by clicking on the desktop or on the
-border
-of a
-window (quite big by default).
-.sp
-.TP 4n
-\fB\(bu\fR
-Right click : Application menu. you can start an application or deal
-with you windows.
-.TP 4n
-\fB\(bu\fR
-Middle click : group menu : show active group to toggle visibility of
-groups.
-.TP 4n
-\fB\(bu\fR
-Left click : window menu, to select a window.
-.TP 4n
-\fB\(bu\fR
-Scroll on the background to change volume.
-.TP 4n
-\fB\(bu\fR
-Alt + Left click : resize window
-.TP 4n
-\fB\(bu\fR
-Alt + Right click : drag window
-.PP
-.sp
-.SS "About window menu"
-The window menu looks like this :
-.sp
-.nf
-.sp
-.RS 0n
-(4) ![] window name
-(4)  [] other window name
-(2) &[] another window name
-(1) &[] again a window name
-.RE
-.fi
-.sp
-Between parenthesis, the group assigned to the window.
-.sp
-.RS 6n
-! means the window is selected.
-.RE
-.RS 6n
-& means the window is hidden.
-.RE
-.sp
-.SS "About workspaces"
-There are no workspaces. They are just a way to increase the size of the
-screen, and if you need a bigger screen, the window manager is probably
-wrong somewhere.
-Instead, cwm uses
-\fIgroups\fR
-\(.
-You can choose to show one ore more grouped windows depending on your
-needs.
-.sp
-You can automatically assign a group to a window in
-\fI$HOME/.cwmrc\fR
-or you can use the
-\fBdgroupwin\fR
-to assing a group to a window.
-.sp
-At any time, a middle click on the desktop will shoiw the group menu to
-toggle the visibility of active groups.
-.sp
-.SH "About dmenu"
-Tools included use dmenu.
-.sp
-It is a menu printed at the top of your screen.
-Write what you need, on only part of it, then press return to select.
-.sp
-.RS 6n
-Return: select
-.RE
-.RS 6n
-Esc: exit dmenu.
-.RE
-.RS 6n
-ctrl-y: paste selection
-.RE
-.sp
-.sp
 See
 \fIdmenu website\fR: \fBhttps://tools.suckless.org/dmenu/\fR
 .sp
-.SH "Where are isotop files stored?"
+.SS "Where are isotop files stored?"
 \fI/usr/local/share/isotop\fR
 .sp
-.SH "What scripts are included?"
+.SS "What scripts are included?"
 .TP 4n
 \fB\(bu\fR
 dalarm : Specify an alert, then a number of minutes. A notification will
 show the alert after the delay.
+.TP 4n
+\fB\(bu\fR
+dcmus : choose a file to play in cmus playlist
 .TP 4n
 \fB\(bu\fR
 dfm : a file launcher using dmenu.
@@ -412,9 +285,6 @@ imgopti : optimize an image to reduce its size.
 networkcheck : check internet access
 .TP 4n
 \fB\(bu\fR
-opama : graphical package manager
-.TP 4n
-\fB\(bu\fR
 openbsdupgrade : upgrade to last -stable changes with
 syspatch(8)
 fw_update(1)
@@ -422,13 +292,7 @@ and
 \fIopenup\fR: \fBhttps://www.mtier.org/solutions/apps/openup/\fR
 .TP 4n
 \fB\(bu\fR
-ovol : change volume
-.TP 4n
-\fB\(bu\fR
-owi : wifi manager. You might prefer edit
-hostname.if(5)
-by hand since it's now very easy. owi is still here, waiting to be
-upgraded.
+pixcol : show the html color code under the pointer
 .TP 4n
 \fB\(bu\fR
 pixup : upload an image to pix.toile-libre.org
@@ -449,16 +313,10 @@ scrot : take a screenshot, saved in $HOME
 scrotup : take a screenshot with scrot and upload with pixup
 .TP 4n
 \fB\(bu\fR
-send_dmesg.sh : send your dmesg to OpenBSd developers to help hardware supporte.
+send_dmesg.sh : send your dmesg to OpenBSD developers to help hardware supporte.
 .TP 4n
 \fB\(bu\fR
 setwall : set desktop background.
-.TP 4n
-\fB\(bu\fR
-tkmenu : a launcher callable if you let your mouse pointer at the bottom left border of the screen.
-Edit
-\fI$HOME/.tkmenu\fR
-to suit your needs
 .TP 4n
 \fB\(bu\fR
 web : a wrapper to start a web browser.
@@ -466,9 +324,210 @@ web : a wrapper to start a web browser.
 \fB\(bu\fR
 xenodm-config : edit xenodm configuration and appearance.
 .PP
+.SS "What are the custom actions in pcmanfm"
+.TP 4n
+\fB\(bu\fR
+Modify image (turn, resize...)
+.TP 4n
+\fB\(bu\fR
+Optimize image
+.TP 4n
+\fB\(bu\fR
+Upload image
+.TP 4n
+\fB\(bu\fR
+Set as wallpaper
+.TP 4n
+\fB\(bu\fR
+Play in cmus
+.PP
+.sp
+.SH "How to use my desktop?"
+.SS "Start an application"
+At first, the desktop is empty.
+.sp
+Right-click on the background to see the application menu and select, by
+example, xterm.
+.sp
+You can also press Alt-p to show
+\fBdmenu\fR
+and type
+\(lqxterm\(rq
+then press return.
+.sp
+Last, you can move the pointer to the bottom-left corner to pop
+jgmenu.
+.sp
+.SS "Basic window management"
+You can drag the window by pressing Alt and left-clicking on the window
+to move it around.
+.sp
+To resize the window, press Alt and right-click.
+.sp
+You probably don't need to move and resize windows but to see maximized
+instead, or hide it. All of this can be done with keystrokes thanks to
+cwm(1)
+but you might not remember them all the time. Right-click on the desktop or on a window border to
+see shortcuts :
+.sp
+.TP 4n
+\fB\(bu\fR
+Minimize
+.TP 4n
+\fB\(bu\fR
+Maximize
+.TP 4n
+\fB\(bu\fR
+Close
+.TP 4n
+\fB\(bu\fR
+Show desktop
+.TP 4n
+\fB\(bu\fR
+Show group assing menu
+.PP
+Then, click on the target window.
+.sp
+.SS "Bindings"
+Keyboard and mouse bindings are
+cwm(1)
+defaults.
+.sp
+Some other are added :
+.sp
+.TP 4n
+\fB\(bu\fR
+Alt-F4 : close window
+.TP 4n
+\fB\(bu\fR
+Alt-Shift-h/j/k/l : move window to the left/bottom/top/right of the
+screen.
+.TP 4n
+\fB\(bu\fR
+Alt-s : start
+\fBdsch\fR
+.TP 4n
+\fB\(bu\fR
+Alt-x : start
+\fBdfm\fR
+.TP 4n
+\fB\(bu\fR
+Alt-t and Alt-Shift-t : tile windows
+.TP 4n
+\fB\(bu\fR
+Alt-p : shown dmenu to start application
+.TP 4n
+\fB\(bu\fR
+Alt-f : show window menu
+.TP 4n
+\fB\(bu\fR
+Alt-g : assing a new group to focused window
+.PP
+See
+cwmrc(5)
+to customize according your needs.
+.sp
+.SS "Mouse bindings"
+You can popup menus by clicking on the desktop or on the
+border
+of a
+window (quite big by default).
+.sp
+.TP 4n
+\fB\(bu\fR
+Right click : Application menu. you can start an application or deal
+with you windows.
+.TP 4n
+\fB\(bu\fR
+Middle click : group menu : show active group to toggle visibility of
+groups.
+.TP 4n
+\fB\(bu\fR
+Left click : window menu, to select a window.
+.TP 4n
+\fB\(bu\fR
+Scroll on the background to change volume.
+.TP 4n
+\fB\(bu\fR
+Alt + Right click : resize window
+.TP 4n
+\fB\(bu\fR
+Alt + Left click : drag window
+.PP
+.sp
+.SS "About window menu"
+The window menu looks like this :
+.sp
+.nf
+.sp
+.RS 0n
+(4) ![] window name
+(4)  [] other window name
+(2) &[] another window name
+(1) &[foo] again a window name
+.RE
+.fi
+.sp
+Between parenthesis, the group assigned to the window.
+.sp
+.RS 6n
+! means the window is focused.
+.RE
+.RS 6n
+& means the window is hidden.
+.RE
+.RS 6n
+[foo]: the window get the label foo with Ctrl-alt-n shortcut
+.RE
+.sp
+.SS "About workspaces"
+There are no workspaces. They are just a way to increase the size of the
+screen, and if you need a bigger screen, the window manager is probably
+wrong somewhere.
+Instead, cwm uses
+\fIgroups\fR
+\(.
+You can choose to show one ore more grouped windows depending on your
+needs.
+.sp
+You can automatically assign a group to a window in
+\fI$HOME/.cwmrc\fR
+or you can use the
+\fBdgroupwin\fR
+to assing a group to a window.
+.sp
+At any time, a middle click on the desktop will shoiw the group menu to
+toggle the visibility of active groups.
+.sp
+.SH "About dmenu"
+Tools included use dmenu.
+.sp
+It is a menu printed at the top of your screen.
+Write what you need, on only part of it, then press return to select.
+.sp
+.RS 6n
+Return: select
+.RE
+.RS 6n
+Esc: exit dmenu.
+.RE
+.RS 6n
+ctrl-y: paste selection
+.RE
+.sp
+.sp
+.sp
+.sp
 .SH "BUGS"
 Of course.
 .sp
 Please report them to
 prx
 \fIprx@ybad.name\fR
+.sp
+.SH "SEE ALSO"
+cwm(1)
+cwmrc(5)
+dmenu(1)
+tmux(1)
+.sp
