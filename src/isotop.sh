@@ -116,7 +116,7 @@ rcctl enable xenodm
 echo '* Installing packages' 
 PACKAGES=/usr/local/share/isotop/data/packages
 
-pkg_add -vlmz $PACKAGES | tee -a -
+pkg_add -vmzl $PACKAGES | tee -a -
 
 if [ $? -eq 0 ]; then
 	echo '* Package installation finished :)'
