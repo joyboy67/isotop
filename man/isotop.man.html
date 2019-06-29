@@ -68,6 +68,15 @@ A link to <i class="Em">pkg_mgr</i> is in cwm menu.
 <p class="Pp"></p>
 </section>
 <section class="Ss">
+<h2 class="Ss" id="Why_is_my_screen_red_?"><a class="permalink" href="#Why_is_my_screen_red_?">Why
+  is my screen red?</a></h2>
+Because we care about you eyes, <a class="Xr">sct(1)</a> is started when you
+  open a session. Use dsch to change screen temperature color. You can also
+  disable this feature by removing sct line in
+  <span class="Pa">$HOME/.xsession</span>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
 <h2 class="Ss" id="What_notification_daemon_can_I_use?"><a class="permalink" href="#What_notification_daemon_can_I_use?">What
   notification daemon can I use?</a></h2>
 You can install <i class="Em">dunst</i> a nd add in
@@ -103,7 +112,7 @@ If you start cmus with cwm root menu, it is started in <a class="Xr">tmux(1)</a>
   <li><a class="Xr">hotplugd(8)</a> is configured to automount your USB strick
       in <span class="Pa">/vol</span> A link is available in your $HOME
       directory.</li>
-  <li>Enabled services : hotplugd, messagebus, cups, xenodm, unwind.</li>
+  <li>Enabled services : hotplugd, cups, xenodm, unwind.</li>
   <li>Disable ulpt for USB printers. This happens in rc.shutdown to enjoy KARL
       at reboot. See
       <a class="Lk" href="https://marc.info/?l=openbsd-misc&amp;m=155746672110488&amp;w=2">this
@@ -217,6 +226,7 @@ See and edit <span class="Pa">$HOME/.xsession</span>
       crash</div>
     <p class="Pp"></p>
   </li>
+  <li>dsct : configure temperature color of the screen.</li>
   <li>dyt : download the video with <a class="Xr">youtube-dl(1)</a> . Selected
       url is pasted by default.</li>
   <li>gdoas : open xterm to type doas password used for other scripts such as
@@ -412,7 +422,7 @@ Of course.
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">June 28, 2019</td>
+    <td class="foot-date">June 29, 2019</td>
     <td class="foot-os"></td>
   </tr>
 </table>

@@ -1,477 +1,544 @@
-.Dd $Mdocdate$
-.Dt isotop FAQ
-.OS
-.Sh NAME
-.Nm isotop
-.Nd a simple, fun (?) and pre-configured OpenBSD.
-
-.Sh DESCRIPTION
-.Nm 
+.\" Automatically generated from an mdoc input file.  Do not edit.
+.TH "isotop" "FAQ" "June 29, 2019" "" "FAQ"
+.nh
+.if n .ad l
+.SH "NAME"
+\fBisotop\fR
+\- a simple, fun (?) and pre-configured OpenBSD.
+.sp
+.SH "DESCRIPTION"
+\fBisotop\fR
 is a script to configure OpenBSD into a great desktop.
 As much as possible, tools included in base installation are used.
 Therefore, some choice have been made to focus on simplicity and
 efficiency.
-
-.Sh FAQ
-.Ss Where is my desktop ?
+.sp
+.SH "FAQ"
+.SS "Where is my desktop?"
 In front of your eyes.
 The default window manager in isotop is
-.Xr cwm 5
+cwm(5)
 Its simplicity help to focus and be
 efficient.
-
+.sp
 Before installing another window manager or desktop environment, give
-cwm a try. We tried to make is nice to use 
-(see 
-.Sx How to use my desktop ?
+cwm a try. We tried to make is nice to use
+(see
+\fIHow to use my desktop\fR?
 ).
-.Ss How can I configure WiFi ?
+.SS "How can I configure WiFi?"
 Read
-.Xr hostname.if 5
+hostname.if(5)
 and
-.Lk https://www.openbsd.org/faq/faq6.html#Wireless FAQ-Wireless
+\fIFAQ-Wireless\fR: \fBhttps://www.openbsd.org/faq/faq6.html#Wireless\fR
 A tool will be included in next version of isotop to ease this task.
-.Ss How can I add/remove packages ?
-A link to 
-.Em pkg_mgr
+.SS "How can I add/remove packages?"
+A link to
+\fIpkg_mgr\fR
 is in cwm menu.
-
+.sp
 Else, read
-.Lk https://www.openbsd.org/faq/faq15.html Package Managemen
+\fIPackage Managemen\fR: \fBhttps://www.openbsd.org/faq/faq15.html\fR
 https://www.openbsd.org/faq/faq15.html Package Management
-
-.Ss Why is my screen red ?
-Because we care about you eyes, 
-.Xr sct 1
+.sp
+.SS "Why is my screen red?"
+Because we care about you eyes,
+sct(1)
 is started when you open a session.
 Use dsch to change screen temperature color.
-You can also disable this feature by removing sct line in 
-.Pa $HOME/.xsession
-
-.Ss What notification daemon can I use?
-You can install 
-.Em dunst
+You can also disable this feature by removing sct line in
+\fI$HOME/.xsession\fR
+.sp
+.SS "What notification daemon can I use?"
+You can install
+\fIdunst\fR
 a
-nd add in 
-.Pa $HOME/.xsession
-.Dl dunst &
-.Ss Why cmus is the default music player ?
+nd add in
+\fI$HOME/.xsession\fR
+.RS 6n
+dunst &
+.RE
+.SS "Why cmus is the default music player?"
 It is light, don't need huge dependencies. It is hackable, and even
 usable with the mouse if you don't like keyboard. You cas of course
 install any other music player you might prefer.
-.Ss How to exit cmus without closing it ?
-If you start cmus with cwm root menu, it is started in 
-.Xr tmux 1
+.SS "How to exit cmus without closing it?"
+If you start cmus with cwm root menu, it is started in
+tmux(1)
 , so it can be detached or opened in
 multiple terminals.
 To detach, press "ctrl-b" then "d".
-.Ss What are the differences with a vanilla OpenBSD ?
-.Bl -bullet
-.It 
-.Xr unwind 8
+.SS "What are the differences with a vanilla OpenBSD?"
+.TP 4n
+\fB\(bu\fR
+unwind(8)
 is configured as default domain name resolver.
-.It 
+.TP 4n
+\fB\(bu\fR
 A script called unwind-block is used to adblock some domains. It updates
-the "bad domains" list weekly and is called with 
-.Pa
+the "bad domains" list weekly and is called with
+\fI~\fR
 /etc/rc.local
 See
-.Sx What does unwind-block do ?
-.It
-Customized message in 
-.Pa /etc/boot.conf
-.It
-.Xr hotplugd 8
-is configured to automount your USB strick in 
-.Pa /vol
+\fIWhat does unwind-block do\fR?
+.TP 4n
+\fB\(bu\fR
+Customized message in
+\fI/etc/boot.conf\fR
+.TP 4n
+\fB\(bu\fR
+hotplugd(8)
+is configured to automount your USB strick in
+\fI/vol\fR
 A link is available
 in your $HOME directory.
-.It
+.TP 4n
+\fB\(bu\fR
 Enabled services : hotplugd, cups, xenodm, unwind.
-.It
+.TP 4n
+\fB\(bu\fR
 Disable ulpt for USB printers. This happens in rc.shutdown to enjoy
-KARL at reboot. 
-See 
-.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 this thread
-.It
+KARL at reboot.
+See
+\fIthis thread\fR: \fBhttps://marc.info/?l=openbsd-misc&m=155746672110488&w=2\fR
+.TP 4n
+\fB\(bu\fR
 ntpd configuration does'nt use google as a constraints
-.It
+.TP 4n
+\fB\(bu\fR
 Xenodm appearance is configured and configurable with a script called
 xenodm-config.
-.It 
+.TP 4n
+\fB\(bu\fR
 Additional packages are installed
-See 
-.Pa /usr/local/share/isotop/data/packages
-.It
+See
+\fI/usr/local/share/isotop/data/packages\fR
+.TP 4n
+\fB\(bu\fR
 doas is configured to avoid entering password for some commands. See
-.Pa /etc/doas.conf
-.It
-.Xr cwm 5
+\fI/etc/doas.conf\fR
+.TP 4n
+\fB\(bu\fR
+cwm(5)
 is the default window manager. It is pre-configured and shipped
 with various script to ease window management for non-keyboard users.
-.It
+.TP 4n
+\fB\(bu\fR
 iridium is the default browser. Are disabled every option related to
 google and tracking. It is unveiled by default :
 this means the browser can\(cqt read files on your computer except in
 \(ti/Downloads. It keeps your ssh keys and passwords in configuration
-files safes. 
-Firefox is also making calls to google and can\(cqt be unveiled for now 
+files safes.
+Firefox is also making calls to google and can\(cqt be unveiled for now
 (see
-.Lk https://marc.info/?l=openbsd-misc&m=152872551609819&w=2 this thread
+\fIthis thread\fR: \fBhttps://marc.info/?l=openbsd-misc&m=152872551609819&w=2\fR
 )
-.It
+.TP 4n
+\fB\(bu\fR
 Alt-L is mapped as Esc for vi users :)
-.It 
+.TP 4n
+\fB\(bu\fR
 Translations are included : english and french for now.
-.It 
-A few scripts and tools are included in 
-.Pa /usr/local/share/isotop/bin
-and available in your 
-.Ev PATH
-.No .
-See 
-.Sx What scripts are shipped ?
-.It
-.Pa $HOME/.aliases 
-and 
-.Pa $HOME/.functions 
+.TP 4n
+\fB\(bu\fR
+A few scripts and tools are included in
+\fI/usr/local/share/isotop/bin\fR
+and available in your
+\fRPATH\fR
+\&.
+See
+\fIWhat scripts are shipped\fR?
+.TP 4n
+\fB\(bu\fR
+\fI$HOME/.aliases\fR
+and
+\fI$HOME/.functions\fR
 are filled with some (useful ?) stuff.
-.It
+.TP 4n
+\fB\(bu\fR
 $HOME/.kshrc contains some autocompletion for OpenBSD.
-.It
+.TP 4n
+\fB\(bu\fR
 A random wallpaper is set a each session.
-.It
+.TP 4n
+\fB\(bu\fR
 The file browser is pcmanfm. It is configured to have custom actions
 accessible with a right click (edit image, upload a file...).
-.El
-
-.Ss Why this name ?
-
+.PP
+.SS "Why this name?"
 At first, isotop was a iso file containing all packages and
 configuration for intallation.
 Now it\(cqs just a script to configure a vanilla OpenBSD.
-
+.sp
 Like an isotope it is a
 variant of OpenBSD with a few more things inside, but still OpenBSD.
-
-.Ss Can I install another web browser ?
-
+.sp
+.SS "Can I install another web browser?"
 Of course.
 Firefox and chromium, amongst others, are available in ports.
 However, we choosed iridium because it is unveiled, meaning it can\(cqt access your personal files that might
 contains password or ssh keys and it is more privacy friendly than chromium.
-
-.Ss Can I install another desktop environment ?
+.sp
+.SS "Can I install another desktop environment?"
 Of course.
-
+.sp
 Gnome, kde, lxde, xfce and more are availables for OpenBSD via ports.
-
-.Ss What does unwind-block do ?
-
+.sp
+.SS "What does unwind-block do?"
 In order to save your bandwidth and filter ads without any browser
 addon, a script called unwind-block is executed at boot (see
-.Pa /etc/rc.local
+\fI/etc/rc.local\fR
 )
-
+.sp
 Every 7 days, the script download a list of bad domains and record
-them in 
-.Pa /var/unwind.block
+them in
+\fI/var/unwind.block\fR
 Thus, unwind can choose not to resolve
 them.
 If you try to access one of these domains (why?), you\(cqll get a
 message
-.Dq website unavailable
-
-
-.Ss What process are started when I open a session ?
-
+\(lqwebsite unavailable\(rq
+.sp
+.sp
+.SS "What process are started when I open a session?"
 See and edit
-.Pa $HOME/.xsession
-
-See 
-.Lk https://tools.suckless.org/dmenu/ dmenu website
-
-.Ss Where are isotop files stored ?
-
-.Pa /usr/local/share/isotop
-
-.Ss What scripts are included ?
-
-.Bl -bullet
-.It
+\fI$HOME/.xsession\fR
+.sp
+See
+\fIdmenu website\fR: \fBhttps://tools.suckless.org/dmenu/\fR
+.sp
+.SS "Where are isotop files stored?"
+\fI/usr/local/share/isotop\fR
+.sp
+.SS "What scripts are included?"
+.TP 4n
+\fB\(bu\fR
 dalarm : Specify an alert, then a number of minutes. A notification will
 show the alert after the delay.
-.It
+.TP 4n
+\fB\(bu\fR
 dcmus : choose a file to play in cmus playlist
-.It
+.TP 4n
+\fB\(bu\fR
 dfm : a file launcher using dmenu.
-.It
+.TP 4n
+\fB\(bu\fR
 dgroupwin : select a window and assign a group
-.It
+.TP 4n
+\fB\(bu\fR
 dman : read a manpage
-.It
+.TP 4n
+\fB\(bu\fR
 dmenu_run_i : a dmenu_run improved to launch a command. End with a "!"
-and the command is open in a terminal. Example : 
-.Cm top!
-.It
+and the command is open in a terminal. Example :
+\fBtop!\fR
+.TP 4n
+\fB\(bu\fR
 dsch : Search on the web.
 Default search engine is duckduckgo if you do not specify a search
 engine.
-
-Examples : 
-
-.D1 default engine : openbsd full disk encryption
-.D1 search on openbsd misc list : obsdmisc firefox crash
-
-.It
+.sp
+Examples :
+.sp
+.RS 10n
+default engine: openbsd full disk encryption
+.RE
+.RS 4n
+.RS 10n
+search on openbsd misc list: obsdmisc firefox crash
+.RE
+.sp
+.RE
+.TP 4n
+\fB\(bu\fR
 dsct : configure temperature color of the screen.
-.It 
-dyt : download the video with 
-.Xr youtube-dl 1
+.TP 4n
+\fB\(bu\fR
+dyt : download the video with
+youtube-dl(1)
 \&.
 Selected url is pasted by default.
-.It
+.TP 4n
+\fB\(bu\fR
 gdoas : open xterm to type doas password used for other scripts such as
 xenodm-config.
-.It
-imgmod : modify an image using 
-.Xr gm 1
+.TP 4n
+\fB\(bu\fR
+imgmod : modify an image using
+gm(1)
 Supported modification are.
-.Bl -bullet
-.It
+.PP
+.RS 4n
+.PD 0
+.TP 4n
+\fB\(bu\fR
 convert to jpg
-.It 
+.PD
+.TP 4n
+\fB\(bu\fR
 convert to png
-.It
+.TP 4n
+\fB\(bu\fR
 convert to gif
-.It 
+.TP 4n
+\fB\(bu\fR
 resize
-.It
+.TP 4n
+\fB\(bu\fR
 turn left or right
-.El
-
-.It
+.PP
+.RE
+.TP 4n
+\fB\(bu\fR
 imgopti : optimize an image to reduce its size.
-.It
+.TP 4n
+\fB\(bu\fR
 networkcheck : check internet access
-.It
+.TP 4n
+\fB\(bu\fR
 openbsdupgrade : upgrade to last -stable changes with
-.Xr syspatch 8
-.Xr fw_update 1
-and 
-.Lk https://www.mtier.org/solutions/apps/openup/ openup
-.It
-pixcol : show the html color code under the pointer 
-.It
+syspatch(8)
+fw_update(1)
+and
+\fIopenup\fR: \fBhttps://www.mtier.org/solutions/apps/openup/\fR
+.TP 4n
+\fB\(bu\fR
+pixcol : show the html color code under the pointer
+.TP 4n
+\fB\(bu\fR
 pixup : upload an image to pix.toile-libre.org
-.It
-rdmwall : set a random wallpaper. Backgrounds are searched in : 
-.Pa $HOME/Images/Wallpapers
+.TP 4n
+\fB\(bu\fR
+rdmwall : set a random wallpaper. Backgrounds are searched in :
+\fI$HOME/Images/Wallpapers\fR
 ;
-.Pa /usr/local/share/isotop/walls
+\fI/usr/local/share/isotop/walls\fR
 ;
-.Pa /usr/local/share/openbsd-backgrounds/pictures from
+\fI/usr/local/share/openbsd-backgrounds/pictures from\fR
 openbsd-backgrounds port.
-.It
+.TP 4n
+\fB\(bu\fR
 scrot : take a screenshot, saved in $HOME
-.It
+.TP 4n
+\fB\(bu\fR
 scrotup : take a screenshot with scrot and upload with pixup
-.It
+.TP 4n
+\fB\(bu\fR
 send_dmesg.sh : send your dmesg to OpenBSD developers to help hardware supporte.
-.It
+.TP 4n
+\fB\(bu\fR
 setwall : set desktop background.
-.It
+.TP 4n
+\fB\(bu\fR
 web : a wrapper to start a web browser.
-.It
+.TP 4n
+\fB\(bu\fR
 xenodm-config : edit xenodm configuration and appearance.
-.El
-
-.Ss What are the custom actions in pcmanfm
-
-.Bl -bullet
-.It 
+.PP
+.SS "What are the custom actions in pcmanfm"
+.TP 4n
+\fB\(bu\fR
 Modify image (turn, resize...)
-.It
+.TP 4n
+\fB\(bu\fR
 Optimize image
-.It
+.TP 4n
+\fB\(bu\fR
 Upload image
-.It
+.TP 4n
+\fB\(bu\fR
 Set as wallpaper
-.It
+.TP 4n
+\fB\(bu\fR
 Play in cmus
-.It
-Print with default printer (image, text, pdf...)
-.El
-
-
-.Sh How to use my desktop ?
-
-.Ss Start an application
-
+.PP
+.sp
+.SH "How to use my desktop?"
+.SS "Start an application"
 At first, the desktop is empty.
-
+.sp
 Right-click on the background to see the application menu and select, by
-example, xterm. 
-
-You can also press Alt-p to show 
-.Cm dmenu 
-and type 
-.Dq xterm
+example, xterm.
+.sp
+You can also press Alt-p to show
+\fBdmenu\fR
+and type
+\(lqxterm\(rq
 then press return.
-
-Last, you can move the pointer to the bottom-left corner to pop 
+.sp
+Last, you can move the pointer to the bottom-left corner to pop
 jgmenu.
-
-.Ss Basic window management
-
+.sp
+.SS "Basic window management"
 You can drag the window by pressing Alt and left-clicking on the window
-to move it around. 
-
+to move it around.
+.sp
 To resize the window, press Alt and right-click.
-
+.sp
 You probably don't need to move and resize windows but to see maximized
 instead, or hide it. All of this can be done with keystrokes thanks to
-.Xr cwm 1
+cwm(1)
 but you might not remember them all the time. Right-click on the desktop or on a window border to
 see shortcuts :
-
-.Bl -bullet
-.It
+.sp
+.TP 4n
+\fB\(bu\fR
 Minimize
-.It 
+.TP 4n
+\fB\(bu\fR
 Maximize
-.It 
+.TP 4n
+\fB\(bu\fR
 Close
-.It 
+.TP 4n
+\fB\(bu\fR
 Show desktop
-.It 
+.TP 4n
+\fB\(bu\fR
 Show group assing menu
-.El
-
+.PP
 Then, click on the target window.
-
-.Ss Bindings
-
-Keyboard and mouse bindings are 
-.Xr cwm 1 
-defaults. 
-
-Some other are added : 
-
-.Bl -bullet
-.It
+.sp
+.SS "Bindings"
+Keyboard and mouse bindings are
+cwm(1)
+defaults.
+.sp
+Some other are added :
+.sp
+.TP 4n
+\fB\(bu\fR
 Alt-F4 : close window
-.It
+.TP 4n
+\fB\(bu\fR
 Alt-Shift-h/j/k/l : move window to the left/bottom/top/right of the
 screen.
-.It
-Alt-s : start 
-.Cm dsch 
-.It
+.TP 4n
+\fB\(bu\fR
+Alt-s : start
+\fBdsch\fR
+.TP 4n
+\fB\(bu\fR
 Alt-x : start
-.Cm dfm 
-.It
+\fBdfm\fR
+.TP 4n
+\fB\(bu\fR
 Alt-t and Alt-Shift-t : tile windows
-.It
+.TP 4n
+\fB\(bu\fR
 Alt-p : shown dmenu to start application
-.It
+.TP 4n
+\fB\(bu\fR
 Alt-f : show window menu
-.It
+.TP 4n
+\fB\(bu\fR
 Alt-g : assing a new group to focused window
-.El
-
+.PP
 See
-.Xr cwmrc 5
+cwmrc(5)
 to customize according your needs.
-
-.Ss Mouse bindings
-
-You can popup menus by clicking on the desktop or on the 
-.Em 
-border 
-.No
+.sp
+.SS "Mouse bindings"
+You can popup menus by clicking on the desktop or on the
+border
 of a
 window (quite big by default).
-
-.Bl -bullet
-.It
+.sp
+.TP 4n
+\fB\(bu\fR
 Right click : Application menu. you can start an application or deal
 with you windows.
-.It
+.TP 4n
+\fB\(bu\fR
 Middle click : group menu : show active group to toggle visibility of
 groups.
-.It
+.TP 4n
+\fB\(bu\fR
 Left click : window menu, to select a window.
-.It 
+.TP 4n
+\fB\(bu\fR
 Scroll on the background to change volume.
-.It 
+.TP 4n
+\fB\(bu\fR
 Alt + Right click : resize window
-.It 
+.TP 4n
+\fB\(bu\fR
 Alt + Left click : drag window
-.El
-
-
-.Ss About window menu
-
-The window menu looks like this : 
-
-.Bd -literal
+.PP
+.sp
+.SS "About window menu"
+The window menu looks like this :
+.sp
+.nf
+.sp
+.RS 0n
 (4) ![] window name
 (4)  [] other window name
 (2) &[] another window name
 (1) &[foo] again a window name
-.Ed
-
+.RE
+.fi
+.sp
 Between parenthesis, the group assigned to the window.
-
-.D1 ! means the window is focused.
-.D1 & means the window is hidden.
-.D1 [foo] : the window get the label "foo" with Ctrl-alt-n shortcut
-
-.Ss About workspaces
-
+.sp
+.RS 6n
+! means the window is focused.
+.RE
+.RS 6n
+& means the window is hidden.
+.RE
+.RS 6n
+[foo]: the window get the label foo with Ctrl-alt-n shortcut
+.RE
+.sp
+.SS "About workspaces"
 There are no workspaces. They are just a way to increase the size of the
 screen, and if you need a bigger screen, the window manager is probably
 wrong somewhere.
-Instead, cwm uses 
-.Em groups
+Instead, cwm uses
+\fIgroups\fR
 \(.
 You can choose to show one ore more grouped windows depending on your
 needs.
-
-You can automatically assign a group to a window in 
-.Pa $HOME/.cwmrc
-or you can use the 
-.Cm dgroupwin
+.sp
+You can automatically assign a group to a window in
+\fI$HOME/.cwmrc\fR
+or you can use the
+\fBdgroupwin\fR
 to assing a group to a window.
-
+.sp
 At any time, a middle click on the desktop will shoiw the group menu to
 toggle the visibility of active groups.
-
-.Sh About dmenu
+.sp
+.SH "About dmenu"
 Tools included use dmenu.
-
+.sp
 It is a menu printed at the top of your screen.
 Write what you need, on only part of it, then press return to select.
-
-.D1 Return: select
-.D1 Esc: exit dmenu.
-.D1 ctrl-y: paste selection
-
-
-
-
-.Sh BUGS
+.sp
+.RS 6n
+Return: select
+.RE
+.RS 6n
+Esc: exit dmenu.
+.RE
+.RS 6n
+ctrl-y: paste selection
+.RE
+.sp
+.sp
+.sp
+.sp
+.SH "BUGS"
 Of course.
-
-Please report them to 
-.An prx 
-.Mt prx@ybad.name
-
-.Sh SEE ALSO
-
-.Xr cwm 1
-.Xr cwmrc 5
-.Xr dmenu 1
-.Xr tmux 1
-
+.sp
+Please report them to
+prx
+\fIprx@ybad.name\fR
+.sp
+.SH "SEE ALSO"
+cwm(1)
+cwmrc(5)
+dmenu(1)
+tmux(1)
+.sp
