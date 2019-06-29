@@ -41,6 +41,8 @@ case $lang in
 		sed -i -e "s;___CWMSUSPEND;Suspendre;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMREBOOT;Redémarrer;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMHALT;Éteindre;" ${HOME}/.cwmrc
+		# show man
+		xterm -rv -e 'man isotop-fr' &
 	;;
 	*)
 		echo 'LC_CTYPE="en_EN.UTF-8"' >> ${HOME}/.profile
@@ -77,6 +79,8 @@ case $lang in
 		sed -i -e "s;___CWMREBOOT;Reboot;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMHALT;Halt;" ${HOME}/.cwmrc
 
+		# show man
+		xterm -rv -e 'man isotop' &
 	;;
 esac
 
@@ -87,6 +91,7 @@ xdg-user-dirs-update
 
 # link to /vol for automounting
 ln -s /vol/ ${HOME}/${MOUNTPOINTNAME}
+
 
 rm $0
 exit 0
