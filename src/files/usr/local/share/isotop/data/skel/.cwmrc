@@ -11,7 +11,7 @@ gap 0 0 0 0     # no margin
 fontname "DejaVu Sans Mono:pixelsize=14"
 
 # Options
-moveamout 30
+moveamount 30
 snapdist 20
 sticky yes
 command term xterm
@@ -65,8 +65,8 @@ bind-key M-g "dgroupwin focused"
 
 
 # shortcuts
-M-s dsch
-M-x dfm
+bind-key M-s dsch
+bind-key M-x dfm
 
 # MENU
 command " ___CWMWINMENU" ""
@@ -74,17 +74,17 @@ command "   -  ___CWMMINWIN " "xdotool selectwindow windowminimize"
 command "   +  ___CWMMAXMIN " "xdotool selectwindow windowsize 100% 100% windowmove 0 0"
 command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowkill"
 command "   =  ___CWMGROUPWIN " "dgroupwin"
-command "  [ ] ___CWMSHOWDESKTOP "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
+command "  [ ] ___CWMSHOWDESKTOP " "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
 command " ___CWMSHORTCUTS" ""
 command "   ▸ ___CWMWEB " web 
 command "   ▸ ___CWMMAILS " claws-mail 
 command "   ▸ ___CWMFILES " pcmanfm
 command "   ▸ ___CWMOFFICE " libreoffice
-command "   ▸ ___CWMMUSIC " xterm -e cmus-in-tmux
-command "   ▸ ___CWMMIXER " xterm -e cmixer
+command "   ▸ ___CWMMUSIC " "xterm -e cmus-in-tmux"
+command "   ▸ ___CWMMIXER " "xterm -maximized -e cmixer"
 command "   ▸ ___CWMXTERM " xterm
-command "   ▸ ___CWMPKGMGR " gdoas pkg_mgr
-command "   ▸ man isotop " xterm -rv -e ___CWMMANISOTOP
+command "   ▸ ___CWMPKGMGR " "gdoas pkg_mgr"
+command "   ▸ man isotop " "xterm -rv -e ___CWMMANISOTOP"
 command " ___CWMSESSION" ""
 command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR $HOME/.cwmrc'"
 command "   . ___CWMLOCK " 'xscreensaver-command -lock'

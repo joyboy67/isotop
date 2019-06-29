@@ -40,6 +40,14 @@ Else, read
 .Lk https://www.openbsd.org/faq/faq15.html Package Managemen
 https://www.openbsd.org/faq/faq15.html Package Management
 
+.Ss Why is my screen red ?
+Because we care about you eyes, 
+.Xr sct 1
+is started when you open a session.
+Use dsch to change screen temperature color.
+You can also disable this feature by removing sct line in 
+.Pa $HOME/.xsession
+
 .Ss What notification daemon can I use?
 You can install 
 .Em dunst
@@ -79,7 +87,7 @@ is configured to automount your USB strick in
 A link is available
 in your $HOME directory.
 .It
-Enabled services : hotplugd, messagebus, cups, xenodm, unwind.
+Enabled services : hotplugd, cups, xenodm, unwind.
 .It
 Disable ulpt for USB printers. This happens in rc.shutdown to enjoy
 KARL at reboot. 
@@ -215,6 +223,8 @@ Examples :
 .D1 default engine : openbsd full disk encryption
 .D1 search on openbsd misc list : obsdmisc firefox crash
 
+.It
+dsct : configure temperature color of the screen.
 .It 
 dyt : download the video with 
 .Xr youtube-dl 1

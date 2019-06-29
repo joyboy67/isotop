@@ -6,6 +6,10 @@
 # TRADS
 lang=$(cat /etc/kbdtype)
 
+# cp all files in /etc/skel 
+cp -R /usr/local/share/isotop/data/skel/* $HOME/
+cp -R /usr/local/share/isotop/data/skel/.* $HOME/
+
 case $lang in 
 	"fr")
 		echo 'LC_CTYPE="fr_FR.UTF-8"' >> ${HOME}/.profile
@@ -14,8 +18,6 @@ case $lang in
 		echo 'LC_ALL="fr_FR.UTF-8"' >> ${HOME}/.profile
 		echo 'LANG="fr_FR.UTF-8"' >> ${HOME}/.profile
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
-		# thunderbird
-		cp -r /usr/local/share/isotop/data/trads/fr/.thunderbird ${HOME}/
 		# hotplug
 		MOUNTPOINTNAME="Disques"
 		# cwm
@@ -51,7 +53,6 @@ case $lang in
 		echo 'LC_ALL="en_EN.UTF-8"' >> ${HOME}/.profile
 		echo 'LANG="en_EN.UTF-8"' >> ${HOME}/.profile
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
-		# No translation to do for thunderbird, default to en_EN
 		# hotplug
 		MOUNTPOINTNAME="Disks"
 		# cwm

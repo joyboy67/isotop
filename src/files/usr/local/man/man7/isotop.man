@@ -1,5 +1,5 @@
 .\" Automatically generated from an mdoc input file.  Do not edit.
-.TH "isotop" "FAQ" "June 27, 2019" "" "FAQ"
+.TH "isotop" "FAQ" "June 28, 2019" "" "FAQ"
 .nh
 .if n .ad l
 .SH "NAME"

@@ -1,4 +1,4 @@
-PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:.:/usr/local/jdk-1.8.0/jre/bin/;/usr/local/share/isotop/bin/
+PATH=$HOME/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:.:/usr/local/jdk-1.8.0/jre/bin/:/usr/local/share/isotop/bin
 VISUAL='vi'
 TOP='-s 1'
 PAGER=less

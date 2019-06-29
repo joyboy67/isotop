@@ -19,7 +19,9 @@ PKG_LIST=$(ls -1 /var/db/pkg)
 set -A complete_pkg_delete -- $PKG_LIST
 set -A complete_pkg_info -- $PKG_LIST
 
-set -A complete_ssh -- $(awk '{split($1,a,","); print a[1]}' $HOME/.ssh/known_hosts)
+if [ -f $HOME/.ssh/known_hosts ]; then
+	set -A complete_ssh -- $(awk '{split($1,a,","); print a[1]}' $HOME/.ssh/known_hosts)
+fi
 set -A complete_rcctl_1 -- disable enable get ls order set
 set -A complete_rcctl_2 -- $(ls /etc/rc.d)
 

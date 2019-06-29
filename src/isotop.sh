@@ -21,6 +21,7 @@ lang=$(cat /etc/kbdtype)
 
 case $lang in 
 	"fr")
+		THX="Merci ! ;)"
 		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
 		XENODMWHOAREYOU='Qui est-ce ?'
 		XENODMLOGIN='identifiant ='
@@ -28,6 +29,7 @@ case $lang in
 		XENODMFAIL='Echec :s'
 	;;
 	*)
+		THX="Thanks! ;)"
 		REBOOTMSG='Enter "reboot" to start on you new isotop install'
 		XENODMWHOAREYOU='Who are you?'
 		XENODMLOGIN='login='
@@ -59,6 +61,9 @@ echo "permit persist :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
 echo "permit nopass :wheel cmd env" >> /etc/doas.conf
+
+# in case a previous isotop install has been made
+sort -u /etc/doas.conf -o /etc/doas.conf
 
 
 # softdep
@@ -136,24 +141,53 @@ echo ""
 echo "* Set up ntpd"
 sed -i 's/www\.google\.com/www.openbsd.org/' /etc/ntpd.conf
 
-
-echo "* Enable messagebus"
-rcctl enable messagebus
-rcctl order messagebus
-rcctl start messagebus
-echo ""
-
 echo "* Enable cups"
 rcctl enable cupsd cups_browsed
 rcctl start cupsd cups_browsed
 echo ""
 
 echo "* Build manpage database"
-mandb
+makewhatis
 echo ""
+
+echo "Do you want to copy isotop configuration script to 
+users HOME directories? It may erase their configurations at next login."
+res=""
+
+userdirs=$(grep '/home' /etc/passwd | cut -d':' -f1,6)
+	for ud in $userdirs; do
+		u=$(echo $ud | cut -d':' -f1)
+		d=$(echo $ud | cut -d':' -f2)
+
+		if [ "$res" != "a" ]; then
+			echo "$u ?"
+			echo "[Y]es / [No] / [A]ll / [S]top"
+			read res
+			res=$(echo $res | tr '[:upper:]' '[:lower:]')
+		fi
+
+		case $res in
+			y|a ) 
+				cp /usr/local/share/isotop/data/skel/.first.sh "$d/"
+				chmod +x "$d/.first.sh"
+				chown $u:$u "$d/.first.sh"
+				;;
+			n )
+				echo "Not copying for user $u"
+				;;
+			s )
+				break
+				;;
+			* )
+				echo "Wrong answer, not copying anything"
+				;;
+		esac
+	done
 
 # Reboot
 echo "${REBOOTMSG}"
+echo "${THX}"
+
 
 exit 0
 

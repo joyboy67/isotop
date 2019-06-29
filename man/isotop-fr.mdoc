@@ -45,6 +45,13 @@ est présent dans le menu de cwm.
 Sinon, lisez
 .Lk https://wiki.obsd4a.net/openbsd.org:faq:faq15 gestion des paquets.
 
+.Ss Pourquoi mon écran semble rouge ?
+Puisqu'on pense à vos yeux, on lance automatiquement en début de session
+.Xr sct 1
+Vous pouvez utiliser dsch pour modifier la couleur, ou carrément retirer
+sct du fichier 
+.Pa $HOME/.xsession
+
 .Ss Quel démon de notification puis-je utiliser ?
 Vous pouvez installer
 .Em dunst
@@ -92,7 +99,7 @@ est configuré pour monter automatiquement votre clé USB dans
 Un lien est disponible
 dans votre répertoire $HOME.
 .It
-Services activés: hotplugd, messagebus, cups, xenodm, unwind.
+Services activés: hotplugd, cups, xenodm, unwind.
 .It
 Désactivation de ulpt pour les imprimantes USB. Cela se passe dans 
 .Pa /etc/rc.shutdown 
@@ -241,6 +248,9 @@ Exemples :
 .D1 moteur par défaut: OpenBSD, cryptage complet du disque
 .D1 recherche sur openbsd misc list: obsdmisc firefox crash
 
+
+.It
+dsct : configurer la couleur de l'écran
 .It
 dyt: télécharger une vidéo avec
 .Xr youtube-dl 1
