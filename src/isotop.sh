@@ -52,7 +52,6 @@ echo "======================="
 
 
 echo "* Get isotop files"
-cd /tmp
 ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
 ftp "${ISOTOPURL}/isotop.sha256"
 echo "* Check $0 checksum before going any further"
@@ -64,6 +63,11 @@ chmod +x /etc/X11/xenodm/Xsetup_0
 chmod +x /etc/X11/xenodm/*Console
 chmod +x /usr/local/share/isotop/bin/*
 PATH=$PATH:/usr/local/share/isotop/bin
+
+echo "* Remove downloaded files"
+rm "isotop-${VERSION}.tgz"
+rm "isotop.sha256"
+
 
 echo "* Runnign syspatch for security reasons"
 syspatch
