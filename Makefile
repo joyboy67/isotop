@@ -11,6 +11,6 @@ all:
 	cd src/files && tar cvzf ../../isotop-$(VERSION).tgz .
 	sha256 isotop-$(VERSION).tgz > isotop.sha256
 	cd src && sha256 isotop.sh >> ../isotop.sha256
-	scp isotop-$(VERSION).tgz pi:/var/www/htdocs/ybad.name/DL/isotop/
-	scp src/isotop.sh pi:/var/www/htdocs/ybad.name/DL/isotop/
-	scp isotop.sha256 pi:/var/www/htdocs/ybad.name/DL/isotop/
+	git add isotop-$(VERSION).tgz isotop.sha256
+	git commit -m "update for $(VERSION)"
+	git push

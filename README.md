@@ -8,6 +8,7 @@ isotop is a script to configure OpenBSD and make it great for desktop.
 
 Installation
 ------------
+Install OpenBSd, then :
 
 	ftp https://framagit.org/3hg/isotop/raw/master/src/isotop.sh
 	sh isotop.sh
