@@ -1,5 +1,7 @@
 isotop
 ==========
+
+![isotop logo](logo_isotop.png)
 OpenBSD easier to explore and use at first.
 
 Available from OpenBSD > 6.5
