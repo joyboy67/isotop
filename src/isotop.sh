@@ -27,6 +27,8 @@ case $lang in
 		XENODMLOGIN='identifiant ='
 		XENODMPASSWORD=' secret ='
 		XENODMFAIL='Echec :s'
+		SKEL="Voulez-vous copier la configuration d'isotop dans le HOME
+des utilisateurs existants et remplacer leur configuration?" 
 	;;
 	*)
 		THX="Thanks! ;)"
@@ -35,10 +37,10 @@ case $lang in
 		XENODMLOGIN='login='
 		XENODMPASSWORD='password='
 		XENODMFAIL='Authentication failed :s'
+		SKEL="Do you want to copy isotop configuration from /etc/skel to
+user's HOME directories? It will override previous configuration"
 	;;
 esac
-
-
 
 VERSION="65"
 ISOTOPURL="https://ybad.name/DL/isotop/"
@@ -46,6 +48,25 @@ ISOTOPURL="https://ybad.name/DL/isotop/"
 echo "======================="
 echo "     isotop install    "
 echo "======================="
+
+
+
+echo "* Get isotop files"
+cd /tmp
+ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
+ftp "${ISOTOPURL}/isotop.sha256"
+echo "* Check $0 checksum before going any further"
+sha256 -C isotop.sha256 isotop.sh || exit 1
+sha256 -C isotop.sha256 isotop-${VERSION}.tgz || exit 1
+cd /
+tar xzf /tmp/isotop-${VERSION}.tgz
+chmod +x /etc/X11/xenodm/Xsetup_0
+chmod +x /etc/X11/xenodm/*Console
+chmod +x /usr/local/share/isotop/bin/*
+PATH=$PATH:/usr/local/share/isotop/bin
+
+echo "* Runnign syspatch for security reasons"
+syspatch
 
 echo "* Customizing boot.conf"
 echo "echo ---" > /etc/boot.conf
@@ -63,8 +84,7 @@ echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
 echo "permit nopass :wheel cmd env" >> /etc/doas.conf
 
 # in case a previous isotop install has been made
-sort -u /etc/doas.conf -o /etc/doas.conf
-
+sort -ru /etc/doas.conf -o /etc/doas.conf
 
 # softdep
 echo "* Enable softdeps"
@@ -79,18 +99,6 @@ sed -i 's/rw,/rw,softdep,/g' /etc/fstab
 #tar xzf ports.tar.gz
 #rm ports.tar.gz
 #
-
-######
-#####
-echo "* Get isotop files"
-cd /tmp
-ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
-cd /
-tar xzf /tmp/isotop-${VERSION}.tgz
-chmod +x /etc/X11/xenodm/Xsetup_0
-chmod +x /etc/X11/xenodm/*Console
-chmod +x /usr/local/share/isotop/bin/*
-PATH=$PATH:/usr/local/share/isotop/bin
 
 ### set trads for xenodm
 sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" /etc/X11/xenodm/Xresources_isotop
@@ -136,25 +144,25 @@ echo "* Enable hotplugd"
 chmod +x /etc/hotplug/{attach,detach}
 rcctl enable hotplugd
 rcctl start hotplugd
-echo ""
 
+echo ""
 echo "* Set up ntpd"
 sed -i 's/www\.google\.com/www.openbsd.org/' /etc/ntpd.conf
 
+echo ""
 echo "* Enable cups"
 rcctl enable cupsd cups_browsed
 rcctl start cupsd cups_browsed
-echo ""
 
+echo ""
 echo "* Build manpage database"
 makewhatis
 echo ""
 
-echo "Do you want to copy isotop configuration script to 
-users HOME directories? It may erase their configurations at next login."
-res=""
-
 userdirs=$(grep '/home' /etc/passwd | cut -d':' -f1,6)
+	echo "${SKEL}"
+	echo ""
+	res=""
 	for ud in $userdirs; do
 		u=$(echo $ud | cut -d':' -f1)
 		d=$(echo $ud | cut -d':' -f2)
@@ -168,12 +176,13 @@ userdirs=$(grep '/home' /etc/passwd | cut -d':' -f1,6)
 
 		case $res in
 			y|a ) 
-				cp /usr/local/share/isotop/data/skel/.first.sh "$d/"
-				chmod +x "$d/.first.sh"
-				chown $u:$u "$d/.first.sh"
+				cp -vR /etc/skel/.* "$d/"
+				# not yet
+				# cp -vR /etc/skel/* "$d/" 
+				chown -R ${u}:${u} "$d"
 				;;
 			n )
-				echo "Not copying for user $u"
+				echo ""
 				;;
 			s )
 				break

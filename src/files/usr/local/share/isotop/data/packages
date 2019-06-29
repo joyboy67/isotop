@@ -3,7 +3,7 @@ claws-mail-*
 cmixer
 cmus
 cups
-cups-filters*
+cups-filters-*
 cups-libs
 curl
 dmenu
@@ -34,7 +34,7 @@ libreoffice
 libreoffice-i18n-fr
 lynx
 mpv
-mupdf*
+mupdf-*
 netsurf
 noto-emoji
 noto-fonts

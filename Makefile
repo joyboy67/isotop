@@ -8,5 +8,8 @@ all:
 	mandoc -T html man/isotop.mdoc > man/isotop.man.html
 	mandoc -T html man/isotop-fr.mdoc > man/isotop-fr.man.html
 	cd src/files && tar cvzf ../../isotop-$(VERSION).tgz .
+	sha256 isotop-$(VERSION).tgz > isotop.sha256
+	cd src && sha256 isotop.sh >> ../isotop.sha256
 	scp isotop-$(VERSION).tgz pi:/var/www/htdocs/ybad.name/DL/isotop/
 	scp src/isotop.sh pi:/var/www/htdocs/ybad.name/DL/isotop/
+	scp isotop.sha256 pi:/var/www/htdocs/ybad.name/DL/isotop/

@@ -87,7 +87,7 @@ command "   ▸ ___CWMPKGMGR " "gdoas pkg_mgr"
 command "   ▸ man isotop " "xterm -rv -e ___CWMMANISOTOP"
 command " ___CWMSESSION" ""
 command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR $HOME/.cwmrc'"
-command "   . ___CWMLOCK " 'xscreensaver-command -lock'
+command "   . ___CWMLOCK " 'xlock -mode space'
 command "   . ___CWMSUSPEND " zzz
 command "   . ___CWMREBOOT " "doas /sbin/reboot now"
 command "   . ___CWMHALT " "doas /sbin/shutdown -hp now"

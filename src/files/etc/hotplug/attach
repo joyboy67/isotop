@@ -6,12 +6,12 @@ DEVNAME=${2}
 case "${DEVCLASS}" in
 		0)
 			if [ -n "$(echo $DEVNAME | grep -o "ugen[0-9]")" ]; then
-				addr=$(usbdevs -vd | \
-					grep -B4 $DEVNAME | \
-					head -n1 | \
-					cut -d' ' -f 2\
-					sed 's/://')
-				chown _cups /dev/${DEVNAME}.* $addr
+				addr=$(dmesg | grep $DEVNAME | \
+					tail -n1 | \
+					cut -d' ' -f3 | \
+					tr -d '[:alpha:]' \
+					)
+				chown _cups /dev/${DEVNAME}.* /dev/usb$addr
 			fi
 		;;
 

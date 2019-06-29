@@ -13,8 +13,8 @@ Indiquez le nom du modèle de votre ordinateur
 et ce qui fonctionne ou non (en anglais).
 ex : Dell XPS M1330, SD card not working, everything else works."
 		TXT_REALMAIL="Indiquez votre adresse mail."
-		TXT_THX="Message envoyé. Merci d'avoir aidé les développeurs d'OpenBSD"
-		TXT_ERR="Erreur à l'envoi du dmesg..."
+		TXT_THX="Message transmis aux developpeurs d'OpenBSD. Merci."
+		TXT_ERR="Erreur lors de l'envoi du dmesg..."
 	;;
 	*)
 		TXT_SUBJECT="To help OpenBSD developpers, 

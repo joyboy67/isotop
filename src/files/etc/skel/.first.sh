@@ -6,10 +6,6 @@
 # TRADS
 lang=$(cat /etc/kbdtype)
 
-# cp all files in /etc/skel 
-cp -R /usr/local/share/isotop/data/skel/* $HOME/
-cp -R /usr/local/share/isotop/data/skel/.* $HOME/
-
 case $lang in 
 	"fr")
 		echo 'LC_CTYPE="fr_FR.UTF-8"' >> ${HOME}/.profile

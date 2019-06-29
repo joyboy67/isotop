@@ -1,10 +1,10 @@
 #!/bin/sh
 # gdoas : run doas in xterm
 
-MSG="[doas]: Great power comes with great password:"
+MSG="Great power comes with great passphrase:"
 case $LANG in
 	fr*)
-		MSG="[doas]: Un grand pouvoir implique une bonne passphrase:"
+		MSG="Un grand pouvoir implique une bonne passphrase:"
 	;;
 esac
 
