@@ -43,7 +43,7 @@ user's HOME directories? It will override previous configuration"
 esac
 
 VERSION="65"
-ISOTOPURL="https://ybad.name/DL/isotop/"
+ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/src/"
 
 echo "======================="
 echo "     isotop install    "
