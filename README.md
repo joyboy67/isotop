@@ -11,11 +11,12 @@ isotop is a script to configure OpenBSD and make it great for desktop.
 
 Installation
 ------------
-Install OpenBSD, then :
+Install OpenBSD, then get isotop.sh and run it:
 
 	ftp https://framagit.org/3hg/isotop/raw/master/src/isotop.sh
 	sh isotop.sh
 
+Then read the FAQ in ``man isotop``.
 
 Help
 ----
