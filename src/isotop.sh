@@ -42,7 +42,7 @@ user's HOME directories? It will override previous configuration"
 	;;
 esac
 
-VERSION="65"
+VERSION="651"
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 echo "======================="
