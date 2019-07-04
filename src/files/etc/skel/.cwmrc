@@ -89,7 +89,7 @@ command " ___CWMSESSION" ""
 command "   . ___CWMEDITCONFIG " "xterm -e '$EDITOR $HOME/.cwmrc'"
 command "   . ___CWMLOCK " 'xlock -mode space'
 command "   . ___CWMSUSPEND " zzz
-command "   . ___CWMREBOOT " "doas /sbin/reboot now"
+command "   . ___CWMREBOOT " "doas /sbin/reboot"
 command "   . ___CWMHALT " "doas /sbin/shutdown -hp now"
 
 
