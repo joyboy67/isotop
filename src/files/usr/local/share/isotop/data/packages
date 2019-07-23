@@ -13,7 +13,6 @@ foomatic-db
 ghostscript-fonts
 gimp
 gnome-themes-standard
-gnuchess
 gtk+2-cups
 gtk+3-cups
 gtk+4-cups
@@ -50,9 +49,7 @@ roboto-fonts
 sct
 simple-scan
 system-config-printer
-teeworlds
-wesnoth
-xboard
+tango-icon-theme
 xcape
 xclip
 xdg-user-dirs
