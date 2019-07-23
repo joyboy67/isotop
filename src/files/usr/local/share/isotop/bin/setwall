@@ -1,3 +1,5 @@
 #!/bin/sh
-/usr/local/bin/gm display -foreground black -window root -backdrop "${1}"
+#/usr/local/bin/gm display -foreground black -window root -backdrop "${1}"
+# xwallpaper is installed with openbsd-backgounds
+xwallpaper --zoom "${1}"
 exit 0
