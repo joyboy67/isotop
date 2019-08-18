@@ -6,5 +6,5 @@ Comment=Set an alarm in minutes
 Comment[fr]=Définir une nouvelle alarme
 Exec=/usr/local/share/isotop/bin/dalarm
 Icon=alarm-clock
-Categories=Utility;Network;
+Categories=Utility;
 Terminal=false

@@ -1,6 +1,8 @@
 # TODO
-
-## Now
+add in doc : 
+	syspatch dans rc.local
+	pkg_add -u
+dans menu cwm : reload config : pkill -1 cwm
 
 ## Later
 
@@ -16,4 +18,5 @@ wifi...)
 
 ## 6.6 
 * remove test in isotop.sh for unwind
+
 

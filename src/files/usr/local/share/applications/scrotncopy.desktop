@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Screenshot
+Name[fr]=Capture d'écran
+Comment=Take a screenshot and copy to clipboard
+Comment[fr]=Capture d'écran avec copie
+Exec=/usr/local/share/isotop/bin/scrotncopy
+Icon=stock_screenshot
+Categories=Utility;
+Terminal=false

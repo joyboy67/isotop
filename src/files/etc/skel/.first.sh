@@ -15,7 +15,7 @@ case $lang in
 		echo 'LANG="fr_FR.UTF-8"' >> ${HOME}/.profile
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
 		# hotplug
-		MOUNTPOINTNAME="Disques"
+		MOUNTPOINTNAME="Médias"
 		# cwm
 		sed -i -e "s;___CWMWINMENU;FENÊTRES;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMINWIN;Minimiser;" ${HOME}/.cwmrc
@@ -52,7 +52,7 @@ case $lang in
 		echo 'LANG="en_EN.UTF-8"' >> ${HOME}/.profile
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
 		# hotplug
-		MOUNTPOINTNAME="Disks"
+		MOUNTPOINTNAME="Medias"
 		# cwm
 		sed -i -e "s;___CWMWINMENU;Windows;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMINWIN;Minimize;" ${HOME}/.cwmrc

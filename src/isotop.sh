@@ -4,6 +4,7 @@
 
 # Description : This will install the isotop preconfiguration on an
 # OpenBSD system
+VERSION="653"
 
 # check if root
 if [ $(id -u) -ne 0 ]; then
@@ -42,7 +43,6 @@ user's HOME directories? It will override previous configuration"
 	;;
 esac
 
-VERSION="651"
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 echo "======================="
@@ -86,7 +86,6 @@ echo "* Configure doas"
 echo "permit persist :wheel " >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
-echo "permit nopass :wheel cmd env" >> /etc/doas.conf
 
 # in case a previous isotop install has been made
 sort -ru /etc/doas.conf -o /etc/doas.conf
@@ -94,6 +93,8 @@ sort -ru /etc/doas.conf -o /etc/doas.conf
 # softdep
 echo "* Enable softdeps"
 sed -i 's/rw,/rw,softdep,/g' /etc/fstab
+mount -a
+umount /usr/local && mount /usr/local
 
 # ports
 #echo "* Ports configuration"
@@ -153,6 +154,7 @@ rcctl start hotplugd
 echo ""
 echo "* Set up ntpd"
 sed -i 's/www\.google\.com/www.openbsd.org/' /etc/ntpd.conf
+rcctl enable ntpd
 
 echo ""
 echo "* Enable cups"

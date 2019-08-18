@@ -5,14 +5,8 @@ DEVNAME=$2
 
 case $DEVCLASS in
         2)
-<<<<<<< HEAD
-                /sbin/umount "/mnt/$DEVNAME"
-=======
-                #/sbin/disklabel sd1 2>&1 | sed -n '/^label: /s/^label: //p'
                 /sbin/umount "/mnt/$DEVNAME"
                 rm -r "/mnt/$DEVNAME"
-                exit 0
->>>>>>> 1cea4f4595a16c5300a474aea9de2ca004f8a152
         ;;
 esac
 exit 0
