@@ -3,6 +3,8 @@ add in doc :
 	syspatch dans rc.local
 	pkg_add -u
 dans menu cwm : reload config : pkill -1 cwm
+* remplacer owi : nmctl 
+	https://sourceforge.net/projects/nmctl/
 
 ## Later
 
