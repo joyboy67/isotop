@@ -29,7 +29,8 @@ case $lang in
 		XENODMPASSWORD=' secret ='
 		XENODMFAIL='Echec :s'
 		SKEL="Voulez-vous copier la configuration d'isotop dans le HOME
-des utilisateurs existants et remplacer leur configuration?" 
+des utilisateurs existants et remplacer leur configuration? Ils seront
+aussi aoutés au groupe wheel" 
 	;;
 	*)
 		THX="Thanks! ;)"
@@ -39,7 +40,8 @@ des utilisateurs existants et remplacer leur configuration?"
 		XENODMPASSWORD='password='
 		XENODMFAIL='Authentication failed :s'
 		SKEL="Do you want to copy isotop configuration from /etc/skel to
-user's HOME directories? It will override previous configuration"
+user's HOME directories? It will override previous configuration. They
+will belong to wheel group then."
 	;;
 esac
 
@@ -187,6 +189,7 @@ userdirs=$(grep '/home' /etc/passwd | cut -d':' -f1,6)
 				# not yet
 				# cp -vR /etc/skel/* "$d/" 
 				chown -R ${u}:${u} "$d"
+				usermod -G wheel ${u}
 				;;
 			n )
 				echo ""
