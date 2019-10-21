@@ -18,6 +18,13 @@ Install OpenBSD, then get isotop.sh and run it:
 
 Then read the FAQ in ``man isotop``.
 
+
+Screenshots
+-----------
+
+![isotop login screen](screenshots/isotop-xenodm.png)
+![isotop desktop showing group management](screenshots/isotop2.png)
+
 Help
 ----
 
