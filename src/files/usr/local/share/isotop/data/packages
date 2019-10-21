@@ -37,7 +37,6 @@ noto-emoji
 noto-fonts
 ntfs_3g
 numlockx
-openbsd-backgrounds
 optipng
 p7zip
 paper-icon-theme
@@ -48,9 +47,11 @@ sct
 simple-scan
 system-config-printer
 tango-icon-theme
+xbanish
 xcape
 xclip
 xdg-user-dirs
 xdg-utils
 xdotool
+xwallpaper
 youtube-dl

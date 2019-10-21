@@ -1,13 +1,16 @@
-color activeborder "#6a96ca"
-color inactiveborder "#000"
-color font "#fff"
-color selfont "#000"
-color menubg "#000"
-color menufg "#6a96ca"
-color urgencyborder "#ffb6b0"
+# nord-style colorscheme
+color activeborder "#8FBCBB"
+color inactiveborder "#3b4252"
+color font "#D8DEE9"
+color selfont "#2E3440"
+color menubg "#2E3440"
+color menufg "#81A1C1"
+color urgencyborder "#BF616A"
+color groupborder "#A3BE8C"
+color ungroupborder "#BF616A"
 
 borderwidth 2
-gap 0 0 0 0     # no margin
+gap 22 0 0 0     # margin top for xclock
 fontname "DejaVu Sans Mono:pixelsize=14"
 
 # Options
@@ -18,14 +21,18 @@ command term xterm
 command lock "xlock -mode space"
 
 # Windows rules
-ignore "dmenu"
-ignore "xclock"
+ignore dmenu
+ignore xmessage
+ignore xclock
+ignore Dunst
 
 # Groups, find them by clicking ong a window after running "xprop"
 # autogroup n "name,class"
 #autogroup 2 Mail
-#autogroup 1 "Navigator", "Firefox"
-#autogroup 1 "chromium-browser", "Chromium-browser"
+#autogroup 1 Navigator, Firefox
+#autogroup 1 chromium-browser, Chromium-browser
+autogroup 0 xclock, XClock
+autogroup 0 xmessage, Xmessage
 
 # Mouse
 # Disable resize with middle button
@@ -61,7 +68,7 @@ bind-key M-p 'dmenu_run_i'
 # label with M-C-n to find window with this menu
 bind-key M-f menu-window
 # Send to group
-bind-key M-g "dgroupwin focused"
+bind-key M-g "groupwin focused"
 
 
 # shortcuts
@@ -69,12 +76,6 @@ bind-key M-s dsch
 bind-key M-x dfm
 
 # MENU
-command " ___CWMWINMENU" ""
-command "   -  ___CWMMINWIN " "xdotool selectwindow windowminimize"
-command "   +  ___CWMMAXMIN " "xdotool selectwindow windowsize 100% 100% windowmove 0 0"
-command "   x  ___CWMCLOSEWIN " "xdotool selectwindow windowkill"
-command "   =  ___CWMGROUPWIN " "dgroupwin"
-command "  [ ] ___CWMSHOWDESKTOP " "sh -c 'for i in $(xdotool search --onlyvisible .); do xdotool windowminimize $i; done'"
 command " ___CWMSHORTCUTS" ""
 command "   ▸ ___CWMWEB " web 
 command "   ▸ ___CWMMAILS " claws-mail 

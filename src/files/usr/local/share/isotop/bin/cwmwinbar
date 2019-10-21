@@ -1,0 +1,39 @@
+#!/bin/sh
+# xmessage menu to deal with windows
+
+if [ $(pgrep -f $(basename $0) | wc -l | tr -d "[:space:]") -gt 1 ] ; then
+    echo "$0 is already running"
+    pkill xmessage
+	exit
+fi
+
+while true; do
+(
+	xrdb -load $HOME/.Xresources
+	xmessage -timeout 0 \
+	-geometry -0+-29 \
+	-buttons "#":20,"-":21,"+":22,"x":23  " "
+	ACTION=$?
+
+	# apply user choice
+	if [ $ACTION -eq 20 ]; then 
+		groupwin
+	elif [ $ACTION -eq 21 ]; then 
+		xdotool selectwindow windowminimize
+	elif [ $ACTION -eq 22 ]; then
+		#xdotool selectwindow windowsize 100% 100% windowmove 0 0
+		# screen size
+		w=$(/usr/X11R6/bin/xwininfo -root|sed '/Width/!d;s/.* //')
+		h=$(/usr/X11R6/bin/xwininfo -root|sed '/Height/!d;s/.* //')
+		# cwm border
+		b=$(grep borderwidth $HOME/.cwmrc | cut -d' ' -f2) || b=1
+		# cwm gap
+		g=$(grep gap $HOME/.cwmrc | cut -d' ' -f2) || g=0
+		xdotool selectwindow windowsize $(( $w - 2*$b )) $(( $h - $g -2*$b )) windowmove 0 $g
+	elif [ $ACTION -eq 23 ]; then
+		xdotool selectwindow windowkill
+	else 
+		echo "Something bad happened to $0's Xmessage."
+	fi
+)
+done

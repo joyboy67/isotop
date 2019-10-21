@@ -35,7 +35,7 @@ Lisez le man
 et la documentation d'OpenBSD traduite
 .Lk https://wiki.obsd4a.net/openbsd.org:faq:faq6#reseau-sans-fil réseau sans fil
 Un outil pour faciliter les connexions sera publié dans la prochaine
-version d'isotop, lorsque j'aurai une carte sans-fil.
+version d'isotop, lorsque le développeur aura une carte sans-fil.
 
 .Ss Comment ajouter/supprimer des programmes
 Un raccourci vers 
@@ -87,14 +87,29 @@ Pour détacher cmus, appuyez sur "ctrl-b" puis "d".
 .It
 .Xr unwind 8
 est configuré en tant que résolveur de nom de domaine par défaut.
+
 .It
-Un script appelé unwind-block est utilisé pour bloquer certains domaines. Il met à jour
-la liste des "mauvais domaines" chaque semaine et est appelée avec
+Les noms de domaines de domaines malveillants et publicitaires
+sont filtrés grâce au programme zerohosts lancé à chaque démarrage et
+qui met à jour une liste noire toutes les semaines. Il est lancé par le 
+fichier 
 .Pa /etc/rc.local
 
+Il remplit le fichier 
+.Pa /etc/hosts
+et permet de filtrer rapidement les domaines malveillants, peu importe
+le résolveur DNS utilisé.
+
+Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
+obtiendrez un
+message:
+
+.Dq Le site web n'est pas disponible
+
 Voir
-.Sx Que fait unwind-block?
+.Lk https://ybad.name/Logiciel-libre/Code/zerohosts.html
 .It
+
 Message personnalisé dans
 .Pa /etc/boot.conf
 .It
@@ -170,10 +185,16 @@ sont remplis de choses (utiles?).
 $HOME/.kshrc contient de l'auto-complétion pour OpenBSD.
 .It
 Un fond d'écran aléatoire est défini à chaque session avec
-GraphicsMagick.
+xwallpaper.
 .It
 Le navigateur de fichiers est pcmanfm. Il est configuré pour avoir des
 actions personnalisées via clic-droit (éditer une image, téléverser un fichier ...).
+.It
+Le pointeur de la souris est caché grâce à 
+.Xr xbanish 1
+.It
+Le thème de couleur "nord" est installé pour les applications X. Voir.
+.Lk  https://www.nordtheme.com/
 .El
 
 .Ss Pourquoi ce nom?
@@ -184,6 +205,10 @@ Maintenant, c'est juste un script pour configurer OpenBSD.
 
 Comme un isotope c'est une
 variante d'OpenBSD avec quelques éléments supplémentaires, mais toujours OpenBSD.
+
+.Ss Why c'est sombre ?
+Parce que le développeur aime bien, et ça économise l'énergie de ne pas
+allumer les pixels.
 
 .Ss Puis-je installer un autre navigateur Web?
 
@@ -197,25 +222,6 @@ contenant des mots de passe ou des clés SSH et il est plus respectueux de la vi
 Bien sûr.
 
 Gnome, kde, lxde, xfce et d'autres sont disponibles pour OpenBSD via les ports.
-
-.Ss Que fait unwind-block?
-
-Pour économiser votre bande passante et filtrer les annonces sans 
-addon dans le navigateur, un script appelé unwind-block est exécuté au démarrage (voir
-.Pa /etc/rc.local
-)
-
-Tous les 7 jours, le script télécharge une liste des domaines
-malveillants et les enregistre
-dans
-.Pa /var/unwind.block
-Ainsi, unwind peut choisir de ne pas résoudre
-leur noms.
-Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
-obtiendrez un
-message:
-
-.Dq Le site web n'est pas disponible
 
 .Ss Quels processus sont démarrés lorsque j'ouvre une session?
 
@@ -237,7 +243,10 @@ dcmus: choisissez un fichier à lire dans la liste de lecture de cmus
 .It
 dfm: un lanceur de fichiers utilisant dmenu.
 .It
-dgroupwin: sélectionne une fenêtre et assigne un groupe
+groupwin: sélectionne une fenêtre et assigne un groupe
+.It 
+cwmwinbar : affiche un menu de gestion des fenêtres en haut à droite de
+l'écran.
 .It
 dman: lire une page de manuel
 .It
@@ -290,8 +299,7 @@ networkcheck: vérifie l'accès à Internet
 openbsdupgrade: mise à niveau vers les dernières modifications de -stable avec
 .Xr syspatch 8
 .Xr fw_update 1
-et
-.Lk https://www.mtier.org/solutions/apps/openup/ openup
+.Xr pkg_add 1
 .It
 pixcol: affiche le code html de la couleur du pixer situé sous le
 pointeur.
@@ -302,10 +310,6 @@ rdmwall: définit un fond d'écran aléatoire. Les fonds sont recherchés dans:
 .Pa $HOME/Images/Wallpapers
 ;
 .Pa /usr/local/share/isotop/walls
-;
-.Pa /usr/local/share/openbsd-backgrounds/landscape 
-images du paquet
-.Em openbsd-backgrounds
 .It
 scrot: prend une capture d'écran, enregistrée dans $HOME
 .It
@@ -316,7 +320,7 @@ au support matériel.
 .It
 setwall: définit le fond d'écran.
 .It
-Web: un wrapper pour démarrer un navigateur web.
+web: un wrapper pour démarrer un navigateur web.
 .It
 xenodm-config: éditez la configuration et l'apparence de xenodm.
 .El
@@ -342,7 +346,10 @@ Imprimer avec l'imprimante par défaut (image, texte, pdf)
 .Ss Ouvrir une application
 Au début, le bureau est vide.
 
-Cliquez avec le bouton droit sur l'arrière-plan pour afficher le menu
+Vous pouvez voir une horloge en haut à gauche, et un menu pour gérer les
+fenêtres en haut à droite.
+
+Cliquez avec le bouton droit sur l'arrière-plan ou sur l'horloge lpour afficher le menu
 d'applications et choisissez par
 exemple, xterm. 
 
@@ -365,20 +372,21 @@ Vous n'avez probablement pas besoin de déplacer et de redimensionner les
 fenêtres mais de les maximiser 
 à la place, ou les cacher. Tout cela peut être fait avec des raccourcis clavier grâce à
 .Xr cwm 1
-mais vous ne vous en souviendrez peut-être pas tout le temps. Cliquez avec le bouton droit sur le bureau ou sur une bordure de fenêtre pour
-voir les raccourcis:
+mais vous ne vous en souviendrez peut-être pas tout le temps. 
+C'est pourquoi un outil appelé "cwmwinbar" est présent en haut à droite
+de l'écran, vous permettant : 
+
+.Ss Raccourcis clavier
 
 .Bl -bullet
 .It
-Minimiser
+# : changer le groupe d'une fenêtre
 .It
-Maximiser
+- : Cacher une fenêtre
 .It
-Fermer
++ : Agrandir une fenêtre
 .It
-Bureau : afficher le bureau
-.It
-Groupe : gestion des groupes
+x : Fermer une fenêtre
 .El
 
 Ensuite, cliquez sur la fenêtre cible.
@@ -472,7 +480,7 @@ besoin.
 Vous pouvez attribuer automatiquement un groupe à une fenêtre dans
 .Pa $HOME/.cwmrc
 ou vous pouvez utiliser 
-.Cm dgroupwin
+.Cm groupwin
 pour assigner un groupe à une fenêtre.
 
 À tout moment, un clic du milieu sur le bureau affichera le "menu

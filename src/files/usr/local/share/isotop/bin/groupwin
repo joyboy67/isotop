@@ -1,0 +1,31 @@
+#!/bin/sh
+# send a window to a group
+# require xmessage and xdotool
+# usage : groupwin <without option> : select window.
+#         groupwin focused : use the focused window
+
+if [ "$1" = "focused" ]; then
+	win=$(xdotool getactivewindow)
+else
+	win=$(xdotool selectwindow)
+fi
+winname=$(xdotool getwindowname $win)
+curgroup=$(xdotool get_desktop_for_window $win)
+test $? -eq 0 || exit # not root window
+p="[$winname] in $curgroup > ?"
+
+(
+xmessage -timeout 0 \
+	-buttons "1":21,"2":22,"3":23,"4":24,"5":25,"6":26,"7":27,"8":28,"9":29 \
+	"${p}"
+ans=$?
+if [ $ans -gt 20 ]; then
+    g=$(($ans - 20))
+	xdotool set_desktop_for_window "${win}" "${g}"
+else
+    exit
+fi
+) &
+
+
+

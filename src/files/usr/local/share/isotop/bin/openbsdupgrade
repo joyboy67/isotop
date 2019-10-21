@@ -14,14 +14,8 @@ else
 	echo "> fw_update"
 	doas fw_update
 
-	echo "> openup"
-	if [ ! -f /usr/local/bin/openup ]; then
-		doas ftp -o /usr/local/bin/openup https://stable.mtier.org/openup 
-		doas chmod +x /usr/local/bin/openup
-		doas openup
-	else
-		doas openup
-	fi
+	echo "> package update"
+		doas pkg_add -uv
 	echo "Done! :)"
 	echo "Press enter to exit"
 	read a

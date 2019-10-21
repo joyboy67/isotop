@@ -1,5 +1,5 @@
 # create archive and write manpages
-VERSION=653
+VERSION=660
 
 all:
 	mkdir -p src/files/usr/local/man/man7/

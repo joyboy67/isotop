@@ -65,7 +65,9 @@ EXT="${1##*.}"
 
 # pix.toile-libre first
 URL="$(curl -L --progress-bar -F "MAX_FILE_SIZE=15360000" -F "img=@$1" "https://pix.toile-libre.org/?action=upload" |grep -E -o "http://pix.toile-libre.org/upload/original/.*\.$EXT" |head -n1)"
-
+if [ $? -ne 0 ]; then
+	URL=$(curl -F "file=@${1}" "https://0x0.st")
+fi
 if [ $? -ne 0 ]; then
 	URL=$(curl -F "file=@$1" \
 		-F "delete-day=0" -F "first-view=0"\

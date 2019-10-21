@@ -17,13 +17,6 @@ case $lang in
 		# hotplug
 		MOUNTPOINTNAME="Médias"
 		# cwm
-		sed -i -e "s;___CWMWINMENU;FENÊTRES;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMMINWIN;Minimiser;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMMAXMIN;Maximiser;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMCLOSEWIN;Fermer;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMGROUPWIN;Groupe;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMSHOWDESKTOP;Bureau;" ${HOME}/.cwmrc
-
 		sed -i -e "s;___CWMSHORTCUTS;RACCOURCIS;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMWEB;Navigateur web;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMAILS;Client de messagerie;" ${HOME}/.cwmrc
@@ -54,13 +47,6 @@ case $lang in
 		# hotplug
 		MOUNTPOINTNAME="Medias"
 		# cwm
-		sed -i -e "s;___CWMWINMENU;Windows;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMMINWIN;Minimize;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMMAXMIN;Maximize;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMCLOSEWIN;Close;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMGROUPWIN;Group;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMSHOWDESKTOP;Desktop;" ${HOME}/.cwmrc
-
 		sed -i -e "s;___CWMSHORTCUTS;SHORTCUTS;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMWEB;Web;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMAILS;Mails;" ${HOME}/.cwmrc

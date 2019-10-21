@@ -1,36 +1,22 @@
-*background:	#000
-*foreground:	#fff
-*color0:		#000000
-*color1:		#ff6c60
-*color2:		#a8ff60
-*color3:		#ffffb6
-*color4:		#6a96ca
-*color5:		#ff73fd
-*color6:		#c6c5fe
-*color7:		#eeeeee
-*color8:		#7c7c7c
-*color9:		#ffb6b0
-*color10:		#ceffab
-*color11:		#ffffcb
-*color12:		#b6dcfe
-*color13:		#ff9cfe
-*color14:		#dfdffe
-*color15:		#ffffff
+#include "/usr/local/share/isotop/data/Xresources-nord"
+*font:-misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
+*faceName: DejaVu Sans Mono:pixelsize=12:antialias=true:autohint=true
 
 ! Xterm config
 xterm*faceName: Hack:pixelsize=12:antialias=true
+!xterm*faceName: DejaVu Sans Mono:pixelsize=12:antialias=true:autohint=true
 XTerm.vt100.bellIsUrgent: true
 XTerm.vt100.translations: #override \n\
 Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
 Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
-XTerm*loginShell:true
+XTerm*loginShell: true
 XTerm*locale: utf8
 XTerm*renderFont: true
 XTerm*saveLines: 4242
-XTerm*internalBorder:		12
-XTerm*scrollBar:		false
-!XTerm*selectToClipboard:	true
+XTerm*internalBorder: 12
+XTerm*scrollBar: false
 XTerm*utf8: 1
+XTerm*cursorBlink: true
 
 ! ===== xlock
 ! plain white-on-black lock screen
@@ -41,11 +27,6 @@ xlock.mode        : blank
 xlock.username    : "?: "
 xlock.password    : "pass: "
 
-! === xclock
-xclock*highlight: #ffffff
-xclock*hands: #eeeeee
-
-
 ! xmessage
 Xmessage.form.okay.shapeStyle:         rectangle
 Xmessage*buttons:                       OK
@@ -53,13 +34,20 @@ Xmessage*defaultButton:                 OK
 Xmessage.form.message.Scroll:          WhenNeeded
 Xmessage*borderWidth:                  0
 Xmessage*Text.borderWidth:             0
+Xmessage*Command.borderWidth:          0
 Xmessage*Command.shapeStyle:           rectangle
-Xmessage*Command.highlightThickness:    3
+Xmessage*Command.highlightThickness:   2 
 Xmessage*Command.internalWidth:         5
-Xmessage*Command.internalHeight:        3
-Xmessage*Command.borderColor:            #75a9e8
-Xmessage*font:-misc-fixed-bold-r-normal-*-18-*-*-*-*-*-iso10646-1
+Xmessage*Command.internalHeight:        1
+xmessage*message.scrollHorizontal: Never
+xmessage*message.scrollVertical: Never
+xmessage*baseTranslations:#augment\
+        <Key>Return:exit()\n\
+        <Key>Escape:exit()\n\
+		<Key>space:exit()
 
+!xclock
+xclock*Foreground:#eeeeee
 
 ! all
 Xft.autohint: 0
@@ -68,6 +56,4 @@ Xft.hintstyle: hintslight
 Xft.hinting: 1
 Xft.antialias: 1
 Xft.rgba: rgb
-
-*font:-misc-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
 

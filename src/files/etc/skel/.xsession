@@ -16,7 +16,7 @@ if [ -x /usr/local/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
 fi
 
 # Load X options
-xrdb -merge ~/.Xresources &
+xrdb -merge ~/.Xresources
 # disable bell
 xset b off &
 # Random Wallpaper
@@ -31,7 +31,17 @@ sct 5000 1>/dev/null &
 xidle -timeout 900 -program "/usr/X11R6/bin/xlock -mode space" &
 # screen corners start menu 
 xdotool behave_screen_edge --delay 600 bottom-left exec jgmenu_run &
+# hide cursor
+xbanish &
 
+# a clock at the top left border
+xclock -render -face DejaVuSansMono-9 -padding 5 -digital \
+	-strftime "%H:%M - %d/%m/%Y" -geometry +0+0 &
+# a menu to deal with windows
+cwmwinbar &
+# nice effects if available
+test -n "$(xdpyinfo | grep Composite)" && \
+    xcompmgr -c -C -f -F -D 3 -o 0.24 &
 # start cwm. No & here
 cwm
 

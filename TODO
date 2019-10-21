@@ -1,8 +1,4 @@
 # TODO
-add in doc : 
-	syspatch dans rc.local
-	pkg_add -u
-dans menu cwm : reload config : pkill -1 cwm
 * remplacer owi : nmctl 
 	https://sourceforge.net/projects/nmctl/
 
@@ -14,11 +10,8 @@ wifi...)
 * gdoas safe ?
 
 * edbrowse for blind users ?
-* use solene's repos instead of openup
 * man pages for included scripts ?
 * pcmanfm archive manager
 
-## 6.6 
-* remove test in isotop.sh for unwind
 
 

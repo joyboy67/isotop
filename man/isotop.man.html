@@ -26,16 +26,16 @@
 <div class="manual-text">
 <section class="Sh">
 <h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
-<code class="Nm">isotop</code> &#x2014;
-<div class="Nd">a simple, fun (?) and pre-configured OpenBSD.
+<p class="Pp"><code class="Nm">isotop</code> &#x2014; <span class="Nd">a simple,
+    fun (?) and pre-configured OpenBSD.</span></p>
 <p class="Pp"></p>
-</div>
 </section>
 <section class="Sh">
 <h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
-<code class="Nm">isotop</code> is a script to configure OpenBSD into a great
-  desktop. As much as possible, tools included in base installation are used.
-  Therefore, some choice have been made to focus on simplicity and efficiency.
+<p class="Pp"><code class="Nm">isotop</code> is a script to configure OpenBSD
+    into a great desktop. As much as possible, tools included in base
+    installation are used. Therefore, some choice have been made to focus on
+    simplicity and efficiency.</p>
 <p class="Pp"></p>
 </section>
 <section class="Sh">
@@ -43,8 +43,8 @@
 <section class="Ss">
 <h2 class="Ss" id="Where_is_my_desktop_?"><a class="permalink" href="#Where_is_my_desktop_?">Where
   is my desktop?</a></h2>
-In front of your eyes. The default window manager in isotop is
-  <a class="Xr">cwm(5)</a> Its simplicity help to focus and be efficient.
+<p class="Pp">In front of your eyes. The default window manager in isotop is
+    <a class="Xr">cwm(5)</a> Its simplicity help to focus and be efficient.</p>
 <p class="Pp">Before installing another window manager or desktop environment,
     give cwm a try. We tried to make is nice to use (see
     <a class="Sx" href="#How_to_use_my_desktop">How to use my desktop</a>?
@@ -53,14 +53,14 @@ In front of your eyes. The default window manager in isotop is
 <section class="Ss">
 <h2 class="Ss" id="How_can_I_configure_WiFi_?"><a class="permalink" href="#How_can_I_configure_WiFi_?">How
   can I configure WiFi?</a></h2>
-Read <a class="Xr">hostname.if(5)</a> and
-  <a class="Lk" href="https://www.openbsd.org/faq/faq6.html#Wireless">FAQ-Wireless</a>
-  A tool will be included in next version of isotop to ease this task.
+<p class="Pp">Read <a class="Xr">hostname.if(5)</a> and
+    <a class="Lk" href="https://www.openbsd.org/faq/faq6.html#Wireless">FAQ-Wireless</a>
+    A tool will be included in next version of isotop to ease this task.</p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="How_can_I_add/remove_packages_?"><a class="permalink" href="#How_can_I_add/remove_packages_?">How
   can I add/remove packages?</a></h2>
-A link to <i class="Em">pkg_mgr</i> is in cwm menu.
+<p class="Pp">A link to <i class="Em">pkg_mgr</i> is in cwm menu.</p>
 <p class="Pp">Else, read
     <a class="Lk" href="https://www.openbsd.org/faq/faq15.html">Package
     Managemen</a> https://www.openbsd.org/faq/faq15.html Package Management</p>
@@ -69,38 +69,38 @@ A link to <i class="Em">pkg_mgr</i> is in cwm menu.
 <section class="Ss">
 <h2 class="Ss" id="Why_can't_I_reboot_or_shutdown_?"><a class="permalink" href="#Why_can't_I_reboot_or_shutdown_?">Why
   can't I reboot or shutdown?</a></h2>
-You user must belong to wheel group to use cwm menu shortcuts.
+<p class="Pp">You user must belong to wheel group to use cwm menu shortcuts.</p>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="Why_is_my_screen_red_?"><a class="permalink" href="#Why_is_my_screen_red_?">Why
   is my screen red?</a></h2>
-Because we care about you eyes, <a class="Xr">sct(1)</a> is started when you
-  open a session. Use dsch to change screen temperature color. You can also
-  disable this feature by removing sct line in
-  <span class="Pa">$HOME/.xsession</span>
+<p class="Pp">Because we care about you eyes, <a class="Xr">sct(1)</a> is
+    started when you open a session. Use dsch to change screen temperature
+    color. You can also disable this feature by removing sct line in
+    <span class="Pa">$HOME/.xsession</span></p>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="What_notification_daemon_can_I_use?"><a class="permalink" href="#What_notification_daemon_can_I_use?">What
   notification daemon can I use?</a></h2>
-You can install <i class="Em">dunst</i> a nd add in
-  <span class="Pa">$HOME/.xsession</span>
+<p class="Pp">You can install <i class="Em">dunst</i> a nd add in
+    <span class="Pa">$HOME/.xsession</span></p>
 <div class="Bd Bd-indent"><code class="Li">dunst &amp;</code></div>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="Why_cmus_is_the_default_music_player_?"><a class="permalink" href="#Why_cmus_is_the_default_music_player_?">Why
   cmus is the default music player?</a></h2>
-It is light, don't need huge dependencies. It is hackable, and even usable with
-  the mouse if you don't like keyboard. You cas of course install any other
-  music player you might prefer.
+<p class="Pp">It is light, don't need huge dependencies. It is hackable, and
+    even usable with the mouse if you don't like keyboard. You cas of course
+    install any other music player you might prefer.</p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="How_to_exit_cmus_without_closing_it_?"><a class="permalink" href="#How_to_exit_cmus_without_closing_it_?">How
   to exit cmus without closing it?</a></h2>
-If you start cmus with cwm root menu, it is started in <a class="Xr">tmux(1)</a>
-  , so it can be detached or opened in multiple terminals. To detach, press
-  &quot;ctrl-b&quot; then &quot;d&quot;.
+<p class="Pp">If you start cmus with cwm root menu, it is started in
+    <a class="Xr">tmux(1)</a> , so it can be detached or opened in multiple
+    terminals. To detach, press &quot;ctrl-b&quot; then &quot;d&quot;.</p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="What_are_the_differences_with_a_vanilla_OpenBSD_?"><a class="permalink" href="#What_are_the_differences_with_a_vanilla_OpenBSD_?">What
@@ -108,11 +108,12 @@ If you start cmus with cwm root menu, it is started in <a class="Xr">tmux(1)</a>
 <ul class="Bl-bullet">
   <li><a class="Xr">unwind(8)</a> is configured as default domain name
     resolver.</li>
-  <li>A script called unwind-block is used to adblock some domains. It updates
-      the &quot;bad domains&quot; list weekly and is called with
-      <span class="Pa">~</span> /etc/rc.local See
-      <a class="Sx" href="#What_does_unwind_block_do">What does unwind-block
-      do</a>?</li>
+  <li>A script called zerohosts is used to adblock some domains by filling
+      <span class="Pa">/etc/hosts</span>
+    <p class="Pp">It updates the &quot;bad domains&quot; list weekly and is
+        called with <span class="Pa">~</span> /etc/rc.local No matter the DNS
+        resolver you use, bad domains are blacklisted.</p>
+  </li>
   <li>Customized message in <span class="Pa">/etc/boot.conf</span></li>
   <li><a class="Xr">hotplugd(8)</a> is configured to automount your USB strick
       in <span class="Pa">/vol</span> A link is available in your $HOME
@@ -153,52 +154,52 @@ If you start cmus with cwm root menu, it is started in <a class="Xr">tmux(1)</a>
   <li>A random wallpaper is set a each session.</li>
   <li>The file browser is pcmanfm. It is configured to have custom actions
       accessible with a right click (edit image, upload a file...).</li>
+  <li>The mouse pointer is hidden after a while using
+      <a class="Xr">xbanish(1)</a></li>
+  <li>nord colorscheme for X apps is installed. See
+      <a class="Lk" href="https://www.nordtheme.com/">https://www.nordtheme.com/</a>
+    <p class="Pp"></p>
+  </li>
 </ul>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="Why_this_name_?"><a class="permalink" href="#Why_this_name_?">Why
   this name?</a></h2>
-At first, isotop was a iso file containing all packages and configuration for
-  intallation. Now it&#x2019;s just a script to configure a vanilla OpenBSD.
+<p class="Pp">At first, isotop was a iso file containing all packages and
+    configuration for intallation. Now it&#x2019;s just a script to configure a
+    vanilla OpenBSD.</p>
 <p class="Pp">Like an isotope it is a variant of OpenBSD with a few more things
     inside, but still OpenBSD.</p>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
+<h2 class="Ss" id="Why_is_it_dark_?"><a class="permalink" href="#Why_is_it_dark_?">Why
+  is it dark?</a></h2>
+<p class="Pp">Because the developper like it, and it saves power.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
 <h2 class="Ss" id="Can_I_install_another_web_browser_?"><a class="permalink" href="#Can_I_install_another_web_browser_?">Can
   I install another web browser?</a></h2>
-Of course. Firefox and chromium, amongst others, are available in ports.
-  However, we choosed iridium because it is unveiled, meaning it can&#x2019;t
-  access your personal files that might contains password or ssh keys and it is
-  more privacy friendly than chromium.
+<p class="Pp">Of course. Firefox and chromium, amongst others, are available in
+    ports. However, we choosed iridium because it is unveiled, meaning it
+    can&#x2019;t access your personal files that might contains password or ssh
+    keys and it is more privacy friendly than chromium.</p>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="Can_I_install_another_desktop_environment_?"><a class="permalink" href="#Can_I_install_another_desktop_environment_?">Can
   I install another desktop environment?</a></h2>
-Of course.
+<p class="Pp">Of course.</p>
 <p class="Pp">Gnome, kde, lxde, xfce and more are availables for OpenBSD via
     ports.</p>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
-<h2 class="Ss" id="What_does_unwind_block_do_?"><a class="permalink" href="#What_does_unwind_block_do_?">What
-  does unwind-block do?</a></h2>
-In order to save your bandwidth and filter ads without any browser addon, a
-  script called unwind-block is executed at boot (see
-  <span class="Pa">/etc/rc.local</span> )
-<p class="Pp">Every 7 days, the script download a list of bad domains and record
-    them in <span class="Pa">/var/unwind.block</span> Thus, unwind can choose
-    not to resolve them. If you try to access one of these domains (why?),
-    you&#x2019;ll get a message &#x201C;website unavailable&#x201D;</p>
-<p class="Pp"></p>
-<p class="Pp"></p>
-</section>
-<section class="Ss">
 <h2 class="Ss" id="What_process_are_started_when_I_open_a_session_?"><a class="permalink" href="#What_process_are_started_when_I_open_a_session_?">What
   process are started when I open a session?</a></h2>
-See and edit <span class="Pa">$HOME/.xsession</span>
+<p class="Pp">See and edit <span class="Pa">$HOME/.xsession</span></p>
 <p class="Pp">See <a class="Lk" href="https://tools.suckless.org/dmenu/">dmenu
     website</a></p>
 <p class="Pp"></p>
@@ -206,7 +207,7 @@ See and edit <span class="Pa">$HOME/.xsession</span>
 <section class="Ss">
 <h2 class="Ss" id="Where_are_isotop_files_stored_?"><a class="permalink" href="#Where_are_isotop_files_stored_?">Where
   are isotop files stored?</a></h2>
-<span class="Pa">/usr/local/share/isotop</span>
+<p class="Pp"><span class="Pa">/usr/local/share/isotop</span></p>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
@@ -217,7 +218,9 @@ See and edit <span class="Pa">$HOME/.xsession</span>
       show the alert after the delay.</li>
   <li>dcmus : choose a file to play in cmus playlist</li>
   <li>dfm : a file launcher using dmenu.</li>
-  <li>dgroupwin : select a window and assign a group</li>
+  <li>groupwin : select a window and assign a group</li>
+  <li>cwmwinbar : display a menu at the top right border to deal with
+    windows</li>
   <li>dman : read a manpage</li>
   <li>dmenu_run_i : a dmenu_run improved to launch a command. End with a
       &quot;!&quot; and the command is open in a terminal. Example :
@@ -250,15 +253,13 @@ See and edit <span class="Pa">$HOME/.xsession</span>
   <li>imgopti : optimize an image to reduce its size.</li>
   <li>networkcheck : check internet access</li>
   <li>openbsdupgrade : upgrade to last -stable changes with
-      <a class="Xr">syspatch(8)</a> <a class="Xr">fw_update(1)</a> and
-      <a class="Lk" href="https://www.mtier.org/solutions/apps/openup/">openup</a></li>
+      <a class="Xr">syspatch(8)</a> <a class="Xr">fw_update(1)</a>
+      <a class="Xr">pkg_add(1)</a></li>
   <li>pixcol : show the html color code under the pointer</li>
   <li>pixup : upload an image to pix.toile-libre.org</li>
   <li>rdmwall : set a random wallpaper. Backgrounds are searched in :
       <span class="Pa">$HOME/Images/Wallpapers</span> ;
-      <span class="Pa">/usr/local/share/isotop/walls</span> ;
-      <span class="Pa">/usr/local/share/openbsd-backgrounds/pictures from</span>
-      openbsd-backgrounds port.</li>
+      <span class="Pa">/usr/local/share/isotop/walls</span></li>
   <li>scrot : take a screenshot, saved in $HOME</li>
   <li>scrotup : take a screenshot with scrot and upload with pixup</li>
   <li>send_dmesg.sh : send your dmesg to OpenBSD developers to help hardware
@@ -270,8 +271,8 @@ See and edit <span class="Pa">$HOME/.xsession</span>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
-<h2 class="Ss" id="What_are_the_custom_actions_in_pcmanfm"><a class="permalink" href="#What_are_the_custom_actions_in_pcmanfm">What
-  are the custom actions in pcmanfm</a></h2>
+<h2 class="Ss" id="What_are_avaiable_custom_actions_in_pcmanfm_?"><a class="permalink" href="#What_are_avaiable_custom_actions_in_pcmanfm_?">What
+  are avaiable custom actions in pcmanfm?</a></h2>
 <ul class="Bl-bullet">
   <li>Modify image (turn, resize...)</li>
   <li>Optimize image</li>
@@ -290,7 +291,10 @@ See and edit <span class="Pa">$HOME/.xsession</span>
 <section class="Ss">
 <h2 class="Ss" id="Start_an_application"><a class="permalink" href="#Start_an_application">Start
   an application</a></h2>
-At first, the desktop is empty.
+<p class="Pp">At first, the desktop is almost empty.</p>
+<p class="Pp">There is xclock at the top left border.</p>
+<p class="Pp">There is cwmwinbar at the top right border, to deal with
+  windows.</p>
 <p class="Pp">Right-click on the background to see the application menu and
     select, by example, xterm.</p>
 <p class="Pp">You can also press Alt-p to show <code class="Cm">dmenu</code> and
@@ -302,28 +306,27 @@ At first, the desktop is empty.
 <section class="Ss">
 <h2 class="Ss" id="Basic_window_management"><a class="permalink" href="#Basic_window_management">Basic
   window management</a></h2>
-You can drag the window by pressing Alt and left-clicking on the window to move
-  it around.
+<p class="Pp">You can drag the window by pressing Alt and left-clicking on the
+    window to move it around.</p>
 <p class="Pp">To resize the window, press Alt and right-click.</p>
 <p class="Pp">You probably don't need to move and resize windows but to see
     maximized instead, or hide it. All of this can be done with keystrokes
     thanks to <a class="Xr">cwm(1)</a> but you might not remember them all the
-    time. Right-click on the desktop or on a window border to see shortcuts
-  :</p>
+    time. Use the menu at the top right border (cwmwinbar):</p>
 <p class="Pp"></p>
 <ul class="Bl-bullet">
-  <li>Minimize</li>
-  <li>Maximize</li>
-  <li>Close</li>
-  <li>Show desktop</li>
-  <li>Show group assing menu</li>
+  <li># Send window to group n</li>
+  <li>- : Hide a window</li>
+  <li>+ : Maximize a window</li>
+  <li>x : Close a window</li>
 </ul>
 <p class="Pp">Then, click on the target window.</p>
 <p class="Pp"></p>
 </section>
 <section class="Ss">
 <h2 class="Ss" id="Bindings"><a class="permalink" href="#Bindings">Bindings</a></h2>
-Keyboard and mouse bindings are <a class="Xr">cwm(1)</a> defaults.
+<p class="Pp">Keyboard and mouse bindings are <a class="Xr">cwm(1)</a>
+  defaults.</p>
 <p class="Pp">Some other are added :</p>
 <p class="Pp"></p>
 <ul class="Bl-bullet">
@@ -344,8 +347,8 @@ Keyboard and mouse bindings are <a class="Xr">cwm(1)</a> defaults.
 <section class="Ss">
 <h2 class="Ss" id="Mouse_bindings"><a class="permalink" href="#Mouse_bindings">Mouse
   bindings</a></h2>
-You can popup menus by clicking on the desktop or on the border of a window
-  (quite big by default).
+<p class="Pp">You can popup menus by clicking on the desktop, on the clock or on
+    the border of a window (quite big by default).</p>
 <p class="Pp"></p>
 <ul class="Bl-bullet">
   <li>Right click : Application menu. you can start an application or deal with
@@ -363,7 +366,7 @@ You can popup menus by clicking on the desktop or on the border of a window
 <section class="Ss">
 <h2 class="Ss" id="About_window_menu"><a class="permalink" href="#About_window_menu">About
   window menu</a></h2>
-The window menu looks like this :
+<p class="Pp">The window menu looks like this :</p>
 <p class="Pp"></p>
 <div class="Bd Pp">
 <pre>
@@ -384,14 +387,14 @@ The window menu looks like this :
 <section class="Ss">
 <h2 class="Ss" id="About_workspaces"><a class="permalink" href="#About_workspaces">About
   workspaces</a></h2>
-There are no workspaces. They are just a way to increase the size of the screen,
-  and if you need a bigger screen, the window manager is probably wrong
-  somewhere. Instead, cwm uses <i class="Em">groups</i> . You can choose to show
-  one ore more grouped windows depending on your needs.
+<p class="Pp">There are no workspaces. They are just a way to increase the size
+    of the screen, and if you need a bigger screen, the window manager is
+    probably wrong somewhere. Instead, cwm uses <i class="Em">groups</i> . You
+    can choose to show one ore more grouped windows depending on your needs.</p>
 <p class="Pp">You can automatically assign a group to a window in
     <span class="Pa">$HOME/.cwmrc</span> or you can use the
     <code class="Cm">dgroupwin</code> to assing a group to a window.</p>
-<p class="Pp">At any time, a middle click on the desktop will shoiw the group
+<p class="Pp">At any time, a middle click on the desktop will show the group
     menu to toggle the visibility of active groups.</p>
 <p class="Pp"></p>
 </section>
@@ -399,7 +402,7 @@ There are no workspaces. They are just a way to increase the size of the screen,
 <section class="Sh">
 <h1 class="Sh" id="About_dmenu"><a class="permalink" href="#About_dmenu">About
   dmenu</a></h1>
-Tools included use dmenu.
+<p class="Pp">Tools included use dmenu.</p>
 <p class="Pp">It is a menu printed at the top of your screen. Write what you
     need, on only part of it, then press return to select.</p>
 <p class="Pp"></p>
@@ -413,7 +416,7 @@ Tools included use dmenu.
 </section>
 <section class="Sh">
 <h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
-Of course.
+<p class="Pp">Of course.</p>
 <p class="Pp">Please report them to <span class="An">prx</span>
     <a class="Mt" href="mailto:prx@ybad.name">prx@ybad.name</a></p>
 <p class="Pp"></p>
@@ -421,14 +424,14 @@ Of course.
 <section class="Sh">
 <h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
   ALSO</a></h1>
-<a class="Xr">cwm(1)</a> <a class="Xr">cwmrc(5)</a> <a class="Xr">dmenu(1)</a>
-  <a class="Xr">tmux(1)</a>
+<p class="Pp"><a class="Xr">cwm(1)</a> <a class="Xr">cwmrc(5)</a>
+    <a class="Xr">dmenu(1)</a> <a class="Xr">tmux(1)</a></p>
 <p class="Pp"></p>
 </section>
 </div>
 <table class="foot">
   <tr>
-    <td class="foot-date">August 18, 2019</td>
+    <td class="foot-date">October 21, 2019</td>
     <td class="foot-os"></td>
   </tr>
 </table>

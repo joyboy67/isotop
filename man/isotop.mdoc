@@ -74,12 +74,14 @@ To detach, press "ctrl-b" then "d".
 .Xr unwind 8
 is configured as default domain name resolver.
 .It 
-A script called unwind-block is used to adblock some domains. It updates
+A script called zerohosts is used to adblock some domains by filling 
+.Pa /etc/hosts
+
+It updates
 the "bad domains" list weekly and is called with 
 .Pa
 /etc/rc.local
-See
-.Sx What does unwind-block do ?
+No matter the DNS resolver you use, bad domains are blacklisted.
 .It
 Customized message in 
 .Pa /etc/boot.conf
@@ -146,6 +148,13 @@ A random wallpaper is set a each session.
 .It
 The file browser is pcmanfm. It is configured to have custom actions
 accessible with a right click (edit image, upload a file...).
+.It
+The mouse pointer is hidden after a while using 
+.Xr xbanish 1
+.It
+nord colorscheme for X apps is installed. See
+.Lk  https://www.nordtheme.com/
+
 .El
 
 .Ss Why this name ?
@@ -156,6 +165,9 @@ Now it\(cqs just a script to configure a vanilla OpenBSD.
 
 Like an isotope it is a
 variant of OpenBSD with a few more things inside, but still OpenBSD.
+
+.Ss Why is it dark ?
+Because the developper like it, and it saves power.
 
 .Ss Can I install another web browser ?
 
@@ -168,23 +180,6 @@ contains password or ssh keys and it is more privacy friendly than chromium.
 Of course.
 
 Gnome, kde, lxde, xfce and more are availables for OpenBSD via ports.
-
-.Ss What does unwind-block do ?
-
-In order to save your bandwidth and filter ads without any browser
-addon, a script called unwind-block is executed at boot (see
-.Pa /etc/rc.local
-)
-
-Every 7 days, the script download a list of bad domains and record
-them in 
-.Pa /var/unwind.block
-Thus, unwind can choose not to resolve
-them.
-If you try to access one of these domains (why?), you\(cqll get a
-message
-.Dq website unavailable
-
 
 .Ss What process are started when I open a session ?
 
@@ -209,7 +204,9 @@ dcmus : choose a file to play in cmus playlist
 .It
 dfm : a file launcher using dmenu.
 .It
-dgroupwin : select a window and assign a group
+groupwin : select a window and assign a group
+.It 
+cwmwinbar : display a menu at the top right border to deal with windows
 .It
 dman : read a manpage
 .It
@@ -261,8 +258,7 @@ networkcheck : check internet access
 openbsdupgrade : upgrade to last -stable changes with
 .Xr syspatch 8
 .Xr fw_update 1
-and 
-.Lk https://www.mtier.org/solutions/apps/openup/ openup
+.Xr pkg_add 1
 .It
 pixcol : show the html color code under the pointer 
 .It
@@ -272,9 +268,6 @@ rdmwall : set a random wallpaper. Backgrounds are searched in :
 .Pa $HOME/Images/Wallpapers
 ;
 .Pa /usr/local/share/isotop/walls
-;
-.Pa /usr/local/share/openbsd-backgrounds/pictures from
-openbsd-backgrounds port.
 .It
 scrot : take a screenshot, saved in $HOME
 .It
@@ -289,7 +282,7 @@ web : a wrapper to start a web browser.
 xenodm-config : edit xenodm configuration and appearance.
 .El
 
-.Ss What are the custom actions in pcmanfm
+.Ss What are avaiable custom actions in pcmanfm ?
 
 .Bl -bullet
 .It 
@@ -311,7 +304,11 @@ Print with default printer (image, text, pdf...)
 
 .Ss Start an application
 
-At first, the desktop is empty.
+At first, the desktop is almost empty. 
+
+There is xclock at the top left border.
+
+There is cwmwinbar at the top right border, to deal with windows.
 
 Right-click on the background to see the application menu and select, by
 example, xterm. 
@@ -335,20 +332,18 @@ To resize the window, press Alt and right-click.
 You probably don't need to move and resize windows but to see maximized
 instead, or hide it. All of this can be done with keystrokes thanks to
 .Xr cwm 1
-but you might not remember them all the time. Right-click on the desktop or on a window border to
-see shortcuts :
+but you might not remember them all the time. Use the menu at the top
+right border (cwmwinbar):
 
 .Bl -bullet
 .It
-Minimize
+# Send window to group n
 .It 
-Maximize
+- : Hide a window
 .It 
-Close
++ : Maximize a window
 .It 
-Show desktop
-.It 
-Show group assing menu
+x : Close a window
 .El
 
 Then, click on the target window.
@@ -389,7 +384,7 @@ to customize according your needs.
 
 .Ss Mouse bindings
 
-You can popup menus by clicking on the desktop or on the 
+You can popup menus by clicking on the desktop, on the clock or on the 
 .Em 
 border 
 .No
@@ -448,7 +443,7 @@ or you can use the
 .Cm dgroupwin
 to assing a group to a window.
 
-At any time, a middle click on the desktop will shoiw the group menu to
+At any time, a middle click on the desktop will show the group menu to
 toggle the visibility of active groups.
 
 .Sh About dmenu

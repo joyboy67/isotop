@@ -1,5 +1,5 @@
 .\" Automatically generated from an mdoc input file.  Do not edit.
-.TH "FAQ" "isotop" "August 18, 2019" "" "isotop"
+.TH "FAQ" "isotop" "October 21, 2019" "" "isotop"
 .nh
 .if n .ad l
 .SH "NAME"
@@ -35,7 +35,7 @@ hostname.if(5)
 et la documentation d'OpenBSD traduite
 \fIr\[u00E9]seau sans fil\fR: \fBhttps://wiki.obsd4a.net/openbsd.org:faq:faq6#reseau-sans-fil\fR
 Un outil pour faciliter les connexions sera publi\[u00E9] dans la prochaine
-version d'isotop, lorsque j'aurai une carte sans-fil.
+version d'isotop, lorsque le d\[u00E9]veloppeur aura une carte sans-fil.
 .sp
 .SS "Comment ajouter/supprimer des programmes"
 Un raccourci vers
@@ -89,16 +89,31 @@ Pour d\[u00E9]tacher cmus, appuyez sur "ctrl-b" puis "d".
 \fB\(bu\fR
 unwind(8)
 est configur\[u00E9] en tant que r\[u00E9]solveur de nom de domaine par d\[u00E9]faut.
+.sp
 .TP 4n
 \fB\(bu\fR
-Un script appel\[u00E9] unwind-block est utilis\[u00E9] pour bloquer certains domaines. Il met \[u00E0] jour
-la liste des "mauvais domaines" chaque semaine et est appel\[u00E9]e avec
+Les noms de domaines de domaines malveillants et publicitaires
+sont filtr\[u00E9]s gr\[u00E2]ce au programme zerohosts lanc\[u00E9] \[u00E0] chaque d\[u00E9]marrage et
+qui met \[u00E0] jour une liste noire toutes les semaines. Il est lanc\[u00E9] par le
+fichier
 \fI/etc/rc.local\fR
 .sp
+Il remplit le fichier
+\fI/etc/hosts\fR
+et permet de filtrer rapidement les domaines malveillants, peu importe
+le r\[u00E9]solveur DNS utilis\[u00E9].
+.sp
+Si vous essayez d\[u2019]acc\[u00E9]der \[u00E0] l\[u2019]un de ces domaines (pourquoi?), Vous
+obtiendrez un
+message:
+.sp
+\(lqLe site web n'est pas disponible\(rq
+.sp
 Voir
-\fIQue fait unwind-block?\fR
+\fBhttps://ybad.name/Logiciel-libre/Code/zerohosts.html\fR
 .TP 4n
 \fB\(bu\fR
+.sp
 Message personnalis\[u00E9] dans
 \fI/etc/boot.conf\fR
 .TP 4n
@@ -189,11 +204,19 @@ $HOME/.kshrc contient de l'auto-compl\[u00E9]tion pour OpenBSD.
 .TP 4n
 \fB\(bu\fR
 Un fond d'\[u00E9]cran al\[u00E9]atoire est d\[u00E9]fini \[u00E0] chaque session avec
-GraphicsMagick.
+xwallpaper.
 .TP 4n
 \fB\(bu\fR
 Le navigateur de fichiers est pcmanfm. Il est configur\[u00E9] pour avoir des
 actions personnalis\[u00E9]es via clic-droit (\[u00E9]diter une image, t\[u00E9]l\[u00E9]verser un fichier ...).
+.TP 4n
+\fB\(bu\fR
+Le pointeur de la souris est cach\[u00E9] gr\[u00E2]ce \[u00E0]
+xbanish(1)
+.TP 4n
+\fB\(bu\fR
+Le th\[u00E8]me de couleur "nord" est install\[u00E9] pour les applications X. Voir.
+\fBhttps://www.nordtheme.com/\fR
 .PP
 .SS "Pourquoi ce nom?"
 Au d\[u00E9]but, isotop \[u00E9]tait image iso contenant tous les paquetages et
@@ -202,6 +225,10 @@ Maintenant, c'est juste un script pour configurer OpenBSD.
 .sp
 Comme un isotope c'est une
 variante d'OpenBSD avec quelques \[u00E9]l\[u00E9]ments suppl\[u00E9]mentaires, mais toujours OpenBSD.
+.sp
+.SS "Why c'est sombre?"
+Parce que le d\[u00E9]veloppeur aime bien, et \[u00E7]a \[u00E9]conomise l'\[u00E9]nergie de ne pas
+allumer les pixels.
 .sp
 .SS "Puis-je installer un autre navigateur Web?"
 Bien s\[u00FB]r.
@@ -214,24 +241,6 @@ contenant des mots de passe ou des cl\[u00E9]s SSH et il est plus respectueux de
 Bien s\[u00FB]r.
 .sp
 Gnome, kde, lxde, xfce et d'autres sont disponibles pour OpenBSD via les ports.
-.sp
-.SS "Que fait unwind-block?"
-Pour \[u00E9]conomiser votre bande passante et filtrer les annonces sans
-addon dans le navigateur, un script appel\[u00E9] unwind-block est ex\[u00E9]cut\[u00E9] au d\[u00E9]marrage (voir
-\fI/etc/rc.local\fR
-)
-.sp
-Tous les 7 jours, le script t\[u00E9]l\[u00E9]charge une liste des domaines
-malveillants et les enregistre
-dans
-\fI/var/unwind.block\fR
-Ainsi, unwind peut choisir de ne pas r\[u00E9]soudre
-leur noms.
-Si vous essayez d\[u2019]acc\[u00E9]der \[u00E0] l\[u2019]un de ces domaines (pourquoi?), Vous
-obtiendrez un
-message:
-.sp
-\(lqLe site web n'est pas disponible\(rq
 .sp
 .SS "Quels processus sont d\[u00E9]marr\[u00E9]s lorsque j'ouvre une session?"
 Consultez le fichier
@@ -253,7 +262,11 @@ dcmus: choisissez un fichier \[u00E0] lire dans la liste de lecture de cmus
 dfm: un lanceur de fichiers utilisant dmenu.
 .TP 4n
 \fB\(bu\fR
-dgroupwin: s\[u00E9]lectionne une fen\[u00EA]tre et assigne un groupe
+groupwin: s\[u00E9]lectionne une fen\[u00EA]tre et assigne un groupe
+.TP 4n
+\fB\(bu\fR
+cwmwinbar : affiche un menu de gestion des fen\[u00EA]tres en haut \[u00E0] droite de
+l'\[u00E9]cran.
 .TP 4n
 \fB\(bu\fR
 dman: lire une page de manuel
@@ -333,8 +346,7 @@ networkcheck: v\[u00E9]rifie l'acc\[u00E8]s \[u00E0] Internet
 openbsdupgrade: mise \[u00E0] niveau vers les derni\[u00E8]res modifications de -stable avec
 syspatch(8)
 fw_update(1)
-et
-\fIopenup\fR: \fBhttps://www.mtier.org/solutions/apps/openup/\fR
+pkg_add(1)
 .TP 4n
 \fB\(bu\fR
 pixcol: affiche le code html de la couleur du pixer situ\[u00E9] sous le
@@ -348,10 +360,6 @@ rdmwall: d\[u00E9]finit un fond d'\[u00E9]cran al\[u00E9]atoire. Les fonds sont 
 \fI$HOME/Images/Wallpapers\fR
 ;
 \fI/usr/local/share/isotop/walls\fR
-;
-\fI/usr/local/share/openbsd-backgrounds/landscape\fR
-images du paquet
-\fIopenbsd-backgrounds\fR
 .TP 4n
 \fB\(bu\fR
 scrot: prend une capture d'\[u00E9]cran, enregistr\[u00E9]e dans $HOME
@@ -367,7 +375,7 @@ au support mat\[u00E9]riel.
 setwall: d\[u00E9]finit le fond d'\[u00E9]cran.
 .TP 4n
 \fB\(bu\fR
-Web: un wrapper pour d\[u00E9]marrer un navigateur web.
+web: un wrapper pour d\[u00E9]marrer un navigateur web.
 .TP 4n
 \fB\(bu\fR
 xenodm-config: \[u00E9]ditez la configuration et l'apparence de xenodm.
@@ -396,7 +404,10 @@ Imprimer avec l'imprimante par d\[u00E9]faut (image, texte, pdf)
 .SS "Ouvrir une application"
 Au d\[u00E9]but, le bureau est vide.
 .sp
-Cliquez avec le bouton droit sur l'arri\[u00E8]re-plan pour afficher le menu
+Vous pouvez voir une horloge en haut \[u00E0] gauche, et un menu pour g\[u00E9]rer les
+fen\[u00EA]tres en haut \[u00E0] droite.
+.sp
+Cliquez avec le bouton droit sur l'arri\[u00E8]re-plan ou sur l'horloge lpour afficher le menu
 d'applications et choisissez par
 exemple, xterm.
 .sp
@@ -417,24 +428,23 @@ Vous n'avez probablement pas besoin de d\[u00E9]placer et de redimensionner les
 fen\[u00EA]tres mais de les maximiser
 \[u00E0] la place, ou les cacher. Tout cela peut \[u00EA]tre fait avec des raccourcis clavier gr\[u00E2]ce \[u00E0]
 cwm(1)
-mais vous ne vous en souviendrez peut-\[u00EA]tre pas tout le temps. Cliquez avec le bouton droit sur le bureau ou sur une bordure de fen\[u00EA]tre pour
-voir les raccourcis:
+mais vous ne vous en souviendrez peut-\[u00EA]tre pas tout le temps.
+C'est pourquoi un outil appel\[u00E9] "cwmwinbar" est pr\[u00E9]sent en haut \[u00E0] droite
+de l'\[u00E9]cran, vous permettant :
 .sp
+.SS "Raccourcis clavier"
 .TP 4n
 \fB\(bu\fR
-Minimiser
+# : changer le groupe d'une fen\[u00EA]tre
 .TP 4n
 \fB\(bu\fR
-Maximiser
+- : Cacher une fen\[u00EA]tre
 .TP 4n
 \fB\(bu\fR
-Fermer
++ : Agrandir une fen\[u00EA]tre
 .TP 4n
 \fB\(bu\fR
-Bureau : afficher le bureau
-.TP 4n
-\fB\(bu\fR
-Groupe : gestion des groupes
+x : Fermer une fen\[u00EA]tre
 .PP
 Ensuite, cliquez sur la fen\[u00EA]tre cible.
 .sp
@@ -540,7 +550,7 @@ besoin.
 Vous pouvez attribuer automatiquement un groupe \[u00E0] une fen\[u00EA]tre dans
 \fI$HOME/.cwmrc\fR
 ou vous pouvez utiliser
-\fBdgroupwin\fR
+\fBgroupwin\fR
 pour assigner un groupe \[u00E0] une fen\[u00EA]tre.
 .sp
 \[u00C0] tout moment, un clic du milieu sur le bureau affichera le "menu

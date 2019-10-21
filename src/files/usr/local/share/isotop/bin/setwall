@@ -1,5 +1,12 @@
 #!/bin/sh
-#/usr/local/bin/gm display -foreground black -window root -backdrop "${1}"
-# xwallpaper is installed with openbsd-backgounds
-xwallpaper --zoom "${1}"
+# requires xwallpaper
+/usr/X11R6/bin/xrdb -merge ~/.Xresources 
+bgcol="$(/usr/X11R6/bin/xrdb -query |grep background | cut -d':' -f2 |  tr -d [:space:])"
+test $? -ne 0 && bgcol="black"
+/usr/X11R6/bin/xsetroot -solid "$bgcol"
+
+# gm has issues with xcompmgr
+#/usr/local/bin/gm display -foreground "$bgcol" -window root -backdrop "${1}"
+
+/usr/local/bin/xwallpaper --stretch "${1}"
 exit 0

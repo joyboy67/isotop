@@ -1,61 +1,62 @@
-! $OpenBSD: Xresources.in,v 1.1 2017/07/26 21:14:54 matthieu Exp $
-!
-!
-!
-!
-!
+#include "/usr/local/share/isotop/data/Xresources-nord"
+
+*font:-misc-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
 
 xlogin*greeting:  ___WHOAREYOU___ 
 xlogin*namePrompt:   ___LOGIN___
 xlogin*passwdPrompt: ___PASSWORD___
 xlogin*fail: ___FAILEDLOGIN___
 
-xlogin*greetFont: -adobe-helvetica-bold-o-normal--24-240-75-75-p-138-iso8859-1
-xlogin*font: -adobe-helvetica-medium-r-normal--18-180-75-75-p-98-iso8859-1
+xlogin*greetFont:  -adobe-helvetica-bold-o-normal--24-240-75-75-p-138-iso8859-1
+xlogin*font:       -adobe-helvetica-medium-r-normal--18-180-75-75-p-98-iso8859-1
 xlogin*promptFont: -adobe-helvetica-bold-r-normal--18-180-75-75-p-103-iso8859-1
-xlogin*failFont: -adobe-helvetica-bold-r-normal--18-180-75-75-p-103-iso8859-1
-xlogin*greetFace:       DejaVu Sans Condensed-22:bold:dpi=75
-xlogin*face:            DejaVu Sans Condensed-16:dpi=75
-xlogin*promptFace:      DejaVu Sans Condensed-16:bold:dpi=75
-xlogin*failFace:        DejaVu Sans Condensed-16:bold:dpi=75
+xlogin*failFont:   -adobe-helvetica-bold-r-normal--18-180-75-75-p-103-iso8859-1
+xlogin*face:       DejaVu Sans Condensed-16:dpi=75
+xlogin*greetFace:  DejaVu Sans Condensed-22:bold:dpi=75
+xlogin*promptFace: DejaVu Sans Condensed-16:bold:dpi=75
+xlogin*failFace:   DejaVu Sans Condensed-16:bold:dpi=75
 
 xlogin.Login.echoPasswd:       true
 
-xlogin*borderWidth: 3
-xlogin*frameWidth: 0
-xlogin*innerFramesWidth: 0
-
+xlogin*borderWidth: 0
+xlogin.Login.frameWidth: 0
+xlogin.Login.innerFramesWidth: 0
 xlogin.Login.sepWidth: 0
 
-xlogin*hiColor: #222222
-xlogin*shdColor: #222222
-xlogin*greetColor: #eeeeee
-xlogin*background: #222222
-xlogin*inpColor: #222222
-xlogin*failColor: #aa0000
-*Foreground: #cccccc
-*Background: #222222
-xlogin*logoFileName: /usr/local/share/isotop/data/pixmaps/xenodm/isotop_logo.xpm
+xlogin.Login.failColor:   nord11
+xlogin.Login.foreground:  nord4
+xlogin.Login.greetColor:  nord4
+xlogin.Login.inpColor:    nord0
+xlogin.Login.promptColor: nord4
+xlogin.Login.hiColor:     nord4
+xlogin.Login.shdColor:    nord4
 
 xlogin*useShape: true
-xlogin*logoPadding: 5
 
 xlogin.Login.allowRootLogin:	false
 
-xlogin*geometry: 700x350+42+42
-
-XConsole*background:	black
-XConsole*foreground:	white
 XConsole*borderWidth:	2
-XConsole*borderColor:   grey
 XConsole.text.geometry:	480x130
 XConsole.verbose:	true
 XConsole*iconic:	true
-XConsole*font:		fixed
 
 
-XClock*background:	#222222
-XClock*foreground:	#cccccc
-XClock*borderWidth:	3
-XClock*borderColor:	#000000
-XClock*geometry: 60x30+362+12
+XClock*borderWidth:	0
+XClock*font:-misc-fixed-bold-r-normal-*-14-*-*-*-*-*-iso10646-1
+
+Xmessage.form.okay.shapeStyle:         rectangle
+Xmessage*buttons:                       OK
+Xmessage*defaultButton:                 OK
+Xmessage.form.message.Scroll:          WhenNeeded
+Xmessage*borderWidth:                  0
+Xmessage*Text.borderWidth:             0
+Xmessage*Command.borderWidth:          0
+Xmessage*Command.shapeStyle:           rectangle
+Xmessage*Command.highlightThickness:   2 
+Xmessage*Command.internalWidth:         5
+Xmessage*Command.internalHeight:        1
+Xmessage*message.scrollHorizontal: Never
+Xmessage*message.scrollVertical: Never
+Xmessage*timeout: 0
+Xmessage*font:-misc-fixed-bold-r-normal-*-14-*-*-*-*-*-iso10646-1
+
