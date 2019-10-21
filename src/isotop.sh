@@ -4,7 +4,7 @@
 
 # Description : This will install the isotop preconfiguration on an
 # OpenBSD system
-VERSION="653"
+VERSION="660"
 
 # check if root
 if [ $(id -u) -ne 0 ]; then
@@ -115,11 +115,11 @@ sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" /etc/X11/xenodm/Xresources_isotop
 # unwind configuration
 echo "* Configure unwind DNS resolver"
 rcctl enable unwind
-if [ ${OBSDVER} -gt 65 ]; then
-	# FIXME : remove test after 6.6
-	touch /var/unwind.block
-	echo 'block list "/var/unwind.block"' > /etc/unwind.conf
-fi
+
+# zerohosts configuration
+echo "* Install zerohosts"
+ftp -o /usr/local/sbin/zerohosts "https://dev.ybad.name/OpenBSD-stuff/zerohosts"
+chmod +x /usr/local/sbin/zerohosts
 
 echo "* Configure dhclient"
 echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
