@@ -14,3 +14,4 @@ all:
 	git add src/isotop.sh isotop-$(VERSION).tgz isotop.sha256
 	git commit -m "update for $(VERSION)"
 	git push
+	scp man/isotop*.html pi:/var/www/htdocs/3hg.fr/Isos/isotop/
