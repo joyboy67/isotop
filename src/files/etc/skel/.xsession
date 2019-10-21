@@ -39,6 +39,11 @@ xclock -render -face DejaVuSansMono-9 -padding 5 -digital \
 	-strftime "%H:%M - %d/%m/%Y" -geometry +0+0 &
 # a menu to deal with windows
 cwmwinbar &
+
+# xcompmgr for shadows. Disabled because buggy
+#test -n "$(xdpyinfo | grep Composite)" && \
+#    xcompmgr -c -C -f -F -D 3 -o 0.24 &
+
 # start cwm. No & here
 cwm
 
