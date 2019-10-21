@@ -110,6 +110,8 @@
     resolver.</li>
   <li>A script called zerohosts is used to adblock some domains by filling
       <span class="Pa">/etc/hosts</span>
+    <p class="Pp">It will in include the content of
+        <span class="Pa">/etc/hosts.include</span></p>
     <p class="Pp">It updates the &quot;bad domains&quot; list weekly and is
         called with <span class="Pa">~</span> /etc/rc.local No matter the DNS
         resolver you use, bad domains are blacklisted.</p>
