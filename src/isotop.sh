@@ -118,11 +118,6 @@ sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" /etc/X11/xenodm/Xresources_isotop
 echo "* Configure unwind DNS resolver"
 rcctl enable unwind
 
-# zerohosts configuration
-echo "* Install zerohosts"
-ftp -o /usr/local/sbin/zerohosts "https://dev.ybad.name/OpenBSD-stuff/zerohosts"
-chmod +x /usr/local/sbin/zerohosts
-
 echo "* Configure dhclient"
 echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
 
