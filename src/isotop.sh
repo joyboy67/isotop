@@ -96,7 +96,6 @@ sort -ru /etc/doas.conf -o /etc/doas.conf
 echo "* Enable softdeps"
 sed -i 's/rw,/rw,softdep,/g' /etc/fstab
 mount -a
-umount /usr/local && mount /usr/local
 
 # ports
 #echo "* Ports configuration"
