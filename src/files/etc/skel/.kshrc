@@ -31,7 +31,7 @@ set -A complete_signify_3 -- -p -x -c -m -t -z
 set -A complete_gpg2 -- --refresh --receive-keys --armor --clearsign --sign --list-key --decrypt --verify --detach-sig
 set -A complete_ifconfig_1 -- $(ifconfig | grep ^[a-z] | cut -d: -f1)
 
-pgrep -q vmd
+pgrep -q vmd >/dev/null 2>&1
 if [ $? = 0 ]; then
 	set -A complete_vmctl -- console load reload start stop reset status send receive
 	set -A complete_vmctl_2 -- $(vmctl status | awk '!/NAME/{print $NF}')

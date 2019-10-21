@@ -1,22 +1,22 @@
 #!/bin/sh
 #Set as wallpaper a random picture located in any DIRS path
-WALLSETTER="setwall" # feh --bg-scale, bgs or any
+#WALLSETTER="xwallpaper --zoom" # feh --bg-scale, bgs or any
+WALLSETTER="setwall"
 
 DIRS="$HOME/Images/Wallpapers
-/usr/local/share/isotop/walls/
-/usr/local/share/openbsd-backgrounds/landscape
-"
+/usr/local/share/isotop/walls"
 
 getrdmwall() {
 for D in $DIRS; do
 	find $D -type f \
 	    -iname "*.jpg" -o \
-		-iname "*.PNG" 
+		-iname "*.png" 
 done | sort -R | head -n 1
 }
 
 img=""
 while [ ! -f "${img}" ]; do
 	img="$(getrdmwall)"
+	echo $img
 done
 $WALLSETTER "${img}"

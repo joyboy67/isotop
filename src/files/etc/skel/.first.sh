@@ -3,6 +3,8 @@
 # first session launch configuration
 . ${HOME}/.profile
 
+xrdb -merge $HOME/.Xresources # for xterm later
+
 # TRADS
 lang=$(cat /etc/kbdtype)
 
