@@ -6,7 +6,7 @@ test $? -ne 0 && bgcol="black"
 /usr/X11R6/bin/xsetroot -solid "$bgcol"
 
 # gm has issues with xcompmgr
-/usr/local/bin/gm display -foreground "$bgcol" -window root -backdrop "${1}"
+#/usr/local/bin/gm display -foreground "$bgcol" -window root -backdrop "${1}"
 
-#/usr/local/bin/xwallpaper --stretch "${1}"
+/usr/local/bin/xwallpaper --stretch "${1}"
 exit 0
