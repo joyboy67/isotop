@@ -27,6 +27,7 @@ Screenshots
 -----------
 
 ![isotop login screen](screenshots/isotop-xenodm.png)
+![isotop desktop with pkg_mgr and pcmanfm and man](screenshots/isotop.png)
 ![isotop desktop showing group management](screenshots/isotop2.png)
 
 Help
