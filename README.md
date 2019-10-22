@@ -18,6 +18,10 @@ Install OpenBSD, then get isotop.sh and run it:
 
 Then read the FAQ in ``man isotop``.
 
+Example : 
+
+[![asciicast](https://asciinema.org/a/276276.svg)](https://asciinema.org/a/276276)
+
 
 Screenshots
 -----------
