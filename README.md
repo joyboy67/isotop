@@ -13,8 +13,8 @@ Installation
 ------------
 Install OpenBSD, then get isotop.sh and run it:
 
-	ftp https://framagit.org/3hg/isotop/raw/master/src/isotop.sh
-	sh isotop.sh
+	$ ftp https://framagit.org/3hg/isotop/raw/master/src/isotop.sh
+	# sh isotop.sh
 
 Then read the FAQ in ``man isotop``.
 
