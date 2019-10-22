@@ -1,2 +1,2 @@
-/usr/local/share/isotop/bin/bin/zerohosts /etc/hosts.include &
+/usr/local/share/isotop/bin/zerohosts /etc/hosts.include &
 syspatch &

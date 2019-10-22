@@ -4,7 +4,7 @@
 
 # Description : This will install the isotop preconfiguration on an
 # OpenBSD system
-VERSION="660"
+VERSION="661"
 
 # check if root
 if [ $(id -u) -ne 0 ]; then
@@ -30,7 +30,7 @@ case $lang in
 		XENODMFAIL='Echec :s'
 		SKEL="Voulez-vous copier la configuration d'isotop dans le HOME
 des utilisateurs existants et remplacer leur configuration? Ils seront
-aussi aoutés au groupe wheel" 
+aussi ajoutés au groupe wheel" 
 	;;
 	*)
 		THX="Thanks! ;)"
