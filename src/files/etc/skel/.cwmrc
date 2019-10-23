@@ -35,11 +35,9 @@ autogroup 0 xclock, XClock
 autogroup 0 xmessage, Xmessage
 
 # Mouse
-# Disable resize with middle button
-unbind-mouse M-2 
-unbind-mouse M-3
 # Alt+ right click to resize
-bind-mouse M-3 window-resize
+bind-mouse M-2          window-lower
+bind-mouse M-3          window-resize
 
 # scroll on background change volume
 bind-mouse 0-4 "mixerctl outputs.master=+10"
