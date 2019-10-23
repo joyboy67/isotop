@@ -60,7 +60,7 @@ will belong to wheel group then."
 	;;
 esac
 
-ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
+ISOTOPURL="https://framagit.org/3hg/isotop/raw/663/"
 
 dldir=$(pwd)
 echo "* Get isotop files"
