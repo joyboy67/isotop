@@ -4,7 +4,7 @@
 
 # Description : This will install the isotop preconfiguration on an
 # OpenBSD system
-VERSION="661"
+VERSION="662"
 
 # check if root
 if [ $(id -u) -ne 0 ]; then
@@ -21,7 +21,7 @@ fi
 lang=$(cat /etc/kbdtype)
 
 case $lang in 
-	"fr")
+	"fr*")
 		THX="Merci ! ;)"
 		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
 		XENODMWHOAREYOU='Qui est-ce ?'

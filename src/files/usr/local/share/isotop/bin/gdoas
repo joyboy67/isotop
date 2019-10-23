@@ -14,6 +14,6 @@ $MSG
 - - -
 " 
 
-xterm -T "$@" -e "printf \"%s\" \"$TXT\" && doas $@"
+xterm -T "$@" -e "printf \"%s\" \"$TXT\" && doas \"$@\""
 
 exit 0

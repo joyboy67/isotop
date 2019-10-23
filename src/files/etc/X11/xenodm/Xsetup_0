@@ -8,9 +8,15 @@ bgcol="$(/usr/X11R6/bin/xrdb -query |grep background | cut -d':' -f2 |  tr -d [:
 
 WALLDIR=/usr/local/share/isotop/walls
 if [ -f "${WALLDIR}"/loginbg.jpg ]; then
-	WALL="${WALLDIR}/loginbg.jpg"
-	/usr/local/share/isotop/bin/setwall "${WALL}" &
+    WALL="${WALLDIR}/loginbg.jpg"
+else
+    WALL="$(find ${WALLDIR} -iname '*.jpg' -o -iname '*.png' |\
+        sort -R |\
+        head -n 1)"
 fi
+test -n "${WALL}" && \
+    /usr/local/share/isotop/bin/setwall "${WALL}" &
+
 
 #h=$(/usr/X11R6/bin/xwininfo -root|sed '/Height/!d;s/.* //')
 w=$(/usr/X11R6/bin/xwininfo -root|sed '/Width/!d;s/.* //')
