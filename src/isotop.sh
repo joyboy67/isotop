@@ -21,7 +21,7 @@ fi
 lang=$(cat /etc/kbdtype)
 
 case $lang in 
-	"fr")
+	"fr*")
 		THX="Merci ! ;)"
 		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
 		XENODMWHOAREYOU='Qui est-ce ?'
