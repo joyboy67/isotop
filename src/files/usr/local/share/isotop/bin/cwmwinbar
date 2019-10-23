@@ -9,6 +9,11 @@ fi
 
 while true; do
 (
+	xset q > /dev/null 2>&1
+	if [ $? -ne 0 ]; then
+		echo "X seems off"
+		exit 1
+	fi
 	xrdb -load $HOME/.Xresources
 	xmessage -timeout 0 \
 	-geometry -0+-29 \
@@ -37,3 +42,4 @@ while true; do
 	fi
 )
 done
+exit
