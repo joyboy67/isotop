@@ -11,11 +11,18 @@ if [ $(id -u) -ne 0 ]; then
 	echo "You must run this script with root privileges"
 	exit 1
 fi
-OBSDVER=$(uname -r | tr -d '.') # 65
-if [ $OBSDVER -lt 65 ]; then
-	echo "isotop support only OpenBSD > 6.5"
-	exit 1
-fi
+
+# warning
+banner "isotop"
+echo "Files in /etc will be modified,"
+echo "packages will be installed,"
+echo "press ctrl-c if you're not sure to install isotop customization."
+i=0
+while [ $i -lt 5 ]; do
+    printf '%s' '.'
+	i=$(($i+1))
+	sleep 1
+done
 
 # TRADS
 lang=$(cat /etc/kbdtype)
