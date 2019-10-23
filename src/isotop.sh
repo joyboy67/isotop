@@ -60,7 +60,7 @@ will belong to wheel group then."
 	;;
 esac
 
-ISOTOPURL="https://framagit.org/3hg/isotop/raw/663/"
+ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 dldir=$(pwd)
 echo "* Get isotop files"
@@ -90,7 +90,7 @@ echo "echo ---" >> /etc/boot.conf
 
 echo "* Configuring install PATH"
 echo "https://cdn.openbsd.org/pub/OpenBSD" >> /etc/installurl
-sortru 
+sortru /etc/installurl
 
 # doas
 echo "* Configure doas"
