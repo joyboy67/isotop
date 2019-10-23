@@ -3,7 +3,8 @@
 # licence :     MIT
 
 # Description : This will install the isotop preconfiguration on an
-# OpenBSD system
+#               OpenBSD system
+
 VERSION="663"
 
 # check if root
@@ -11,6 +12,13 @@ if [ $(id -u) -ne 0 ]; then
 	echo "You must run this script with root privileges"
 	exit 1
 fi
+
+sortru() {
+    # remove duplicate lines in a file
+	# in case of successive isotop install
+	# or user previous configuration
+	sort -ru "${1}" -o "${1}"
+}
 
 # warning
 banner "isotop"
@@ -54,12 +62,6 @@ esac
 
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
-echo "======================="
-echo "     isotop install    "
-echo "======================="
-
-
-
 dldir=$(pwd)
 echo "* Get isotop files"
 ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
@@ -78,7 +80,6 @@ echo "* Remove downloaded files"
 rm "${dldir}"/isotop-${VERSION}.tgz
 rm "${dldir}"/isotop.sha256
 
-
 echo "* Runnign syspatch for security reasons"
 syspatch
 
@@ -88,7 +89,8 @@ echo "echo Let's boot on isotop ${VERSION}" >> /etc/boot.conf
 echo "echo ---" >> /etc/boot.conf
 
 echo "* Configuring install PATH"
-echo "https://cdn.openbsd.org/pub/OpenBSD" > /etc/installurl
+echo "https://cdn.openbsd.org/pub/OpenBSD" >> /etc/installurl
+sortru 
 
 # doas
 echo "* Configure doas"
@@ -97,11 +99,12 @@ echo "permit nopass :wheel cmd /sbin/shutdown" >> /etc/doas.conf
 echo "permit nopass :wheel cmd /sbin/reboot" >> /etc/doas.conf
 
 # in case a previous isotop install has been made
-sort -ru /etc/doas.conf -o /etc/doas.conf
+sortru /etc/doas.conf
 
 # softdep
 echo "* Enable softdeps"
-sed -i 's/rw,/rw,softdep,/g' /etc/fstab
+sed -i 's/ffs rw,/ffs rw,softdep,/g' /etc/fstab   # only on ffs
+sed -i 's/softdep,softdep,/softdep,/g' /etc/fstab # only one softdep
 mount -a
 
 # ports
@@ -126,6 +129,7 @@ rcctl enable unwind
 
 echo "* Configure dhclient"
 echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
+sortru /etc/dhclient.conf
 
 echo "* Enable apmd"
 rcctl enable apmd
@@ -135,7 +139,7 @@ rcctl set apmd flags -A
 echo "* Enable xenodm"
 rcctl enable xenodm
 
-echo '* Installing packages' 
+echo "* Installing packages"
 PACKAGES=/usr/local/share/isotop/data/packages
 
 pkg_add -vmzl $PACKAGES | tee -a -
