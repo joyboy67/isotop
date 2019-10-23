@@ -1,6 +1,5 @@
 #!/bin/sh
 # requires xwallpaper
-/usr/X11R6/bin/xrdb -merge ~/.Xresources 
 bgcol="$(/usr/X11R6/bin/xrdb -query |grep background | cut -d':' -f2 |  tr -d [:space:])"
 test $? -ne 0 && bgcol="black"
 /usr/X11R6/bin/xsetroot -solid "$bgcol"
