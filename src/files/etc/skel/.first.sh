@@ -32,6 +32,7 @@ case $lang in
 
 		sed -i -e "s;___CWMSESSION;SESSION;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMEDITCONFIG;Configurer cwm;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMLOGOUT;Déconnexion;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMLOCK;Verouiller;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMSUSPEND;Suspendre;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMREBOOT;Redémarrer;" ${HOME}/.cwmrc
@@ -62,6 +63,7 @@ case $lang in
 
 		sed -i -e "s;___CWMSESSION;SESSION;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMEDITCONFIG;Configure cwm;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMLOGOUT;Logout;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMLOCK;Lock;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMSUSPEND;Suspend;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMREBOOT;Reboot;" ${HOME}/.cwmrc
