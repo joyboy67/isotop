@@ -4,15 +4,15 @@
 if [ $(pgrep -f $(basename $0) | wc -l | tr -d "[:space:]") -gt 1 ] ; then
     echo "$0 is already running"
     pkill xmessage
-	exit
+    exit
 fi
 
-while true; do
-(
+RUN=0
+while [ $RUN -eq 0 ]; do
 	xset q > /dev/null 2>&1
 	if [ $? -ne 0 ]; then
 		echo "X seems off"
-		exit 1
+		RUN=1
 	fi
 	xrdb -load $HOME/.Xresources
 	xmessage -timeout 0 \
@@ -40,6 +40,5 @@ while true; do
 	else 
 		echo "Something bad happened to $0's Xmessage."
 	fi
-)
 done
 exit
