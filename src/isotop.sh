@@ -31,6 +31,7 @@ while [ $i -lt 5 ]; do
 	i=$(($i+1))
 	sleep 1
 done
+echo ""
 
 # TRADS
 lang=$(cat /etc/kbdtype)
