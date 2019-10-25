@@ -1,10 +1,9 @@
 # TODO
-* Don't replace /etc/* files, butt append + uniq
-* warning before install ?
 * replace owi : nmctl 
 	https://sourceforge.net/projects/nmctl/
 * archive manager
 * rox instead of pcmanfm ?
+* Firefox config ?
 
 ## Later
 

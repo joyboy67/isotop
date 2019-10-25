@@ -9,7 +9,7 @@ xrdb -merge $HOME/.Xresources # for xterm later
 lang=$(cat /etc/kbdtype)
 
 case $lang in 
-	"fr")
+	fr*)
 		echo 'LC_CTYPE="fr_FR.UTF-8"' >> ${HOME}/.profile
 		echo 'LC_MESSAGES="fr_FR.UTF-8"' >> ${HOME}/.profile
 		echo 'LC_COLLATE="fr_FR.UTF-8"' >> ${HOME}/.profile
