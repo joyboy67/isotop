@@ -70,6 +70,11 @@ bind-key M-g "groupwin focused"
 
 
 # shortcuts
+
+bind-key XF86MonBrightnessUp "xbacklight -inc 10"
+bind-key XF86MonBrightnessDown "xbacklight -dec 10"
+bind-key XF86AudioRaiseVolume "mixerctl outputs.master=+10"
+bind-key XF86AudioLowerVolume "mixerctl outputs.master=-10"
 bind-key M-s dsch
 bind-key M-x dfm
 
