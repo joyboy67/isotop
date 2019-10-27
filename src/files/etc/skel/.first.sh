@@ -19,6 +19,12 @@ case $lang in
 		# hotplug
 		MOUNTPOINTNAME="Médias"
 		# cwm
+		sed -i -e "s;___CWMWIN;Fenêtres;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWINMAX;Maximiser;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWINCLOSE;Fermer;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWINHELP;Raccourcis;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMHELP;xmessage -file /usr/local/share/isotop/data/isotop-help-fr;" ${HOME}/.cwmrc
+
 		sed -i -e "s;___CWMSHORTCUTS;RACCOURCIS;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMWEB;Navigateur web;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMAILS;Client de messagerie;" ${HOME}/.cwmrc
@@ -50,6 +56,12 @@ case $lang in
 		# hotplug
 		MOUNTPOINTNAME="Medias"
 		# cwm
+		sed -i -e "s;___CWMWIN;Windows;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWINMAX;Maximize;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWINCLOSE;Close;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMWINHELP;Shortcuts;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMHELP;xmessage -file /usr/local/share/isotop/data/isotop-help;" ${HOME}/.cwmrc
+
 		sed -i -e "s;___CWMSHORTCUTS;SHORTCUTS;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMWEB;Web;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMMAILS;Mails;" ${HOME}/.cwmrc

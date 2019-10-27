@@ -1,0 +1,31 @@
+Souris
+---------------
+Sur le bureau ou sur la barre de status xclock :
+
+- Clic droit : affiche le menu des applications
+- Clic milieu : affiche le menu des groupes
+- Clic gauche : affiche le menu de choix des fenetres
+- Molette : ajuste le volume sonore
+
+Mettre la souris en bas a gauche affiche jgmenu.
+
+Raccourcis clavier
+------------------
+
+Les raccourcis sont ceux de cwm (voir ``man cwm``) plus quelques uns : 
+
+M: Alt
+C: Ctrl
+S: Shift
+
+- M-clic gauche: Deplace la fenetre
+- M-clic droit: Redimensionne la fenetre
+- M-p : lance dmenu_run_i pour ouvrir un programme
+- C-M-Return: xterm
+- C-M-m: Maximise une fenetre
+- M-Tab: Change de fenetre
+- M-g: Envoie la fenetre courante vers un autre groupe
+- M-Space: Change de groupe
+- M-F4 ou M-C-x: Fermer une fenetre
+- M-s : Cherche sur le web avec dsch
+- M-x : Demarre dfm

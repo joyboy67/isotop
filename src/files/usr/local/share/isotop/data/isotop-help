@@ -1,0 +1,30 @@
+Mouse bindings
+---------------
+On desktop or xclockbar:
+
+- Right click: show application menu
+- Middle click: show group menu
+- Left click: show window menu
+- Scroll: Change sound volume
+
+Put the mouse on bottom left corner to see jgmenu.
+
+Keyboard bindings
+------------------
+Bindings are cwm plus a few (see ``man cwm``)
+
+M: Alt
+C: Ctrl
+S: Shift
+
+- M-Left click: move window 
+- M-Right click: resize window 
+- M-p : spawn dmenu_run_i to start a command
+- C-M-Return: spawn xterm
+- C-M-m: maximize window 
+- M-Tab: cycle windows
+- M-g: Send focused window to another group
+- M-Space: Cycle throught groups
+- M-F4 or M-C-x: close window
+- M-s : start dsch to search on the web
+- M-x : start dfm

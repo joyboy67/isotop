@@ -248,10 +248,14 @@ dcmus: choisissez un fichier à lire dans la liste de lecture de cmus
 .It
 dfm: un lanceur de fichiers utilisant dmenu.
 .It
-groupwin: sélectionne une fenêtre et assigne un groupe
+dgroupwin: sélectionne une fenêtre et assigne un groupe
 .It 
-cwmwinbar : affiche un menu de gestion des fenêtres en haut à droite de
+xclockstatusbar : affiche une barre avec des informations sur le système
+en haut de l'écran. 
 l'écran.
+.It
+maxwin : maximise une fenêtre en tant compte de la marge et des bordures
+des fenêtres dans cwm
 .It
 dman: lire une page de manuel
 .It
@@ -351,10 +355,9 @@ Imprimer avec l'imprimante par défaut (image, texte, pdf)
 .Ss Ouvrir une application
 Au début, le bureau est vide.
 
-Vous pouvez voir une horloge en haut à gauche, et un menu pour gérer les
-fenêtres en haut à droite.
+Vous pouvez voir une horloge en haut à gauche.
 
-Cliquez avec le bouton droit sur l'arrière-plan ou sur l'horloge lpour afficher le menu
+Cliquez avec le bouton droit sur l'arrière-plan ou sur 'horloge lpour afficher le menu
 d'applications et choisissez par
 exemple, xterm. 
 
@@ -377,24 +380,9 @@ Vous n'avez probablement pas besoin de déplacer et de redimensionner les
 fenêtres mais de les maximiser 
 à la place, ou les cacher. Tout cela peut être fait avec des raccourcis clavier grâce à
 .Xr cwm 1
-mais vous ne vous en souviendrez peut-être pas tout le temps. 
-C'est pourquoi un outil appelé "cwmwinbar" est présent en haut à droite
-de l'écran, vous permettant : 
-
-.Ss Raccourcis clavier
-
-.Bl -bullet
-.It
-# : changer le groupe d'une fenêtre
-.It
-- : Cacher une fenêtre
-.It
-+ : Agrandir une fenêtre
-.It
-x : Fermer une fenêtre
-.El
-
-Ensuite, cliquez sur la fenêtre cible.
+mais vous ne vous en souviendrez peut-être pas tout le temps. C'est
+pourquoi vous avez des raccourcis dans le menu de cwm prévus à cet
+effet.
 
 .Ss Raccourcis clavier
 

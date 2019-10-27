@@ -80,7 +80,7 @@ bind-key M-x dfm
 command " ___CWMWIN" ""
 command "   + ___CWMWINMAX" "maxwin"
 command "   x ___CWMWINCLOSE" "xdotool selectwindow windowclose"
-command "   ? ___CWMWINHELP" "cwmhelp"
+command "   ? ___CWMWINHELP" "___CWMHELP"
 command " ___CWMSHORTCUTS" ""
 command "   ▸ ___CWMWEB " web 
 command "   ▸ ___CWMMAILS " claws-mail 

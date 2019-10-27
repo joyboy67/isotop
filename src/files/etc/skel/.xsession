@@ -35,10 +35,10 @@ xdotool behave_screen_edge --delay 600 bottom-left exec jgmenu_run &
 xbanish &
 
 # a clock at the top left border
-xclock -render -face DejaVuSansMono-9 -padding 5 -digital \
-	-strftime "%H:%M - %d/%m/%Y" -geometry +0+0 &
-# a menu to deal with windows
-cwmwinbar &
+#xclock -render -face DejaVuSansMono-9 -padding 5 -digital \
+#	-strftime "%H:%M - %d/%m/%Y" -geometry +0+0 &
+# a clock and some infos
+xclockstatusbar &
 
 # xcompmgr for shadows. Disabled because buggy
 #test -n "$(xdpyinfo | grep Composite)" && \

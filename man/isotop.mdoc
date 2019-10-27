@@ -207,10 +207,13 @@ dcmus : choose a file to play in cmus playlist
 .It
 dfm : a file launcher using dmenu.
 .It
-groupwin : select a window and assign a group
+dgroupwin : select a window and assign a group
 .It 
-cwmwinbar : display a menu at the top right border to deal with windows
+xclockstatusbar : display a bar with various info at the top of the
+screen
 .It
+maxwin : maximize a window according to cwm's configuration and gap
+.It 
 dman : read a manpage
 .It
 dmenu_run_i : a dmenu_run improved to launch a command. End with a "!"
@@ -311,8 +314,6 @@ At first, the desktop is almost empty.
 
 There is xclock at the top left border.
 
-There is cwmwinbar at the top right border, to deal with windows.
-
 Right-click on the background to see the application menu and select, by
 example, xterm. 
 
@@ -335,21 +336,8 @@ To resize the window, press Alt and right-click.
 You probably don't need to move and resize windows but to see maximized
 instead, or hide it. All of this can be done with keystrokes thanks to
 .Xr cwm 1
-but you might not remember them all the time. Use the menu at the top
-right border (cwmwinbar):
-
-.Bl -bullet
-.It
-# Send window to group n
-.It 
-- : Hide a window
-.It 
-+ : Maximize a window
-.It 
-x : Close a window
-.El
-
-Then, click on the target window.
+but you might not remember them all the time. Some shortcuts are
+avaiable in cwm's aplication menu.
 
 .Ss Bindings
 
