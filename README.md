@@ -31,8 +31,9 @@ Screenshots
 ![isotop desktop showing group management](screenshots/isotop2.png)
 
 <video controls src=screenshots/isotop-demo.mp4>
-<a href="screenshots/isotop-demo.mp4>Download isotop screencast</a>
+<a href="screenshots/isotop-demo.mp4">Download isotop screencast</a>
 </video>
+
 
 Help
 ----
