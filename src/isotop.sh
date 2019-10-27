@@ -5,7 +5,7 @@
 # Description : This will install the isotop preconfiguration on an
 #               OpenBSD system
 
-VERSION="664"
+VERSION="665"
 
 # check if root
 if [ $(id -u) -ne 0 ]; then
