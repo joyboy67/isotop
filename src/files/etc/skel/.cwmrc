@@ -66,7 +66,7 @@ bind-key M-p 'dmenu_run_i'
 # label with M-C-n to find window with this menu
 bind-key M-f menu-window
 # Send to group
-bind-key M-g "groupwin focused"
+bind-key M-g "dgroupwin focused"
 
 
 # shortcuts
@@ -77,6 +77,10 @@ bind-key M-s dsch
 bind-key M-x dfm
 
 # MENU
+command " ___CWMWIN" ""
+command "   + ___CWMWINMAX" "maxwin"
+command "   x ___CWMWINCLOSE" "xdotool selectwindow windowclose"
+command "   ? ___CWMWINHELP" "cwmhelp"
 command " ___CWMSHORTCUTS" ""
 command "   ▸ ___CWMWEB " web 
 command "   ▸ ___CWMMAILS " claws-mail 
