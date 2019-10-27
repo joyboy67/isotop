@@ -20,9 +20,9 @@ case $lang in
 		MOUNTPOINTNAME="Médias"
 		# cwm
 		sed -i -e "s;___CWMWIN;Fenêtres;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMWINMAX;Maximiser;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMWINCLOSE;Fermer;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMWINHELP;Raccourcis;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMAX;Maximiser;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMCLOSE;Fermer;" ${HOME}/.cwmrc
+		sed -i -e "s;___ISOTOPHELP;Raccourcis;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMHELP;xmessage -file /usr/local/share/isotop/data/isotop-help-fr;" ${HOME}/.cwmrc
 
 		sed -i -e "s;___CWMSHORTCUTS;RACCOURCIS;" ${HOME}/.cwmrc
@@ -57,9 +57,9 @@ case $lang in
 		MOUNTPOINTNAME="Medias"
 		# cwm
 		sed -i -e "s;___CWMWIN;Windows;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMWINMAX;Maximize;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMWINCLOSE;Close;" ${HOME}/.cwmrc
-		sed -i -e "s;___CWMWINHELP;Shortcuts;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMMAX;Maximize;" ${HOME}/.cwmrc
+		sed -i -e "s;___CWMCLOSE;Close;" ${HOME}/.cwmrc
+		sed -i -e "s;___ISOTOPHELP;Shortcuts;" ${HOME}/.cwmrc
 		sed -i -e "s;___CWMHELP;xmessage -file /usr/local/share/isotop/data/isotop-help;" ${HOME}/.cwmrc
 
 		sed -i -e "s;___CWMSHORTCUTS;SHORTCUTS;" ${HOME}/.cwmrc

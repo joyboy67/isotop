@@ -19,7 +19,7 @@ volperc(){
 	printf "%s" "$(($(mixerctl -n outputs.master | cut -d, -f1) * 100 / 255))%"
 }
 loadavg(){
-    uptime | awk '{print $9 $10 $11}'
+    uptime | cut -d' ' -f11-
 }
 
 # start

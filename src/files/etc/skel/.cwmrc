@@ -78,9 +78,9 @@ bind-key M-x dfm
 
 # MENU
 command " ___CWMWIN" ""
-command "   + ___CWMWINMAX" "maxwin"
-command "   x ___CWMWINCLOSE" "xdotool selectwindow windowclose"
-command "   ? ___CWMWINHELP" "___CWMHELP"
+command "   + ___CWMMAX" "maxwin"
+command "   x ___CWMCLOSE" "xdotool selectwindow windowclose"
+command "   ? ___ISOTOPHELP" "___CWMHELP"
 command " ___CWMSHORTCUTS" ""
 command "   ▸ ___CWMWEB " web 
 command "   ▸ ___CWMMAILS " claws-mail 
