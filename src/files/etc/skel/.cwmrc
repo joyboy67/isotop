@@ -32,7 +32,6 @@ ignore Dunst
 #autogroup 1 Navigator, Firefox
 #autogroup 1 chromium-browser, Chromium-browser
 autogroup 0 xclock, XClock
-autogroup 0 xmessage, Xmessage
 
 # Mouse
 # Alt+ right click to resize
@@ -67,6 +66,8 @@ bind-key M-p 'dmenu_run_i'
 bind-key M-f menu-window
 # Send to group
 bind-key M-g "dgroupwin focused"
+# cycle group
+bind-key M-space group-cycle
 
 
 # shortcuts
