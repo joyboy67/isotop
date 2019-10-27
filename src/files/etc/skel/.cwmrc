@@ -22,7 +22,6 @@ command lock "xlock -mode space"
 
 # Windows rules
 ignore dmenu
-ignore xmessage
 ignore xclock
 ignore Dunst
 
