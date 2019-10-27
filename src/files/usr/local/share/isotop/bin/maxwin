@@ -1,0 +1,13 @@
+#!/bin/sh
+# maximize all windows taking care of cwm border and margin 
+
+# screen size
+w=$(/usr/X11R6/bin/xwininfo -root|sed '/Width/!d;s/.* //')
+h=$(/usr/X11R6/bin/xwininfo -root|sed '/Height/!d;s/.* //')
+# cwm border
+b=$(grep borderwidth $HOME/.cwmrc | cut -d' ' -f2) || b=1
+# cwm gap
+g=$(grep gap $HOME/.cwmrc | cut -d' ' -f2) || g=0
+xdotool selectwindow windowsize $(( $w - 2*$b )) $(( $h - $g -2*$b ))  \
+	windowmove $win 0 $g 
+exit
