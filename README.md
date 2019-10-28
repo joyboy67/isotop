@@ -30,9 +30,9 @@ Screenshots
 ![isotop desktop with pkg_mgr and pcmanfm and man](screenshots/isotop.png)
 ![isotop desktop showing group management](screenshots/isotop2.png)
 
-<video controls src=screenshots/isotop-demo.mp4>
-<a href="screenshots/isotop-demo.mp4">Download isotop screencast</a>
-</video>
+<iframe width="560" height="315" sandbox="allow-same-origin allow-scripts"
+src="https://tube.backbord.net/videos/embed/465e3c2f-a62e-4c44-bb42-6b62a7089fbe"
+frameborder="0" allowfullscreen></iframe>
 
 
 Help
