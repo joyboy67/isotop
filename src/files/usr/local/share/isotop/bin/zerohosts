@@ -18,7 +18,7 @@ D="ftp -o-"   # OpenBSD
 DAYS=7
 
 # Run only if older than $DAYS
-test -z "$(find /etc/hosts -mtime +${DAYS} )" && exit
+#test -z "$(find /etc/hosts -mtime +${DAYS} )" && exit
 
 if [ -f "${1}" ]; then
 	MYHOSTS=$(cat "${1}")
@@ -39,8 +39,6 @@ DOMAINSSRC="
 https://mirror.cedia.org.ec/malwaredomains/justdomains
 https://mirror.cedia.org.ec/malwaredomains/immortal_domains.txt
 https://ransomwaretracker.abuse.ch/downloads/RW_DOMBL.txt
-https://feodotracker.abuse.ch/blocklist/?download=domainblocklist
-https://zeustracker.abuse.ch/blocklist.php?download=baddomains
 "
 
 
@@ -71,9 +69,9 @@ sed -i -e 's///g' $TMP
 # Remove empty lines
 sed -i -e '/^[[:space:]]*$/d' $TMP
 
-# remove localhosts and ip6
-sed -i -e '/^.*:.*$/d' \
-    -e '/^127\.0\.0\.1[[:space:]]*localhost.*$/d' \
+# remove localhosts 
+sed -i \
+    -e '/.*localhost.*/d' \
     -e '/^255.*$/d' $TMP
 
 # 127.0.0.1 to 0.0.0.0
@@ -83,7 +81,7 @@ sed -i -e 's/127.0.0.1/0.0.0.0/g' $TMP
 sed -i -e '/^0\.0\.0\.0[[:space:]]*$/d' $TMP
 
 echo "[zerohosts]: write /etc/hosts"
-cat << EOF > /etc/hosts
+cat << EOF > /tmp/test.host
 $(date '+# %Y-%m-%d %H:%M:%S')
 127.0.0.1 localhost
 ::1 localhost

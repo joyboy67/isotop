@@ -1,5 +1,5 @@
 .\" Automatically generated from an mdoc input file.  Do not edit.
-.TH "FAQ" "isotop" "October 25, 2019" "" "isotop"
+.TH "FAQ" "isotop" "October 28, 2019" "" "isotop"
 .nh
 .if n .ad l
 .SH "NAME"
@@ -47,7 +47,7 @@ Sinon, lisez
 .sp
 .SS "Pourquoi je n'arrive pas \[u00E0] red\[u00E9]marrer ou"
 \[u00E9]teindre?
-L'utilisateur doit apparetenir au groupe wheel pour pouvoir utiliser les
+L'utilisateur doit appartenir au groupe wheel pour pouvoir utiliser les
 raccourcis pr\[u00E9]sents dans le menu de cwm permettant de
 red\[u00E9]marrer ou \[u00E9]teindre l'ordinateur.
 .sp
@@ -267,11 +267,16 @@ dcmus: choisissez un fichier \[u00E0] lire dans la liste de lecture de cmus
 dfm: un lanceur de fichiers utilisant dmenu.
 .TP 4n
 \fB\(bu\fR
-groupwin: s\[u00E9]lectionne une fen\[u00EA]tre et assigne un groupe
+dgroupwin: s\[u00E9]lectionne une fen\[u00EA]tre et assigne un groupe
 .TP 4n
 \fB\(bu\fR
-cwmwinbar : affiche un menu de gestion des fen\[u00EA]tres en haut \[u00E0] droite de
+xclockstatusbar : affiche une barre avec des informations sur le syst\[u00E8]me
+en haut de l'\[u00E9]cran.
 l'\[u00E9]cran.
+.TP 4n
+\fB\(bu\fR
+maxwin : maximise une fen\[u00EA]tre en tant compte de la marge et des bordures
+des fen\[u00EA]tres dans cwm
 .TP 4n
 \fB\(bu\fR
 dman: lire une page de manuel
@@ -409,10 +414,9 @@ Imprimer avec l'imprimante par d\[u00E9]faut (image, texte, pdf)
 .SS "Ouvrir une application"
 Au d\[u00E9]but, le bureau est vide.
 .sp
-Vous pouvez voir une horloge en haut \[u00E0] gauche, et un menu pour g\[u00E9]rer les
-fen\[u00EA]tres en haut \[u00E0] droite.
+Vous pouvez voir une horloge en haut \[u00E0] gauche.
 .sp
-Cliquez avec le bouton droit sur l'arri\[u00E8]re-plan ou sur l'horloge lpour afficher le menu
+Cliquez avec le bouton droit sur l'arri\[u00E8]re-plan ou sur 'horloge lpour afficher le menu
 d'applications et choisissez par
 exemple, xterm.
 .sp
@@ -433,25 +437,9 @@ Vous n'avez probablement pas besoin de d\[u00E9]placer et de redimensionner les
 fen\[u00EA]tres mais de les maximiser
 \[u00E0] la place, ou les cacher. Tout cela peut \[u00EA]tre fait avec des raccourcis clavier gr\[u00E2]ce \[u00E0]
 cwm(1)
-mais vous ne vous en souviendrez peut-\[u00EA]tre pas tout le temps.
-C'est pourquoi un outil appel\[u00E9] "cwmwinbar" est pr\[u00E9]sent en haut \[u00E0] droite
-de l'\[u00E9]cran, vous permettant :
-.sp
-.SS "Raccourcis clavier"
-.TP 4n
-\fB\(bu\fR
-# : changer le groupe d'une fen\[u00EA]tre
-.TP 4n
-\fB\(bu\fR
-- : Cacher une fen\[u00EA]tre
-.TP 4n
-\fB\(bu\fR
-+ : Agrandir une fen\[u00EA]tre
-.TP 4n
-\fB\(bu\fR
-x : Fermer une fen\[u00EA]tre
-.PP
-Ensuite, cliquez sur la fen\[u00EA]tre cible.
+mais vous ne vous en souviendrez peut-\[u00EA]tre pas tout le temps. C'est
+pourquoi vous avez des raccourcis dans le menu de cwm pr\[u00E9]vus \[u00E0] cet
+effet.
 .sp
 .SS "Raccourcis clavier"
 Les Raccourcis clavier sont ceux de
