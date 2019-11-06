@@ -1,6 +1,7 @@
 #!/bin/sh
 # prx -- prx@ybad.name.
 # Idea from https://sebsauvage.net/wiki/doku.php?id=dns-blocklist
+# block evil domains. Works for IPv4 and IPv6
 # Licence:  MIT
 # Script to generate a /etc/hosts file to blacklist ads
 # Add yours in $MYHOSTS in a file passed as argument
@@ -11,14 +12,16 @@ set -e
 # DOWNLOADER (to standard output)
 #D="wget -O-" # mosts linux
 #D="curl -L" # with curl
-D="ftp -o-"   # OpenBSD
-
+D="ftp -V -o-"  # OpenBSD
 
 # Number of days befor updating the list
 DAYS=7
 
+# host file
+H=/etc/hosts
+
 # Run only if older than $DAYS
-#test -z "$(find /etc/hosts -mtime +${DAYS} )" && exit
+test -z "$(find $H -mtime +${DAYS} )" && exit
 
 if [ -f "${1}" ]; then
 	MYHOSTS=$(cat "${1}")
@@ -27,18 +30,31 @@ else
 fi
 
 HOSTSSRC="
-https://adaway.org/hosts.txt
-https://someonewhocares.org/hosts/zero/hosts
+https://someonewhocares.org/hosts/hosts
 https://hosts-file.net/ad_servers.txt
 https://www.malwaredomainlist.com/hostslist/hosts.txt
 http://winhelp2002.mvps.org/hosts.txt
-https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=0&mimetype=plaintext
+http://sysctl.org/cameleon/hosts
+https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
 "
 
 DOMAINSSRC="
+https://1hos.cf/complete/domains.txt
+https://pgl.yoyo.org/adservers/serverlist.php?hostformat=nohtml&showintro=1
 https://mirror.cedia.org.ec/malwaredomains/justdomains
 https://mirror.cedia.org.ec/malwaredomains/immortal_domains.txt
 https://ransomwaretracker.abuse.ch/downloads/RW_DOMBL.txt
+https://mirror1.malwaredomains.com/files/justdomains
+https://v.firebog.net/hosts/Easyprivacy.txt
+https://v.firebog.net/hosts/Prigent-Ads.txt
+https://raw.githubusercontent.com/deathbybandaid/piholeparser/master/Subscribable-Lists/ParsedBlacklists/AdAway-Default-Blocklist.txt
+https://raw.githubusercontent.com/ookangzheng/blahdns/master/hosts/blacklist.txt
+https://raw.githubusercontent.com/mitchellkrogza/Phishing.Database/master/phishing-domains-ACTIVE.txt
+https://raw.githubusercontent.com/austinheap/sophos-xg-block-lists/master/easylist.txt
+https://raw.githubusercontent.com/deathbybandaid/piholeparser/master/Subscribable-Lists/ParsedBlacklists/Fanboy-Annoyances-List.txt
+https://raw.githubusercontent.com/austinheap/sophos-xg-block-lists/master/nocoin.txt
+https://raw.githubusercontent.com/XionKzn/PiHole-Lists/master/Blocklist.txt
+https://raw.githubusercontent.com/XionKzn/PiHole-Lists/master/Quad9.txt
 "
 
 
@@ -48,50 +64,48 @@ echo "[zerohosts]: running"
 TMP=$(mktemp)
 
 echo "[zerohosts]: download lists"
-for URL in ${HOSTSSRC}; do
-	echo "$URL"
-	${D} "${URL}" >> "$TMP"
-done
 
 for URL in ${DOMAINSSRC}; do
 	echo "$URL"
-	${D} "${URL}" | \
-		awk '{print "0.0.0.0 " $1}' >> "$TMP"
+	${D} "${URL}" grep -v "#" >> "$TMP"
 done
 
-# The following call sed  several times. It is necessary because the
-# filter must be applied in order.
+# hosts files
+#     remove comments, localhosts and keep only domains
+#     use only last field
+for URL in ${HOSTSSRC}; do
+	echo "$URL"
+	${D} "${URL}" |\
+		grep -v "#" |\
+		egrep -v "localhost|local" |\
+		grep "127.0.0.1" |\
+		awk '{print $NF}' >> "$TMP"
+done
 
-echo "[zerohosts]: filter lists"
-sed -i -e 's/#.*$//g'  $TMP
-# Remove ^M
-sed -i -e 's///g' $TMP
-# Remove empty lines
+# uniq lines
+sort -u -o "$TMP" "$TMP"
+# remove remaining comments
+sed -i 's/#.*//g' $TMP
+# remove empty lines
 sed -i -e '/^[[:space:]]*$/d' $TMP
-
-# remove localhosts 
-sed -i \
-    -e '/.*localhost.*/d' \
-    -e '/^255.*$/d' $TMP
-
-# 127.0.0.1 to 0.0.0.0
-sed -i -e 's/127.0.0.1/0.0.0.0/g' $TMP
-
-# remove lines with only one field, somes lists have this.
-sed -i -e '/^0\.0\.0\.0[[:space:]]*$/d' $TMP
+#tr -s '[:blank:]' < $TMP
 
 echo "[zerohosts]: write /etc/hosts"
-cat << EOF > /tmp/test.host
+cat << EOF > $H
 $(date '+# %Y-%m-%d %H:%M:%S')
 127.0.0.1 localhost
 ::1 localhost
 0.0.0.0 0.0.0.0
+::      ::
 ${MYHOSTS}
-
-$(tr -s '[:blank:]' < $TMP | sort -u)
 EOF
 
-chmod 0644 /etc/hosts
+while read -r line; do
+    echo "0.0.0.0 ${line}" >> $H
+    echo "::      ${line}" >> $H
+done < "$TMP"
+
+chmod 0644 $H
 
 echo "[zerohosts]: delete tmp file $TMP"
 rm $TMP
