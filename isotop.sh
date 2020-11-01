@@ -176,8 +176,8 @@ if [ ${VERSION} -lt $OLDVER ]; then
 
 	# doas
 	echo "* Configure doas"
-cat << EOF
-permit persist :wheel
+
+	echo "permit persist :wheel
 permit nopass  :wheel cmd /sbin/shutdown
 permit nopass  :wheel cmd /sbin/reboot
 permit nopass  :wheel cmd /sbin/disklabel
@@ -185,7 +185,7 @@ permit nopass  :wheel cmd /sbin/mount
 permit nopass  :wheel cmd /sbin/umount
 permit nopass  :wheel cmd /usr/sbin/zzz
 permit nopass  :wheel cmd /usr/sbin/ZZZ
-EOF | doas tee -a /etc/doas.conf
+" | doas tee -a /etc/doas.conf
 
 	# in case a previous isotop install has been made
 	doas sort -ru /etc/doas.conf -o /etc/doas.conf

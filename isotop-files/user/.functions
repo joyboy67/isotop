@@ -20,10 +20,32 @@ mktbz() { tar cvjf "${1%%/}.tar.bz2" "${1%%/}/"; }
 mkzip() { 7z a -tzip -mx=9 "${1%%/}.zip" "${1%%/}/"; }
 mk7z() { 7z a -t7z -m0=lzma2 -mx=9 "${1%%/}.7z" "${1%%/}/"; }
 
-# Uncompress any
-unpack() { 7z x "${1}"; }
+#Trouver dans les fichiers :
+findcontent () {
+	grep -IlRs "$1" .
+}
 
-# find pattern in files in current directory
-findcontent () { grep -IlRs "$1" . }
+# donne le code utf-8
+uni() { 
+    echo -n "$1" |hexdump |awk '{print $2}'
+}
 
+geolocation(){
+    curl -s ipinfo.io/$1 | tr -d '" ,{}'
+}
 
+# envoi de fichier
+transfer.sh() { 
+	if [ $# -eq 0 ]; then 
+		echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; 
+		return 1; 
+	fi 
+	tmpfile=$( mktemp -t transferXXXXXXX ); 
+	if tty -s; then 
+		basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; 
+	else
+	curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; 
+	fi; 
+	cat $tmpfile; rm -f $tmpfile; 
+	echo ""
+} 
