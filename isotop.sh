@@ -32,6 +32,8 @@ lang=$(selmenu fr en)
 case $lang in 
 	fr*)
 		THX="Merci ! ;)"
+		DLFILES='Vous pouvez maintenant supprimer les fichiers avec
+    rm -r isotop*'
 		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
 		XENODMWHOAREYOU='Qui est-ce ?'
 		XENODMLOGIN='identifiant ='
@@ -41,6 +43,8 @@ case $lang in
 	;;
 	*)
 		THX="Thanks! ;)"
+		DLFILES='Feel free to remove files with : 
+    rm -r isotop*'
 		REBOOTMSG='Enter "reboot" to start on you new isotop install'
 		XENODMWHOAREYOU='Who are you?'
 		XENODMLOGIN='login='
@@ -63,13 +67,13 @@ echo "* Untgz archive"
 tar xzf isotop-${VERSION}.tgz
 
 echo "* Copy user configuration"
-cp -v -r isotop-${VERSION}/user/ $HOME
-cp -v -r isotop-${VERSION}/user/.* $HOME/
+cp -v -r isotop-files/user/ $HOME
+cp -v -r isotop-files/user/.* $HOME/
 
 # compile dwm, slstatus, dmenu
 for i in dwm slstatus dmenu; do
 	echo "compile $i"
-	cd $wd/isotop-${VERSION}/src/$i && make && make install PREFIX=$HOME MANPREFIX=/tmp
+	cd $wd/isotop-files/src/$i && make && make install PREFIX=$HOME MANPREFIX=/tmp
 done
 cd $wd
 
@@ -137,25 +141,25 @@ if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
 	doas mount -a
 
 	echo "* Copy rc scripts"
-	doas cp -v -r isotop-${VERSION}/etc/rc.local /etc/
+	doas cp -v -r isotop-files/etc/rc.local /etc/
 	doas chmod +x /etc/rc.local
 	doas sh /etc/rc.local
-	doas cp -v -r isotop-${VERSION}/etc/rc.shutdown /etc/
+	doas cp -v -r isotop-files/etc/rc.shutdown /etc/
 	doas chmod +x /etc/rc.shutdown
 
 	# manpages
-	doas cp -v -r isotop-${VERSION}/man /usr/local/man
+	doas cp -v -r isotop-files/man /usr/local/man
 	echo "* Build manpage database"
 	doas makewhatis
 
 	# xenodm
-	sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" isotop-${VERSION}/etc/X11/xenodm/Xresources.isotop
-	sed -i -e "s;___LOGIN___;${XENODMLOGIN};" isotop-${VERSION}/etc/X11/xenodm/Xresources.isotop
-	sed -i -e "s;___PASSWORD___;${XENODMPASSWORD};" isotop-${VERSION}/etc/X11/xenodm/Xresources.isotop
-	sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" isotop-${VERSION}/etc/X11/xenodm/Xresources.isotop
-	doas cp -v -r isotop-${VERSION}/etc/X11/xenodm/Xsetup_0 /etc/X11/xenodm/
-	doas cp -v -r isotop-${VERSION}/etc/X11/xenodm/GiveConsole /etc/X11/xenodm/
-	doas cp -v -r isotop-${VERSION}/etc/X11/xenodm/Xresources.isotop /etc/X11/xenodm/
+	sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" isotop-files/etc/X11/xenodm/Xresources.isotop
+	sed -i -e "s;___LOGIN___;${XENODMLOGIN};" isotop-files/etc/X11/xenodm/Xresources.isotop
+	sed -i -e "s;___PASSWORD___;${XENODMPASSWORD};" isotop-files/etc/X11/xenodm/Xresources.isotop
+	sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" isotop-files/etc/X11/xenodm/Xresources.isotop
+	doas cp -v -r isotop-files/etc/X11/xenodm/Xsetup_0 /etc/X11/xenodm/
+	doas cp -v -r isotop-files/etc/X11/xenodm/GiveConsole /etc/X11/xenodm/
+	doas cp -v -r isotop-files/etc/X11/xenodm/Xresources.isotop /etc/X11/xenodm/
 	doas chmod +x /etc/X11/xenodm/Xsetup_0
 	doas chmod +x /etc/X11/xenodm/GiveConsole
 	doas sed -i '/DisplayManager\*resources:.*$/s/.*/DisplayManager*resources:\/etc\/X11\/xenodm\/Xresources.isotop/' /etc/X11/xenodm/xenodm-config
@@ -167,7 +171,7 @@ if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
 	doas rcctl enable apmd
 	doas rcctl set apmd status on
 	doas rcctl set apmd flags -A
-	doas cp -v -r isotop-${VERSION}/etc/apm/* /etc/apm/
+	doas cp -v -r isotop-files/etc/apm/* /etc/apm/
 	doas chmod +x /etc/apm/*
 
 	# doas
@@ -196,7 +200,7 @@ if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
 	doas sort -ru /etc/dhclient.conf -o /etc/dhclient.conf
 
 	echo "* Installing packages"
-	pkg_add -vmzl isotop-${VERSION}/packages.txt | tee -a -
+	pkg_add -vmzl isotop-files/packages.txt | tee -a -
 	if [ $? -eq 0 ]; then
 		echo '* Package installation finished :)'
 	else
@@ -206,7 +210,7 @@ if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
 
 	echo "* Enable hotplugd"
 	doas /usr/local/libexec/hotplug-diskmount init
-	doas cp -v -r isotop-${VERSION}/etc/hotplug/ /etc/
+	doas cp -v -r isotop-files/etc/hotplug/ /etc/
 	doas chmod +x /etc/hotplug/{attach,detach}
 	doas rcctl enable hotplugd
 	doas rcctl start hotplugd
@@ -224,6 +228,7 @@ if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
 
 fi
 
+echo "${DLFILES}"
 echo "${REBOOTMSG}"
 echo "${THX}"
 
