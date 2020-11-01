@@ -63,8 +63,8 @@ echo "* Get isotop files"
 ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
 ftp "${ISOTOPURL}/isotop-${VERSION}.sha256"
 echo "* Check $0 checksum before going any further"
-sha256 -C isotop.sha256 isotop-${VERSION}.sh || exit 1
-sha256 -C isotop.sha256 isotop-${VERSION}.tgz || exit 1
+sha256 -C isotop-${VERSION}.sha256 isotop-${VERSION}.sh || exit 1
+sha256 -C isotop-${VERSION}.sha256 isotop-${VERSION}.tgz || exit 1
 
 # untar and copy files
 echo "* Untgz archive"
