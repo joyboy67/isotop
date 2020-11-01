@@ -88,9 +88,6 @@ case $lang in
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
 		# hotplug
 		MOUNTPOINTNAME="Médias"
-
-		# show man
-		xterm -rv -class 'manisotop' -e 'man isotop-fr' &
 	;;
 	*)
 		echo 'LC_CTYPE="en_EN.UTF-8"' >> ${HOME}/.profile
@@ -101,9 +98,6 @@ case $lang in
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
 		# hotplug
 		MOUNTPOINTNAME="Medias"
-
-		# show man
-		xterm -rv -class 'manisotop' -e 'man isotop' &
 	;;
 esac
 
@@ -176,16 +170,16 @@ if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
 
 	# doas
 	echo "* Configure doas"
-	doas cat << EOF >> /etc/doas.conf
-	permit persist :wheel
-	permit nopass  :wheel cmd /sbin/shutdown
-	permit nopass  :wheel cmd /sbin/reboot
-	permit nopass  :wheel cmd /sbin/disklabel
-	permit nopass  :wheel cmd /sbin/mount
-	permit nopass  :wheel cmd /sbin/umount
-	permit nopass  :wheel cmd /usr/sbin/zzz
-	permit nopass  :wheel cmd /usr/sbin/ZZZ
-	EOF
+doas cat << EOF >> /etc/doas.conf
+permit persist :wheel
+permit nopass  :wheel cmd /sbin/shutdown
+permit nopass  :wheel cmd /sbin/reboot
+permit nopass  :wheel cmd /sbin/disklabel
+permit nopass  :wheel cmd /sbin/mount
+permit nopass  :wheel cmd /sbin/umount
+permit nopass  :wheel cmd /usr/sbin/zzz
+permit nopass  :wheel cmd /usr/sbin/ZZZ
+EOF
 
 	# in case a previous isotop install has been made
 	doas sort -ru /etc/doas.conf -o /etc/doas.conf
