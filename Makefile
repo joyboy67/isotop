@@ -16,7 +16,8 @@ clean:
 	rm -f isotop-*.tgz isotop-*.sha256 isotop-*.sh
 	
 archive: clean
-	tar -cf isotop-$(VERSION).tar -C isotop-files/ .
+	#tar -cf isotop-$(VERSION).tar -C isotop-files/ .
+	tar -cf isotop-$(VERSION).tar isotop-files/
 	gzip -9 -o isotop-$(VERSION).tgz isotop-$(VERSION).tar
 
 .mdoc.7:

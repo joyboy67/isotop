@@ -5,6 +5,7 @@
 # Description : install isotop customization on OpenBSD
 
 VERSION="_ISOTOPVERSION_"
+ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 selmenu()
 {
@@ -23,12 +24,6 @@ banner "isotop"
 echo "Files in /etc will be modified,"
 echo "packages will be installed,"
 echo "press ctrl-c if you're not sure to install isotop customization."
-i=0
-while [ $i -lt 5 ]; do
-    printf '%s' '.'
-	i=$(($i+1))
-	sleep 1
-done
 echo ""
 
 echo "Language ?"
@@ -55,10 +50,7 @@ case $lang in
 	;;
 esac
 
-ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
-
-
-dldir=$(pwd)
+wd=$(pwd)
 echo "* Get isotop files"
 ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
 ftp "${ISOTOPURL}/isotop-${VERSION}.sha256"
@@ -77,9 +69,9 @@ cp -v -r isotop-${VERSION}/user/.* $HOME/
 # compile dwm, slstatus, dmenu
 for i in dwm slstatus dmenu; do
 	echo "compile $i"
-	cd $HOME/isotop-${VERSION}/src/$i && make && make install PREFIX=$HOME MANPREFIX=/tmp
+	cd $wd/isotop-${VERSION}/src/$i && make && make install PREFIX=$HOME MANPREFIX=/tmp
 done
-cd $HOME
+cd $wd
 
 # TRADS
 case $lang in 
