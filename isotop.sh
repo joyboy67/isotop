@@ -200,7 +200,7 @@ permit nopass  :wheel cmd /usr/sbin/ZZZ
 	doas sort -ru /etc/dhclient.conf -o /etc/dhclient.conf
 
 	echo "* Installing packages"
-	pkg_add -vmzl isotop-files/packages.txt | tee -a -
+	doas pkg_add -vmzl isotop-files/packages.txt
 	if [ $? -eq 0 ]; then
 		echo '* Package installation finished :)'
 	else
