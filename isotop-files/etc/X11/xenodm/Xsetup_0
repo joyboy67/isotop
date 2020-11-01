@@ -7,16 +7,14 @@ bgcol="$(/usr/X11R6/bin/xrdb -query |grep background | cut -d':' -f2 |  tr -d [:
 /usr/X11R6/bin/xsetroot -solid "$bgcol" &
 
 WALLDIR=/usr/local/share/isotop/walls
-if [ -f "${WALLDIR}"/loginbg.jpg ]; then
-    WALL="${WALLDIR}/loginbg.jpg"
+WALL="${WALLDIR}/loginbg.jpg"
+whereis xwallpaper > /dev/null
+if [ $? -eq 0 ]; then
+    /usr/local/bin/xwallpaper --zoom "${WALL}"
 else
-    WALL="$(find ${WALLDIR} -iname '*.jpg' -o -iname '*.png' |\
-        sort -R |\
-        head -n 1)"
+	# gm has issues with xcompmgr
+	/usr/local/bin/gm display -foreground "$bgcol" -window root -backdrop "${WALL}"
 fi
-test -n "${WALL}" && \
-    /usr/local/share/isotop/bin/setwall "${WALL}" &
-
 
 #h=$(/usr/X11R6/bin/xwininfo -root|sed '/Height/!d;s/.* //')
 w=$(/usr/X11R6/bin/xwininfo -root|sed '/Width/!d;s/.* //')

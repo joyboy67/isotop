@@ -157,6 +157,11 @@ if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
 	doas chmod +x /etc/X11/xenodm/Xsetup_0
 	doas chmod +x /etc/X11/xenodm/GiveConsole
 	doas sed -i '/DisplayManager\*resources:.*$/s/.*/DisplayManager*resources:\/etc\/X11\/xenodm\/Xresources.isotop/' /etc/X11/xenodm/xenodm-config
+	WALLDIR=/usr/local/share/isotop/walls
+	WALL="${WALLDIR}/loginbg.jpg"
+	mkdir -p ${WALLDIR}
+	cp isotop-files/walls/loginbg.jpg "${WALL}"
+
 	echo "* Enable xenodm"
 	doas rcctl enable xenodm
 
