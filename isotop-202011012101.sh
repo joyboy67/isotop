@@ -4,7 +4,7 @@
 
 # Description : install isotop customization on OpenBSD
 
-VERSION="202011012100"
+VERSION="202011012101"
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 selmenu()
