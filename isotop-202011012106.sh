@@ -4,7 +4,7 @@
 
 # Description : install isotop customization on OpenBSD
 
-VERSION="202011012103"
+VERSION="202011012106"
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 selmenu()
@@ -126,7 +126,7 @@ echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
 # root configuration
 ###
 # no need to remake all changes
-OLDVER=$(cat /etc/isotop.version) || OLDVER=0
+test ! -f /etc/isotop.version && echo "0" | doas tee -a /etc/isotop.version
 if [ ${VERSION} -lt $OLDVER ]; then
 
 	# softdep
@@ -160,8 +160,8 @@ if [ ${VERSION} -lt $OLDVER ]; then
 	doas sed -i '/DisplayManager\*resources:.*$/s/.*/DisplayManager*resources:\/etc\/X11\/xenodm\/Xresources.isotop/' /etc/X11/xenodm/xenodm-config
 	WALLDIR=/usr/local/share/isotop/walls
 	WALL="${WALLDIR}/loginbg.jpg"
-	mkdir -p ${WALLDIR}
-	cp isotop-files/walls/loginbg.jpg "${WALL}"
+	doas mkdir -p ${WALLDIR}
+	doas cp isotop-files/walls/loginbg.jpg "${WALL}"
 
 	echo "* Enable xenodm"
 	doas rcctl enable xenodm
@@ -176,7 +176,7 @@ if [ ${VERSION} -lt $OLDVER ]; then
 
 	# doas
 	echo "* Configure doas"
-doas cat << EOF >> /etc/doas.conf
+cat << EOF
 permit persist :wheel
 permit nopass  :wheel cmd /sbin/shutdown
 permit nopass  :wheel cmd /sbin/reboot
@@ -185,7 +185,7 @@ permit nopass  :wheel cmd /sbin/mount
 permit nopass  :wheel cmd /sbin/umount
 permit nopass  :wheel cmd /usr/sbin/zzz
 permit nopass  :wheel cmd /usr/sbin/ZZZ
-EOF
+EOF | doas tee -a /etc/doas.conf
 
 	# in case a previous isotop install has been made
 	doas sort -ru /etc/doas.conf -o /etc/doas.conf
