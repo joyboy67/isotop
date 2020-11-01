@@ -1,4 +1,4 @@
-#!/bin/sh
+c!/bin/sh
 # Auteur :      prx <prx@ybad.name>
 # licence :     MIT
 
@@ -143,7 +143,7 @@ if [ ${VERSION} -gt $(cat /etc/isotop.version) ]; then
 	doas chmod +x /etc/rc.shutdown
 
 	# manpages
-	doas cp -v -r isotop-files/man /usr/local/man
+	doas cp -v -r isotop-files/man/man7/* /usr/local/man/man7/
 	echo "* Build manpage database"
 	doas makewhatis
 
@@ -192,11 +192,12 @@ permit nopass  :wheel cmd /usr/sbin/ZZZ
 
 	# unwind configuration
 	echo "* Configure unwind DNS resolver"
-	doas echo 'block list "/var/unwind.block"' > /etc/unwind.conf
+	echo 'block list "/var/unwind.block"' | doas tee -a /etc/unwind.conf
+	doas sort -ru /etc/unwind.conf -o /etc/unwind.conf
 	doas rcctl enable unwind
 
 	echo "* Configure dhclient"
-	echo "prepend domain-name-servers 127.0.0.1;" >> /etc/dhclient.conf
+	echo "prepend domain-name-servers 127.0.0.1;" | doas tee -a /etc/dhclient.conf
 	doas sort -ru /etc/dhclient.conf -o /etc/dhclient.conf
 
 	echo "* Installing packages"

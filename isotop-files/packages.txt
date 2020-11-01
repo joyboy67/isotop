@@ -8,9 +8,8 @@ cups-filters--
 cups-libs--
 curl--
 detox--
-dmenu--
 ffmpeg--
-foomatic-db..
+foomatic-db--
 foremost--
 ghostscript--
 ghostscript-fonts--
