@@ -1,0 +1,21 @@
+#!/bin/sh
+# modified from
+#https://raw.githubusercontent.com/kovalyshyn/home/master/openbsd/bin/checkbatt
+# in crontab : 
+# */5 * * * * /home/prx/bin/checkbatt >/dev/null 2>&1
+
+export DISPLAY=:0.0
+
+[[ $(apm -a) -eq 1 ]] && exit
+
+battlvl="$(apm -l)"
+
+if [ $battlvl -lt 10 ]; then
+	notify-send -i battery -u critical "Niveau critique: $battlvl %"
+	exit
+elif [ $battlvl -lt 20 ]; then
+	notify-send -i battery "Batterie : $battlvl %"
+fi
+
+exit 0
+

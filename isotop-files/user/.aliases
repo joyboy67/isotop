@@ -1,0 +1,22 @@
+# Alias
+# ls
+alias ll='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lls='ls -s'
+
+alias c='clear'
+alias less='less --quiet'
+
+# remaining space
+alias dh='df -h'
+# better top
+alias top='top -s .5'
+# upload on clbin
+alias clbin='curl -v -F "clbin=<-" https://clbin.com'
+
+# OpenBSD
+alias upports='cd /usr/ports && cvs -q up -Pd'
+alias fetchsrc='cd /usr/src && cvs -q up -Pd -A'
+alias fetchport='cd /usr/ports && cvs -q up -Pd -A'
+

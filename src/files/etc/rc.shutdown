@@ -1,6 +1,0 @@
-echo "* Disable ulpt to use USB printers"
-printf 'disable ulpt\nq\n' | config -ef /bsd
-echo "* Recompute sha256 sum"
-sha256 /bsd >/var/db/kernel.SHA256
-
-

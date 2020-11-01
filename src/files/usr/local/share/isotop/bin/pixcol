@@ -1,6 +1,0 @@
-#!/bin/sh
-# print color of pixel under mouse
-# require xdotool and graphicsmagick
-eval $(xdotool getmouselocation --shell)
-
-xmessage $(echo "#"$(gm import -window root -crop 1x1+$X+$Y txt:- | cut -d'#' -f2))

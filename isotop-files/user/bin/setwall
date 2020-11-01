@@ -1,0 +1,14 @@
+#!/bin/sh
+bgcol="$(/usr/X11R6/bin/xrdb -query |grep background | cut -d':' -f2 |  tr -d [:space:])"
+test $? -ne 0 && bgcol="black"
+/usr/X11R6/bin/xsetroot -solid "$bgcol"
+
+whereis xwallpaper > /dev/null
+if [ $? -eq 0 ]; then
+    /usr/local/bin/xwallpaper --zoom "${1}"
+else
+# gm has issues with xcompmgr
+    /usr/local/bin/gm display -foreground "$bgcol" -window root -backdrop "${1}"
+fi
+
+exit 0

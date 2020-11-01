@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=NcMpcPP
+Comment=MPD Front end
+Comment[fr]=Interface console à MPD
+Exec=ncmpcpp
+Terminal=true
+Type=Application
+Icon=audio-x-generic
+Categories=AudioVideo;

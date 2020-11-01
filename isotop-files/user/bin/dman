@@ -1,0 +1,100 @@
+#!/bin/sh
+
+set -e
+
+# TODO or not ?
+# Some man page are different on different architecture
+# For a simpler interface, this is not handled as only
+# the last component of path is displayed in dmenu
+
+sp='/usr/share/man/ /usr/local/man/ /usr/X11R6/man/'
+mandb=~/.man.db
+readonly sp mandb
+
+usage() {
+print -u2 "${0##*/}:
+    pipe locate output from ~/.man.db as prepopulated by mk_man_db
+    into dmenu. User can select one or more man page thanks to
+    dmenu multiselection. Read dmenu(1) for more information ;)
+
+    You can customize the window using the \"man\" class in ~/.Xresources
+    with line such as:
+        man*scrollBar: false
+        man*reverseVideo: true
+
+    -b build only mode. ~/.man.db is created or updated.
+    -h Print this message."
+}
+
+mk_man_db() {
+	/usr/libexec/locate.updatedb \
+		--fcodes="$mandb" \
+		--searchpaths="$sp"
+	
+}
+
+while getopts "bh" opt; do
+	case $opt in
+		b)	mk_man_db
+			exit 0;;
+		h|*)	usage
+			exit 1;;
+		
+	esac
+done
+
+do_need_update() {
+	[[ ! -s $mandb ]] || {
+		local lastdbmod lastmanpathdirsmod 
+		lastdbmod=$(stat -f "%m" $mandb)
+		lastmanpathdirsmod=$(stat -f "%m" $sp |sort -r |sed q)
+		[[ $lastdbmod < $lastmanpathdirsmod ]]
+	} && mk_man_db
+}
+
+manpage_choose() {
+	test -s $HOME/.dmenurc && . $HOME/.dmenurc
+	locate -b -d "${mandb}" . |sed 's,.*/,,;/mandoc.db/d' \
+	| dmenu -l ${l} \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "Man page : " |uniq
+
+
+}
+
+manpage_show() {
+IFS='
+'
+	local manpage=$(manpage_choose)
+	[ "$manpage" ] && {
+		for m in $manpage
+		do
+			name=${m%.([0-9]|3p)}
+			section=${m##*.}
+			f=$(locate -d "${mandb}" /$m |sed q)
+			[ -f "$f" ] && \
+				case $section {
+					0)
+						xterm -class man -T "man | $name($section)" \
+							-e less -eR "$f" &
+						;;
+					[1-9]|3p)
+						xterm -class man -T "man | $name($section)" \
+							-e man -l "$f" &
+						;;
+					*)
+						;;
+				}
+		done
+	}
+}
+
+	do_need_update
+	manpage_show &
+
+exit $?
+

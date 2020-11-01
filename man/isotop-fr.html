@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <style>
+    table.head, table.foot { width: 100%; }
+    td.head-rtitle, td.foot-os { text-align: right; }
+    td.head-vol { text-align: center; }
+    .Nd, .Bf, .Op { display: inline; }
+    .Pa, .Ad { font-style: italic; }
+    .Ms { font-weight: bold; }
+    .Bl-diag > dt { font-weight: bold; }
+    code.Nm, .Fl, .Cm, .Ic, code.In, .Fd, .Fn, .Cd { font-weight: bold;
+      font-family: inherit; }
+  </style>
+  <title>FAQ(isotop)</title>
+</head>
+<body>
+<table class="head">
+  <tr>
+    <td class="head-ltitle">FAQ(isotop)</td>
+    <td class="head-vol">isotop</td>
+    <td class="head-rtitle">FAQ(isotop)</td>
+  </tr>
+</table>
+<div class="manual-text">
+<section class="Sh">
+<h1 class="Sh" id="NAME"><a class="permalink" href="#NAME">NAME</a></h1>
+<p class="Pp"><code class="Nm">isotop</code> &#x2014; <span class="Nd">une
+    OpenBSD pr&#x00E9;configur&#x00E9;e, simple (et amusante ?)</span></p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="DESCRIPTION"><a class="permalink" href="#DESCRIPTION">DESCRIPTION</a></h1>
+<p class="Pp"><code class="Nm">isotop</code> est un script permettant de
+    configurer OpenBSD pour obtenir un environnement de travail agr&#x00E9;able
+    et pratique. Les outils pr&#x00E9;sents de base dans OpenBSD sont
+    privil&#x00E9;gi&#x00E9;s. Par cons&#x00E9;quent, certains choix ont
+    &#x00E9;t&#x00E9; faits pour se concentrer sur un syst&#x00E8;me simple et
+    efficace.</p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="FAQ"><a class="permalink" href="#FAQ">FAQ</a></h1>
+<section class="Ss">
+<h2 class="Ss">O&#x00F9; est mon bureau?</h2>
+<p class="Pp">Juste sous vos yeux. Le gestionnaire de fen&#x00EA;tres par
+    d&#x00E9;faut dans isotop est <a class="Xr">cwm(5)</a> Sa simplicit&#x00E9;
+    permet de mieux se concentrer et &#x00E0; &#x00EA;tre plus efficace.</p>
+<p class="Pp">Avant d'installer un autre gestionnaire de fen&#x00EA;tres ou
+    environnement de bureau, essayez cwm. Nous avons essay&#x00E9; de le rendre
+    plus simple &#x00E0; utiliser qu'il ne l'est d&#x00E9;j&#x00E0;, et cela
+    demandera peut-&#x00EA;tre un temps d'adaptation. (voir
+    <a class="Sx" href="#Comment_utiliser_mon_bureau">Comment utiliser mon
+    bureau</a>? ).</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Comment_configurer_une_connexion_WiFi_?"><a class="permalink" href="#Comment_configurer_une_connexion_WiFi_?">Comment
+  configurer une connexion WiFi?</a></h2>
+<p class="Pp">Lisez le man <a class="Xr">hostname.if(5)</a> et la documentation
+    d'OpenBSD traduite
+    <a class="Lk" href="https://wiki.obsd4a.net/openbsd.org:faq:faq6#reseau-sans-fil">r&#x00E9;seau
+    sans fil</a> Un outil pour faciliter les connexions sera publi&#x00E9; dans
+    la prochaine version d'isotop, lorsque le d&#x00E9;veloppeur aura une carte
+    sans-fil.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Comment_ajouter/supprimer_des_programmes"><a class="permalink" href="#Comment_ajouter/supprimer_des_programmes">Comment
+  ajouter/supprimer des programmes</a></h2>
+<p class="Pp">Un raccourci vers
+    <a class="permalink" href="#pkg_mgr"><i class="Em" id="pkg_mgr">pkg_mgr</i></a>
+    est pr&#x00E9;sent dans le menu de cwm.</p>
+<p class="Pp">Sinon, lisez
+    <a class="Lk" href="https://wiki.obsd4a.net/openbsd.org:faq:faq15">gestion
+    des paquets.</a></p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Pourquoi_je_n'arrive_pas_"><a class="permalink" href="#Pourquoi_je_n'arrive_pas_">Pourquoi
+  je n'arrive pas &#x00E0; red&#x00E9;marrer ou</a></h2>
+<p class="Pp">&#x00E9;teindre? L'utilisateur doit appartenir au groupe wheel
+    pour pouvoir utiliser les raccourcis pr&#x00E9;sents dans le menu de cwm
+    permettant de red&#x00E9;marrer ou &#x00E9;teindre l'ordinateur.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Pourquoi_mon_"><a class="permalink" href="#Pourquoi_mon_">Pourquoi
+  mon &#x00E9;cran semble rouge?</a></h2>
+<p class="Pp">Puisqu'on pense &#x00E0; vos yeux, on lance automatiquement en
+    d&#x00E9;but de session <a class="Xr">sct(1)</a> Vous pouvez utiliser dsch
+    pour modifier la couleur, ou carr&#x00E9;ment retirer sct du fichier
+    <span class="Pa">$HOME/.xsession</span></p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Quel_d"><a class="permalink" href="#Quel_d">Quel d&#x00E9;mon
+  de notification puis-je utiliser?</a></h2>
+<p class="Pp">Vous pouvez installer
+    <a class="permalink" href="#dunst"><i class="Em" id="dunst">dunst</i></a> et
+    le lancer &#x00E0; chaque d&#x00E9;but de session en ajoutant dans
+    <span class="Pa">$HOME/.xsession</span></p>
+<div class="Bd Bd-indent"><code class="Li">dunst &amp;</code></div>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Pourquoi_cmus_est_le_lecteur_de_musique_par_d"><a class="permalink" href="#Pourquoi_cmus_est_le_lecteur_de_musique_par_d">Pourquoi
+  cmus est le lecteur de musique par d&#x00E9;faut?</a></h2>
+<p class="Pp">Il est l&#x00E9;ger et ne n&#x00E9;cessite pas de lourdes
+    d&#x00E9;pendances..It est modifiable et scriptable, et peut m&#x00EA;me se
+    contr&#x00F4;ler avec la souris si vous n'aimez pas le clavier.</p>
+<p class="Pp">Vous pouvez bien entendu installer n'importe quel autre lecteur
+    qui vous plait davantage.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Comment_quitter_cmus_sans_le_fermer_?"><a class="permalink" href="#Comment_quitter_cmus_sans_le_fermer_?">Comment
+  quitter cmus sans le fermer?</a></h2>
+<p class="Pp">Si vous d&#x00E9;marrez cmus avec le menu de cwm disponible par
+    clic-droit sur le bureau, il est lanc&#x00E9; dans <a class="Xr">tmux(1)</a>
+    Il peut ainsi &#x00EA;tre d&#x00E9;tach&#x00E9; ou ouvert dans plusiers
+    terminaux, mais surtout peut continuer de jouer la musique lorsque la
+    fen&#x00EA;tre est ferm&#x00E9;e. Pour d&#x00E9;tacher cmus, appuyez sur
+    &quot;ctrl-b&quot; puis &quot;d&quot;.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Quelles_sont_les_diff"><a class="permalink" href="#Quelles_sont_les_diff">Quelles
+  sont les diff&#x00E9;rences avec une installation OpenBSD de base?</a></h2>
+<ul class="Bl-bullet">
+  <li><a class="Xr">unwind(8)</a> est configur&#x00E9; en tant que
+      r&#x00E9;solveur de nom de domaine par d&#x00E9;faut.
+    <p class="Pp"></p>
+  </li>
+  <li>Les noms de domaines de domaines malveillants et publicitaires sont
+      filtr&#x00E9;s gr&#x00E2;ce au programme zerohosts lanc&#x00E9; &#x00E0;
+      chaque d&#x00E9;marrage et qui met &#x00E0; jour une liste noire toutes
+      les semaines. Il est lanc&#x00E9; par le fichier
+      <span class="Pa">/etc/rc.local</span>
+    <p class="Pp">Il remplit le fichier <span class="Pa">/etc/hosts</span> et
+        permet de filtrer rapidement les domaines malveillants, peu importe le
+        r&#x00E9;solveur DNS utilis&#x00E9;.</p>
+    <p class="Pp">Si vous essayez d&#x2019;acc&#x00E9;der &#x00E0; l&#x2019;un
+        de ces domaines (pourquoi?), Vous obtiendrez un message:</p>
+    <p class="Pp">&#x201C;Le site web n'est pas disponible&#x201D;</p>
+    <p class="Pp">Le script zerohosts incluera dans
+        <span class="Pa">/etc/hosts</span> tout le contenu d'un fichier
+        <span class="Pa">/etc/hosts.include</span></p>
+    <p class="Pp">Voir
+        <a class="Lk" href="https://ybad.name/Logiciel-libre/Code/zerohosts.html">https://ybad.name/Logiciel-libre/Code/zerohosts.html</a></p>
+    <p class="Pp"></p>
+    <p class="Pp"></p>
+  </li>
+  <li>Message personnalis&#x00E9; dans
+    <span class="Pa">/etc/boot.conf</span></li>
+  <li><a class="Xr">hotplugd(8)</a> est configur&#x00E9; pour monter
+      automatiquement votre cl&#x00E9; USB dans <span class="Pa">/vol</span>
+    <p class="Pp">Un lien est disponible dans votre r&#x00E9;pertoire $HOME.</p>
+  </li>
+  <li>Services activ&#x00E9;s: hotplugd, cups, xenodm, unwind.</li>
+  <li>D&#x00E9;sactivation de ulpt pour les imprimantes USB. Cela se passe dans
+      <span class="Pa">/etc/rc.shutdown</span> pour profiter de KARL au
+      red&#x00E9;marrage.
+    <p class="Pp">Voir
+        <a class="Lk" href="https://marc.info/?l=openbsd-misc&amp;m=155746672110488&amp;w=2">ce
+        fil</a></p>
+  </li>
+  <li>La configuration ntpd n'utilise pas google comme contrainte.</li>
+  <li>L&#x2019;apparence de Xenodm est personnalis&#x00E9;e et configurable avec
+      un script appel&#x00E9; xenodm-config.</li>
+  <li>Des paquets suppl&#x00E9;mentaires sont install&#x00E9;s.
+    <p class="Pp">Voir
+        <span class="Pa">/usr/local/share/isotop/data/packages</span></p>
+  </li>
+  <li>doas est configur&#x00E9; pour &#x00E9;viter la saisie d'un mot de passe
+      pour certaines commandes.
+    <p class="Pp">Voir <span class="Pa">/etc/doas.conf</span></p>
+  </li>
+  <li><a class="Xr">cwm(5)</a> est le gestionnaire de fen&#x00EA;tres par
+      d&#x00E9;faut. Il est pr&#x00E9;-configur&#x00E9; et livr&#x00E9; avec
+      divers scripts pour faciliter la gestion des fen&#x00EA;tres pour les
+      utilisateurs n'aimant pas les claviers.</li>
+  <li>iridium est le navigateur par d&#x00E9;faut. Sont
+      d&#x00E9;sactiv&#x00E9;es chaque option li&#x00E9;e &#x00E0; google et le
+      tracking. Il est &quot;unveiled&quot; par d&#x00E9;faut: cela signifie que
+      le navigateur ne peut lire des fichiers sur votre ordinateur sauf dans
+      <span class="Pa">$HOME/Downloads</span>
+    <p class="Pp">Il garde vos cl&#x00E9;s SSH et mots de passe inaccessibles
+        par un &#x00E9;ventuel pirate. Firefox fait aussi des appels &#x00E0;
+        google et n'est pas &quot;unveiled&quot; pour le moment (voir
+        <a class="Lk" href="https://marc.info/?l=openbsd-misc&amp;m=152872551609819&amp;w=2">ce
+        fil</a> )</p>
+  </li>
+  <li>Alt-L est mapp&#x00E9; vers Esc pour les utilisateurs de vi :)</li>
+  <li>Les traductions sont incluses: anglais et fran&#x00E7;ais pour
+    l'instant.</li>
+  <li>Quelques scripts et outils sont inclus dans
+      <span class="Pa">/usr/local/share/isotop/bin</span> et disponible dans
+      votre <code class="Ev">PATH</code> .
+    <p class="Pp">Voir
+        <a class="Sx" href="#Quels_scripts_sont_livr__u00E9_s?">Quels scripts
+        sont livr&#x00E9;s?</a></p>
+  </li>
+  <li><span class="Pa">$HOME/.aliases</span> et
+      <span class="Pa">$HOME/.functions</span> sont remplis de choses
+    (utiles?).</li>
+  <li>$HOME/.kshrc contient de l'auto-compl&#x00E9;tion pour OpenBSD.</li>
+  <li>Un fond d'&#x00E9;cran al&#x00E9;atoire est d&#x00E9;fini &#x00E0; chaque
+      session.</li>
+  <li>Le navigateur de fichiers est pcmanfm. Il est configur&#x00E9; pour avoir
+      des actions personnalis&#x00E9;es via clic-droit (&#x00E9;diter une image,
+      t&#x00E9;l&#x00E9;verser un fichier ...).</li>
+  <li>Le pointeur de la souris est cach&#x00E9; gr&#x00E2;ce &#x00E0;
+      <a class="Xr">xbanish(1)</a></li>
+  <li>Le th&#x00E8;me de couleur &quot;nord&quot; est install&#x00E9; pour les
+      applications X. Voir.
+      <a class="Lk" href="https://www.nordtheme.com/">https://www.nordtheme.com/</a></li>
+</ul>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Pourquoi_ce_nom?"><a class="permalink" href="#Pourquoi_ce_nom?">Pourquoi
+  ce nom?</a></h2>
+<p class="Pp">Au d&#x00E9;but, isotop &#x00E9;tait image iso contenant tous les
+    paquetages et configuration pour l'installation. Maintenant, c'est juste un
+    script pour configurer OpenBSD.</p>
+<p class="Pp">Comme un isotope c'est une variante d'OpenBSD avec quelques
+    &#x00E9;l&#x00E9;ments suppl&#x00E9;mentaires, mais toujours OpenBSD.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Why_c'est_sombre_?"><a class="permalink" href="#Why_c'est_sombre_?">Why
+  c'est sombre?</a></h2>
+<p class="Pp">Parce que le d&#x00E9;veloppeur aime bien, et &#x00E7;a
+    &#x00E9;conomise l'&#x00E9;nergie de ne pas allumer les pixels.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Puis-je_installer_un_autre_navigateur_Web?"><a class="permalink" href="#Puis-je_installer_un_autre_navigateur_Web?">Puis-je
+  installer un autre navigateur Web?</a></h2>
+<p class="Pp">Bien s&#x00FB;r. Firefox et chrome, entre autres, sont disponibles
+    dans les ports. Cependant, nous avons choisi iridium car il est
+    &quot;unveiled&quot;, c&#x2019;est-&#x00E0;-dire qu&#x2019;il ne peut pas
+    acc&#x00E9;der &#x00E0; vos fichiers personnels contenant des mots de passe
+    ou des cl&#x00E9;s SSH et il est plus respectueux de la vie priv&#x00E9;e
+    que le chrome.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Puis-je_installer_un_autre_environnement_de_bureau?"><a class="permalink" href="#Puis-je_installer_un_autre_environnement_de_bureau?">Puis-je
+  installer un autre environnement de bureau?</a></h2>
+<p class="Pp">Bien s&#x00FB;r.</p>
+<p class="Pp">Gnome, kde, lxde, xfce et d'autres sont disponibles pour OpenBSD
+    via les ports.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Quels_processus_sont_d"><a class="permalink" href="#Quels_processus_sont_d">Quels
+  processus sont d&#x00E9;marr&#x00E9;s lorsque j'ouvre une session?</a></h2>
+<p class="Pp">Consultez le fichier <span class="Pa">$HOME/.xsession</span></p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss">O&#x00F9; sont stock&#x00E9;s les fichiers d'isotop?</h2>
+<p class="Pp"><span class="Pa">/usr/local/share/isotop</span></p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Quels_scripts_sont_inclus?"><a class="permalink" href="#Quels_scripts_sont_inclus?">Quels
+  scripts sont inclus?</a></h2>
+<ul class="Bl-bullet">
+  <li>dalarm: sp&#x00E9;cifiez une alerte, puis un nombre de minutes. Une
+      notification affichera l'alerte apr&#x00E8;s le d&#x00E9;lai.</li>
+  <li>dcmus: choisissez un fichier &#x00E0; lire dans la liste de lecture de
+      cmus</li>
+  <li>dfm: un lanceur de fichiers utilisant dmenu.</li>
+  <li>dgroupwin: s&#x00E9;lectionne une fen&#x00EA;tre et assigne un groupe</li>
+  <li>xclockstatusbar : affiche une barre avec des informations sur le
+      syst&#x00E8;me en haut de l'&#x00E9;cran. l'&#x00E9;cran.</li>
+  <li>maxwin : maximise une fen&#x00EA;tre en tant compte de la marge et des
+      bordures des fen&#x00EA;tres dans cwm</li>
+  <li>dman: lire une page de manuel</li>
+  <li>dmenu_run_i: un dmenu_run am&#x00E9;lior&#x00E9; pour pouvoir lancer une
+      commande. Terminez avec un &quot;!&quot; et la commande est ouverte dans
+      un terminal. Exemple : <code class="Cm">top!</code></li>
+  <li>dsch: recherche sur le web. Le moteur de recherche par d&#x00E9;faut est
+      duckduckgo si vous ne sp&#x00E9;cifiez pas de recherche moteur.
+    <p class="Pp">Exemples :</p>
+    <p class="Pp"></p>
+    <div class="Bd Bd-indent">moteur par d&#x00E9;faut: OpenBSD, cryptage
+      complet du disque</div>
+    <div class="Bd Bd-indent">recherche sur openbsd misc list: obsdmisc firefox
+      crash</div>
+    <p class="Pp"></p>
+    <p class="Pp"></p>
+  </li>
+  <li>dsct : configurer la couleur de l'&#x00E9;cran</li>
+  <li>dyt: t&#x00E9;l&#x00E9;charger une vid&#x00E9;o avec
+      <a class="Xr">youtube-dl(1)</a>
+    <p class="Pp">L'URL s&#x00E9;lectionn&#x00E9;e est coll&#x00E9;e par
+        d&#x00E9;faut.</p>
+  </li>
+  <li>gdoas: ouvre xterm pour taper le mot de passe doas utilis&#x00E9; pour
+      d&#x2019;autres scripts tels que xenodm-config.</li>
+  <li>imgmod: modifier une image en utilisant <a class="Xr">gm(1)</a>
+    <p class="Pp">Les modifications support&#x00E9;es sont.</p>
+    <ul class="Bl-bullet">
+      <li>convertir en jpg</li>
+      <li>convertir en png</li>
+      <li>convertir en gif</li>
+      <li>redimensionner</li>
+      <li>tourner &#x00E0; gauche ou &#x00E0; droite</li>
+    </ul>
+  </li>
+  <li>imgopti: optimise une image pour r&#x00E9;duire son poids.</li>
+  <li>networkcheck: v&#x00E9;rifie l'acc&#x00E8;s &#x00E0; Internet</li>
+  <li>openbsdupgrade: mise &#x00E0; niveau vers les derni&#x00E8;res
+      modifications de -stable avec <a class="Xr">syspatch(8)</a>
+      <a class="Xr">fw_update(1)</a> <a class="Xr">pkg_add(1)</a></li>
+  <li>pixcol: affiche le code html de la couleur du pixer situ&#x00E9; sous le
+      pointeur.</li>
+  <li>pixup: t&#x00E9;l&#x00E9;verse une image sur pix.toile-libre.org</li>
+  <li>rdmwall: d&#x00E9;finit un fond d'&#x00E9;cran al&#x00E9;atoire. Les fonds
+      sont recherch&#x00E9;s dans:
+      <span class="Pa">$HOME/Images/Wallpapers</span> ;
+      <span class="Pa">/usr/local/share/isotop/walls</span></li>
+  <li>scrot: prend une capture d'&#x00E9;cran, enregistr&#x00E9;e dans
+    $HOME</li>
+  <li>scrotup: fait une capture d'&#x00E9;cran avec scrot et
+      t&#x00E9;l&#x00E9;verse avec pixup</li>
+  <li>send_dmesg.sh: envoyez votre dmesg aux d&#x00E9;veloppeurs OpenBSD pour
+      aider au support mat&#x00E9;riel.</li>
+  <li>setwall: d&#x00E9;finit le fond d'&#x00E9;cran.</li>
+  <li>web: un wrapper pour d&#x00E9;marrer un navigateur web.</li>
+  <li>xenodm-config: &#x00E9;ditez la configuration et l'apparence de
+    xenodm.</li>
+</ul>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Quelles_actions_personnalis"><a class="permalink" href="#Quelles_actions_personnalis">Quelles
+  actions personnalis&#x00E9;e y a-t-il dans pcmanfm?</a></h2>
+<ul class="Bl-bullet">
+  <li>Modification d'images (tourner, redimensionner...)</li>
+  <li>Optimisation d'image</li>
+  <li>Upload d'image</li>
+  <li>D&#x00E9;finir l'image comme fond d'&#x00E9;cran</li>
+  <li>Jouer la musique dans cmus</li>
+  <li>Imprimer avec l'imprimante par d&#x00E9;faut (image, texte, pdf)</li>
+</ul>
+<p class="Pp"></p>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="Comment_utiliser_mon_bureau?"><a class="permalink" href="#Comment_utiliser_mon_bureau?">Comment
+  utiliser mon bureau?</a></h1>
+<section class="Ss">
+<h2 class="Ss" id="Ouvrir_une_application"><a class="permalink" href="#Ouvrir_une_application">Ouvrir
+  une application</a></h2>
+<p class="Pp">Au d&#x00E9;but, le bureau est vide.</p>
+<p class="Pp">Vous pouvez voir une horloge en haut &#x00E0; gauche.</p>
+<p class="Pp">Cliquez avec le bouton droit sur l'arri&#x00E8;re-plan ou sur
+    'horloge lpour afficher le menu d'applications et choisissez par exemple,
+    xterm.</p>
+<p class="Pp">Vous pouvez &#x00E9;galement appuyer sur Alt-p pour afficher et
+    &#x00E9;crire &#x201C;xterm&#x201D; puis appuyer sur Entr&#x00E9;e.</p>
+<p class="Pp">Enfin, vous pouvez d&#x00E9;placer le pointeur vers le coin
+    inf&#x00E9;rieur gauche pour afficher une fen&#x00EA;tre jgmenu.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Gestion_basique_des_fen"><a class="permalink" href="#Gestion_basique_des_fen">Gestion
+  basique des fen&#x00EA;tres</a></h2>
+<p class="Pp">Vous pouvez faire glisser la fen&#x00EA;tre en appuyant sur Alt et
+    en maintenant le bouton gauche de la souris appuy&#x00E9; sur la
+    fen&#x00EA;tre.</p>
+<p class="Pp">Pour redimensionner la fen&#x00EA;tre, appuyez sur Alt et faites
+    un clic droit.</p>
+<p class="Pp">Vous n'avez probablement pas besoin de d&#x00E9;placer et de
+    redimensionner les fen&#x00EA;tres mais de les maximiser &#x00E0; la place,
+    ou les cacher. Tout cela peut &#x00EA;tre fait avec des raccourcis clavier
+    gr&#x00E2;ce &#x00E0; <a class="Xr">cwm(1)</a> mais vous ne vous en
+    souviendrez peut-&#x00EA;tre pas tout le temps. C'est pourquoi vous avez des
+    raccourcis dans le menu de cwm pr&#x00E9;vus &#x00E0; cet effet.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Raccourcis_clavier"><a class="permalink" href="#Raccourcis_clavier">Raccourcis
+  clavier</a></h2>
+<p class="Pp">Les Raccourcis clavier sont ceux de <a class="Xr">cwm(1)</a> par
+    d&#x00E9;faut.</p>
+<p class="Pp">Quelques autres sont ajout&#x00E9;s:</p>
+<ul class="Bl-bullet">
+  <li>Alt-F4: fermer la fen&#x00EA;tre</li>
+  <li>Alt-Shift-h/j/k/l: d&#x00E9;place la fen&#x00EA;tre &#x00E0; gauche/en
+      bas/en haut/&#x00E0; droite de &#x00E9;cran.</li>
+  <li>Alt-s: d&#x00E9;marrer le script <code class="Cm">dsch</code></li>
+  <li>Alt-x: d&#x00E9;marre le script <code class="Cm">dfm</code></li>
+  <li>Alt-t et Alt-Shift-t: fen&#x00EA;tres en mosa&#x00EF;que (tiling)</li>
+  <li>Alt-p: menu affich&#x00E9; pour d&#x00E9;marrer une application</li>
+  <li>Alt-f: menu des fen&#x00EA;tres</li>
+  <li>Alt-g: associer un nouveau groupe &#x00E0; une fen&#x00EA;tre
+      focalis&#x00E9;e</li>
+</ul>
+<p class="Pp">Voir <a class="Xr">cwmrc(5)</a> &#x00E0; personnaliser selon vos
+    besoins.</p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss" id="Raccourcis_souris"><a class="permalink" href="#Raccourcis_souris">Raccourcis
+  souris</a></h2>
+<p class="Pp">Vous pouvez afficher les menus en cliquant sur le bureau ou sur la
+    bordure d'une fen&#x00EA;tre (assez grande par d&#x00E9;faut).</p>
+<p class="Pp"></p>
+<ul class="Bl-bullet">
+  <li>Clic droit: menu application. vous pouvez lancer une application.</li>
+  <li>Clic central: menu du groupe: affiche le groupe actif sur lequel basculer
+      la visibilit&#x00E9;</li>
+  <li>Clic gauche: menu des fen&#x00EA;tres, pour focaliser une
+    fen&#x00EA;tre.</li>
+  <li>Faites d&#x00E9;filer sur l'arri&#x00E8;re-plan pour modifier le
+    volume.</li>
+  <li>Alt + clic droit: redimensionner la fen&#x00EA;tre</li>
+  <li>Alt + clic gauche: d&#x00E9;placer la fen&#x00EA;tre</li>
+</ul>
+<p class="Pp"></p>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss">&#x00C0; propos du menu fen&#x00EA;tres</h2>
+<p class="Pp">Le menu fen&#x00EA;tres ressemble &#x00E0; ceci:</p>
+<div class="Bd Pp">
+<pre>(4) ! [] Nom de la fen&#x00EA;tre
+(4)   [] autre nom de fen&#x00EA;tre
+(2) &amp; [] un autre nom de fen&#x00EA;tre
+(1) &amp; [foo] encore un nom de fen&#x00EA;tre</pre>
+</div>
+<p class="Pp">Entre parenth&#x00E8;ses, vous voyez le groupe affect&#x00E9;
+    &#x00E0; la fen&#x00EA;tre.</p>
+<p class="Pp"></p>
+<div class="Bd Bd-indent">! signifie que la fen&#x00EA;tre est
+  focalis&#x00E9;e.</div>
+<div class="Bd Bd-indent">&amp; signifie que la fen&#x00EA;tre est
+  masqu&#x00E9;e.</div>
+<div class="Bd Bd-indent">[foo]: la fen&#x00EA;tre a re&#x00E7;u
+  l&#x2019;&#x00E9;tiquette foo avec le raccourci Ctrl-alt-n</div>
+<p class="Pp"></p>
+</section>
+<section class="Ss">
+<h2 class="Ss">&#x00C0; propos des espaces de travail</h2>
+<p class="Pp">Il n'y a pas d'espaces de travail. Ils sont juste un moyen
+    d'augmenter la taille de l'&#x00E9;cran, et si vous avez besoin d&#x2019;un
+    &#x00E9;cran plus grand, le gestionnaire de fen&#x00EA;tres est probablement
+    dans l'erreur quelque part. <a class="Xr">cwm(1)</a> utilise &#x00E0; la
+    place le concept de
+    <a class="permalink" href="#groupes."><i class="Em" id="groupes.">groupes.</i></a>
+    Vous pouvez choisir d&#x2019;afficher une ou plusieurs fen&#x00EA;tres
+    group&#x00E9;es en fonction de votre besoin.</p>
+<p class="Pp">Vous pouvez attribuer automatiquement un groupe &#x00E0; une
+    fen&#x00EA;tre dans <span class="Pa">$HOME/.cwmrc</span> ou vous pouvez
+    utiliser <code class="Cm">groupwin</code> pour assigner un groupe &#x00E0;
+    une fen&#x00EA;tre.</p>
+<p class="Pp">&#x00C0; tout moment, un clic du milieu sur le bureau affichera le
+    &quot;menu groupe&quot; pour alterner la visibilit&#x00E9; des groupes
+    actifs.</p>
+<p class="Pp"></p>
+</section>
+</section>
+<section class="Sh">
+<h1 class="Sh">&#x00C0; propos de dmenu</h1>
+<p class="Pp">Les outils inclus utilisent dmenu.</p>
+<p class="Pp">C'est un menu affich&#x00E9; en haut de votre &#x00E9;cran.
+    &#x00C9;crivez ce dont vous avez besoin, ou une partie seulement, puis
+    appuyez sur Entr&#x00E9;e pour s&#x00E9;lectionner.</p>
+<p class="Pp"></p>
+<div class="Bd Bd-indent">Retour: s&#x00E9;lectionner</div>
+<div class="Bd Bd-indent">Esc: quitter le menu.</div>
+<div class="Bd Bd-indent">ctrl-y: coller la s&#x00E9;lection</div>
+<p class="Pp">Voir <a class="Lk" href="https://tools.suckless.org/dmenu/">site
+    web de dmenu</a></p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="BUGS"><a class="permalink" href="#BUGS">BUGS</a></h1>
+<p class="Pp">Bien s&#x00FB;r.</p>
+<p class="Pp">Veuillez les signaler &#x00E0; <span class="An">prx</span>
+    <a class="Mt" href="mailto:prx@ybad.name">prx@ybad.name</a></p>
+<p class="Pp"></p>
+</section>
+<section class="Sh">
+<h1 class="Sh" id="SEE_ALSO"><a class="permalink" href="#SEE_ALSO">SEE
+  ALSO</a></h1>
+<p class="Pp"><a class="Xr">cwm(1)</a> <a class="Xr">cwmrc(5)</a>
+    <a class="Xr">dmenu(1)</a> <a class="Xr">tmux(1)</a></p>
+</section>
+</div>
+<table class="foot">
+  <tr>
+    <td class="foot-date">October 30, 2020</td>
+    <td class="foot-os"></td>
+  </tr>
+</table>
+</body>
+</html>

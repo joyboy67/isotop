@@ -1,0 +1,21 @@
+#!/bin/sh
+
+DEVCLASS=${1}
+DEVNAME=${2}
+
+case "${DEVCLASS}" in
+		0)
+			if [ -n "$(echo $DEVNAME | grep -o "ugen[0-9]")" ]; then
+				addr=$(dmesg | grep $DEVNAME | \
+					tail -n1 | \
+					cut -d' ' -f3 | \
+					tr -d '[:alpha:]' \
+					)
+				chown _cups /dev/${DEVNAME}.* /dev/usb$addr
+			fi
+		;;
+
+        2)
+			/usr/local/libexec/hotplug-diskmount attach -f dirty -m 0777 "${DEVNAME}"
+        ;;
+esac

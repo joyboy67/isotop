@@ -1,19 +1,39 @@
 # TODO
+* doc intall user mais pas root si déjà à jour
+* doc suckless src included
+* .desktop pour gestion session
+* doc add printer : no system-config-printer
+* doc mpd avec dossier musique par défaut créé par
+xdg : ~/Musique en fr, ~/Music en en
+* manpages pour chaque petit outil
+* archive manager
+* script dl paquets pour install offline
+
 * replace owi : nmctl 
 	https://sourceforge.net/projects/nmctl/
-* archive manager
-* Firefox config ?
+* doc rc.local
+* isotop : pas de doas.conf à part wheel?
+* isotop dmount update
+* script play-in-mpd
+* doc wallpaper .wallpaper
+* update screenshots
+
+FAQ : pq dwm et dmenu ? Pr rendre + pratique et accessible, il faut que
+	ça soit stable et simple.
+script locate avec dmenu
+.desktop entry man isotop
+doc add printer : localhost:631
+* script term : choix de term
+* doc patches dwm
+* doc slstatus + patches
+* doc patches dmenu
+* doc crontab checkbatt
 
 ## Later
-
-* port isotop-tools : .tgz ? 
 * rewrite owi and write a dmenu wireless connexion manager (I don't have
 wifi...)
 * gdoas safe ?
-
-* edbrowse for blind users ?
+* session jwm ?
 * man pages for included scripts ?
-* pcmanfm archive manager
-
-
-
+* xfe archive manager
+* rover

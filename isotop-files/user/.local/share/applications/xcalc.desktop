@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=XCalc
+GenericName=Calculator
+GenericName[fr]=Calculatrice
+Exec=xcalc
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Icon=accessories-calculator
+Categories=Utility;Calculator;

@@ -1,0 +1,9 @@
+gtk3-demo.desktop
+org.gtk.Demo4.desktop
+gtk3-widget-factory.desktop
+org.gtk.WidgetFactory4.desktop
+gtk3-icon-browser.desktop
+org.gtk.IconBrowser4.desktop
+org.gtk.PrintEditor4.desktop
+gcr-prompter.desktop
+gcr-viewer.desktop

@@ -1,0 +1,15 @@
+#!/bin/sh
+termemlist="st
+urxvt
+rxvt
+xfce4-terminal
+xterm"
+
+for t in $termemlist; do
+	tp=$(which $t)
+	if [ -n "$tp" -a -x "$tp" ]; then
+		$tp $@
+		exit
+	fi
+done
+

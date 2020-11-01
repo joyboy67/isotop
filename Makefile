@@ -1,20 +1,29 @@
-# create archive and write manpages
-VERSION=665
+.SUFFIXES: .mdoc .7 .html
+VERSION != date +%Y%m%d%H%M
+MANSRC != find man/ -type f -name \*.mdoc
+MAN7 = ${MANSRC:.mdoc=.7}
+MANHTML = ${MANSRC:.mdoc=.html}
+MANDST=isotop-files/man/man7/
 
-all: 
 
-	mkdir -p src/files/usr/local/man/man7/
-	mandoc -T man man/isotop.mdoc > src/files/usr/local/man/man7/isotop.7
-	mandoc -T man man/isotop-fr.mdoc > src/files/usr/local/man/man7/isotop-fr.7
-	mandoc -T html man/isotop.mdoc > man/isotop.man.html
-	mandoc -T html man/isotop-fr.mdoc > man/isotop-fr.man.html
-	cp man/*.html ~/geek/gitreps/3hg/3hg-website/website.static/Isos/isotop/
+all: archive
+	sed "s/_ISOTOPVERSION_/$(VERSION)/" isotop.sh > isotop-$(VERSION).sh
+	sha256 -h isotop-$(VERSION).sha256 \
+		isotop-$(VERSION).tgz \
+		isotop-$(VERSION).sh
 
-	cd src/files && tar cvzf ../../isotop-$(VERSION).tgz .
-	sha256 isotop-$(VERSION).tgz > isotop.sha256
-	cd src && sha256 isotop.sh >> ../isotop.sha256
+clean:
+	rm -f isotop-*.tgz isotop-*.sha256 isotop-*.sh
+	
+archive: clean
+	tar -cf isotop-$(VERSION).tar -C isotop-files/ .
+	gzip -9 -o isotop-$(VERSION).tgz isotop-$(VERSION).tar
 
-	git add src/isotop.sh isotop-$(VERSION).tgz isotop.sha256
-	git commit -m "update for $(VERSION)"
-	git push
-	scp man/isotop*.html pi:/var/www/htdocs/3hg.fr/Isos/isotop/
+.mdoc.7:
+	mandoc -T man $< > $@
+
+.mdoc.html:
+	mandoc -T html $< > $@
+
+man: $(MAN7) $(MANHTML)
+	cp $(MAN7) $(MANDST)

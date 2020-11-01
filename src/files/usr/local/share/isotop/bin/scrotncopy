@@ -1,9 +1,0 @@
-#!/bin/sh
-# screenshot with graphicsmagick and copy to clipboard
-# require graphicsmagick and xclip
-
-img=/tmp/scrot-$(date %d-%m-%y-%H-%M-%S).png
-gm import "${img}"
-TYPE=$(file -b --mime-type "$img")
-xclip -selection clipboard -t "$TYPE" < "$img"
-exit

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name = Set as wallpaper 
+Name[fr]=Définir comme fond d'écran 
+Icon = image
+Profiles = on_image;
+
+[X-Action-Profile on_image]
+Name = Set as wallpaper
+Name[fr]=Définir comme fond d'écran
+MimeTypes = image/*;
+Exec = setwall %f

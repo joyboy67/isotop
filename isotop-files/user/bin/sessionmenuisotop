@@ -1,0 +1,34 @@
+#!/bin/sh
+
+
+_q="Session:"
+_shutdown="Shutdown"
+_reboot="Reboot"
+_suspend="Suspend"
+_hibernate="Hibernate"
+_exit="Exit"
+case $LANG in
+	fr*)
+		_shutdown="Eteindre"
+		_reboot="Redemarrer"
+		_suspend="Suspendre"
+		_hibernate="Hiberner"
+		_exit="Quitter"
+	;;
+esac
+
+res="$(xmessage $_q -nearmouse -print -buttons \
+"$_shutdown":5,\
+"$_reboot":6,\
+"$_suspend":7,\
+"$_hibernate":8,\
+"$_exit":9)"
+
+case "$res" in
+	$_shutdown)  doas /sbin/shutdown -hp now ;;
+	$_reboot)    doas /sbin/reboot ;;
+	$_suspend)   doas /usr/sbin/zzz ;;
+	$_hibernate) doas /usr/sbin/ZZZ ;;
+	$_exit)      pkill dwm ;;
+esac
+

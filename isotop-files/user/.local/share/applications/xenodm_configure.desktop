@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Xenodm-config
+Name[fr]=Xenodm-config
+Comment=Xenodm configuration
+Comment[fr]=Configuration de l'écran de connexion
+Exec=gdoas /usr/local/share/isotop/bin/xenodm-config
+Categories=System;
+Terminal=false
+Icon=preferences-desktop-display

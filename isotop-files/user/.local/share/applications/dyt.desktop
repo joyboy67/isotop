@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=dyt
+Comment=Download with youtube-dl
+Comment[fr]=Télécharger l'url avec youtube-dl
+Exec=/usr/local/share/isotop/bin/dyt
+Icon=emblem-downloads
+Categories=Utility;Network;
+Terminal=false

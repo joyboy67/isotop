@@ -1,0 +1,34 @@
+#!/bin/sh
+# This script is run at the beginning of each X session
+# edit as you like, but remember to leave a "&" at the end of lines.
+
+# isotop first start
+if [ -f $HOME/.first.sh ]; then
+	sh $HOME/.first.sh
+fi
+
+# dbus
+if [ -x /usr/local/bin/dbus-launch -a -z "${DBUS_SESSION_BUS_ADDRESS}" ]; then
+    eval `dbus-launch --sh-syntax --exit-with-x11` &
+fi
+
+# Load X options
+xrdb -merge $HOME/.Xresources
+# disable bell
+xset b off &
+# set ~/.wallpaper as Wallpaper
+setwall $HOME/.wallpaper &
+# numpad
+numlockx &
+# Vi user, be grateful
+xcape -e 'Alt_L=Escape' &
+# take care of you eyes, change temperature color
+sctd 1>/dev/null &
+# Auto-lock the screen
+xidle -timeout 900 -program "/usr/X11R6/bin/xlock" &
+# hide cursor
+xbanish &
+# music player
+mpd &
+# dwm status bar
+slstatus &

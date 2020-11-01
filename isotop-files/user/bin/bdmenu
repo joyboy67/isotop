@@ -1,0 +1,32 @@
+#!/bin/sh
+# better dmenu_run 
+# if a command ends with "!", it is started in st.
+
+# in .dmenurc, set colors and font with variables
+# $nb $nf $sb $sf $fn are passed to these dmenu opts : -nb -nf -sb -sf -fn
+# 	$cat ~/.dmenurc
+# 	nb="#2E3440"
+# 	nf="#D8DEE9"
+# 	sf="#2e3440"
+# 	sb="#81A1C1"
+# 	l=15
+# 	fn="DejaVuSansMono-9"
+
+TERMCMD="term -e"
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+cachedir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+cacherecent="$cachedir/dmenu_run_recent"
+
+CMD="$((tail -r ${cacherecent} |uniq; dmenu_path) |\
+	dmenu -fn "${fn}" -sb "${sb}" -sf "${sf}" -nb "${nb}" -nf "${nf}")"
+
+case $CMD in
+    *\! ) ${TERMCMD} "$(printf "%s" "${CMD}" | sed 's/.$//')" & ;;
+    * ) ${CMD} & ;;
+esac
+# keep only 10+1 recent
+echo "${CMD}" >> ${cacherecent}
+echo "$(tail ${cacherecent})" > ${cacherecent}
+exit
+

@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name = Print 
+Name[fr]=Imprimer 
+Icon = image
+Profiles = on_printable;
+
+[X-Action-Profile on_printable]
+Name = Print 
+Name[fr]=Imprimer 
+MimeTypes = image/*;text/*;application/pdf;application/postcript;
+Exec = lp -o fit-to-page -o media=a4 %f

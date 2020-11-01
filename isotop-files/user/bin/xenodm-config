@@ -1,0 +1,86 @@
+#!/bin/sh
+# Auteur :      prx <prx@ybad.name>
+# licence :     MIT
+
+# Description : configure xenodm in a terminal
+
+defaultbg=/usr/local/share/isotop/walls/loginbg.jpg
+
+title="Xenodm configuration"
+question="What do you want to configure?"
+txt_chgbg="Choose background image"
+txt_rdbmg="Choose random background image directory"
+txt_disableautologin="Disable autologin"
+txt_autologin="Set up autologin for $DOAS_USER. Warning, this leaves your machine open to the world"
+txt_badchoice="Wrong answer, bye"
+txt_imgpath="Path to image?"
+txt_imgnotfound="Path not found, check again"
+txt_imgdirpath="Path to pictures directory"
+
+# with doas, $LANG is not what you expect
+lang=$(cat /etc/kbdtype)
+
+case $lang in
+	fr*)
+		title="Configuration de Xenodm"
+		question="Que souhaitez-vous configurer ?"
+		txt_chgbg="Choisir l'image d'arrière-plan"
+		txt_rdbmg="Choisir un répertoire contenant les arrières-plans choisis au hasard"
+		txt_disableautologin="Désactiver la connexion automatique"
+		txt_autologin="Activer la connexion automatique pour $DOAS_USER. Attention, cela laisse votre ordinateur ouvert pour tous."
+		txt_badchoice="Choix erronnée, au revoir"
+		txt_imgpath="Chemin vers l'image? (/home/toto/image.jpg)"
+		txt_imgnotfound="Chemin introuvable, vérifiez-le."
+		txt_imgdirpath="Chemin vers le dossier contenant les images"
+        ;;
+esac
+
+echo "$title"
+echo "---\n"
+
+echo "$question"
+echo "1 $txt_chgbg"
+echo "2 $txt_rdbmg"
+echo "3 $txt_autologin"
+echo "4 $txt_disableautologin" 
+echo ""
+echo "[1/2/3/4/ctrl-c]"
+
+read res
+
+case "$res" in
+	1) 
+		echo "$txt_imgpath"
+		read bg
+		if [ -f "$bg" ]; then
+			cp "${bg}" "${defaultbg}"
+		else
+			echo "$txt_imgnotfound"
+			exit 1
+		fi
+		;;
+	2) 
+		echo "$txt_imgdirpath"
+		read bgdir
+		if [ -d "$bgdir" ]; then
+			sed -i "s;WALLDIR=.*$;WALLDIR=$bgdir;" /etc/X11/xenodm/Xsetup_0
+		else
+			echo "$txt_imgnotfound"
+			exit 1
+		fi
+		;;
+	3) 
+		sed -i "s/DisplayManager._0.autoLogin:.*$//" /etc/X11/xenodm/xenodm-config 
+		echo "DisplayManager._0.autoLogin:    $DOAS_USER" >> /etc/X11/xenodm/xenodm-config
+		;;
+	4) 
+		sed -i "s/DisplayManager._0.autoLogin:.*$//" /etc/X11/xenodm/xenodm-config
+		;;
+	*)
+		echo "$txt_badchoice"
+		sleep 3 && exit 1
+		;;
+esac
+
+exit 0
+

@@ -1,0 +1,10 @@
+#!/bin/sh
+# screenshot then upload
+# prx@ybad.name
+set -e
+img=/tmp/scrotup-$(date +%d-%m-%y)
+
+scrot "${img}" 
+pixup "${img}.png"
+
+exit 0
