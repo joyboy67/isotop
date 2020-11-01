@@ -31,6 +31,7 @@ while [ $i -lt 5 ]; do
 done
 echo ""
 
+echo "Language ?"
 lang=$(selmenu fr en)
 
 case $lang in 
@@ -41,7 +42,7 @@ case $lang in
 		XENODMLOGIN='identifiant ='
 		XENODMPASSWORD=' secret ='
 		XENODMFAIL='Echec :s'
-		LASTVER="La dernière version d'isotop est déjà installée.
+		LASTVER="La dernière version d'isotop est déjà installée."
 	;;
 	*)
 		THX="Thanks! ;)"
