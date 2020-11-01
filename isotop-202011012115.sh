@@ -4,7 +4,7 @@
 
 # Description : install isotop customization on OpenBSD
 
-VERSION="202011012112"
+VERSION="202011012115"
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 selmenu()
@@ -127,7 +127,7 @@ echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
 ###
 # no need to remake all changes
 test ! -f /etc/isotop.version && echo "0" | doas tee -a /etc/isotop.version
-if [ ${VERSION} -lt $OLDVER ]; then
+if [ ${VERSION} -gt $(cat /etc/isotop.version) ]; then
 
 	# softdep
 	echo "* Enable softdeps"
@@ -225,7 +225,8 @@ permit nopass  :wheel cmd /usr/sbin/ZZZ
 
 	echo "* Save isotop version"
 	echo ${VERSION} > /etc/isotop.version
-
+else
+	echo "${LASTVER}"
 fi
 
 echo "${DLFILES}"
