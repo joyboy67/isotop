@@ -126,7 +126,8 @@ echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
 # root configuration
 ###
 # no need to remake all changes
-if [ ${VERSION} -lt $(cat /etc/isotop.version) ]; then
+OLDVER=$(cat /etc/isotop.version) || OLDVER=0
+if [ ${VERSION} -lt $OLDVER ]; then
 
 	# softdep
 	echo "* Enable softdeps"
