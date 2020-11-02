@@ -8,6 +8,7 @@ MANDST=isotop-files/man/man7/
 
 all: archive man
 	sed "s/_ISOTOPVERSION_/$(VERSION)/" isotop.sh > isotop-$(VERSION).sh
+	sed "s/_ISOTOPVERSION_/$(VERSION)/" isotop-root.sh > isotop-files/isotop-root.sh
 	sha256 -h isotop-$(VERSION).sha256 \
 		isotop-$(VERSION).tgz \
 		isotop-$(VERSION).sh

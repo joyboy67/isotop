@@ -1,12 +1,10 @@
 #!/bin/sh
 # this must be run as root
-###
-# root configuration
-###
+
+VERSION="_ISOTOPVERSION_"
 # no need to remake all changes
 test ! -f /etc/isotop.version && echo "0" | doas tee -a /etc/isotop.version
 if [ ${VERSION} -gt $(cat /etc/isotop.version) ]; then
-
 	# softdep
 	echo "* Enable softdeps"
 	doas sed -i 's/ffs rw,/ffs rw,softdep,/g' /etc/fstab   # only one ffs
@@ -101,5 +99,5 @@ permit nopass  :wheel cmd /usr/sbin/ZZZ
 	echo "* Save isotop version"
 	echo ${VERSION} | doas tee /etc/isotop.version
 else
-	echo "${LASTVER}"
+	echo "Last isotop version already installed"
 fi

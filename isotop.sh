@@ -29,7 +29,6 @@ case $lang in
 		XENODMLOGIN='identifiant ='
 		XENODMPASSWORD='secret =      '
 		XENODMFAIL='Echec :s'
-		LASTVER="La dernière version d'isotop est déjà installée."
 	;;
 	*)
 		RELOADMSG='Open a new session to use isotop'
@@ -37,7 +36,6 @@ case $lang in
 		XENODMLOGIN='login=   '
 		XENODMPASSWORD='password='
 		XENODMFAIL='Authentication failed :s'
-		LASTVER="The last isotop version is already installed" 
 	;;
 esac
 
