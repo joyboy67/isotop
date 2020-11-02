@@ -10,6 +10,8 @@ export DISPLAY=:0.0
 
 battlvl="$(apm -l)"
 
+test $battlvl -eq 0 && exit
+
 if [ $battlvl -lt 10 ]; then
 	notify-send -i battery -u critical "Niveau critique: $battlvl %"
 	exit

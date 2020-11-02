@@ -2,9 +2,7 @@ GraphicsMagick--
 aspell--
 aspell-fr--
 b612-font--
-cmixer--
 cups--
-cups-filters--
 cups-libs--
 curl--
 detox--
@@ -49,7 +47,6 @@ p7zip--
 pkg_mgr--
 sct--
 sxiv--
-system-config-printer--
 tango-icon-theme--
 xbanish--
 xcape--

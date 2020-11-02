@@ -173,7 +173,8 @@ if [ ${VERSION} -gt $(cat /etc/isotop.version) ]; then
 	doas rcctl enable apmd
 	doas rcctl set apmd status on
 	doas rcctl set apmd flags -A
-	doas cp -v -r isotop-files/etc/apm/* /etc/apm/
+	doas mkdir -p /etc/apm/
+	doas cp -rv isotop-files/etc/apm/* /etc/apm/
 	doas chmod +x /etc/apm/*
 
 	# doas
@@ -187,20 +188,15 @@ permit nopass  :wheel cmd /sbin/mount
 permit nopass  :wheel cmd /sbin/umount
 permit nopass  :wheel cmd /usr/sbin/zzz
 permit nopass  :wheel cmd /usr/sbin/ZZZ
-" | doas tee -a /etc/doas.conf
-
-	# in case a previous isotop install has been made
-	doas sort -ru /etc/doas.conf -o /etc/doas.conf
+" | doas tee /etc/doas.conf
 
 	# unwind configuration
 	echo "* Configure unwind DNS resolver"
-	echo 'block list "/var/unwind.block"' | doas tee -a /etc/unwind.conf
-	doas sort -ru /etc/unwind.conf -o /etc/unwind.conf
+	echo 'block list "/var/unwind.block"' | doas tee /etc/unwind.conf
 	doas rcctl enable unwind
 
 	echo "* Configure dhclient"
-	echo "prepend domain-name-servers 127.0.0.1;" | doas tee -a /etc/dhclient.conf
-	doas sort -ru /etc/dhclient.conf -o /etc/dhclient.conf
+	echo "prepend domain-name-servers 127.0.0.1;" | doas tee /etc/dhclient.conf
 
 	echo "* Installing packages"
 	doas pkg_add -vmzl isotop-files/packages.txt
@@ -227,7 +223,7 @@ permit nopass  :wheel cmd /usr/sbin/ZZZ
 	doas rcctl start cupsd cups_browsed
 
 	echo "* Save isotop version"
-	echo ${VERSION} > /etc/isotop.version
+	echo ${VERSION} | doas tee /etc/isotop.version
 else
 	echo "${LASTVER}"
 fi
