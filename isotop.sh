@@ -144,10 +144,11 @@ if [ ${VERSION} -gt $(cat /etc/isotop.version) ]; then
 	doas mount -a
 
 	echo "* Copy rc scripts"
-	doas cp -v -r isotop-files/etc/rc.local /etc/
-	doas chmod +x /etc/rc.local
-	doas cp -v -r isotop-files/etc/rc.shutdown /etc/
-	doas chmod +x /etc/rc.shutdown
+	if [ -z $(grep -q "sh /etc/rc.local.isotop" /etc/rc.local) ]; then
+		doas cp -v -r isotop-files/etc/rc.local.isotop /etc/
+		echo "sh /etc/rc.local.isotop" | doas tee -a /etc/rc.local
+		doas chmod +x /etc/rc.local
+	fi
 
 	# manpages
 	doas cp -v -r isotop-files/man/man7/* /usr/local/man/man7/

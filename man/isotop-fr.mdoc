@@ -20,6 +20,8 @@ Le gestionnaire de fenêtres par défaut dans isotop est
 .Lk http://dwm.suckless.org/ dwm
 avec quelques modifications.
 Sa simplicité permet de mieux se concentrer et à être plus efficace.
+Il se charge de gérer les fenêtre ce qui vous évite
+d'avoir à lades déplacer sans arrêt.
 
 Avant d'installer un autre gestionnaire de fenêtres ou environnement de
 bureau, essayez dwm. Nous avons essayé de le rendre plus simple à
@@ -29,7 +31,7 @@ d'adaptation.
 Pour commencer : 
 
 En haut à gauche, vous voyez les numéros des espaces de
-travail suivi d'un symbole. Vous pouvez cliquer dessus pour en changer.
+travail (étiquettes données aux genêtres) suivi d'un symbole. Vous pouvez cliquer dessus pour en changer.
 
 En haut à droit, une barre de status indique l'heure, la date, le
 volume sonore, la charge de la batterie et la chanson jouée.
@@ -81,8 +83,26 @@ Ouvrez un navigateur à l'adresse
 
 .Lk http://127.0.0.1:631
 
-Puis cliez sur l'onglet 
+Puis cliquez sur l'onglet 
 .Dq Administration
+
+.Ss Comment utiliser une imprimante USB ?
+Ajoutez les lignes suivantes dans le fichier 
+.Pa /etc/rc.shutdown
+
+.Bd -literal -offset indent
+printf 'disable ulpt\nq\n' | config -ef /bsd
+sha256 /bsd >/var/db/kernel.SHA256
+.Ed
+
+Puis redémarrer.
+
+Ceci a pour effet de désactiver ulpt pour les imprimantes USB.
+et de reconstruire la somme de contrôle du noyau pour profiter de
+KARL au redémarrage.
+
+Voir
+.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 ce fil
 
 .Ss Comment configurer une connexion WiFi ?
 Lisez le man
@@ -170,13 +190,6 @@ dans votre répertoire $HOME/Médias.
 .It
 Services activés: hotplugd, cups, xenodm, unwind.
 .It
-Désactivation de ulpt pour les imprimantes USB. Cela se passe dans 
-.Pa /etc/rc.shutdown 
-pour profiter de
-KARL au redémarrage.
-
-Voir
-.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 ce fil
 .It
 La configuration ntpd n'utilise pas google comme contrainte.
 .It
