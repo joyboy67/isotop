@@ -67,7 +67,7 @@ echo "* Untgz archive"
 tar xzf isotop-${VERSION}.tgz
 
 echo "* Copy user configuration"
-cp -v -r isotop-files/user/ $HOME
+cp -v -r isotop-files/user $HOME
 cp -v -r isotop-files/user/.* $HOME/
 
 # compile dwm, slstatus, dmenu
@@ -228,6 +228,8 @@ else
 	echo "${LASTVER}"
 fi
 
+echo ""
+echo "------------"
 echo "${DLFILES}"
 echo "${RELOADMSG}"
 echo "${THX}"
