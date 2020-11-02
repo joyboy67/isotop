@@ -37,15 +37,21 @@ volume sonore, la charge de la batterie et la chanson jouée.
 Quelques raccourcis : 
 
 .Bl -bullet
-.It clic gauche sur la barre de status ou le fond d'écran : affiche le menu pour
+.It 
+clic gauche sur la barre de status ou le fond d'écran : affiche le menu pour
 ouvrir une application
-.It clic droit sur la barre de status ou le fond d'écran : affiche le menu de session
-.It clic gauche ou scroll sur le titre d'une fenêtre : affiche la
+.It 
+clic droit sur la barre de status ou le fond d'écran : affiche le menu de session
+.It 
+clic gauche ou scroll sur le titre d'une fenêtre : affiche la
 fenêtre suivante.
-.It clic droit sur le titre d'une fenêtre : ferme la
+.It 
+clic droit sur le titre d'une fenêtre : ferme la
 fenêtre.
-.It ctrl-shift-Enter : ouvre un terminal
-.It alt-p: affiche dmenu pour ouvrir une application
+.It 
+ctrl-shift-Enter : ouvre un terminal
+.It 
+alt-p: affiche dmenu pour ouvrir une application
 .El
 
 Bien sûr, ce n'est qu'un mince aperçu.
@@ -68,6 +74,15 @@ sont toujours là si vous ne les avez pas supprimés. Sinon,
 voir ici :
 
 .Lk https://framagit.org/3hg/isotop/-/tree/master/isotop-files/src
+
+.Ss Comment ajouter une imprimante ?
+
+Ouvrez un navigateur à l'adresse 
+
+.Lk http://127.0.0.1:631
+
+Puis cliez sur l'onglet 
+.Dq Administration
 
 .Ss Comment configurer une connexion WiFi ?
 Lisez le man
@@ -177,7 +192,7 @@ doas est configuré pour éviter la saisie d'un mot de passe pour certaines comm
 
 Voir
 .Pa /etc/doas.conf
-.It
+
 .It
 .Xr firefox 1
 est le navigateur par défaut.
@@ -243,7 +258,7 @@ Maintenant, c'est juste un script pour configurer OpenBSD.
 Comme un isotope c'est une
 variante d'OpenBSD avec quelques éléments supplémentaires, mais toujours OpenBSD.
 
-.Ss Why c'est sombre ?
+.Ss Pourquoi c'est sombre ?
 Parce que le développeur aime bien, et ça économise l'énergie de ne pas
 allumer les pixels.
 
@@ -297,8 +312,10 @@ moteur.
 
 Exemples :
 
-.D1 moteur par défaut: OpenBSD, cryptage complet du disque
-.D1 recherche sur openbsd misc list: obsdmisc firefox crash
+.Bd -literal -offset indent
+moteur par défaut: OpenBSD, chiffrement complet du disque
+recherche sur openbsd misc list: obsdmisc firefox crash
+.Ed
 
 .It
 dsct : configurer la couleur de l'écran
@@ -372,9 +389,11 @@ sur Entrée pour sélectionner ou bien cliquez dessus
 la lignee désirée. Un clic droit ou bien la touche echap
 ferment le menu.
 
-.D1 Retour ou clic gauche: sélectionner
-.D1 Esc ou clic droit: quitter le menu.
-.D1 ctrl-y: coller la sélection
+.Bd -literal -offset indent
+Retour ou clic gauche: sélectionner
+Esc ou clic droit: quitter le menu.
+ctrl-y: coller la sélection
+.Ed
 
 Voir
 .Lk https://tools.suckless.org/dmenu/ site web de dmenu
@@ -387,6 +406,8 @@ Veuillez les signaler à
 .Mt prx@ybad.name
 
 .Sh SEE ALSO
+
+.Lk https://framagit.org/3hg/isotop/
 
 .Xr bdmenu 1
 .Xr daddbmk 1

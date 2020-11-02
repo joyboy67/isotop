@@ -6,7 +6,7 @@ MANHTML = ${MANSRC:.mdoc=.html}
 MANDST=isotop-files/man/man7/
 
 
-all: archive
+all: archive man
 	sed "s/_ISOTOPVERSION_/$(VERSION)/" isotop.sh > isotop-$(VERSION).sh
 	sha256 -h isotop-$(VERSION).sha256 \
 		isotop-$(VERSION).tgz \

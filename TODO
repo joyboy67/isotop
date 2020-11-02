@@ -1,20 +1,9 @@
 # TODO
-* doc suckless src included
-* .desktop pour gestion session
-* doc add printer : no system-config-printer
-* doc mpd avec dossier musique par défaut créé par
-xdg : ~/Musique en fr, ~/Music en en
 * manpages pour chaque petit outil
 * archive manager
 * script dl paquets pour install offline
-
 * replace owi : nmctl 
 	https://sourceforge.net/projects/nmctl/
-* doc rc.local
-* isotop : pas de doas.conf à part wheel?
-* isotop dmount update
-* script play-in-mpd
-* doc wallpaper .wallpaper
 * update screenshots
 
 FAQ : pq dwm et dmenu ? Pr rendre + pratique et accessible, il faut que
