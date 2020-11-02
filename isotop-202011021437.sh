@@ -1,10 +1,10 @@
-c!/bin/sh
+#!/bin/sh
 # Auteur :      prx <prx@ybad.name>
 # licence :     MIT
 
 # Description : install isotop customization on OpenBSD
 
-VERSION="202011021428"
+VERSION="202011021437"
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 selmenu()
@@ -34,10 +34,10 @@ case $lang in
 		THX="Merci ! ;)"
 		DLFILES='Vous pouvez maintenant supprimer les fichiers avec
     rm -r isotop*'
-		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
+		RELOADMSG='Ouvrez une nouvelle session pour utiliser isotop'
 		XENODMWHOAREYOU='Qui est-ce ?'
 		XENODMLOGIN='identifiant ='
-		XENODMPASSWORD='secret =     '
+		XENODMPASSWORD='secret =      '
 		XENODMFAIL='Echec :s'
 		LASTVER="La dernière version d'isotop est déjà installée."
 	;;
@@ -45,7 +45,7 @@ case $lang in
 		THX="Thanks! ;)"
 		DLFILES='Feel free to remove files with : 
     rm -r isotop*'
-		REBOOTMSG='Enter "reboot" to start on you new isotop install'
+		RELOADMSG='Open a new session to use isotop'
 		XENODMWHOAREYOU='Who are you?'
 		XENODMLOGIN='login=   '
 		XENODMPASSWORD='password='
@@ -229,7 +229,7 @@ else
 fi
 
 echo "${DLFILES}"
-echo "${REBOOTMSG}"
+echo "${RELOADMSG}"
 echo "${THX}"
 
 exit 0

@@ -129,10 +129,10 @@ xlogin*greetFont:  -adobe-helvetica-bold-o-normal--24-240-75-75-p-138-iso8859-1
 xlogin*font:       -adobe-helvetica-medium-r-normal--18-180-75-75-p-98-iso8859-1
 xlogin*promptFont: -adobe-helvetica-bold-r-normal--18-180-75-75-p-103-iso8859-1
 xlogin*failFont:   -adobe-helvetica-bold-r-normal--18-180-75-75-p-103-iso8859-1
-xlogin*face:       DejaVu Sans Condensed-16:dpi=75
-xlogin*greetFace:  DejaVu Sans Condensed-22:bold:dpi=75
-xlogin*promptFace: DejaVu Sans Condensed-16:bold:dpi=75
-xlogin*failFace:   DejaVu Sans Condensed-16:bold:dpi=75
+xlogin*face:       DejaVu Sans Mono-16:dpi=75
+xlogin*greetFace:  DejaVu Sans Mono-22:bold:dpi=75
+xlogin*promptFace: DejaVu Sans Mono-16:bold:dpi=75
+xlogin*failFace:   DejaVu Sans Mono-16:bold:dpi=75
 
 xlogin.Login.echoPasswd:       true
 
