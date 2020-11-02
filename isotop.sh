@@ -37,7 +37,7 @@ case $lang in
 		REBOOTMSG='Entrez la commande "reboot" pour utiliser isotop'
 		XENODMWHOAREYOU='Qui est-ce ?'
 		XENODMLOGIN='identifiant ='
-		XENODMPASSWORD=' secret ='
+		XENODMPASSWORD='secret =     '
 		XENODMFAIL='Echec :s'
 		LASTVER="La dernière version d'isotop est déjà installée."
 	;;
@@ -47,7 +47,7 @@ case $lang in
     rm -r isotop*'
 		REBOOTMSG='Enter "reboot" to start on you new isotop install'
 		XENODMWHOAREYOU='Who are you?'
-		XENODMLOGIN='login='
+		XENODMLOGIN='login=   '
 		XENODMPASSWORD='password='
 		XENODMFAIL='Authentication failed :s'
 		LASTVER="The last isotop version is already installed" 

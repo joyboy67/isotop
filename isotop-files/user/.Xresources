@@ -112,11 +112,6 @@ xmessage*baseTranslations:#augment\
 !xclock
 xclock*Foreground:#eeeeee
 
-!xmenu
-xmenu.font: DejaVuSansMono:pixelsize=12:antialias=true
-!rofi
-rofi.font: DejaVuSansMono 10
-
 ! all
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault

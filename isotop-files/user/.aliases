@@ -1,9 +1,9 @@
-# Alias
-# ls
 alias ll='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 alias lls='ls -s'
+
+alias ..='cd ..'
 
 alias c='clear'
 alias less='less --quiet'
