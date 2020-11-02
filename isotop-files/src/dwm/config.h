@@ -172,10 +172,10 @@ static Button buttons[] = {
 	/* on status and background: 
 	 *   left or right-click : menu
 	 */
-	{ ClkStatusText,        0,              Button1,        spawn,          SHCMD("sessionmenuisotop") },
-	{ ClkStatusText,        0,              Button3,        spawn,          SHCMD("ddesktop") },
-	{ ClkRootWin,           0,              Button1,        spawn,          SHCMD("sessionmenuisotop") },
-	{ ClkRootWin,           0,              Button3,        spawn,          SHCMD("ddesktop") },
+	{ ClkStatusText,        0,              Button3,        spawn,          SHCMD("sessionmenuisotop") },
+	{ ClkStatusText,        0,              Button1,        spawn,          SHCMD("ddesktop") },
+	{ ClkRootWin,           0,              Button3,        spawn,          SHCMD("sessionmenuisotop") },
+	{ ClkRootWin,           0,              Button1,        spawn,          SHCMD("ddesktop") },
 };
 
 /* custom funcs */

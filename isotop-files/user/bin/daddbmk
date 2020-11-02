@@ -1,0 +1,29 @@
+#!/bin/sh
+# addbmk
+# store an URL in $HOME/.bookmarks
+
+# edit the page
+bmk=$HOME/.bookmarks
+
+# choose downloader
+#D="wget -O-" # mosts linux
+#D="curl -L" # with curl
+D="ftp -o-"   # OpenBSD
+
+# dmenu
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+PROMPT="url:"
+
+URL=$(xclip -o | dmenu -sb ${sb} -sf ${sf} -nb ${nb} -nf ${nf} -fn ${fn} -p "$PROMPT") 
+test -z "${URL}" && exit
+TITLE="$(${D} "${URL}" | grep '<title>' | \
+	head -n1 | \
+	sed -e 's;<title>;;' -e's;</title>;;' |\
+	awk '{$1=$1};1'
+)"
+echo "${TITLE} ${URL}" >> "${bmk}"
+sort -u "${bmk}" -o "${bmk}"
+
+# edit bookmark
+term -e $EDITOR "${bmk}"
+

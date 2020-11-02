@@ -1,17 +1,43 @@
 #!/bin/sh
 # take screenshot with GraphicsMagick
 # : $1 : name of the image
-# : $2 : delay in seconds
+S=0
+D=0
 
-if [ $# -lt 1 ]; then
-	echo "usage : scrot <image-name> <delay (optional)>" 
+usage()
+{
+	echo "usage : scrot [-s|-d] <image-name>"
+	echo "    -s: select"
+	echo "    -d: delay in sec"
+	echo ""
+	echo "example : scrot -s -d5 test.png"
 	exit
+}
+
+
+while getopts 'sd:' c
+do
+	case $c in
+		s) S=1 ;;
+		d) D="${OPTARG}" ;;
+	esac
+done
+
+shift $((OPTIND - 1))
+
+test -z "${1}" && usage
+
+while [ $D -gt 0 ]; do
+	echo "$D"
+	sleep 1
+	D=$(($D - 1))
+done
+
+if [ "$S" -eq 1 ]; then
+	gm import "${1}"
+else
+	gm import -window root "${1}"
 fi
 
-if [ -z "${2}" ]; then
-	DELAY=0
-else
-	DELAY=${2}
-fi
-sleep ${DELAY}
-gm import -window root "${1}.png" 
+echo "${1}"
+exit 0

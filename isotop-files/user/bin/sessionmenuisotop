@@ -7,6 +7,7 @@ _reboot="Reboot"
 _suspend="Suspend"
 _hibernate="Hibernate"
 _exit="Exit"
+_help="Help"
 case $LANG in
 	fr*)
 		_shutdown="Eteindre"
@@ -14,6 +15,7 @@ case $LANG in
 		_suspend="Suspendre"
 		_hibernate="Hiberner"
 		_exit="Quitter"
+		_help="Aide"
 	;;
 esac
 
@@ -22,7 +24,8 @@ res="$(xmessage $_q -nearmouse -print -buttons \
 "$_reboot":6,\
 "$_suspend":7,\
 "$_hibernate":8,\
-"$_exit":9)"
+"$_exit":9,\
+"$_help":10)"
 
 case "$res" in
 	$_shutdown)  doas /sbin/shutdown -hp now ;;
@@ -30,5 +33,11 @@ case "$res" in
 	$_suspend)   doas /usr/sbin/zzz ;;
 	$_hibernate) doas /usr/sbin/ZZZ ;;
 	$_exit)      pkill dwm ;;
+	$_help)      
+		case $LANG in
+			fr*) xterm -e man isotop-fr ;;
+			*) xterm -e man isotop ;;
+		esac
+		;;
 esac
 

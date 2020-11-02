@@ -1,0 +1,11 @@
+#!/bin/sh
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+url="$(cat $HOME/.bookmarks | \
+	dmenu -nb $nb -nf $nf -sb $sb -sf $sf -fn $fn -i -l $l | \
+	awk '{print $NF}')"
+	
+if [ -n "$url" ]; then
+    $BROWSER "$url"
+fi
+exit 0

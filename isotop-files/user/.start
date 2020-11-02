@@ -25,7 +25,7 @@ xcape -e 'Alt_L=Escape' &
 # take care of you eyes, change temperature color
 sctd 1>/dev/null &
 # Auto-lock the screen
-xidle -timeout 900 -program "/usr/X11R6/bin/xlock" &
+xidle -timeout 900 &
 # hide cursor
 xbanish &
 # music player

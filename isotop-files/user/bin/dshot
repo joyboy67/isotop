@@ -1,0 +1,51 @@
+#!/bin/sh -e
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+P="screenshot:"
+OPTION="-l ${l} -sb ${sb} -sf ${sf} -nb ${nb} -nf ${nf} -fn ${fn} -p "${P}" "
+img=/tmp/scrot-$(date +%Y%m%d%H%S).png
+
+case $LANG in
+    fr* )
+		txtfull="tout l'écran"
+		txtfullwait5="tout l'écran après 5 secondes"
+		txtsel="sélection"
+		txtselncopy="sélection et copie dans presse papier"
+		txtselnup="sélection et upload"
+		;;
+	* )
+		txtfull="whole screen"
+		txtfullwait5="whole screen after 5s"
+		txtsel="select"
+		txtselncopy="select and copy"
+		txtselnup="select and upload"
+		;;
+esac
+
+action=$(echo "$txtfull
+$txtsel
+$txtselncopy
+$txtselnup"| dmenu $OPTION) 
+
+case "$action" in
+	"${txtfull}" )
+		scrot "${img}"
+	;;
+	"${txtfullwait5}" )
+		scrot -d5 "${img}"
+	;;
+	"${txtsel}" )
+		scrot -s "${img}"
+	;;
+	"${txtselncopy}" )
+		scrot -s "${img}"
+		xclip -selection clipboard -t "image/png" < "$img"
+	;;
+	"${txtselnup}" )
+		scrot -s "${img}"
+		pixup "${img}"
+	;;
+esac
+
+exit

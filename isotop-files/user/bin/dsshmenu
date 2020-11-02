@@ -1,0 +1,43 @@
+#!/bin/sh
+# run ssh session in one hosts listed in 
+#   $HOME/.ssh/config 
+#   $HOME/.ssh/known_hosts
+# Require : x11/dmenu <https://tools.suckless.org/dmenu/>
+# Author : prx <prx@ybad.name>
+# Licence : MIT
+
+# term ?
+TERMINAL='st'
+
+# few options for dmenu
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+PROMPT="ssh host:"
+
+C=$HOME/.ssh/config
+K=$HOME/.ssh/known_hosts
+
+HOST=$(
+(awk '/Hoterm [^*]/ {print $2}' "${C}"
+cut -d' ' -f 1 "${K}" |\
+    cut -d',' -f1 |\
+    sed -e 's;\[;;' -e 's;\];;'
+) | sort -u \
+| dmenu -l ${l} \
+-fn "${fn}" \
+-nb "${nb}" \
+-nf "${nf}" \
+-sb "${sb}" \
+-sf "${sf}" \
+-p "${PROMPT}")
+
+if [ -n "${HOST}" ]; then
+	case "${HOST}" in
+		*:*) "${TERMINAL}" -e "ssh ssh://${HOST}" ;;
+		*) "${TERMINAL}" -e "ssh ${HOST}" ;;
+	esac
+fi
+
+exit
+
+
+

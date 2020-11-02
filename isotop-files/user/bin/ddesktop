@@ -2,71 +2,27 @@
 # Licence MIT
 # author: prx <prx@ybad.name>
 # print a list of available .desktop files in dmenu
-# fill $excludefile with desktop files you want to
+# require lsdesktop
+##
+# fill ~/.config/lsdesktop.exclude with files to
 # ignore. Example : 
-# $ cat ~/.config/ddesktop/desktop.exclude
+# $ cat ~/.config/lsdesktop.exclude
 # xdvi.desktop
 # mimeinfo.desktop
 
 cachedir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
 cache="$cachedir/ddesktop"
 
-menudir="$HOME/.config/ddesktop"
-usermenu="${menudir}/user.menu"
-excludefile="$menudir/desktop.exclude"
-desktopfilespath="$HOME/.local/share/applications /usr/local/share/applications /usr/share/applications"
-
-userlocale=$(echo $LANG | cut -b-2)
-getappname()
-{
-    name=""
-    name="$(grep -m1 "^Name\[$userlocale\]" "${1}" | cut -d"=" -f2)"
-    if [ -z "${name}" ]; then
-        name="$(grep -m1 "^Name=" "${1}" | cut -d"=" -f2)"
-    fi
-    echo "${name}"
-}
-
-getappcmd()
-{
-    cmd="$(grep -m1 "^Exec=" "${1}" | cut -d"=" -f2- | cut -d'%' -f1)"
-    inst="$(grep -m1 "^Terminal=" "${1}" | cut -d"=" -f2-)"
-	if [ "${inst}" = "true" ]; then
-		cmd="term -e \"${cmd}\""
-	fi
-	echo "${cmd}"
-}
-
-desktopmenu()
-{
-	find ${desktopfilespath} -name "*.desktop" | while read -r f
-	do
-		desktopfile=$(basename "${f}")
-		if [ -f "${excludefile}" ]; then
-			grep -q "${desktopfile}" "${excludefile}"
-			test $? -eq 0 && continue
-		fi
-		appname=$(getappname "${f}")
-		appcmd=$(getappcmd "${f}")
-		echo "${appname} | ${appcmd}"
-	done
-}
-
-mkdir -p "${menudir}"
-
 if [ ! -f "${cache}" -o -n "$(find ${desktopfilespath} -newer ${cache} 2>/dev/null)" ]
 then
-	# add user custom menu
-	test -f "${usermenu}" && cat "${usermenu}"
-
-	# .desktop application menu
-	test -f "${desktopmenu}" && rm "${desktopmenu}"
-	desktopmenu | column -t -s '|' > ${cache}
+	lsdesktop | column -t -s '|' > ${cache}
 fi
 
 test -s $HOME/.dmenurc && . $HOME/.dmenurc
+l=21
+p="Run:"
 
 cat ${cache} |\
-	dmenu -nb $nb -nf $nf -sb $sb -sf $sf -fn $fn -i -l $l | \
+	dmenu -nb $nb -nf $nf -sb $sb -sf $sf -fn $fn -i -l $l -p "$p" | \
 	sed 's/^.*  //g' |\
 	${SHELL:-"/bin/sh"} &

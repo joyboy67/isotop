@@ -4,7 +4,7 @@ c!/bin/sh
 
 # Description : install isotop customization on OpenBSD
 
-VERSION="_ISOTOPVERSION_"
+VERSION="202011021329"
 ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
 
 selmenu()

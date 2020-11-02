@@ -1,4 +1,6 @@
 # TODO
+* add lsdesktop and up ddesktop
+* fill ~/.config/lsdesktop.exclude
 * doc intall user mais pas root si déjà à jour
 * doc suckless src included
 * .desktop pour gestion session
