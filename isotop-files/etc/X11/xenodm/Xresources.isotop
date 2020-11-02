@@ -2,10 +2,10 @@
 
 *font:-misc-fixed-medium-r-normal-*-14-*-*-*-*-*-iso10646-1
 
-xlogin*greeting:  ___WHOAREYOU___ 
-xlogin*namePrompt:   ___LOGIN___
-xlogin*passwdPrompt: ___PASSWORD___
-xlogin*fail: ___FAILEDLOGIN___
+xlogin*greeting:  Qui est-ce ? 
+xlogin*namePrompt:   identifiant =
+xlogin*passwdPrompt:  secret =
+xlogin*fail: Echec :s
 
 xlogin*greetFont:  -adobe-helvetica-bold-o-normal--24-240-75-75-p-138-iso8859-1
 xlogin*font:       -adobe-helvetica-medium-r-normal--18-180-75-75-p-98-iso8859-1

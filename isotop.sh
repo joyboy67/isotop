@@ -138,7 +138,6 @@ if [ ${VERSION} -gt $(cat /etc/isotop.version) ]; then
 	echo "* Copy rc scripts"
 	doas cp -v -r isotop-files/etc/rc.local /etc/
 	doas chmod +x /etc/rc.local
-	doas sh /etc/rc.local
 	doas cp -v -r isotop-files/etc/rc.shutdown /etc/
 	doas chmod +x /etc/rc.shutdown
 
