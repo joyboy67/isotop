@@ -1,7 +1,4 @@
 # TODO
-* add lsdesktop and up ddesktop
-* fill ~/.config/lsdesktop.exclude
-* doc intall user mais pas root si déjà à jour
 * doc suckless src included
 * .desktop pour gestion session
 * doc add printer : no system-config-printer
@@ -39,3 +36,9 @@ wifi...)
 * man pages for included scripts ?
 * xfe archive manager
 * rover
+
+## man
+* dwm-isotop (1)
+* dmenu-isotop (1)
+* dsct 1
+* dmpc

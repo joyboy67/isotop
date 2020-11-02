@@ -8,97 +8,136 @@
 .Sh DESCRIPTION
 .Nm 
 est un script permettant de configurer OpenBSD pour obtenir un environnement de
-travail agréable et pratique.
+travail rapide, agréable et pratique.
 Les outils présents de base dans OpenBSD sont
 privilégiés. Par conséquent, certains choix ont été faits pour se
 concentrer sur un système simple et efficace.
 
 .Sh FAQ
 
-.Ss Où est mon bureau ?
-Juste sous vos yeux.
+.Ss Comment me servir de ce bureau ?
 Le gestionnaire de fenêtres par défaut dans isotop est 
-.Xr cwm 5
+.Lk http://dwm.suckless.org/ dwm
+avec quelques modifications.
 Sa simplicité permet de mieux se concentrer et à être plus efficace.
 
 Avant d'installer un autre gestionnaire de fenêtres ou environnement de
-bureau, essayez cwm. Nous avons essayé de le rendre plus simple à
+bureau, essayez dwm. Nous avons essayé de le rendre plus simple à
 utiliser qu'il ne l'est déjà, et cela demandera peut-être un temps
 d'adaptation.
-(voir 
-.Sx Comment utiliser mon bureau ?
-).
+
+Pour commencer : 
+
+En haut à gauche, vous voyez les numéros des espaces de
+travail suivi d'un symbole. Vous pouvez cliquer dessus pour en changer.
+
+En haut à droit, une barre de status indique l'heure, la date, le
+volume sonore, la charge de la batterie et la chanson jouée.
+
+Quelques raccourcis : 
+
+.Bl -bullet
+.It clic gauche sur la barre de status ou le fond d'écran : affiche le menu pour
+ouvrir une application
+.It clic droit sur la barre de status ou le fond d'écran : affiche le menu de session
+.It clic gauche ou scroll sur le titre d'une fenêtre : affiche la
+fenêtre suivante.
+.It clic droit sur le titre d'une fenêtre : ferme la
+fenêtre.
+.It ctrl-shift-Enter : ouvre un terminal
+.It alt-p: affiche dmenu pour ouvrir une application
+.El
+
+Bien sûr, ce n'est qu'un mince aperçu.
+
+Voir 
+.Xr dwm-isotop 1
+pour plus d'informations sur les possibilités de la session
+isotop.
+
+.Ss Comment installer isotop pour un autre utilisateur ?
+Facile, il suffit de lancer le script d'installation avec cet
+utilisateur. Seule la configuration utilisateur sera copiée si la
+dernière version d'isotop est installée.
+
+.Ss Comment recompiler moi-même dwm, dmenu, slstatus, lsdesktop ?
+Ces outils sont disponibles dans le dossier
+.Pa isotop-files/src
+dispnibles après installation dans votre dossier personnel. Ils
+sont toujours là si vous ne les avez pas supprimés. Sinon,
+voir ici :
+
+.Lk https://framagit.org/3hg/isotop/-/tree/master/isotop-files/src
 
 .Ss Comment configurer une connexion WiFi ?
 Lisez le man
 .Xr hostname.if 5
 et la documentation d'OpenBSD traduite
 .Lk https://wiki.obsd4a.net/openbsd.org:faq:faq6#reseau-sans-fil réseau sans fil
-Un outil pour faciliter les connexions sera publié dans la prochaine
+Un outil pour faciliter les connexions sera publié dans une prochaine
 version d'isotop, lorsque le développeur aura une carte sans-fil.
 
 .Ss Comment ajouter/supprimer des programmes
-Un raccourci vers 
-.Em pkg_mgr 
-est présent dans le menu de cwm.
+Ouvrez
+.Xr pkg_mgr 1
+dans un terminal.
 
 Sinon, lisez
 .Lk https://wiki.obsd4a.net/openbsd.org:faq:faq15 gestion des paquets.
 
-.Ss Pourquoi je n'arrive pas à redémarrer ou
-éteindre?
-L'utilisateur doit appartenir au groupe wheel pour pouvoir utiliser les
-raccourcis présents dans le menu de cwm permettant de
-redémarrer ou éteindre l'ordinateur.
-
 .Ss Pourquoi mon écran semble rouge ?
 Puisqu'on pense à vos yeux, on lance automatiquement en début de session
 .Xr sct 1
-Vous pouvez utiliser dsch pour modifier la couleur, ou carrément retirer
-sct du fichier 
-.Pa $HOME/.xsession
+Vous pouvez utiliser 
+.Xr dsct 1
+pour modifier la couleur, ou carrément retirer
+.Cm sctd 1>/dev/null &
+du fichier 
+.Pa $HOME/.start
+.
 
-.Ss Quel démon de notification puis-je utiliser ?
-Vous pouvez installer
-.Em dunst
-et le lancer à chaque début de session en ajoutant dans
-.Pa $HOME/.xsession
-.Dl dunst &
+.Ss Pourquoi mpd est le lecteur de musique par défaut ?
+Il est léger et ne nécessite pas de lourdes dépendances.
+Par ailleurs, c'est très simple de le contrôler
+grâce à divers scripts.
+L'outil 
+.Cm ncmpc
+est installé pour vous donner une interface à mpd.
+Par défaut, toute la musique placée dans le dossier
+.Pa $HOME/Musique
+sera disponible à la lecture.
 
-.Ss Pourquoi cmus est le lecteur de musique par défaut ?
-Il est léger et ne nécessite pas de lourdes dépendances..It est
-modifiable et scriptable, et peut même se contrôler avec la souris si
-vous n'aimez pas le clavier.
+À ce propos, voir : 
 
-Vous pouvez bien entendu installer n'importe quel autre lecteur qui vous
-plait davantage.
+.Bl -bullet
+.It
+.Xr dmpc 1
+.It
+.Xr mpc 1
+.It
+.Xr ncmpc 1
+.El
 
-.Ss Comment quitter cmus sans le fermer ?
-Si vous démarrez cmus avec le menu de cwm disponible par clic-droit sur
-le bureau, il est lancé dans 
-.Xr tmux 1
-Il peut ainsi être détaché ou ouvert dans plusiers terminaux, mais
-surtout peut continuer de jouer la musique lorsque la fenêtre est
-fermée.
-Pour détacher cmus, appuyez sur "ctrl-b" puis "d".
 
 .Ss Quelles sont les différences avec une installation OpenBSD de base?
 .Bl -bullet
 .It
 .Xr unwind 8
-est configuré en tant que résolveur de nom de domaine par défaut.
+est configuré en tant que résolveur de nom de domaine local
+par défaut. Ainsi, vous ne dépendez pas d'un fournisseur
+d'accès à internet pour réaliser cette tâche
+(anti-censure).
+.Pp
+Un fichier
+.Pa /var/unwind.block
+contient une liste de domaines connus comme malveillants ou
+publicitaires. Cette liste est mise à jour
+une fois par semaine au démarrage via le script
+.Pa /etc/rc.local.
 
-.It
-Les noms de domaines de domaines malveillants et publicitaires
-sont filtrés grâce au programme zerohosts lancé à chaque démarrage et
-qui met à jour une liste noire toutes les semaines. Il est lancé par le 
-fichier 
-.Pa /etc/rc.local
-
-Il remplit le fichier 
-.Pa /etc/hosts
-et permet de filtrer rapidement les domaines malveillants, peu importe
-le résolveur DNS utilisé.
+.Pp
+Cette liste est récupérée depuis le site
+.Lk https://ybad.name/evils.html de l'auteur d'isotop.
 
 Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
 obtiendrez un
@@ -106,25 +145,13 @@ message:
 
 .Dq Le site web n'est pas disponible
 
-Le script zerohosts incluera dans 
-.Pa /etc/hosts
-tout le contenu d'un fichier
-.Pa /etc/hosts.include
-
-Voir
-.Lk https://ybad.name/Logiciel-libre/Code/zerohosts.html
-
-
-.It
-Message personnalisé dans
-.Pa /etc/boot.conf
 .It
 .Xr hotplugd 8
 est configuré pour monter automatiquement votre clé USB dans 
 .Pa /vol
 
 Un lien est disponible
-dans votre répertoire $HOME.
+dans votre répertoire $HOME/Médias.
 .It
 Services activés: hotplugd, cups, xenodm, unwind.
 .It
@@ -138,47 +165,44 @@ Voir
 .It
 La configuration ntpd n'utilise pas google comme contrainte.
 .It
-L’apparence de Xenodm est personnalisée et configurable avec un script appelé
+L’apparence de Xenodm est personnalisée, traduite et configurable avec un script appelé
 xenodm-config.
 .It
 Des paquets supplémentaires sont installés.
 
 Voir
-.Pa /usr/local/share/isotop/data/packages
+.Lk https://framagit.org/3hg/isotop/-/blob/master/isotop-files/packages.txt
 .It
 doas est configuré pour éviter la saisie d'un mot de passe pour certaines commandes. 
 
 Voir
 .Pa /etc/doas.conf
 .It
-.Xr cwm 5
-est le gestionnaire de fenêtres par défaut. Il est pré-configuré et
-livré
-avec divers scripts pour faciliter la gestion des fenêtres pour les
-utilisateurs n'aimant pas les claviers.
 .It
-iridium est le navigateur par défaut. Sont désactivées chaque option liée à
-google et le tracking. Il est "unveiled" par défaut:
+.Xr firefox 1
+est le navigateur par défaut.
+Il est "unveiled" par défaut:
 cela signifie que le navigateur ne peut lire des fichiers sur votre
 ordinateur sauf dans
 .Pa $HOME/Downloads
+et
+.Pa /tmp
+pour plus de sécurité.
 
 Il garde vos clés SSH et mots de passe inaccessibles par un éventuel
 pirate.
-Firefox fait aussi des appels à google et n'est pas "unveiled" pour le moment
-(voir
-.Lk https://marc.info/?l=openbsd-misc&m=152872551609819&w=2 ce fil
-)
 .It
 Alt-L est mappé vers Esc pour les utilisateurs de vi :)
 .It
 Les traductions sont incluses: anglais et français pour l'instant.
 .It
-Quelques scripts et outils sont inclus dans
-.Pa /usr/local/share/isotop/bin
+Quelques scripts et outils sont inclus dans votre dossier personnel
+.Pa /$HOME/bin
 et disponible dans votre
 .Ev PATH
 .No .
+Ainsi, vous pouvez facilement les modifier ou les supprimer s'ils ne
+vous plaisent pas.
 
 Voir
 .Sx Quels scripts sont livrés?
@@ -190,10 +214,18 @@ sont remplis de choses (utiles?).
 .It
 $HOME/.kshrc contient de l'auto-complétion pour OpenBSD.
 .It
-Un fond d'écran aléatoire est défini à chaque session.
+Si un fichier 
+.Pa $HOME/.wallpaper
+est trouvé, alors il est définit comme fond
+d'écran.
+Copiez le fond d'écran de votre choix à sa place.
 .It
-Le navigateur de fichiers est pcmanfm. Il est configuré pour avoir des
-actions personnalisées via clic-droit (éditer une image, téléverser un fichier ...).
+Le navigateur de fichiers est 
+.Lk http://roland65.free.fr/xfe/ xfe
+.Pp
+Il est à la fois léger et suffisamment configurable pour
+permettre l'accès à des actions personnalisées via
+clic-droit.
 .It
 Le pointeur de la souris est caché grâce à 
 .Xr xbanish 1
@@ -215,14 +247,6 @@ variante d'OpenBSD avec quelques éléments supplémentaires, mais toujours Open
 Parce que le développeur aime bien, et ça économise l'énergie de ne pas
 allumer les pixels.
 
-.Ss Puis-je installer un autre navigateur Web?
-
-Bien sûr.
-Firefox et chrome, entre autres, sont disponibles dans les ports.
-Cependant, nous avons choisi iridium car il est "unveiled", c’est-à-dire
-qu’il ne peut pas accéder à vos fichiers personnels
-contenant des mots de passe ou des clés SSH et il est plus respectueux de la vie privée que le chrome.
-
 .Ss Puis-je installer un autre environnement de bureau?
 Bien sûr.
 
@@ -231,37 +255,41 @@ Gnome, kde, lxde, xfce et d'autres sont disponibles pour OpenBSD via les ports.
 .Ss Quels processus sont démarrés lorsque j'ouvre une session?
 
 Consultez le fichier
-.Pa $HOME/.xsession
-
-.Ss Où sont stockés les fichiers d'isotop?
-
-.Pa /usr/local/share/isotop
+.Pa $HOME/.start
 
 .Ss Quels scripts sont inclus?
 
 .Bl -bullet
 .It
+bdmenu: permet de lancer une commande via dmenu avec historique et
+possibilité d'exécuter une commande dans un terminal en
+terminant l'entrée par 
+.Dq !
+.It
+checkbatt : ce script est lancé périodiquement via 
+.Xr crontab 5
+et permet d'afficher une alerte si la batterie devient faible.
+.It
 dalarm: spécifiez une alerte, puis un nombre de minutes. Une notification 
 affichera l'alerte après le délai.
-.It
-dcmus: choisissez un fichier à lire dans la liste de lecture de cmus
+.It 
+ddesktop : affiche dans un dmenu une liste des applications disponibles
+sur le système après avoir listé les fichiers
+.desktop présents.
+Exemple:
+.Cm top!
+.Pp
+Ce menu est disponible en faisant un clic-gauche sur la barre de status
+ou le fond d'écran.
 .It
 dfm: un lanceur de fichiers utilisant dmenu.
 .It
-dgroupwin: sélectionne une fenêtre et assigne un groupe
-.It 
-xclockstatusbar : affiche une barre avec des informations sur le système
-en haut de l'écran. 
-l'écran.
+dloadbmk: ouvre une page web listée dans
+.Pa $HOME/.bookmarks
 .It
-maxwin : maximise une fenêtre en tant compte de la marge et des bordures
-des fenêtres dans cwm
+dman : permet d'ouvrir rapidement une page man (merci eol)
 .It
-dman: lire une page de manuel
-.It
-dmenu_run_i: un dmenu_run amélioré pour pouvoir lancer une commande. Terminez avec un "!"
-et la commande est ouverte dans un terminal. Exemple :
-.Cm top!
+dmpc: choix d'une chanson à jouer dans mpd
 .It
 dsch: recherche sur le web.
 Le moteur de recherche par défaut est duckduckgo si vous ne spécifiez pas de recherche
@@ -272,17 +300,20 @@ Exemples :
 .D1 moteur par défaut: OpenBSD, cryptage complet du disque
 .D1 recherche sur openbsd misc list: obsdmisc firefox crash
 
-
 .It
 dsct : configurer la couleur de l'écran
+.It
+dshot : capture d'écran avec possibilité d'upload et copie
+dans le presse papier
+.It
+dsshmenu : ouvre une session ssh.
 .It
 dyt: télécharger une vidéo avec
 .Xr youtube-dl 1
 
 L'URL sélectionnée est collée par défaut.
 .It
-gdoas: ouvre xterm pour taper le mot de passe doas utilisé pour d’autres scripts tels que
-xenodm-config.
+gdoas: ouvre xterm pour taper le mot de passe doas utilisé pour d’autres scripts
 .It
 imgmod: modifier une image en utilisant
 .Xr gm 1
@@ -315,186 +346,38 @@ pointeur.
 .It
 pixup: téléverse une image sur pix.toile-libre.org
 .It
-rdmwall: définit un fond d'écran aléatoire. Les fonds sont recherchés dans:
-.Pa $HOME/Images/Wallpapers
-;
-.Pa /usr/local/share/isotop/walls
-.It
-scrot: prend une capture d'écran, enregistrée dans $HOME
-.It
-scrotup: fait une capture d'écran avec scrot et téléverse avec pixup
+scrot : réalise une capture d'écran.
 .It
 send_dmesg.sh: envoyez votre dmesg aux développeurs OpenBSD pour aider
 au support matériel.
 .It
+sessionmenuisotop: Ouvre une fenêtre pour éteindre/redémarrer/quitter
+la session...
+.Pp
+Ce menu est disponible en faisant un clic-droit sur la barre de status
+ou le fond d'écran.
+.It
 setwall: définit le fond d'écran.
 .It
-web: un wrapper pour démarrer un navigateur web.
-.It
-xenodm-config: éditez la configuration et l'apparence de xenodm.
+term: ouvre un terminal. PAr défaut, xterm est utilisé.
 .El
-
-.Ss Quelles actions personnalisée y a-t-il dans pcmanfm ?
-
-.Bl -bullet
-.It 
-Modification d'images (tourner, redimensionner...)
-.It
-Optimisation d'image
-.It
-Upload d'image
-.It
-Définir l'image comme fond d'écran
-.It
-Jouer la musique dans cmus
-.It
-Imprimer avec l'imprimante par défaut (image, texte, pdf)
-.El
-
-.Sh Comment utiliser mon bureau?
-.Ss Ouvrir une application
-Au début, le bureau est vide.
-
-Vous pouvez voir une horloge en haut à gauche.
-
-Cliquez avec le bouton droit sur l'arrière-plan ou sur 'horloge lpour afficher le menu
-d'applications et choisissez par
-exemple, xterm. 
-
-Vous pouvez également appuyer sur Alt-p pour afficher
-.Mm dmenu
-et écrire
-.Dq xterm
-puis appuyer sur Entrée.
-
-Enfin, vous pouvez déplacer le pointeur vers le coin inférieur gauche pour afficher une fenêtre jgmenu.
-
-.Ss Gestion basique des fenêtres
-
-Vous pouvez faire glisser la fenêtre en appuyant sur Alt et en
-maintenant le bouton gauche de la souris appuyé sur la fenêtre.
-
-Pour redimensionner la fenêtre, appuyez sur Alt et faites un clic droit.
-
-Vous n'avez probablement pas besoin de déplacer et de redimensionner les
-fenêtres mais de les maximiser 
-à la place, ou les cacher. Tout cela peut être fait avec des raccourcis clavier grâce à
-.Xr cwm 1
-mais vous ne vous en souviendrez peut-être pas tout le temps. C'est
-pourquoi vous avez des raccourcis dans le menu de cwm prévus à cet
-effet.
-
-.Ss Raccourcis clavier
-
-Les Raccourcis clavier sont ceux de
-.Xr cwm 1
-par défaut.
-
-Quelques autres sont ajoutés:
-.Bl -bullet
-.It
-Alt-F4: fermer la fenêtre
-.It
-Alt-Shift-h/j/k/l: déplace la fenêtre à gauche/en bas/en haut/à droite de 
-écran.
-.It
-Alt-s: démarrer le script
-.Cm dsch
-.It
-Alt-x: démarre le script
-.Cm dfm
-.It
-Alt-t et Alt-Shift-t: fenêtres en mosaïque (tiling)
-.It
-Alt-p: menu affiché pour démarrer une application
-.It
-Alt-f: menu des fenêtres
-.It
-Alt-g: associer un nouveau groupe à une fenêtre focalisée
-.El
-
-Voir
-.Xr cwmrc 5
-à personnaliser selon vos besoins.
-
-.Ss Raccourcis souris 
-
-Vous pouvez afficher les menus en cliquant sur le bureau ou sur la
-.Em
-bordure
-.Non
-d'une
-fenêtre (assez grande par défaut).
-
-.Bl -bullet
-.It
-Clic droit: menu application. vous pouvez lancer une application.
-.It
-Clic central: menu du groupe: affiche le groupe actif sur lequel basculer la visibilité
-.It
-Clic gauche: menu des fenêtres, pour focaliser une fenêtre.
-.It
-Faites défiler sur l'arrière-plan pour modifier le volume.
-.It
-Alt + clic droit: redimensionner la fenêtre
-.It
-Alt + clic gauche: déplacer la fenêtre
-.El
-
-
-.Ss À propos du menu fenêtres
-
-Le menu fenêtres ressemble à ceci:
-.Bd -literal
-(4) ! [] Nom de la fenêtre
-(4)   [] autre nom de fenêtre
-(2) & [] un autre nom de fenêtre
-(1) & [foo] encore un nom de fenêtre
-.Ed
-
-Entre parenthèses, vous voyez le groupe affecté à la fenêtre.
-
-.D1 ! signifie que la fenêtre est focalisée.
-.D1 & signifie que la fenêtre est masquée.
-.D1 [foo]: la fenêtre a reçu l’étiquette "foo" avec le raccourci Ctrl-alt-n
-
-.Ss À propos des espaces de travail
-
-Il n'y a pas d'espaces de travail. Ils sont juste un moyen d'augmenter la taille de
-l'écran, et si vous avez besoin d’un écran plus grand, le gestionnaire de fenêtres est probablement
-dans l'erreur quelque part.
-.Xr cwm 1
-utilise à la place
-le concept de 
-.Em groupes.
-Vous pouvez choisir d’afficher une ou plusieurs fenêtres groupées en fonction de votre
-besoin.
-
-Vous pouvez attribuer automatiquement un groupe à une fenêtre dans
-.Pa $HOME/.cwmrc
-ou vous pouvez utiliser 
-.Cm groupwin
-pour assigner un groupe à une fenêtre.
-
-À tout moment, un clic du milieu sur le bureau affichera le "menu
-groupe" pour
-alterner la visibilité des groupes actifs.
 
 .Sh À propos de dmenu
-Les outils inclus utilisent dmenu.
+Les outils inclus utilisent dmenu patché pour pouvoir aussi
+l'utiliser avec la souris.
 
 C'est un menu affiché en haut de votre écran.
 Écrivez ce dont vous avez besoin, ou une partie seulement, puis appuyez
-sur Entrée pour sélectionner.
+sur Entrée pour sélectionner ou bien cliquez dessus
+la lignee désirée. Un clic droit ou bien la touche echap
+ferment le menu.
 
-.D1 Retour: sélectionner
-.D1 Esc: quitter le menu.
+.D1 Retour ou clic gauche: sélectionner
+.D1 Esc ou clic droit: quitter le menu.
 .D1 ctrl-y: coller la sélection
 
 Voir
 .Lk https://tools.suckless.org/dmenu/ site web de dmenu
-
-
 
 .Sh BUGS
 Bien sûr.
@@ -505,7 +388,17 @@ Veuillez les signaler à
 
 .Sh SEE ALSO
 
-.Xr cwm 1
-.Xr cwmrc 5
+.Xr bdmenu 1
+.Xr daddbmk 1
+.Xr dalarm 1
+.Xr dfm 1
+.Xr ddesktop 1
+.Xr dwm-isotop 1
 .Xr dmenu 1
+.Xr dmpc 1
+.Xr firefox 1
+.Xr mpc 1
+.Xr ncmpc 1
+.Xr pkg_mgr 1
 .Xr tmux 1
+.Xr slstatus 1

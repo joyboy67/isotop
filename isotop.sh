@@ -71,10 +71,15 @@ cp -v -r isotop-files/user $HOME
 cp -v -r isotop-files/user/.* $HOME/
 
 # compile dwm, slstatus, dmenu
-for i in dwm slstatus dmenu; do
-	echo "compile $i"
-	cd $wd/isotop-files/src/$i && make && make install PREFIX=$HOME MANPREFIX=/tmp
-done
+cd $wd/isotop-files/src/dwm
+make
+cp -f dwm $HOME/bin/dwm-isotop
+cd $wd/isotop-files/src/dmenu
+make
+cp -f dmenu dmenu_path dmenu_run stest $HOME/bin/
+cd $wd/isotop-files/src/slstatus
+make
+cp -f slstatus $HOME/bin/
 # compile lsdesktop
 cd $wd/isotop-files/src/lsdesktop
 make lsdesktop && cp lsdesktop $HOME/bin/

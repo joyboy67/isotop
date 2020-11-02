@@ -5,4 +5,4 @@
 # autostart
 sh $HOME/.start &
 # start dwm window manager
-dwm
+dwm-isotop

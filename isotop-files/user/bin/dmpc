@@ -1,0 +1,12 @@
+#!/bin/sh
+#Gestion de mpd avec dmenu et mpc
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+OPTION="-sb ${sb} -sf ${sf} -nb ${nb} -nf ${nf} -fn ${fn} -l $l -i"
+
+index=`mpc playlist |nl -s ' ' |dmenu $OPTION -p "Que jouer?" |awk '{print $1}'`
+if [ "$index" != "" ]; then
+    mpc -q play $index
+fi
+exit 0;
