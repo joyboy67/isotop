@@ -6,6 +6,13 @@ if [ $(id -u) -ne 0 ]; then
 	exit
 fi
 
+addline()
+{
+	# addline "line" "file"
+	# avoid doubles
+	grep -qxF "${1}" "${2}" || echo "{1}" >> "${2}"
+}
+
 lang=$(cat /etc/kbdtype)
 
 case $lang in 
@@ -18,7 +25,6 @@ case $lang in
 		LASTVER="La dernière version d\'isotop est déjà installée"
 	;;
 	*)
-echo pouet
 		RELOADMSG='Open a new session to use isotop'
 		XENODMWHOAREYOU='Who are you?'
 		XENODMLOGIN='login=   '
@@ -29,7 +35,7 @@ echo pouet
 esac
 
 # no need to remake all changes
-test ! -f /etc/isotop.version && echo "0" | tee /etc/isotop.version
+test ! -f /etc/isotop.version && echo "0" > /etc/isotop.version
 if [ $(cat isotop-files/etc/isotop.version) -le $(cat /etc/isotop.version) ]; then
 	echo "${LASTVER}"
 else
@@ -40,11 +46,8 @@ else
 	mount -a
 
 	echo "* Copy rc scripts"
-	if [ -z $(grep -q "sh /etc/rc.local.isotop" /etc/rc.local) ]; then
-		cp -v -r isotop-files/etc/rc.local.isotop /etc/
-		echo "sh /etc/rc.local.isotop" | tee -a /etc/rc.local
-		chmod +x /etc/rc.local
-	fi
+	cp -v -r isotop-files/etc/rc.local.isotop /etc/
+	addline "sh /etc/rc.local.isotop" /etc/rc.local
 
 	# xenodm
 	cp -v -r isotop-files/etc/X11/xenodm/Xsetup_0 /etc/X11/xenodm/
@@ -77,23 +80,22 @@ else
 	# doas
 	echo "* Configure doas"
 
-	echo "permit persist :wheel
-permit nopass  :wheel cmd /sbin/shutdown
-permit nopass  :wheel cmd /sbin/reboot
-permit nopass  :wheel cmd /sbin/disklabel
-permit nopass  :wheel cmd /sbin/mount
-permit nopass  :wheel cmd /sbin/umount
-permit nopass  :wheel cmd /usr/sbin/zzz
-permit nopass  :wheel cmd /usr/sbin/ZZZ
-" | tee /etc/doas.conf
+	addline "permit persist :wheel" /etc/doas.conf
+	addline "permit nopass  :wheel cmd /sbin/shutdown" /etc/doas.conf
+	addline "permit nopass  :wheel cmd /sbin/reboot" /etc/doas.conf
+	addline "permit nopass  :wheel cmd /sbin/disklabel" /etc/doas.conf
+	addline "permit nopass  :wheel cmd /sbin/mount" /etc/doas.conf
+	addline "permit nopass  :wheel cmd /sbin/umount" /etc/doas.conf
+	addline "permit nopass  :wheel cmd /usr/sbin/zzz" /etc/doas.conf
+	addline "permit nopass  :wheel cmd /usr/sbin/ZZZ" /etc/doas.conf
 
 	# unwind configuration
 	echo "* Configure unwind DNS resolver"
-	echo 'block list "/var/unwind.block"' | tee /etc/unwind.conf
+	addline 'block list "/var/unwind.block"' /etc/unwind.conf
 	rcctl enable unwind
 
 	echo "* Configure dhclient"
-	echo "prepend domain-name-servers 127.0.0.1;" | tee /etc/dhclient.conf
+	addline "prepend domain-name-servers 127.0.0.1;" /etc/dhclient.conf
 
 	echo "* Installing packages"
 	pkg_add -vmzl isotop-files/packages.txt
