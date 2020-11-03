@@ -7,13 +7,10 @@
 * update screenshots sur 3hg.fr
 
 ## Later
-* rewrite owi and write a dmenu wireless connexion manager (I don't have
-wifi...)
+* rewrite owi and write a dmenu wireless connexion manager
 * gdoas safe ?
 * session jwm ?
-* man pages for included scripts ?
 * xfe archive manager
-* rover
 * cdrom ?
 * FAQ webcam/audio record ?
 
@@ -22,7 +19,6 @@ wifi...)
 * dmenu-isotop (1)
 * dsct 1
 * dmpc
-script locate avec dmenu
 * script term : choix de term
 * doc patches dwm
 * doc slstatus + patches

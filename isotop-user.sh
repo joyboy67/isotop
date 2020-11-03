@@ -55,8 +55,7 @@ case $lang in
 		# xdg
 		echo 'fr_FR.UTF-8' > ${HOME}/.config/user-dirs.locale
 		# manpage
-		mv $HOME/.isotop/man/man7/isotop-fr.mdoc \
-		     $HOME/.isotop/man/man7/isotop.mdoc
+		mdocs=isotop-files/mdoc/fr
 	;;
 	*)
 		echo 'LC_CTYPE="en_EN.UTF-8"' >> ${HOME}/.profile
@@ -67,6 +66,8 @@ case $lang in
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
 		# xdg
 		echo 'en_EN.UTF-8' > ${HOME}/.config/user-dirs.locale
+		# manpage
+		mdocs=isotop-files/mdoc/en
 	;;
 esac
 
@@ -74,6 +75,7 @@ esac
 
 # manpages
 echo "* install isotop manpages"
+cp -r ${mdocs}/* $HOME/.isotop/man
 find $HOME/.isotop/man/ -type f -iname *.mdoc | while read -r m
 do
 	section=$(echo "${m}" | grep -o "man[0-9]" | cut -c4)
