@@ -1,10 +1,8 @@
 # TODO
-* rm sessionmenuisotop + ajout .desktop man isotop et session
 * doc pq pas cups et hotplug par defaut : secu
 * doc dmount dumount
 * commande impri ?
 * indiquer dans readme que fichiers peuvent être supprimés ensuite
-* readme : partir root
 * manpages pour chaque petit outil
 * archive manager
 * script dl paquets pour install offline
@@ -15,8 +13,6 @@
 FAQ : pq dwm et dmenu ? Pr rendre + pratique et accessible, il faut que
 	Ã§a soit stable et simple.
 script locate avec dmenu
-.desktop entry man isotop
-doc add printer : localhost:631
 * script term : choix de term
 * doc patches dwm
 * doc slstatus + patches

@@ -8,12 +8,12 @@ lang=$(cat /etc/kbdtype)
 case $lang in 
 	fr*)
 		DOASINSTALL='Si vous en avez la permission, vous pouvez maintenant lancer 
-    doas isotop-root.sh
+    doas sh isotop-root.sh
 Ou recharger votre session'
 	;;
 	*)
 		DOASINSTALL='If you have permission, you may now run
-    doas isotop-root.sh
+    doas sh isotop-root.sh
 Or reload your session'
 	;;
 esac

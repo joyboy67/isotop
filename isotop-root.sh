@@ -15,10 +15,10 @@ case $lang in
 		XENODMLOGIN='identifiant ='
 		XENODMPASSWORD='secret =      '
 		XENODMFAIL='Echec :s'
-		LASTVER='La dernière version d'isotop est déjà
-installée'
+		LASTVER="La dernière version d\'isotop est déjà installée"
 	;;
 	*)
+echo pouet
 		RELOADMSG='Open a new session to use isotop'
 		XENODMWHOAREYOU='Who are you?'
 		XENODMLOGIN='login=   '
@@ -97,12 +97,6 @@ permit nopass  :wheel cmd /usr/sbin/ZZZ
 
 	echo "* Installing packages"
 	pkg_add -vmzl isotop-files/packages.txt
-	if [ $? -eq 0 ]; then
-		echo '* Package installation finished :)'
-	else
-		echo '* Package installation did not work :('
-		exit 1
-	fi
 
 	echo "* Set up ntpd"
 	sed -i 's/www\.google\.com/www.openbsd.org/' /etc/ntpd.conf

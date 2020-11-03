@@ -5,7 +5,6 @@ b612-font--
 curl--
 detox--
 ffmpeg--
-foremost--
 gimp--
 gnome-themes-extra--
 gtk-engines2--
@@ -42,7 +41,6 @@ xcape--
 xclip--
 xdg-user-dirs--
 xdg-utils--
-xdotool--
 xfe--
 xwallpaper--
 youtube-dl--
