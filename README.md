@@ -7,23 +7,28 @@ make OpenBSD great for desktop.
 
 Available from OpenBSD > 6.5
 
+It is splitted in two separate scripts : 
+
+- `isotop-user.sh` : configure user session.
+- `isotop-root.sh` : require root privileges, install ports and
+configure system daemons.
+
 ## Installation
 
 Install OpenBSD. See
 [intructions](https://www.openbsd.org/faq/faq4.html).
 
-Add youself to group wheel (first user by default)
+Download isotop last archive and checksum
 
-	# usermod -G wheel yourlogin
+	$ ftp https://framagit.org/3hg/isotop/raw/master/isotop-$VERSION.tgz
+	$ ftp https://framagit.org/3hg/isotop/raw/master/isotop-$VERSION.sha256
+	$ sha256 -C isotop-$VERSION.sha256 isotop-$VERSION.tgz
 
-Set up [doas](http://man.openbsd.org/doas.conf) : 
+If OK, extract archive and run scripts : 
 
-	# echo "permit persist :wheel" >> /etc/doas.conf
-
-Download isotop script and run it:
-
-	$ ftp https://framagit.org/3hg/isotop/raw/master/isotop-$VERSION.sh
-	$ sh isotop-$VERSION.sh
+	$ tar xvzf isotop-$VERSION.tgz
+	$ sh isotop-user.sh
+	$ doas sh isotop-root.sh
 
 Screenshots
 -----------

@@ -1,0 +1,9 @@
+#!/bin/sh
+# reduit une image de 50%
+# dépend : imagemagick
+
+for i in "$@"; do
+	convert "$i" -verbose -resize 50%  "$i"
+done
+
+exit 0

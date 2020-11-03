@@ -1,55 +1,78 @@
 #!/bin/sh
 # this must be run as root
 
-VERSION="_ISOTOPVERSION_"
+if [ $(id -u) -ne 0 ]; then
+	echo "You must be root"
+	exit
+fi
+
+lang=$(cat /etc/kbdtype)
+
+case $lang in 
+	fr*)
+		RELOADMSG='Ouvrez une nouvelle session pour utiliser isotop'
+		XENODMWHOAREYOU='Qui est-ce ?'
+		XENODMLOGIN='identifiant ='
+		XENODMPASSWORD='secret =      '
+		XENODMFAIL='Echec :s'
+		LASTVER='La dernière version d'isotop est déjà
+installée'
+	;;
+	*)
+		RELOADMSG='Open a new session to use isotop'
+		XENODMWHOAREYOU='Who are you?'
+		XENODMLOGIN='login=   '
+		XENODMPASSWORD='password='
+		XENODMFAIL='Authentication failed :s'
+		LASTVER='Last isotop version already installed'
+	;;
+esac
+
 # no need to remake all changes
-test ! -f /etc/isotop.version && echo "0" | doas tee -a /etc/isotop.version
-if [ ${VERSION} -gt $(cat /etc/isotop.version) ]; then
+test ! -f /etc/isotop.version && echo "0" | tee /etc/isotop.version
+if [ $(cat isotop-files/etc/isotop.version) -le $(cat /etc/isotop.version) ]; then
+	echo "${LASTVER}"
+else
 	# softdep
 	echo "* Enable softdeps"
-	doas sed -i 's/ffs rw,/ffs rw,softdep,/g' /etc/fstab   # only one ffs
-	doas sed -i 's/softdep,softdep,/softdep,/g' /etc/fstab # only one softdep
-	doas mount -a
+	sed -i 's/ffs rw,/ffs rw,softdep,/g' /etc/fstab   # only one ffs
+	sed -i 's/softdep,softdep,/softdep,/g' /etc/fstab # only one softdep
+	mount -a
 
 	echo "* Copy rc scripts"
 	if [ -z $(grep -q "sh /etc/rc.local.isotop" /etc/rc.local) ]; then
-		doas cp -v -r isotop-files/etc/rc.local.isotop /etc/
-		echo "sh /etc/rc.local.isotop" | doas tee -a /etc/rc.local
-		doas chmod +x /etc/rc.local
+		cp -v -r isotop-files/etc/rc.local.isotop /etc/
+		echo "sh /etc/rc.local.isotop" | tee -a /etc/rc.local
+		chmod +x /etc/rc.local
 	fi
 
-	# manpages
-	doas cp -v -r isotop-files/man/man7/* /usr/local/man/man7/
-	echo "* Build manpage database"
-	doas makewhatis
-
 	# xenodm
-	sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" isotop-files/etc/X11/xenodm/Xresources.isotop
-	sed -i -e "s;___LOGIN___;${XENODMLOGIN};" isotop-files/etc/X11/xenodm/Xresources.isotop
-	sed -i -e "s;___PASSWORD___;${XENODMPASSWORD};" isotop-files/etc/X11/xenodm/Xresources.isotop
-	sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" isotop-files/etc/X11/xenodm/Xresources.isotop
-	doas cp -v -r isotop-files/etc/X11/xenodm/Xsetup_0 /etc/X11/xenodm/
-	doas cp -v -r isotop-files/etc/X11/xenodm/GiveConsole /etc/X11/xenodm/
-	doas cp -v -r isotop-files/etc/X11/xenodm/Xresources.isotop /etc/X11/xenodm/
-	doas chmod +x /etc/X11/xenodm/Xsetup_0
-	doas chmod +x /etc/X11/xenodm/GiveConsole
-	doas sed -i '/DisplayManager\*resources:.*$/s/.*/DisplayManager*resources:\/etc\/X11\/xenodm\/Xresources.isotop/' /etc/X11/xenodm/xenodm-config
+	cp -v -r isotop-files/etc/X11/xenodm/Xsetup_0 /etc/X11/xenodm/
+	cp -v -r isotop-files/etc/X11/xenodm/GiveConsole /etc/X11/xenodm/
+	cp -v -r isotop-files/etc/X11/xenodm/Xresources.isotop /etc/X11/xenodm/
+	sed -i -e "s;___WHOAREYOU___;${XENODMWHOAREYOU};" /etc/X11/xenodm/Xresources.isotop
+	sed -i -e "s;___LOGIN___;${XENODMLOGIN};" /etc/X11/xenodm/Xresources.isotop
+	sed -i -e "s;___PASSWORD___;${XENODMPASSWORD};" /etc/X11/xenodm/Xresources.isotop
+	sed -i -e "s;___FAILEDLOGIN___;${XENODMFAIL};" /etc/X11/xenodm/Xresources.isotop
+	sed -i '/DisplayManager\*resources:.*$/s/.*/DisplayManager*resources:\/etc\/X11\/xenodm\/Xresources.isotop/' /etc/X11/xenodm/xenodm-config
+	chmod +x /etc/X11/xenodm/Xsetup_0
+	chmod +x /etc/X11/xenodm/GiveConsole
 	WALLDIR=/usr/local/share/isotop/walls
 	WALL="${WALLDIR}/loginbg.jpg"
-	doas mkdir -p ${WALLDIR}
-	doas cp isotop-files/walls/loginbg.jpg "${WALL}"
+	mkdir -p ${WALLDIR}
+	cp isotop-files/walls/loginbg.jpg "${WALL}"
 
 	echo "* Enable xenodm"
-	doas rcctl enable xenodm
+	rcctl enable xenodm
 
 	# apm
 	echo "* Enable apmd"
-	doas rcctl enable apmd
-	doas rcctl set apmd status on
-	doas rcctl set apmd flags -A
-	doas mkdir -p /etc/apm/
-	doas cp -rv isotop-files/etc/apm/* /etc/apm/
-	doas chmod +x /etc/apm/*
+	rcctl enable apmd
+	rcctl set apmd status on
+	rcctl set apmd flags -A
+	mkdir -p /etc/apm/
+	cp -rv isotop-files/etc/apm/* /etc/apm/
+	chmod +x /etc/apm/*
 
 	# doas
 	echo "* Configure doas"
@@ -62,18 +85,18 @@ permit nopass  :wheel cmd /sbin/mount
 permit nopass  :wheel cmd /sbin/umount
 permit nopass  :wheel cmd /usr/sbin/zzz
 permit nopass  :wheel cmd /usr/sbin/ZZZ
-" | doas tee /etc/doas.conf
+" | tee /etc/doas.conf
 
 	# unwind configuration
 	echo "* Configure unwind DNS resolver"
-	echo 'block list "/var/unwind.block"' | doas tee /etc/unwind.conf
-	doas rcctl enable unwind
+	echo 'block list "/var/unwind.block"' | tee /etc/unwind.conf
+	rcctl enable unwind
 
 	echo "* Configure dhclient"
-	echo "prepend domain-name-servers 127.0.0.1;" | doas tee /etc/dhclient.conf
+	echo "prepend domain-name-servers 127.0.0.1;" | tee /etc/dhclient.conf
 
 	echo "* Installing packages"
-	doas pkg_add -vmzl isotop-files/packages.txt
+	pkg_add -vmzl isotop-files/packages.txt
 	if [ $? -eq 0 ]; then
 		echo '* Package installation finished :)'
 	else
@@ -81,23 +104,14 @@ permit nopass  :wheel cmd /usr/sbin/ZZZ
 		exit 1
 	fi
 
-	echo "* Enable hotplugd"
-	doas /usr/local/libexec/hotplug-diskmount init
-	doas cp -v -r isotop-files/etc/hotplug/ /etc/
-	doas chmod +x /etc/hotplug/{attach,detach}
-	doas rcctl enable hotplugd
-	doas rcctl start hotplugd
-
 	echo "* Set up ntpd"
-	doas sed -i 's/www\.google\.com/www.openbsd.org/' /etc/ntpd.conf
-	doas rcctl enable ntpd
-
-	echo "* Enable cups"
-	doas rcctl enable cupsd cups_browsed
-	doas rcctl start cupsd cups_browsed
+	sed -i 's/www\.google\.com/www.openbsd.org/' /etc/ntpd.conf
+	rcctl enable ntpd
 
 	echo "* Save isotop version"
-	echo ${VERSION} | doas tee /etc/isotop.version
-else
-	echo "Last isotop version already installed"
+	cp isotop-files/etc/isotop.version /etc/isotop.version
+
+	echo ""
+	echo "------------"
+	echo "${RELOADMSG}"
 fi

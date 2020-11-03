@@ -1,0 +1,10 @@
+#!/bin/sh
+# require ffmpeg
+# convert video to webm using vp9 encoder
+
+for i in $@; do
+  j="${i%.*}"
+  ffmpeg -i ${i} -c:v libvpx-vp9 -b:v 0 -crf 32 -pass 1 -an -row-mt 1 -f webm /dev/null -y && \
+  ffmpeg -i ${i} -c:v libvpx-vp9 -b:v 0 -crf 32 -pass 2 -c:a libopus -row-mt 1 \
+	  -max_muxing_queue_size 1024 ${j}.webm
+done

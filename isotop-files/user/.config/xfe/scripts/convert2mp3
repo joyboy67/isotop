@@ -1,0 +1,11 @@
+#!/bin/sh
+#Script pour convertir des fichiers audios en mp3
+
+v_=$IFS
+IFS='
+'
+for i in $@; do
+   j="${i%.*}"
+   ffmpeg -i "${i}" "${j}.mp3" && echo "$i réencodé en MP3."
+done
+IFS=v_

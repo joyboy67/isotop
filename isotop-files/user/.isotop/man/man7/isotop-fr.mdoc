@@ -79,12 +79,33 @@ voir ici :
 
 .Ss Comment ajouter une imprimante ?
 
+Installez les paquets suivants : 
+
+.Bd -literal -offset indent
+# pkg_add cups cups-filters cups-libs foomatic-db gutenprint\
+gtk+2-cups gtk+3-cups gtk+4-cups
+.Ed
+
+Activez et démarrez cups:
+
+.Bd -literal -offset indent
+# rcctl enable cupsd cups_browsed
+# rcctl start cupsd cups_browsed
+.Ed
+
+Si votre imprimante est reliée en USB, lisez
+.Sx Comment utiliser une imprimante USB ?
+
 Ouvrez un navigateur à l'adresse 
 
 .Lk http://127.0.0.1:631
 
 Puis cliquez sur l'onglet 
 .Dq Administration
+
+Voir aussi:
+
+.Lk https://wiki.openbsd.fr.eu.org/doku.php/system/print/
 
 .Ss Comment utiliser une imprimante USB ?
 Ajoutez les lignes suivantes dans le fichier 
@@ -100,6 +121,26 @@ Puis redémarrer.
 Ceci a pour effet de désactiver ulpt pour les imprimantes USB.
 et de reconstruire la somme de contrôle du noyau pour profiter de
 KARL au redémarrage.
+
+Une fois le redémarrage effectué, il faut donner les
+permissions à cups de gérer cette imprimante.
+Repérez-là avec la commande
+
+.Bd -literal -offset indent
+# usbdevs -vd
+.Ed
+
+Puis modifiez les permissions en conséquence selon le port sur
+lequel l'imprimante est détectée : 
+
+.Bd -literal -offset indent
+chown _cups /dev/ugen0.* /dev/usb2
+.Ed
+
+Ajoutez la commande précedente au fichier 
+.Pa /etc/rc.local
+pour garder ces changements à chaque redémarrage.
+
 
 Voir
 .Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 ce fil

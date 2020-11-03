@@ -1,9 +1,9 @@
 [OPTIONS]
-height=747
+height=877
 toolstoolbar=1
 folder_warn=1
 panel_view=1
-width=1364
+width=1436
 confirm_drag_and_drop=1
 use_startup_notification=1
 preserve_date_warn=1
@@ -126,7 +126,6 @@ ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
 name_size=445
-lastdir=/home/prx
 hiddenfiles=0
 
 [PROGS]
@@ -135,22 +134,21 @@ audioplayer=ffmplay
 videoplayer=ffplay
 
 [LEFT PANEL]
-type_size=1106
+type_size=2466
 deldate_size=150
 origpath_size=200
 liststyle=16777216
-attr_size=1106
-size_size=663
-user_size=554
+attr_size=2466
+size_size=1478
+user_size=1235
 dirs_first=1
-ext_size=1106
-grou_size=554
-modd_size=1662
+ext_size=2466
+grou_size=1235
+modd_size=3706
 ignore_case=1
 sort_func=ascendingCase
 showthumbnails=0
-name_size=2216
-lastdir=/usr/local/share/applications
+name_size=4941
 hiddenfiles=0
 
 [SETTINGS]
@@ -162,7 +160,7 @@ highlightcolor=#d8dee9
 textfont=DejaVu Sans Mono [PfEd],100,normal,regular
 bordercolor=#434c5e
 activecolorpane=4
-font=DejaVu Sans [PfEd],100,normal,regular,medium
+font=DejaVu Sans [PfEd],90,normal,regular,medium
 listbackcolor=#eceff4
 scrollbarsize=15
 shadowcolor=#97999e

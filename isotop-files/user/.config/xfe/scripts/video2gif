@@ -1,0 +1,5 @@
+#!/bin/sh
+mkdir -p /tmp/gif
+avconv -i $1 -r 10 -s 720x480 /tmp/gif/out%04d.gif
+gifsicle --delay 10 --optimize --loop /tmp/gif/*.gif > animation.gif
+convert -layers Optimize animation.gif animation_opt.gif

@@ -1,61 +1,30 @@
 #!/bin/sh
 # Auteur :      prx <prx@ybad.name>
 # licence :     MIT
-
 # Description : install isotop customization on OpenBSD
 
-VERSION="_ISOTOPVERSION_"
-ISOTOPURL="https://framagit.org/3hg/isotop/raw/master/"
-
-selmenu()
-{
-# show a menu from a list in $@ and return user choice
-	ans=""
-	select item in $@; do
-		if [ $REPLY -gt 0 -a $REPLY -le $# ]; then
-			echo $item
-			break
-		fi
-	done
-}
-
-echo "Language ?"
-lang=$(selmenu fr en)
+lang=$(cat /etc/kbdtype)
 
 case $lang in 
 	fr*)
-		RELOADMSG='Ouvrez une nouvelle session pour utiliser isotop'
-		XENODMWHOAREYOU='Qui est-ce ?'
-		XENODMLOGIN='identifiant ='
-		XENODMPASSWORD='secret =      '
-		XENODMFAIL='Echec :s'
+		DOASINSTALL='Si vous en avez la permission, vous pouvez maintenant lancer 
+    doas isotop-root.sh
+Ou recharger votre session'
 	;;
 	*)
-		RELOADMSG='Open a new session to use isotop'
-		XENODMWHOAREYOU='Who are you?'
-		XENODMLOGIN='login=   '
-		XENODMPASSWORD='password='
-		XENODMFAIL='Authentication failed :s'
+		DOASINSTALL='If you have permission, you may now run
+    doas isotop-root.sh
+Or reload your session'
 	;;
 esac
 
 wd=$(pwd)
-echo "* Get isotop files"
-ftp "${ISOTOPURL}/isotop-${VERSION}.tgz"
-ftp "${ISOTOPURL}/isotop-${VERSION}.sha256"
-echo "* Check $0 checksum before going any further"
-sha256 -C isotop-${VERSION}.sha256 isotop-${VERSION}.sh || exit 1
-sha256 -C isotop-${VERSION}.sha256 isotop-${VERSION}.tgz || exit 1
-
-# untar and copy files
-echo "* Untgz archive"
-tar xzf isotop-${VERSION}.tgz
-
 echo "* Copy user configuration"
 cp -v -r isotop-files/user $HOME
 cp -v -r isotop-files/user/.* $HOME/
 
 # compile dwm, slstatus, dmenu
+echo "* compiles tools"
 cd $wd/isotop-files/src/dwm
 make
 cp -f dwm $HOME/bin/dwm-isotop
@@ -72,6 +41,7 @@ cd $wd
 
 mkdir -p ${HOME}/.config
 
+echo "* set up language"
 # TRADS
 case $lang in 
 	fr*)
@@ -83,8 +53,9 @@ case $lang in
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
 		# xdg
 		echo 'fr_FR.UTF-8' > ${HOME}/.config/user-dirs.locale
-		# hotplug
-		MOUNTPOINTNAME="Médias"
+		# manpage
+		mv $HOME/.isotop/man/man7/isotop-fr.mdoc \
+		     $HOME/.isotop/man/man7/isotop.mdoc
 	;;
 	*)
 		echo 'LC_CTYPE="en_EN.UTF-8"' >> ${HOME}/.profile
@@ -95,12 +66,19 @@ case $lang in
 		echo 'export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG' >> ${HOME}/.profile
 		# xdg
 		echo 'en_EN.UTF-8' > ${HOME}/.config/user-dirs.locale
-		# hotplug
-		MOUNTPOINTNAME="Medias"
 	;;
 esac
 
 . ${HOME}/.profile
+
+# manpages
+echo "* install isotop manpages"
+find $HOME/.isotop/man/ -type f -iname *.mdoc | while read -r m
+do
+	section=$(echo "${m}" | grep -o "man[0-9]" | cut -c4)
+	mandoc -T man "${m}" > "${m%.*}.$section"
+done
+makewhatis $HOME/.isotop/man
 
 # make sure scripts are +x
 chmod +x ${HOME}/bin/*
@@ -108,13 +86,11 @@ chmod +x ${HOME}/bin/*
 # add xdg-user-dirs
 xdg-user-dirs-update
 
-# link to /vol for automounting
-ln -s /vol/ ${HOME}/${MOUNTPOINTNAME}
-
 # mpd
+echo "* set up mpd"
 mkdir -p $HOME/.mpd/playlists
 
-# install checkbatt cron
+echo "* install checkbatt cron"
 (
 crontab -l
 echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
@@ -123,7 +99,6 @@ echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
 echo ""
 echo "------------"
 echo "${DOASINSTALL}"
-echo "${RELOADMSG}"
 
 exit 0
 

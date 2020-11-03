@@ -5,9 +5,7 @@ TOP='-s .5'
 PAGER=less
 BROWSER='firefox'
 ENV=$HOME/.kshrc
-export VISUAL EDITOR PATH HOME TERM TOP PAGER BROWSER ENV 
-
+MANPATH=:$HOME/.isotop/man
+export VISUAL EDITOR PATH HOME TERM TOP PAGER BROWSER ENV MANPATH
 export LDFLAGS="-L /usr/lib -L/usr/local/lib"
 export CXXFLAGS="-I /usr/include -I/usr/local/include"
-
-export ENV=$HOME/.kshrc

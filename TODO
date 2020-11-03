@@ -1,4 +1,8 @@
 # TODO
+* rm sessionmenuisotop + ajout .desktop man isotop et session
+* doc pq pas cups et hotplug par defaut : secu
+* doc dmount dumount
+* commande impri ?
 * indiquer dans readme que fichiers peuvent être supprimés ensuite
 * readme : partir root
 * manpages pour chaque petit outil

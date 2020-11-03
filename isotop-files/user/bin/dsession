@@ -1,7 +1,8 @@
 #!/bin/sh
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
 
 
-_q="Session:"
+prompt="Session:"
 _shutdown="Shutdown"
 _reboot="Reboot"
 _suspend="Suspend"
@@ -19,13 +20,22 @@ case $LANG in
 	;;
 esac
 
-res="$(xmessage $_q -nearmouse -print -buttons \
-"$_shutdown":5,\
-"$_reboot":6,\
-"$_suspend":7,\
-"$_hibernate":8,\
-"$_exit":9,\
-"$_help":10)"
+res=$(echo "$_shutdown
+$_reboot
+$_suspend
+$_hibernate
+$_exit
+$_help" | dmenu \
+	-l ${l} \
+	-i \
+	-fn "${fn}" \
+	-nb "${nb}" \
+	-nf "${nf}" \
+	-sb "${sb}" \
+	-sf "${sf}" \
+	-p "${prompt}" \
+)
+echo $res
 
 case "$res" in
 	$_shutdown)  doas /sbin/shutdown -hp now ;;
@@ -33,11 +43,6 @@ case "$res" in
 	$_suspend)   doas /usr/sbin/zzz ;;
 	$_hibernate) doas /usr/sbin/ZZZ ;;
 	$_exit)      pkill dwm ;;
-	$_help)      
-		case $LANG in
-			fr*) xterm -e man isotop-fr ;;
-			*) xterm -e man isotop ;;
-		esac
-		;;
+	$_help)      xterm -e man isotop ;;
 esac
 

@@ -1,0 +1,2 @@
+#!/bin/sh
+avconv -i "$1" -vn -ar 44100 -ac 2 -f wav "${1%.*}.wav" 

@@ -1,0 +1,18 @@
+#!/bin/sh
+# optimise les images
+# dépend de optipng et imagemagick
+
+for i in "$@"; do
+    case "$i" in
+        *.jpg | *.JPG | *.jpeg | *.JPEG ) 
+            gm convert "$i" -verbose -strip -quality 70 -interlace line "$i" ;;
+            #jpegtran -copy none -optimize -outfile temp_optimize.jpg "$i"
+            #jpegtran -copy none -progressive -outfile "$i" temp_optimize.jpg
+            #rm temp_optimize.jpg
+        *.png | *.PNG ) optipng "$i" ;;
+    esac
+
+
+done
+
+exit 0
