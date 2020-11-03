@@ -7,7 +7,7 @@
 
 .Sh DESCRIPTION
 .Nm 
-est un script permettant de configurer OpenBSD pour obtenir un environnement de
+est un constitué de deux scripts permettant de configurer OpenBSD pour obtenir un environnement de
 travail rapide, agréable et pratique.
 Les outils présents de base dans OpenBSD sont
 privilégiés. Par conséquent, certains choix ont été faits pour se
@@ -19,9 +19,6 @@ concentrer sur un système simple et efficace.
 Le gestionnaire de fenêtres par défaut dans isotop est 
 .Lk http://dwm.suckless.org/ dwm
 avec quelques modifications.
-Sa simplicité permet de mieux se concentrer et à être plus efficace.
-Il se charge de gérer les fenêtre ce qui vous évite
-d'avoir à lades déplacer sans arrêt.
 
 Avant d'installer un autre gestionnaire de fenêtres ou environnement de
 bureau, essayez dwm. Nous avons essayé de le rendre plus simple à
@@ -57,30 +54,29 @@ alt-p: affiche dmenu pour ouvrir une application
 .El
 
 Bien sûr, ce n'est qu'un mince aperçu.
-
 Voir 
 .Xr dwm-isotop 1
 pour plus d'informations sur les possibilités de la session
 isotop.
 
 .Ss Comment installer isotop pour un autre utilisateur ?
-Facile, il suffit de lancer le script d'installation avec cet
-utilisateur. Seule la configuration utilisateur sera copiée si la
-dernière version d'isotop est installée.
+Facile, il suffit de lancer le script d'installation 
+.Sx Que fait isotop-user.sh ?
+avec cet
+utilisateur. Seule la configuration utilisateur sera copiée.
 
-.Ss Comment recompiler moi-même dwm, dmenu, slstatus, lsdesktop ?
+.Ss Comment recompiler dwm, dmenu, slstatus, lsdesktop, rover ?
+
 Ces outils sont disponibles dans le dossier
 .Pa isotop-files/src
-dispnibles après installation dans votre dossier personnel. Ils
+disponibles après installation dans votre dossier personnel. Ils
 sont toujours là si vous ne les avez pas supprimés. Sinon,
 voir ici :
 
 .Lk https://framagit.org/3hg/isotop/-/tree/master/isotop-files/src
 
 .Ss Comment ajouter une imprimante ?
-
 Installez les paquets suivants : 
-
 .Bd -literal -offset indent
 # pkg_add cups cups-filters cups-libs foomatic-db gutenprint\
 gtk+2-cups gtk+3-cups gtk+4-cups
@@ -141,7 +137,6 @@ Ajoutez la commande précedente au fichier
 .Pa /etc/rc.local
 pour garder ces changements à chaque redémarrage.
 
-
 Voir
 .Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 ce fil
 
@@ -161,13 +156,22 @@ dans un terminal.
 Sinon, lisez
 .Lk https://wiki.obsd4a.net/openbsd.org:faq:faq15 gestion des paquets.
 
+.Ss Comment monter une clé USB ?
+Voir
+.Xr dmount 1
+
+.Ss Pourquoi cups n'est pas installé par défaut ?
+Tout le monde n'utilise pas une imprimante. Son installation est
+laissée libre à chacun. Si vous en avez besoin lisez :
+.Sx Comment ajouter une imprimante ?
+
 .Ss Pourquoi mon écran semble rouge ?
 Puisqu'on pense à vos yeux, on lance automatiquement en début de session
 .Xr sct 1
 Vous pouvez utiliser 
 .Xr dsct 1
 pour modifier la couleur, ou carrément retirer
-.Cm sctd 1>/dev/null &
+.Cm sctd > /dev/null 2>&1 &
 du fichier 
 .Pa $HOME/.start
 .
@@ -194,62 +198,13 @@ sera disponible à la lecture.
 .Xr ncmpc 1
 .El
 
-
 .Ss Quelles sont les différences avec une installation OpenBSD de base?
-.Bl -bullet
-.It
-.Xr unwind 8
-est configuré en tant que résolveur de nom de domaine local
-par défaut. Ainsi, vous ne dépendez pas d'un fournisseur
-d'accès à internet pour réaliser cette tâche
-(anti-censure).
-.Pp
-Un fichier
-.Pa /var/unwind.block
-contient une liste de domaines connus comme malveillants ou
-publicitaires. Cette liste est mise à jour
-une fois par semaine au démarrage via le script
-.Pa /etc/rc.local.
-
-.Pp
-Cette liste est récupérée depuis le site
-.Lk https://ybad.name/evils.html de l'auteur d'isotop.
-
-Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
-obtiendrez un
-message:
-
-.Dq Le site web n'est pas disponible
-
-.It
-.Xr hotplugd 8
-est configuré pour monter automatiquement votre clé USB dans 
-.Pa /vol
-
-Un lien est disponible
-dans votre répertoire $HOME/Médias.
-.It
-Services activés: hotplugd, cups, xenodm, unwind.
-.It
-.It
-La configuration ntpd n'utilise pas google comme contrainte.
-.It
-L’apparence de Xenodm est personnalisée, traduite et configurable avec un script appelé
-xenodm-config.
-.It
-Des paquets supplémentaires sont installés.
-
 Voir
-.Lk https://framagit.org/3hg/isotop/-/blob/master/isotop-files/packages.txt
-.It
-doas est configuré pour éviter la saisie d'un mot de passe pour certaines commandes. 
+.Sx Que fait isotop-user.sh ?
+et
+.Ss Que fait isotop-root.sh ?
 
-Voir
-.Pa /etc/doas.conf
-
-.It
-.Xr firefox 1
-est le navigateur par défaut.
+.Ss Pourquoi firefox est le navigateur par défaut.
 Il est "unveiled" par défaut:
 cela signifie que le navigateur ne peut lire des fichiers sur votre
 ordinateur sauf dans
@@ -260,48 +215,11 @@ pour plus de sécurité.
 
 Il garde vos clés SSH et mots de passe inaccessibles par un éventuel
 pirate.
-.It
-Alt-L est mappé vers Esc pour les utilisateurs de vi :)
-.It
-Les traductions sont incluses: anglais et français pour l'instant.
-.It
-Quelques scripts et outils sont inclus dans votre dossier personnel
-.Pa /$HOME/bin
-et disponible dans votre
-.Ev PATH
-.No .
-Ainsi, vous pouvez facilement les modifier ou les supprimer s'ils ne
-vous plaisent pas.
 
-Voir
-.Sx Quels scripts sont livrés?
-.It
-.Pa $HOME/.aliases
-et
-.Pa $HOME/.functions
-sont remplis de choses (utiles?).
-.It
-$HOME/.kshrc contient de l'auto-complétion pour OpenBSD.
-.It
-Si un fichier 
-.Pa $HOME/.wallpaper
-est trouvé, alors il est définit comme fond
-d'écran.
-Copiez le fond d'écran de votre choix à sa place.
-.It
-Le navigateur de fichiers est 
-.Lk http://roland65.free.fr/xfe/ xfe
-.Pp
-Il est à la fois léger et suffisamment configurable pour
-permettre l'accès à des actions personnalisées via
-clic-droit.
-.It
-Le pointeur de la souris est caché grâce à 
-.Xr xbanish 1
-.It
-Le thème de couleur "nord" est installé pour les applications X. Voir.
-.Lk  https://www.nordtheme.com/
-.El
+Vous pouvez bien entendu en installer un autre si vous
+préférez.
+
+
 
 .Ss Pourquoi ce nom?
 
@@ -327,111 +245,200 @@ Consultez le fichier
 .Pa $HOME/.start
 
 .Ss Quels scripts sont inclus?
+Voir le contenu du dossier
+.Pa $HOME/bin
+Référez-vous au pages man correspondantes pour plus
+d'information.
+
+.Ss Que fait isotop-user.sh ?
+
+Ce script installe le gestionnaire de fenêtre dwm (voir
+.Xr dwm-isotop 1
+) personnalisé, une version de 
+.Xr dmenu 1
+avec support de la souris, 
+.Xr slstatus 1
+pour afficher des informations dans la barre de status et
+.Xr lsdesktop 1
+permettant l'affichage des applications installées pour un menu.
+.Xr rover 1
+un gestionnaire de fichiers en mode texte.
+
+De plus, il copie plusieurs fichiers de configuration : 
 
 .Bl -bullet
 .It
-bdmenu: permet de lancer une commande via dmenu avec historique et
-possibilité d'exécuter une commande dans un terminal en
-terminant l'entrée par 
-.Dq !
+.Pa .Xresources
+: configure la couleur des applications X (xclock, xterm...) avec le
+thème 
+.Dq nord
+Voir
+.Lk  https://www.nordtheme.com/
 .It
-checkbatt : ce script est lancé périodiquement via 
-.Xr crontab 5
-et permet d'afficher une alerte si la batterie devient faible.
+.Pa .aliases, .functions
+: Ajoute 
+quelques commandes pratiques (ll, .., clbin, mktgz, mkcd, ...). Consultez le contenu
+de ces fichiers pour en savoir plus.
 .It
-dalarm: spécifiez une alerte, puis un nombre de minutes. Une notification 
-affichera l'alerte après le délai.
+.Pa .bookmarks
+: un fichier contenant des marques pages que vous pouvez charger avec 
+.Xr dloadbmk 1
+et compléter avec
+.Xr daddbmk
+.It
+.Pa .config
+contient la configuration pour
+.Xr dunst 1
+,
+.Xr xfe 1
+,
+.Xr mpv 1
+, l'apparence des applications gtk3 et une liste des entrées à
+ignorer avec
+.Xr lsdestop 1
+.It
+.Pa .dmenurc
+un fichier permettant de modifier l'apparence de 
+.Xr dmenu 1
+de façon commune à plusieurs scripts
+.It
+.Pa .exrc
+Fichier de configuration de 
+.Xr vi 1
 .It 
-ddesktop : affiche dans un dmenu une liste des applications disponibles
-sur le système après avoir listé les fichiers
-.desktop présents.
-Exemple:
-.Cm top!
-.Pp
-Ce menu est disponible en faisant un clic-gauche sur la barre de status
-ou le fond d'écran.
+.Pa .first.sh
+est un script qui est lancé à la première ouvrture
+de session et affiche cette page de manuel
 .It
-dfm: un lanceur de fichiers utilisant dmenu.
+.Pa .gtkrc-2.0
+définit l'apparence des applications gtk
 .It
-dloadbmk: ouvre une page web listée dans
-.Pa $HOME/.bookmarks
+.Pa .kshrc
+Fichier de configuration du shell par défaut ksh. Ce dernier
+permet d'afficher le dossier courant, une couleur spécifique si
+une commande a échoué et quelques autocomplétions
+pour des commandes relatives à OpenBSD.
 .It
-dman : permet d'ouvrir rapidement une page man (merci eol)
+.Pa .local/share/applications
+: Ce dossier contient plusieurs fichiers
+.Dq .desktop
+permettant de donner accès aux scripts intégrés
+dans isotop
+.It 
+.Pa .mpdconf
+: fichier de configuration pour
+.Xr mpd 1
 .It
-dmpc: choix d'une chanson à jouer dans mpd
+.Pa .profile
+: Fichier permettant de définir plusieurs variables
+d'environnement telles que BROWSER pour définir le navigateur par
+défaut ou encore la langue à utiliser, les dossiers où
+se trouvent les binaîtres PATH et le dossier où se
+trouvent les pages man supplémentaires MANPATH.
 .It
-dsch: recherche sur le web.
-Le moteur de recherche par défaut est duckduckgo si vous ne spécifiez pas de recherche
-moteur.
+.Pa .start
+: Fichier permettant d'exécuter des commandes au démarrage
+de la session. Il est lancé par 
+.Pa .xsession
+.It
+.Pa .wallpaper
+: Ce fichier est en fait une image qui sert de fond d'écran. Vous
+pouvez la remplacer par ce qui vous plaît.
+.El
 
-Exemples :
+Enfin, plusieurs outils sont disponibles dans le dossier
+.Pa bin
+Référez-vous au pages man correspondantes pour plus
+d'information.
 
-.Bd -literal -offset indent
-moteur par défaut: OpenBSD, chiffrement complet du disque
-recherche sur openbsd misc list: obsdmisc firefox crash
-.Ed
+Enfin, le script installe les pages man livrées avec isotop dans
+le dossier
+.Pa $HOME/.isotop/man
+et crée les dossiers habituellement utilisés par les
+applications.
 
-.It
-dsct : configurer la couleur de l'écran
-.It
-dshot : capture d'écran avec possibilité d'upload et copie
-dans le presse papier
-.It
-dsshmenu : ouvre une session ssh.
-.It
-dyt: télécharger une vidéo avec
-.Xr youtube-dl 1
 
-L'URL sélectionnée est collée par défaut.
-.It
-gdoas: ouvre xterm pour taper le mot de passe doas utilisé pour d’autres scripts
-.It
-imgmod: modifier une image en utilisant
-.Xr gm 1
+Ce script s'occupe de configurer plusieurs outils au niveau du
+système tout entier. L'utilisateur est libre de l'utiliser ou
+non.
 
-Les modifications supportées sont.
 .Bl -bullet
 .It
-convertir en jpg
+Configuration de l'apparence de 
+.Xr xenodm 1
+Un fond d'écran est installé dans
+.Pa /usr/local/share/isotop/walls/loginbg.jpg
 .It
-convertir en png
+Activation des 
+.Dq softdep
+pour accélérer la lecture sur les disques
 .It
-convertir en gif
+Installation d'un fichier appelé par
+.Pa /etc/rc.local
+qui permet de mettre à jour la liste des domaines
+blacklistés par
+.Xr unwind 8
 .It
-redimensionner
-.It
-tourner à gauche ou à droite
-.El
-.It
-imgopti: optimise une image pour réduire son poids.
-.It
-networkcheck: vérifie l'accès à Internet
-.It
-openbsdupgrade: mise à niveau vers les dernières modifications de -stable avec
-.Xr syspatch 8
-.Xr fw_update 1
-.Xr pkg_add 1
-.It
-pixcol: affiche le code html de la couleur du pixer situé sous le
-pointeur.
-.It
-pixup: téléverse une image sur pix.toile-libre.org
-.It
-scrot : réalise une capture d'écran.
-.It
-send_dmesg.sh: envoyez votre dmesg aux développeurs OpenBSD pour aider
-au support matériel.
-.It
-sessionmenuisotop: Ouvre une fenêtre pour éteindre/redémarrer/quitter
-la session...
+Configuration d'
+.Xr unwind 8
+et
+.Xr dhclient.conf 5
+pour avoir un résolveur de nom local qui filtre aussi les pubs et
+domaines malveillants.
+est configuré en tant que résolveur de nom de domaine local
+par défaut. Ainsi, vous ne dépendez pas d'un fournisseur
+d'accès à internet pour réaliser cette tâche
+(anti-censure).
 .Pp
-Ce menu est disponible en faisant un clic-droit sur la barre de status
-ou le fond d'écran.
+Un fichier
+.Pa /var/unwind.block
+contient une liste de domaines connus comme malveillants ou
+publicitaires. Cette liste est mise à jour
+une fois par semaine au démarrage via le script
+.Pa /etc/rc.local.
+.Pp
+Cette liste est récupérée depuis le site
+.Lk https://ybad.name/evils.html de l'auteur d'isotop.
+Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
+obtiendrez un
+message:
+.Dq Le site web n'est pas disponible
 .It
-setwall: définit le fond d'écran.
+Configuration de la gestion d'énergie avec
+.Xr apmd 8
 .It
-term: ouvre un terminal. PAr défaut, xterm est utilisé.
+Configuration de 
+.Xr doas 1
+pour faciliter l'utilisation des outils isotop
+.It
+La configuration ntpd n'utilise pas google comme contrainte.
+.It
+Quelques programmes supplémentaires sont installés.
+Voir
+.Lk https://framagit.org/3hg/isotop/-/blob/master/isotop-files/packages.txt
 .El
+
+.Ss Pourquoi avoir choisi dwm?
+Gérer les fenêtres occupe énormément de
+temps. ON les déplace, on les redimensionne, pour souvent devoir
+recommencer la minute suivante, en laissant plein de place
+inutilisée à l'écran.
+
+dwm propose une réponse à ce problème en arrangeant
+automatiquement les fenêtres.
+
+Lorsque trop de fenêtres sont ouvertes, il est rare de toutes les
+afficher en même temps : dwm permet de passer en un mode
+"maximisé" pour afficher une fenêtre en grand.
+
+Enfin, dwm est un gestionnaire de fenêtres très
+léger et rapide. Il est écrit en très peu de lignes
+de code, profite du support de
+.Xr pledge 2
+ce qui le rend plus fiable et sûr.
+
+Cependant, si vous en préférez un autre, n'hésitez
+pas :)
 
 .Sh À propos de dmenu
 Les outils inclus utilisent dmenu patché pour pouvoir aussi
@@ -450,7 +457,8 @@ ctrl-y: coller la sélection
 .Ed
 
 Voir
-.Lk https://tools.suckless.org/dmenu/ site web de dmenu
+.Lk https://tools.suckless.org/dmenu/ le site web de dmenu
+
 
 .Sh BUGS
 Bien sûr.
@@ -473,7 +481,11 @@ Veuillez les signaler à
 .Xr dmpc 1
 .Xr firefox 1
 .Xr mpc 1
+.Xr mpd 1
 .Xr ncmpc 1
 .Xr pkg_mgr 1
 .Xr tmux 1
 .Xr slstatus 1
+.Xr lsdesktop 1
+.Xr dloadbmk 1
+.Xr dunst 1

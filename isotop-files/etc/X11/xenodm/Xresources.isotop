@@ -49,46 +49,6 @@
 *font:-misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
 *faceName: DejaVuSansMono:pixelsize=12:antialias=true
 
-! Xterm config
-xterm.vt100.bellIsUrgent: true
-xterm.vt100.translations: #override \n\
-Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
-Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
-xterm*loginShell: true
-xterm*locale: utf8
-xterm*renderFont: true
-xterm*saveLines: 4242
-XTerm*borderWidth   : 0
-xterm*internalBorder: 10
-xterm*scrollBar: false
-xterm*utf8: 1
-xterm*cursorBlink: true
-! clicking a line selects only from the current word forward
-XTerm*cutToBeginningOfLine   : false
-! and don't include a trailing newline in the selection!
-XTerm*cutNewline             : false
-! some black magic to change what characters XTerm considers "word
-delimiters"
-XTerm*charClass              :
-33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
-! select word on two clicks
-XTerm*on2Clicks              : word
-! select whole line on three clicks
-XTerm*on3Clicks              : line
-
-! ===== xlock
-! plain white-on-black lock screen
-xlock.description : off
-xlock.echokeys    : off
-xlock.info        :
-xlock.mode        : blank
-xlock.username    : "?: "
-xlock.password    : "pass: "
-XLock.dpmsoff     : 1
-XLock.font     : -misc-fixed-medium-r-normal-*-17-*-*-*-*-*-iso10646-1
-XLock.planfont:-misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
-
-
 ! xmessage
 Xmessage.form.okay.shapeStyle:         rectangle
 Xmessage*buttons:                       OK

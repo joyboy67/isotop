@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=NcMpcPP
+Name=NcMpc
 Comment=MPD Front end
 Comment[fr]=Interface console à MPD
-Exec=ncmpcpp
+Exec=ncmpc
 Terminal=true
 Type=Application
 Icon=audio-x-generic

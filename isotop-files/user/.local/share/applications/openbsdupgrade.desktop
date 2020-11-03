@@ -2,9 +2,9 @@
 Type=Application
 Name=Upgrade OpenBSD
 Name[fr]=Mise à jour d'OpenBSD
-Comment=Upgrade OpenBSD with syspatch and openup
-Comment[fr]=Mettre OpenBSD à jour avec syspatch et openup
-Exec=/usr/local/share/isotop/bin/openbsdupgrade
+Comment=Upgrade OpenBSD with syspatch
+Comment[fr]=Mettre OpenBSD à jour avec syspatch, fw_update,
+Exec=openbsdupgrade
 Categories=System;
 Terminal=true
 Icon=system-software-update

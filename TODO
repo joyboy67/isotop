@@ -1,23 +1,10 @@
 # TODO
-* doc pq pas cups et hotplug par defaut : secu
-* doc dmount dumount
-* commande impri ?
-* indiquer dans readme que fichiers peuvent être supprimés ensuite
 * manpages pour chaque petit outil
 * archive manager
 * script dl paquets pour install offline
 * replace owi : nmctl 
 	https://sourceforge.net/projects/nmctl/
-* update screenshots
-
-FAQ : pq dwm et dmenu ? Pr rendre + pratique et accessible, il faut que
-	Ã§a soit stable et simple.
-script locate avec dmenu
-* script term : choix de term
-* doc patches dwm
-* doc slstatus + patches
-* doc patches dmenu
-* doc crontab checkbatt
+* update screenshots sur 3hg.fr
 
 ## Later
 * rewrite owi and write a dmenu wireless connexion manager (I don't have
@@ -27,9 +14,18 @@ wifi...)
 * man pages for included scripts ?
 * xfe archive manager
 * rover
+* cdrom ?
+* FAQ webcam/audio record ?
 
 ## man
 * dwm-isotop (1)
 * dmenu-isotop (1)
 * dsct 1
 * dmpc
+script locate avec dmenu
+* script term : choix de term
+* doc patches dwm
+* doc slstatus + patches
+* doc patches dmenu
+* doc crontab checkbatt
+

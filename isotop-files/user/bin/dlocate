@@ -1,0 +1,38 @@
+#!/bin/sh
+# search for file in $sp
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+#sp="$HOME /etc /bin /usr/local"
+sp="$HOME"
+
+cachedir="${XDG_CACHE_HOME:-"$HOME/.cache"}"
+cache="$cachedir/dlocate.db"
+
+mk_cache()
+{
+	/usr/libexec/locate.updatedb \
+	--fcodes="$cache" \
+	--searchpaths="$sp"
+}
+
+if [ -s $cache ]; then
+	lastdbmod=$(stat -f "%m" $cache)
+	lastspmod=$(stat -f "%m" $sp |sort -r |sed q)
+	test $lastdbmod -lt $lastspmod && mk_cache
+else
+	mk_cache
+fi
+
+prompt="locate:"
+
+res=$(locate -b -d "${cache}" . | dmenu \
+        -l ${l} \
+        -i \
+        -fn "${fn}" \
+        -nb "${nb}" \
+        -nf "${nf}" \
+        -sb "${sb}" \
+        -sf "${sf}" \
+        -p "${prompt}" \
+)
+notify-send "${res}"
+test -f "${res}" && xdg-open "${res}"

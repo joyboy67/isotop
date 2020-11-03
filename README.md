@@ -30,6 +30,8 @@ If OK, extract archive and run scripts :
 	$ sh isotop-user.sh
 	$ doas sh isotop-root.sh
 
+When you have finished, feel free to remove every `isotop-*` files.
+
 Screenshots
 -----------
 

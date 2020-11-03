@@ -9,3 +9,4 @@ MANPATH=:$HOME/.isotop/man
 export VISUAL EDITOR PATH HOME TERM TOP PAGER BROWSER ENV MANPATH
 export LDFLAGS="-L /usr/lib -L/usr/local/lib"
 export CXXFLAGS="-I /usr/include -I/usr/local/include"
+export ROVER_OPEN="rover-open"

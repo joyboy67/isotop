@@ -20,10 +20,10 @@ esac
 
 wd=$(pwd)
 echo "* Copy user configuration"
-cp -v -r isotop-files/user $HOME
+cp -v -r isotop-files/user/* $HOME/
 cp -v -r isotop-files/user/.* $HOME/
 
-# compile dwm, slstatus, dmenu
+# compile dwm, slstatus, dmenu, lsdesktop, rover
 echo "* compiles tools"
 cd $wd/isotop-files/src/dwm
 make
@@ -31,12 +31,18 @@ cp -f dwm $HOME/bin/dwm-isotop
 cd $wd/isotop-files/src/dmenu
 make
 cp -f dmenu dmenu_path dmenu_run stest $HOME/bin/
+cp dmenu.1 $HOME/.isotop/man/man1/
 cd $wd/isotop-files/src/slstatus
 make
 cp -f slstatus $HOME/bin/
-# compile lsdesktop
+cp slstatus.1 $HOME/.isotop/man/man1/
 cd $wd/isotop-files/src/lsdesktop
 make lsdesktop && cp lsdesktop $HOME/bin/
+cd $wd/isotop-files/src/rover
+make
+make install PREFIX=$HOME MANPREFIX=$HOME/.isotop/man/
+
+# back to first directory
 cd $wd
 
 mkdir -p ${HOME}/.config

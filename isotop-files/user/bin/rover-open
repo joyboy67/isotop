@@ -1,0 +1,30 @@
+#! /bin/sh
+# Usage:
+#     ./open.sh /path/to/file
+
+# get extension
+ext="$(echo .${1#*.} | tr '[:upper:]' '[:lower:]')"
+# lower extension
+
+case "${ext}" in
+  *.htm|*.html)
+    fmt="$BROWSER %s" ;;
+  *.pdf|*.xps|*.cbz|*.epub)
+    fmt="mupdf %s" ;;
+  *.jpg|*.jpeg|*.png|*.gif|*.tiff)
+    fmt="sxiv %s" ;;
+  *.odt|*.odt|*.ods|*.od*|*.docx|*.doc|*.xls|*.xlsx)
+    fmt="libreoffice %s" ;;
+  *.mp4|*.avi|*.mpg|*.ogv|*.webm|*.mkv)
+    fmt="ffplay %s" ;;
+  *.ogg|*.flac|*.wav|*.mp3)
+    fmt="ffplay %s" ;;
+  *.[1-9])
+    fmt="man -l %s" ;;
+  *.c|*.h|*.sh|*.lua|*.py|*.ml|*[Mm]akefile|*.md)
+    fmt="$EDITOR %s" ;;
+  *)
+    fmt="xdg-open %s"
+esac
+
+exec sh -c "$(printf "$fmt" "\"$1\"")"
