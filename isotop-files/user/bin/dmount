@@ -1,0 +1,55 @@
+#!/bin/sh
+# detect recently insterted media
+# look for slice
+# choose the one to mount with dmenu.
+# mount the partition in $mountdir/sdnm 
+#     where "n" is the disk and "m" the slice
+
+# doas.conf : 
+#permit nopass :wheel cmd /sbin/mount
+#permit nopass :wheel cmd /sbin/disklabel
+
+# change "mountdir" according to your needs
+mountdir=$HOME/media/
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+P="mount:"
+OPTION="-sb ${sb} -sf ${sf} -nb ${nb} -nf ${nf} -fn ${fn} -p $P -l $l"
+
+sdn="$(dmesg | tail | \
+    grep -E 'sd[0-9]+ at' |\
+	dmenu -l ${l} \
+		-fn ${fn} \
+		-nb ${nb} \
+		-nf ${nf} \
+		-sb ${sb} \
+		-sf ${sf} \
+		-p 'disk ?'|\
+	cut -d' ' -f1)"
+
+test -z "${sdn}" && exit 1
+
+slice="$(doas /sbin/disklabel ${sdn} |\
+    grep -E '^  ' |\
+	tr -d ' ' |\
+	cut -d':' -f1 |\
+	sed -e 's/c//' |\
+	dmenu -l ${l} \
+		-fn ${fn} \
+		-nb ${nb} \
+		-nf ${nf} \
+		-sb ${sb} \
+		-sf ${sf} \
+		-p 'slice ?')"
+test -z "${slice}" && exit 1
+
+partition="${sdn}${slice}"
+mntpt="${mountdir}/${partition}"
+mkdir -p "${mntpt}"
+
+if [ "$sdn" != "" ]; then 
+	doas /sbin/mount /dev/"${sdn}i" ${mntpt}
+	xfe ${mntpt}
+fi
+
+exit $?

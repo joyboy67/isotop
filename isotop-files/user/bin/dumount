@@ -1,0 +1,14 @@
+#!/bin/sh
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+P="umount:"
+OPTION="-sb ${sb} -sf ${sf} -nb ${nb} -nf ${nf} -fn ${fn} -p $P -l $l"
+
+_REP=$(df | tr -s " " | cut -d " " -f 1,6 | dmenu $OPTION | cut -d ' ' -f2)
+
+if [ "$_REP" != "" ]; then 
+	sync
+	doas /sbin/umount "$_REP"
+fi
+
+exit $?
