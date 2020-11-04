@@ -88,9 +88,6 @@ makewhatis $HOME/man
 # make sure scripts are +x
 chmod +x ${HOME}/bin/*
 
-# add xdg-user-dirs
-xdg-user-dirs-update
-
 # mpd
 echo "* set up mpd"
 mkdir -p $HOME/mpd

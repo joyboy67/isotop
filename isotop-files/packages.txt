@@ -39,7 +39,6 @@ tango-icon-theme--
 xbanish--
 xcape--
 xclip--
-xdg-user-dirs--
 xdg-utils--
 xfe--
 xwallpaper--
