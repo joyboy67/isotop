@@ -28,7 +28,7 @@ echo "* compiles tools"
 for i in dwm dmenu slstatus rover; do
 	cd $wd/isotop-files/src/$i
 	make
-	make install PREFIX=$HOME MANPREFIX=$HOME/.isotop/man/
+	make install PREFIX=$HOME MANPREFIX=$HOME/man/
 done
 
 #rename dwm
@@ -75,13 +75,15 @@ esac
 
 # manpages
 echo "* install isotop manpages"
-cp -r ${mdocs}/* $HOME/.isotop/man
-find $HOME/.isotop/man/ -type f -iname *.mdoc | while read -r m
+mkdir -p $HOME/man
+cp -r ${mdocs}/* $HOME/man
+find $HOME/man/ -type f -iname *.mdoc | while read -r m
 do
 	section=$(echo "${m}" | grep -o "man[0-9]" | cut -c4)
 	mandoc -T man "${m}" > "${m%.*}.$section"
+	rm "${m}"
 done
-makewhatis $HOME/.isotop/man
+makewhatis $HOME/man
 
 # make sure scripts are +x
 chmod +x ${HOME}/bin/*
@@ -91,6 +93,7 @@ xdg-user-dirs-update
 
 # mpd
 echo "* set up mpd"
+mkdir -p $HOME/mpd
 mkdir -p $HOME/.mpd/playlists
 
 echo "* install checkbatt cron"

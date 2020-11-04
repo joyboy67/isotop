@@ -7,7 +7,7 @@ set -e
 # For a simpler interface, this is not handled as only
 # the last component of path is displayed in dmenu
 
-sp='/usr/share/man/ /usr/local/man/ /usr/X11R6/man/'
+sp="$HOME/man /usr/share/man/ /usr/local/man/ /usr/X11R6/man/"
 mandb=~/.man.db
 readonly sp mandb
 
