@@ -30,6 +30,5 @@ xidle -timeout 900 &
 xbanish &
 # music player
 mpd &
-mpd-notifier &
 # clock at top
-cwmclock &
+slstatus &

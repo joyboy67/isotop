@@ -31,14 +31,16 @@ OpenBSD pour tou(te)?s https://openbsd.fr.eu.org
 EOF
 fi
 
-
-# compile dmenu, rover
+# compile dwm, slstatus, dmenu, rover
 echo "* compiles tools"
-for i in dmenu rover; do
+for i in dwm dmenu slstatus rover; do
 	cd $wd/isotop-files/src/$i
 	make
 	make install PREFIX=$HOME MANPREFIX=$HOME/man/
 done
+
+#rename dwm
+mv -fv $HOME/bin/dwm $HOME/bin/dwm-isotop
 
 cd $wd/isotop-files/src/lsdesktop
 make lsdesktop && cp lsdesktop $HOME/bin/

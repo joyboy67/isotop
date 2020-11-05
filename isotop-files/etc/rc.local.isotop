@@ -1,4 +1,6 @@
 sleep 60 && syspatch &
-if [ -n "$(find /var/unwind.block -mtime +7)" ]; then
+if [ ! -f /var/unwind.block ]; then
+    ftp -o- https://ybad.name/pub/unwind.block.gz | gunzip > /var/unwind.block &
+elif [ -n "$(find /var/unwind.block -mtime +7)" ]; then
     ftp -o- https://ybad.name/pub/unwind.block.gz | gunzip > /var/unwind.block &
 fi

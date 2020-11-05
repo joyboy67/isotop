@@ -239,7 +239,9 @@ trim(char **str)
 int 
 main (int argc, char *argv[])
 {
+#ifdef __OpenBSD__
 	PLEDGEORDIE("stdio rpath cpath wpath");
+#endif
 
 	int n                   = 0;
 	char *sep               = "|";
@@ -253,7 +255,9 @@ main (int argc, char *argv[])
 		if (strcmp(argv[1], "-h") == 0) {
 			printf("usage: %s [-h|-s]\n", argv[0]);
 			printf("    -h: show this message\n");
-			printf("    -s: set separator string between name and command\n");
+			printf("    -s: set separator string between name and command\n\n");
+			printf("every filename listed in ~/.config/lsdesktop.exclude"
+				" will be ignored (one per line)\n");
 			exit(0);
 		}
 	} else if (argc == 3) {
