@@ -15,7 +15,7 @@ cache="$cachedir/ddesktop"
 
 if [ ! -f "${cache}" -o -n "$(find ${desktopfilespath} -newer ${cache} 2>/dev/null)" ]
 then
-	lsdesktop | column -t -s '|' > ${cache}
+	lsdesktop | column -t -s '#' > ${cache}
 fi
 
 test -s $HOME/.dmenurc && . $HOME/.dmenurc

@@ -242,7 +242,7 @@ main(void)
 	PLEDGEORDIE("stdio rpath cpath wpath");
 
 	int n                   = 0;
-	char *sep               = " | ";
+	char *sep               = " # ";
 	char homedirapp[BUFSIZ] = {'\0'};
 	char desktop[BUFSIZ]    = {'\0'};
 	const char *homedir     = getenv("HOME");
