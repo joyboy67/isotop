@@ -1,0 +1,5 @@
+#!/bin/sh
+
+while true; do
+	notify-send "$(mpc -f '%title%\n%artist%' --wait current)"
+done
