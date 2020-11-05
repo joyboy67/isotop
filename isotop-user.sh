@@ -23,6 +23,15 @@ echo "* Copy user configuration"
 cp -v -r isotop-files/user/* $HOME/
 cp -v -r isotop-files/user/.* $HOME/
 
+if [ ! -f $HOME/.bookmarks ]; then
+	echo "* add bookmarks"
+	cat << EOF >> $HOME/.bookmarks
+OpenBSD https://www.openbsd.org/
+OpenBSD pour tou(te)?s https://openbsd.fr.eu.org
+EOF
+fi
+
+
 # compile dmenu, rover
 echo "* compiles tools"
 for i in dmenu rover; do
