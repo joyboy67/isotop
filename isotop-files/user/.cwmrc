@@ -100,8 +100,8 @@ bind-key MS-underscore      window-movetogroup-8
 bind-key MS-ccedilla        window-movetogroup-9
 
 ## cycle through groups
-bind-key 4-l group-cycle
-bind-key 4-h group-rcycle
+bind-key M-space group-cycle
+bind-key MS-space group-rcycle
 
 ## shortcuts
 bind-key M-s "dsch"
