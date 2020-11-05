@@ -23,16 +23,13 @@ echo "* Copy user configuration"
 cp -v -r isotop-files/user/* $HOME/
 cp -v -r isotop-files/user/.* $HOME/
 
-# compile dwm, slstatus, dmenu, rover
+# compile dmenu, rover
 echo "* compiles tools"
-for i in dwm dmenu slstatus rover; do
+for i in dmenu rover; do
 	cd $wd/isotop-files/src/$i
 	make
 	make install PREFIX=$HOME MANPREFIX=$HOME/man/
 done
-
-#rename dwm
-mv -fv $HOME/bin/dwm $HOME/bin/dwm-isotop
 
 cd $wd/isotop-files/src/lsdesktop
 make lsdesktop && cp lsdesktop $HOME/bin/

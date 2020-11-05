@@ -20,14 +20,14 @@ case $lang in
 		RELOADMSG='Ouvrez une nouvelle session pour utiliser isotop'
 		XENODMWHOAREYOU='Qui est-ce ?'
 		XENODMLOGIN='identifiant ='
-		XENODMPASSWORD='secret =      '
+		XENODMPASSWORD='     secret ='
 		XENODMFAIL='Echec :s'
 		LASTVER="La dernière version d\'isotop est déjà installée"
 	;;
 	*)
 		RELOADMSG='Open a new session to use isotop'
 		XENODMWHOAREYOU='Who are you?'
-		XENODMLOGIN='login=   '
+		XENODMLOGIN='   login='
 		XENODMPASSWORD='password='
 		XENODMFAIL='Authentication failed :s'
 		LASTVER='Last isotop version already installed'

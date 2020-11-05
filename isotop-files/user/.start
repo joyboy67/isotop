@@ -30,5 +30,5 @@ xidle -timeout 900 &
 xbanish &
 # music player
 mpd &
-# dwm status bar
-slstatus &
+# clock at top
+cwmclock &

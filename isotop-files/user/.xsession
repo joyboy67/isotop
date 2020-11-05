@@ -4,5 +4,5 @@
 . $HOME/.profile
 # autostart
 sh $HOME/.start &
-# start dwm window manager
-dwm-isotop
+# start window manager
+cwm

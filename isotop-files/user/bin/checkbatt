@@ -13,10 +13,10 @@ battlvl="$(apm -l)"
 test $battlvl -eq 0 && exit
 
 if [ $battlvl -lt 10 ]; then
-	notify-send -i battery -u critical "Niveau critique: $battlvl %"
+	notify-send -i battery -u critical "Batt: $battlvl %"
 	exit
 elif [ $battlvl -lt 20 ]; then
-	notify-send -i battery "Batterie : $battlvl %"
+	notify-send -i battery "Batt : $battlvl %"
 fi
 
 exit 0

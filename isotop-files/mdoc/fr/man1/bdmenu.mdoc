@@ -3,23 +3,24 @@
 .Os
 .Sh NAME
 .Nm bdmenu
-.Nd dmenu_run with recent and in-term capability
+.Nd un lanceur d'applications comme 
+.Xr dmenu_run 1
+avec gestion des entrées
+récentes et possiblité d'ouvrir dans un terminal.
 .Sh DESCRIPTION
-The
 .Nm
-utility show a list of availables executables starting with most
-recently executed.
+montre une liste des commandes pouvant être exécutées avec, en
+premier, les plus récemment ouvertes.
 
-If the input ends with 
-"!"
-then the command is executed in a terminal.
-.Sh SEE ALSO
+Si l'entrée choisie se termine par un "!", la commande est ouverte
+dans un terminal.
+.Sh VOIR AUSSI
 .Xr dmenu 1
 .Xr term 1
-.Sh EXAMPLES
+.Sh EXEMPLES
 .Bd -literal
-	top! : display top in a terminal
-	firefox : open firefox
+	top! : ouvre "top" dans un terminal
+	firefox : ouvre firefox
 .Ed
 .Sh AUTHORS
 .An prx prx@ybad.name

@@ -1,0 +1,10 @@
+#!/bin/sh
+# simple clock for cwm
+
+S=5 # seconds
+fontsize=10
+
+xclock -render -padding 1 -digital \
+	-face "DejaVuSansMono-$fontsize" \
+	-geometry "+0+0" \
+	-strftime " %F - %H:%M "

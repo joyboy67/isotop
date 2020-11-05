@@ -1,25 +1,31 @@
 .Dd $Mdocdate$
-.Dt bdmenu 1
+.Dt checkbatt 1
 .Os
 .Sh NAME
-.Nm bdmenu
-.Nd dmenu_run with recent and in-term capability
+.Nm checkbatt
+.Nd affiche une alerte si la batterie est faible 
 .Sh DESCRIPTION
-The
 .Nm
-utility show a list of availables executables starting with most
-recently executed.
+Une première alerte est affichée à partir d'un niveau de 20%
 
-If the input ends with 
-"!"
-then the command is executed in a terminal.
-.Sh SEE ALSO
-.Xr dmenu 1
-.Xr term 1
-.Sh EXAMPLES
+Une seconde de type critique est affichée à 10%. Cela laisse un
+peu de temps à l'utilisateur d'éteindre ou brancher son
+ordinateur.
+
+Ce script est censé être appelé régulièrement via une
+tâche cron.
+
 .Bd -literal
-	top! : display top in a terminal
-	firefox : open firefox
+*/5 * * * * /home/foo/bin/checkbatt >/dev/null 2>&1
 .Ed
+
+.Sh VOIR AUSSI
+.Xr apm 8
+.Xr dunst 1
+.Xr crontab 1
 .Sh AUTHORS
+trouvé sur
+.Lk
+https://raw.githubusercontent.com/kovalyshyn/home/master/openbsd/bin/checkbatt
+et modifié pour isotop par
 .An prx prx@ybad.name

@@ -19,4 +19,5 @@ alias clbin='curl -v -F "clbin=<-" https://clbin.com'
 alias upports='cd /usr/ports && cvs -q up -Pd'
 alias fetchsrc='cd /usr/src && cvs -q up -Pd -A'
 alias fetchport='cd /usr/ports && cvs -q up -Pd -A'
+alias fetchxenocara='cd /usr/xenocara && cvs -q up -Pd -A'
 
