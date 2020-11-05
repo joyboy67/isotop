@@ -237,17 +237,28 @@ trim(char **str)
 }
 
 int 
-main(void) 
+main (int argc, char *argv[])
 {
 	PLEDGEORDIE("stdio rpath cpath wpath");
 
 	int n                   = 0;
-	char *sep               = " :: ";
+	char *sep               = "|";
 	char homedirapp[BUFSIZ] = {'\0'};
 	char desktop[BUFSIZ]    = {'\0'};
 	const char *homedir     = getenv("HOME");
 	struct dirent **namelist;
 
+
+	if (argc == 2) {
+		if (strcmp(argv[1], "-h") == 0) {
+			printf("usage: %s [-h|-s]\n", argv[0]);
+			printf("    -h: show this message\n");
+			printf("    -s: set separator string between name and command\n");
+			exit(0);
+		}
+	} else if (argc == 3) {
+		sep = argv[2];
+	}
 
 	esnprintf(homedirapp, sizeof(homedirapp), "%s/.local/share/applications", homedir);
 	/* .desktop files directories */
