@@ -7,6 +7,7 @@ _shutdown="Shutdown"
 _reboot="Reboot"
 _suspend="Suspend"
 _hibernate="Hibernate"
+_lock="Lock"
 _exit="Exit"
 _help="Help"
 case $LANG in
@@ -15,6 +16,7 @@ case $LANG in
 		_reboot="Redemarrer"
 		_suspend="Suspendre"
 		_hibernate="Hiberner"
+		_lock="Verouiller"
 		_exit="Quitter"
 		_help="Aide"
 	;;
@@ -24,6 +26,7 @@ res=$(echo "$_shutdown
 $_reboot
 $_suspend
 $_hibernate
+$_lock
 $_exit
 $_help" | dmenu \
 	-l ${l} \
@@ -42,6 +45,7 @@ case "$res" in
 	$_reboot)    doas /sbin/reboot ;;
 	$_suspend)   doas /usr/sbin/zzz ;;
 	$_hibernate) doas /usr/sbin/ZZZ ;;
+	$_lock)      xlock ;;
 	$_exit)      pkill dwm ;;
 	$_help)      xterm -e man isotop ;;
 esac

@@ -32,6 +32,7 @@ static const Rule rules[] = {
 	{ NULL,               NULL,   "xmessage",    0,          1,    -1 },
 	{ "Dunst",            NULL,   NULL,          0,          1,    -1 },
 	{ "manisotop",        NULL,   NULL,          0,          1,    -1 },
+	{ "scratchpad",       NULL,   NULL,          0,          1,    -1 },
 };
 
 /* layout(s) */
@@ -139,6 +140,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,           XK_Delete,     spawn,      SHCMD("xlock") },
 	{ MODKEY|ShiftMask,           XK_Delete,     spawn,      SHCMD("xlock") },
 	{ 0,                          XK_Print,      spawn,      SHCMD("dshot") },
+	{ MODKEY,                     XK_BackSpace,  spawn,      SHCMD("scratchpad") },
+	{ MODKEY,                     XK_x,          spawn,      SHCMD("scratchpad") },
 
 	/* focusmaster patch Mod-m */
 	{ MODKEY,                     XK_m,  focusmaster,    {0} },
@@ -159,7 +162,6 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	/* isotop */
 	/* scroll or left click change window */
 	{ ClkWinTitle,          0,              Button1,        focusstack,     {.i = +1 } },
 	{ ClkWinTitle,          0,              Button4,        focusstack,     {.i = +1 } },
@@ -169,13 +171,13 @@ static Button buttons[] = {
 	/* scroll on status : change volume */
 	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("sndioctl -q output.level=+0.1") },
 	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("sndioctl -q output.level=-0.1") },
-	/* on status and background: 
-	 *   left or right-click : menu
-	 */
+	/* on status and background: left or right-click : menu */
 	{ ClkStatusText,        0,              Button3,        spawn,          SHCMD("dsession") },
 	{ ClkStatusText,        0,              Button1,        spawn,          SHCMD("ddesktop") },
 	{ ClkRootWin,           0,              Button3,        spawn,          SHCMD("dsession") },
 	{ ClkRootWin,           0,              Button1,        spawn,          SHCMD("ddesktop") },
+	/* MODKEY-scrollup on window push it into master area */
+	{ ClkClientWin,  MODKEY|ShiftMask,      Button1,      zoom,    {0} },
 };
 
 /* custom funcs */
