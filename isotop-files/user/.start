@@ -16,8 +16,8 @@ fi
 xrdb -merge $HOME/.Xresources
 # disable bell
 xset b off &
-# set ~/.wallpaper as Wallpaper
-setwall $HOME/.wallpaper &
+# pick a random wallpaper
+rdmwall $HOME/.wallpapers/ &
 # numpad
 numlockx &
 # Vi user, be grateful
