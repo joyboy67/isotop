@@ -32,7 +32,7 @@ static const Rule rules[] = {
 	{ NULL,               NULL,   "xmessage",    0,          1,    -1 },
 	{ "Dunst",            NULL,   NULL,          0,          1,    -1 },
 	{ "manisotop",        NULL,   NULL,          0,          1,    -1 },
-	{ "scratchpad",       NULL,   NULL,          0,          1,    -1 },
+	{ "scratchterm",      NULL,   NULL,          0,          1,    -1 },
 };
 
 /* layout(s) */
@@ -140,8 +140,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,           XK_Delete,     spawn,      SHCMD("xlock") },
 	{ MODKEY|ShiftMask,           XK_Delete,     spawn,      SHCMD("xlock") },
 	{ 0,                          XK_Print,      spawn,      SHCMD("dshot") },
-	{ MODKEY,                     XK_BackSpace,  spawn,      SHCMD("scratchpad") },
-	{ MODKEY,                     XK_x,          spawn,      SHCMD("scratchpad") },
+	{ MODKEY,                     XK_BackSpace,  spawn,      SHCMD("scratchterm") },
+	{ MODKEY,                     XK_x,          spawn,      SHCMD("scratchterm") },
 
 	/* focusmaster patch Mod-m */
 	{ MODKEY,                     XK_m,  focusmaster,    {0} },

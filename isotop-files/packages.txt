@@ -1,7 +1,6 @@
 GraphicsMagick--
 aspell--
 aspell-fr--
-b612-font--
 curl--
 detox--
 ffmpeg--

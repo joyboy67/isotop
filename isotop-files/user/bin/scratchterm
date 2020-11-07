@@ -1,0 +1,40 @@
+#!/bin/sh
+# open/hide an xterm in the middle of the screen
+# containing a tmux session
+name=scratchterm
+
+# screen size
+sw=$(/usr/X11R6/bin/xwininfo -root|sed '/Width/!d;s/.* //')
+sh=$(/usr/X11R6/bin/xwininfo -root|sed '/Height/!d;s/.* //')
+
+# dimension # 2/3 of screen
+w=$(($sw*2/3))
+h=$(($sh*2/3))
+
+# a char is approx 7x15 px
+columns=$(($w/7))
+rows=$(($h/15))
+
+# position
+x=$((($sw-$w)/2))
+y=$((($sh-$h)/2))
+
+geometry="${columns}x${rows}+${x}+${y}@c"
+
+#tmux
+session=$name
+tmux start-server
+tmux has-session -t $session || \
+	tmux new -d -s $session -n $name 
+
+# show/hide scratchterm
+id_=$(xwininfo -root -children |grep '("xterm" "scratchterm")' | awk '{print $1}')
+	
+if [ -n "$id_" ]; then
+	# window exist, kill it
+	xkill -id $id_
+else
+	# show scratchterm
+	xterm -title $name -class $name -geometry ${geometry}\
+		-e tmux a -t $session &
+fi
