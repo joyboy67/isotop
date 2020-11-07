@@ -35,7 +35,7 @@ if [ -n "$id_" ]; then
 	xkill -id $id_
 else
 	# show scratchterm : a semi-transparent st
-	st -A .8 -c $name -n $name -T $name -g "$geometry" -e tmux a -t $session
+	st -A .9 -c $name -n $name -T $name -g "$geometry" -e tmux a -t $session
 		
 	# uncomment to use xterm instead of st
 	#xterm -T $name -name $name -class $name -geometry "${geometry}@c"\
