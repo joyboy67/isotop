@@ -8,6 +8,7 @@ gimp--
 gnome-colors-icon-theme--
 gnome-themes-extra--
 gtk-engines2--
+gtk2-murrine-engine--
 hack-fonts--
 lowdown--
 firefox--
