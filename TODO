@@ -1,10 +1,7 @@
 # TODO
-* undoc .wallpaper
 * manpages pour chaque petit outil
-* archive manager
 * script dl paquets pour install offline
-* replace owi : nmctl 
-	https://sourceforge.net/projects/nmctl/
+* replace owi : nmctl ? https://sourceforge.net/projects/nmctl/
 * update screenshots sur 3hg.fr
 
 ## Later
@@ -13,7 +10,6 @@
 * session jwm ?
 * xfe archive manager
 * cdrom ?
-* FAQ webcam/audio record ?
 
 ## man
 * dwm-isotop (1)
@@ -24,5 +20,4 @@
 * doc patches dwm
 * doc slstatus + patches
 * doc patches dmenu
-* doc crontab checkbatt
-
+* doc patches st

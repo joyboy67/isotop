@@ -344,9 +344,14 @@ trouvent les pages man supplémentaires MANPATH.
 de la session. Il est lancé par 
 .Pa .xsession
 .It
-.Pa .wallpaper
-: Ce fichier est en fait une image qui sert de fond d'écran. Vous
-pouvez la remplacer par ce qui vous plaît.
+.Pa .wallpapers
+: Ce dossier contient les images qui pourront être
+définies comme fond d'écran. Par défaut, au
+lancement de la session, une image au hasard est choisie.
+Utilisez 
+.Xr
+dwall 1
+pour en changer ensuite.
 .El
 
 Enfin, plusieurs outils sont disponibles dans le dossier
@@ -480,6 +485,7 @@ Veuillez les signaler à
 .Xr dwm-isotop 1
 .Xr dmenu 1
 .Xr dmpc 1
+.Xr dwall 1
 .Xr firefox 1
 .Xr mpc 1
 .Xr mpd 1

@@ -27,6 +27,6 @@ case $CMD in
 esac
 # keep only 10+1 recent
 echo "${CMD}" >> ${cacherecent}
-echo "$(tail ${cacherecent})" > ${cacherecent}
+echo "$(tail ${cacherecent})" | uniq > ${cacherecent}
 exit
 
