@@ -19,7 +19,7 @@ rows=$(($h/15))
 x=$((($sw-$w)/2))
 y=$((($sh-$h)/2))
 
-geometry="${columns}x${rows}+${x}+${y}@c"
+geometry="${columns}x${rows}+${x}+${y}"
 
 #tmux
 session=$name
@@ -28,13 +28,16 @@ tmux has-session -t $session || \
 	tmux new -d -s $session -n $name 
 
 # show/hide scratchterm
-id_=$(xwininfo -root -children |grep '("xterm" "scratchterm")' | awk '{print $1}')
+id_=$(xwininfo -root -children | grep "$name" | awk '{print $1}')
 	
 if [ -n "$id_" ]; then
 	# window exist, kill it
 	xkill -id $id_
 else
-	# show scratchterm
-	xterm -title $name -class $name -geometry ${geometry}\
-		-e tmux a -t $session &
+	# show scratchterm : a semi-transparent st
+	st -A .8 -c $name -n $name -T $name -g "$geometry" -e tmux a -t $session
+		
+	# uncomment to use xterm instead of st
+	#xterm -T $name -name $name -class $name -geometry "${geometry}@c"\
+	#	-e tmux a -t $session &
 fi
