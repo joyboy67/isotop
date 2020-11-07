@@ -5,6 +5,7 @@ curl--
 detox--
 ffmpeg--
 gimp--
+gnome-colors-icon-theme--
 gnome-themes-extra--
 gtk-engines2--
 hack-fonts--
@@ -20,7 +21,6 @@ libmpdclient--
 libreoffice--
 libreoffice-i18n-fr--
 lynx--
-moka-icon-theme--
 mpc--
 mpd--
 mpv--
