@@ -95,7 +95,7 @@ makewhatis $HOME/man
 
 # set up wallpaper
 mkdir $HOME/.wallpapers 
-cp isotop-files/walls/isotopwall.jpg $HOME/.wallpapers
+cp -v isotop-files/walls/isotopwall.jpg $HOME/.wallpapers/
 
 # make sure scripts are +x
 chmod +x ${HOME}/bin/*
