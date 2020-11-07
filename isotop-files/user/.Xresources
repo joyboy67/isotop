@@ -48,7 +48,8 @@
 
 *font:-misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
 !*font:-misc-dejavu sans mono-medium-r-normal-*-17-*-*-*-*-*-iso10646-1
-*faceName: DejaVuSansMono:pixelsize=12:antialias=true
+!*faceName: DejaVuSansMono:pixelsize=12:antialias=true
+*faceName: Hack:pixelsize=12:antialias=true:autohint=true
 
 ! Xterm config
 xterm.vt100.bellIsUrgent: true

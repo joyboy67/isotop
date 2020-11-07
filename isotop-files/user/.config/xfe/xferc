@@ -1,9 +1,9 @@
 [OPTIONS]
-height=877
+height=745
 toolstoolbar=1
 folder_warn=1
 panel_view=1
-width=1436
+width=611
 confirm_drag_and_drop=1
 use_startup_notification=1
 preserve_date_warn=1
@@ -157,7 +157,7 @@ iconpath=/usr/local/share/xfe/icons/tango-theme
 hilitecolor=Gray100
 single_click=0
 highlightcolor=#d8dee9
-textfont=DejaVu Sans Mono [PfEd],100,normal,regular
+textfont=Hack [SRC],100,normal,regular
 bordercolor=#434c5e
 activecolorpane=4
 font=DejaVu Sans [PfEd],90,normal,regular,medium
