@@ -1,0 +1,19 @@
+#!/bin/sh
+#Set as wallpaper a random picture located in any $1 path
+WALLSETTER="setwall"
+
+test -e "$1" && DIRS="$1" || DIRS="$HOME"
+
+getrdmwall() {
+find $DIRS -type f \
+		-iname "*.jpg" -o \
+		-iname "*.png" |\
+sort -R | head -n 1
+}
+
+img=""
+while [ ! -f "${img}" ]; do
+	img="$(getrdmwall)"
+	echo $img
+done
+$WALLSETTER "${img}"

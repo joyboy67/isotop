@@ -32,3 +32,6 @@ xbanish &
 mpd &
 # clock at top
 slstatus &
+# xcompmgr if available
+xdpyinfo | grep -q Composite > /dev/null && \
+	xcompmgr -C -t-5 -l-5 -r4.2 -o.8 &

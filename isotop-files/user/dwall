@@ -1,0 +1,16 @@
+#!/bin/sh
+# changer de wallpaper
+
+WALLDIR=$HOME/.wallpapers
+
+test -s $HOME/.dmenurc && . $HOME/.dmenurc
+
+prompt="wallpaper"
+WALL=$(ls $WALLDIR | dmenu -sb ${sb} -sf ${sf} -nb ${nb} -nf ${nf} -fn ${fn} -i -p "$PWD $prompt:")
+if [ -n "$WALL" ]; then
+    #feh --bg-scale "$WALLDIR/$WALL"		
+    #qiv -z "$WALLDIR/$WALL"
+    setwall "$WALLDIR/$WALL"
+    
+fi
+exit 0
