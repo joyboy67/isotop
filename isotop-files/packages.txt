@@ -20,6 +20,7 @@ libmpdclient--
 libreoffice--
 libreoffice-i18n-fr--
 lynx--
+moka-icon-theme--
 mpc--
 mpd--
 mpv--
