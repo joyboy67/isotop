@@ -1,10 +1,8 @@
 # TODO
-* replace owi : nmctl ? https://sourceforge.net/projects/nmctl/
 * update screenshots sur 3hg.fr
 
 ## Later
 * script dl paquets pour install offline
-* rewrite owi and write a dmenu wireless connexion manager
 * gdoas safe ?
 * session jwm ?
 * xfe archive manager
