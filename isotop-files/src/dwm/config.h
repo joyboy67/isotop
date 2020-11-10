@@ -138,7 +138,6 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,         XK_k,          spawn,      SHCMD("mpc play") },
 	{ MODKEY|ControlMask,         XK_l,          spawn,      SHCMD("mpc next") },
 	{ MODKEY|ShiftMask,           XK_Delete,     spawn,      SHCMD("xlock") },
-	{ MODKEY|ShiftMask,           XK_Delete,     spawn,      SHCMD("xlock") },
 	{ 0,                          XK_Print,      spawn,      SHCMD("dshot") },
 	{ MODKEY,                     XK_BackSpace,  spawn,      SHCMD("scratchterm") },
 	{ MODKEY,                     XK_x,          spawn,      SHCMD("scratchterm") },

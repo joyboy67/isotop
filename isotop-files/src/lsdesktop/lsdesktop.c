@@ -198,7 +198,7 @@ print_name(const char *f)
 	
 	
 	strncpy(l, lang, 2);
-	esnprintf(namel, sizeof(namel), "Name=[%s]", l);
+	esnprintf(namel, sizeof(namel), "Name[%s]=", l);
 	res = get_desktop_item(f, namel);
 	if (res == NULL) {
 		res = get_desktop_item(f, "Name=");

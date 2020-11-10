@@ -7,8 +7,16 @@
 
 .Sh DESCRIPTION
 .Nm 
-est un constitué de deux scripts permettant de configurer OpenBSD pour obtenir un environnement de
+est constitué de deux scripts permettant de configurer OpenBSD pour obtenir un environnement de
 travail rapide, agréable et pratique.
+
+.Bl
+.It isotop-user.sh : installe une session pour l'utilisateur courant, ne
+requiert aucune permission particulière.
+.It isotop-root.sh : configure le système et installe quelques
+paquets, nécessite d'être superutilisateur.
+.El
+
 Les outils présents de base dans OpenBSD sont
 privilégiés. Par conséquent, certains choix ont été faits pour se
 concentrer sur un système simple et efficace.
@@ -27,18 +35,26 @@ d'adaptation.
 
 Pour commencer : 
 
-En haut à gauche, vous voyez les numéros des espaces de
-travail (étiquettes données aux genêtres) suivi d'un symbole. Vous pouvez cliquer dessus pour en changer.
+En haut à gauche, vous voyez les numéros des espaces de travail
+(étiquettes données aux genêtres) suivi d'un symbole. Vous pouvez
+cliquer dessus pour en changer.
 
 En haut à droit, une barre de status indique l'heure, la date, le
 volume sonore, la charge de la batterie et la chanson jouée.
 
-Quelques raccourcis : 
+Vous pouvez ouvrir un terminal avec Alt-hift-Entrée.
+Ouvrez-en un deuxième pour s'entraîner.
 
+Alt-j ou Alt-k vous permet de choisir l'un ou l'autre.
+Alt-Entrée ou bien clic-milieu sur la barre de titre permet de
+mettre la fenêtre souhaitée dans la zone principale.
+
+Quelques raccourcis : 
 .Bl -bullet
 .It 
 clic gauche sur la barre de status ou le fond d'écran : affiche le menu pour
-ouvrir une application
+ouvrir une application. Clic gauche sur une ligne ouvre l'application,
+clic-droit ferme le menu.
 .It 
 clic droit sur la barre de status ou le fond d'écran : affiche le menu de session
 .It 
@@ -50,20 +66,26 @@ fenêtre.
 .It 
 ctrl-shift-Enter : ouvre un terminal
 .It 
-alt-p: affiche dmenu pour ouvrir une application
+alt-p: affiche 
+.Xr dmenu 1
+pour ouvrir une application
 .El
 
 Bien sûr, ce n'est qu'un mince aperçu.
 Voir 
 .Xr dwm-isotop 1
 pour plus d'informations sur les possibilités de la session
-isotop.
+isotop et bien sûr
+.Xr dwm 1.
 
 .Ss Comment installer isotop pour un autre utilisateur ?
 Facile, il suffit de lancer le script d'installation 
-.Sx Que fait isotop-user.sh ?
+.Cm isotop-user.sh
 avec cet
 utilisateur. Seule la configuration utilisateur sera copiée.
+
+Voir
+.Sx Que fait isotop-user.sh ?
 
 .Ss Comment recompiler dwm, dmenu, slstatus, lsdesktop, rover ?
 
@@ -83,7 +105,6 @@ gtk+2-cups gtk+3-cups gtk+4-cups
 .Ed
 
 Activez et démarrez cups:
-
 .Bd -literal -offset indent
 # rcctl enable cupsd cups_browsed
 # rcctl start cupsd cups_browsed
@@ -100,13 +121,11 @@ Puis cliquez sur l'onglet
 "Administration
 
 Voir aussi:
-
 .Lk https://wiki.openbsd.fr.eu.org/doku.php/system/print/
 
 .Ss Comment utiliser une imprimante USB ?
 Ajoutez les lignes suivantes dans le fichier 
 .Pa /etc/rc.shutdown
-
 .Bd -literal -offset indent
 printf 'disable ulpt\nq\n' | config -ef /bsd
 sha256 /bsd >/var/db/kernel.SHA256
@@ -121,14 +140,12 @@ KARL au redémarrage.
 Une fois le redémarrage effectué, il faut donner les
 permissions à cups de gérer cette imprimante.
 Repérez-là avec la commande
-
 .Bd -literal -offset indent
 # usbdevs -vd
 .Ed
 
 Puis modifiez les permissions en conséquence selon le port sur
 lequel l'imprimante est détectée : 
-
 .Bd -literal -offset indent
 chown _cups /dev/ugen0.* /dev/usb2
 .Ed
@@ -191,7 +208,6 @@ Vous pouvez modifier cette configuration en �ditant
 .Pa $HOME/.mpdconf
 
 À ce propos, voir : 
-
 .Bl -bullet
 .It
 .Xr dmpc 1
@@ -205,7 +221,7 @@ Vous pouvez modifier cette configuration en �ditant
 Voir
 .Sx Que fait isotop-user.sh ?
 et
-.Ss Que fait isotop-root.sh ?
+.Sx Que fait isotop-root.sh ?
 
 .Ss Pourquoi firefox est le navigateur par défaut.
 Il est "unveiled" par défaut:
@@ -221,8 +237,6 @@ pirate.
 
 Vous pouvez bien entendu en installer un autre si vous
 préférez.
-
-
 
 .Ss Pourquoi ce nom?
 
@@ -261,9 +275,9 @@ Ce script installe le gestionnaire de fenêtre dwm (voir
 .Xr dmenu 1
 avec support de la souris, 
 .Xr slstatus 1
-pour afficher des informations dans la barre de status et
+pour afficher des informations dans la barre de status,
 .Xr lsdesktop 1
-permettant l'affichage des applications installées pour un menu.
+permettant l'affichage des applications installées pour un menu,
 .Xr rover 1
 un gestionnaire de fichiers en mode texte.
 
@@ -310,7 +324,7 @@ Fichier de configuration de
 .Xr vi 1
 .It 
 .Pa .first.sh
-est un script qui est lancé à la première ouvrture
+est un script qui est lancé à la première ouverture
 de session et affiche cette page de manuel
 .It
 .Pa .gtkrc-2.0
@@ -349,13 +363,13 @@ de la session. Il est lancé par
 définies comme fond d'écran. Par défaut, au
 lancement de la session, une image au hasard est choisie.
 Utilisez 
-.Xr
-dwall 1
+.Xr dwall 1
 pour en changer ensuite.
 .El
 
 Enfin, plusieurs outils sont disponibles dans le dossier
 .Pa bin
+
 Référez-vous au pages man correspondantes pour plus
 d'information.
 
@@ -363,11 +377,11 @@ Enfin, le script installe les pages de manuel livrées avec isotop dans
 le dossier
 .Pa $HOME/man
 
+.Ss Que fait isotop-root.sh ?
 
 Ce script s'occupe de configurer plusieurs outils au niveau du
 système tout entier. L'utilisateur est libre de l'utiliser ou
 non.
-
 .Bl -bullet
 .It
 Configuration de l'apparence de 
@@ -405,6 +419,7 @@ une fois par semaine au démarrage via le script
 .Pp
 Cette liste est récupérée depuis le site
 .Lk https://ybad.name/evils.html de l'auteur d'isotop.
+
 Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
 obtiendrez un
 message:
@@ -426,7 +441,7 @@ Voir
 
 .Ss Pourquoi avoir choisi dwm?
 Gérer les fenêtres occupe énormément de
-temps. ON les déplace, on les redimensionne, pour souvent devoir
+temps. On les déplace, on les redimensionne, pour souvent devoir
 recommencer la minute suivante, en laissant plein de place
 inutilisée à l'écran.
 
@@ -453,9 +468,8 @@ l'utiliser avec la souris.
 C'est un menu affiché en haut de votre écran.
 Écrivez ce dont vous avez besoin, ou une partie seulement, puis appuyez
 sur Entrée pour sélectionner ou bien cliquez dessus
-la lignee désirée. Un clic droit ou bien la touche echap
+la ligne désirée. Un clic droit ou bien la touche echap
 ferment le menu.
-
 .Bd -literal -offset indent
 Retour ou clic gauche: sélectionner
 Esc ou clic droit: quitter le menu.
@@ -477,22 +491,47 @@ Veuillez les signaler à
 
 .Lk https://framagit.org/3hg/isotop/
 
-.Xr bdmenu 1
-.Xr daddbmk 1
-.Xr dalarm 1
-.Xr dfm 1
-.Xr ddesktop 1
 .Xr dwm-isotop 1
 .Xr dmenu 1
-.Xr dmpc 1
-.Xr dwall 1
 .Xr firefox 1
 .Xr mpc 1
 .Xr mpd 1
 .Xr ncmpc 1
-.Xr pkg_mgr 1
 .Xr tmux 1
 .Xr slstatus 1
-.Xr lsdesktop 1
-.Xr dloadbmk 1
 .Xr dunst 1
+
+.Xr bdmenu 1
+.Xr checkbatt 1
+.Xr daddbmk 1
+.Xr dalarm 1
+.Xr ddesktop 1
+.Xr dfm 1
+.Xr dloadbmk 1
+.Xr dlocate 1
+.Xr dman 1
+.Xr dmount 1
+.Xr dmpc 1
+.Xr dsch 1
+.Xr dsct 1
+.Xr dsession 1
+.Xr dshot 1
+.Xr dsshmenu 1
+.Xr dumount 1
+.Xr dwall 1
+.Xr dyt 1
+.Xr gdoas 1
+.Xr imgmod 1
+.Xr imgopti 1
+.Xr lsdesktop 1
+.Xr networkcheck 1
+.Xr openbsdupgrade 1
+.Xr pixup 1
+.Xr rdmwall 1
+.Xr rover-open 1
+.Xr scratchterm 1
+.Xr scrot 1
+.Xr send_dmesg 1
+.Xr setwall 1
+.Xr term 1
+

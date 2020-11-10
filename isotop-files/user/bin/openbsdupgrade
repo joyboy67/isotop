@@ -15,7 +15,7 @@ else
 	doas fw_update
 
 	echo "> package update"
-		doas pkg_add -uv
+    doas pkg_add -uv
 	echo "Done! :)"
 	echo "Press enter to exit"
 	read a

@@ -1,0 +1,47 @@
+.Dd $Mdocdate$
+.Dt lsdesktop 1
+.Os
+.Sh NAME
+.Nm lsdesktop
+.Nd liste des fichiers .desktop
+.Sh SYNOPSIS
+.Op Fl h
+.Op Fl s Ar séparateur
+.Sh DESCRIPTIION
+.Nm
+liste les fichiers .desktop présents sur le système.
+
+Il les affiche de cette façon : 
+.Bd -literal
+	Categorie|Nom|commande
+.Ed
+
+Si la variable d'environnement
+.Ev LANG
+est définie, la traduction du nom des applications est
+cherchée.
+
+Les emplacements où les fichiers .desktop sont cherchés
+sont:
+.Bl -bullet
+.It 
+.Pa $HOME/.local/share/applications/
+.It 
+.Pa /usr/local/share/applications/
+.It 
+.Pa /usr/share/applications/
+.El
+
+Un fichier
+.Pa $HOME/.config/lsdesktop.exclude
+peut contenir une liste des fichiers .desktop dont il ne faut pas tenir
+compte. Par exemple : 
+.Bd -literal 
+	gtk3-demo.desktop
+	gtk3-icon-browser.desktop
+	gtk3-widget-factory.desktop
+.Ed
+
+.Sh EXEMPLE
+.Cm lsdesktop -s '::' | column -t -s '::'
+
