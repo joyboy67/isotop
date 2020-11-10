@@ -31,7 +31,6 @@ static const Rule rules[] = {
 	{ NULL,               NULL,   "glxgears",    0,          1,    -1 },
 	{ NULL,               NULL,   "xmessage",    0,          1,    -1 },
 	{ "Dunst",            NULL,   NULL,          0,          1,    -1 },
-	{ "manisotop",        NULL,   NULL,          0,          1,    -1 },
 	{ "scratchterm",      NULL,   NULL,          0,          1,    -1 },
 };
 
