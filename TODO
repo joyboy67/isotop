@@ -1,6 +1,4 @@
 # TODO
-* keep pkg_mgr ???
-* manpages pour chaque petit outil
 * replace owi : nmctl ? https://sourceforge.net/projects/nmctl/
 * update screenshots sur 3hg.fr
 
@@ -11,14 +9,3 @@
 * session jwm ?
 * xfe archive manager
 * cdrom ?
-
-## man
-* dwm-isotop (1)
-* dmenu-isotop (1)
-* dsct 1
-* dmpc
-* script term : choix de term
-* doc patches dwm
-* doc slstatus + patches
-* doc patches dmenu
-* doc patches st
