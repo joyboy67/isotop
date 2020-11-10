@@ -1,0 +1,160 @@
+#!/bin/ksh
+# wobsd
+# Licence: MIT
+# Author: prx <prx@ybad.name>
+# Description :
+# wobsd select a wifi access point and add it to
+# hostname.if join list to connect to it 
+# if an ethernet interface is available, a trunk0
+# is created to automatically switch to wifi
+# if ethernet is no longer available
+# #
+
+# config file
+cf=/etc/wobsd.conf
+
+txt_choose_ethif="Which is your ethernet interface? "
+txt_choose_wlanif="Which is your wireless interface? "
+txt_nowlanif="No wireless interface found."
+txt_whichap="Which AP do you want to join?"
+txt_pw="Passphrase? (input hidden)"
+txt_alert_file="Check file content before going further"
+txt_confirm="Proceed? (Yy|Nn)"
+
+selmenu()
+{
+### show a menu from a list in $@ and return user choice
+	OLDIFS="$IFS"
+	IFS="
+"
+    ans=""
+    select item in $@; do
+        if [ $REPLY -gt 0 -a $REPLY -le $# ]; then
+            echo $item
+            break
+        fi
+    done
+	IFS=$OLDIFS
+}
+
+firstrun()
+{
+### check for available iface and fill $cf
+
+    # choose wlan iface
+    allwlanif=$(ifconfig wlan | egrep -o "^[[:alnum:]]+")
+	if [ -n "$allwlanif" ]; then
+		echo "$txt_choose_wlanif"
+		wlanif=$(selmenu "$allwlanif")
+		echo "wlanif=$wlanif" > $cf
+	else
+		echo "$txt_nowlanif"
+		exit
+	fi
+
+    # detect if ethernet
+    allif=$(ifconfig | egrep -o "^[[:alnum:]]+")
+    allethif=""
+    for i in $allif; do
+        case $i in 
+        lo0|trunk*|enc*|pflog* ) 
+            continue 
+        ;;
+        * )
+            if [ -n "$(ifconfig $i | grep Ethernet)" ]; then
+                allethif="$i $allethif"
+            fi
+        ;;
+        esac
+    done
+	if [ -n "$allethif" ]; then
+		echo "$txt_choose_ethif"
+		ethif=$(selmenu "$allethif")
+		echo "ethif=$ethif" >> $cf
+	fi
+}
+
+bye()
+{
+	echo ""
+	echo "bye o/"
+}
+
+
+test $(id -u) -ne 0 && (echo "You must be root"; exit)
+
+trap bye INT
+
+test ! -f $cf && firstrun
+
+# load config
+. $cf
+
+# extra check
+test -z "$wlanif" && ( echo "$txt_nowlanif"; exit )
+
+# scan
+ap=""
+aplist=$(ifconfig $wlanif scan | \
+	grep -o "nwid.* " | \
+	sed -e 's/nwid //' -e 's/ chan .*$//')
+test -z "$aplist" && (echo "$txt_noap"; exit)
+echo "$txt_whichap"
+ap=$(selmenu "$aplist")
+
+# ask for password
+echo "$txt_pw"
+read -r pw
+
+# build hostname.if
+
+htrunk=""
+hethif=""
+hwlanif=""
+if [ -n "$ethif" ]; then
+	htrunk="trunkproto failover trunkport $ethif"
+	hethif="up"
+fi
+htrunk="$htrunk
+trunkport $wlanif
+inet6 autoconf
+dhcp
+"
+
+if [ -f /etc/hostname.$wlanif ]; then
+	hwlanif="$(cat /etc/hostname.$wlanif)"
+else
+	hwlanif="up"
+fi
+hwlanif="$hwlanif
+join $ap wpakey $pw
+"
+
+echo "$txt_alert_file"
+
+echo "/etc/hostname.trunk0 : "
+echo "---"
+echo "$htrunk"
+echo ""
+echo "/etc/hostname.$wlanif :"
+echo "---"
+echo "$hwlanif"
+echo ""
+if [ -n "$ethif" ]; then
+	echo "/etc/hostname.$ethif :"
+	echo "---"
+	echo "$hethif"
+	echo ""
+fi
+
+echo "$txt_confirm"
+read -r rep
+case "$rep" in
+	Y|y|O|o )
+		echo "$htrunk" > /etc/hostname.trunk0
+		echo "$hwlanif" > /etc/hostname.$wlanif
+		test -n "$ethif" && echo "$hethif" > /etc/hostname.ethif
+		sh /etc/netstart
+	;;
+	* ) bye ;;
+esac

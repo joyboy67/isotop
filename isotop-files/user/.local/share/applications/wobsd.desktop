@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=WiFi Manager for OpenBSD
+Name[fr]=Wifi sur OpenBSD
+Comment=Add a new WiFi AP
+Comment[fr]=Ajouter un nouveau point d'accès
+Exec=gdoas wobsd
+Categories=System;
