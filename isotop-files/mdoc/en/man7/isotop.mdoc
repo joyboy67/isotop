@@ -1,469 +1,578 @@
 .Dd $Mdocdate$
-.Dt isotop FAQ
-.OS
+.Dt isotop FAQ 7
+.Os
 .Sh NAME
 .Nm isotop
-.Nd a simple, fun (?) and pre-configured OpenBSD.
+.Nd customized OpenBSD for ease of use and fun.
 
 .Sh DESCRIPTION
 .Nm 
-is a script to configure OpenBSD into a great desktop.
-As much as possible, tools included in base installation are used.
-Therefore, some choice have been made to focus on simplicity and
-efficiency.
+is made of two scripts :
+.Bl
+.It isotop-user.sh : install a user session and a bunch of tools to make
+it easy to use. No need to be root.
+.It isotop-root.sh : add ports and configure parts of the system that
+require root privileges.
+.El
+
+Base tools if preffered, thus some choices have been made to keep a
+system as simple and efficient as possible.
 
 .Sh FAQ
-.Ss How to use this desktop?
 
-The window manager is a slightly modified
+.Ss How to use this desktop environment?
+Isotop's default window manager is a slightly modified
 .Lk http://dwm.suckless.org/ dwm
-.
-
-It is light, simple and help not to bother window arrangement.
-
-Before trying another window manager or desktop environment, give dwm a
-try. It is configured to be easier to use.
-
-Quickstart : 
-
-On the upper left, you can see tags numbers where you can assign
-windows, followed by symbols showing layout. Clic on them to change the
-displayed tag and the layout used.
-
-On the upper right, you can see a status bar.
-
-A few shortcuts
-
-.Ss How can I configure WiFi ?
-Read
-.Xr hostname.if 5
-and
-.Lk https://www.openbsd.org/faq/faq6.html#Wireless FAQ-Wireless
-A tool will be included in next version of isotop to ease this task.
-.Ss How can I add/remove packages ?
-A link to 
-.Em pkg_mgr
-is in cwm menu.
-
-Else, read
-.Lk https://www.openbsd.org/faq/faq15.html Package Management
-https://www.openbsd.org/faq/faq15.html Package Management
-
-.Ss Why can't I reboot or shutdown ?
-You user must belong to wheel group to use cwm menu shortcuts.
-
-.Ss Why is my screen red ?
-Because we care about you eyes, 
-.Xr sct 1
-is started when you open a session.
-Use dsch to change screen temperature color.
-You can also disable this feature by removing sct line in 
-.Pa $HOME/.xsession
-
-.Ss What notification daemon can I use?
-You can install 
-.Em dunst
-a
-nd add in 
-.Pa $HOME/.xsession
-.Dl dunst &
-.Ss Why cmus is the default music player ?
-It is light, don't need huge dependencies. It is hackable, and even
-usable with the mouse if you don't like keyboard. You cas of course
-install any other music player you might prefer.
-.Ss How to exit cmus without closing it ?
-If you start cmus with cwm root menu, it is started in 
-.Xr tmux 1
-, so it can be detached or opened in
-multiple terminals.
-To detach, press "ctrl-b" then "d".
-.Ss What are the differences with a vanilla OpenBSD ?
-.Bl -bullet
-.It 
-.Xr unwind 8
-is configured as default domain name resolver.
-.It 
-A script called zerohosts is used to adblock some domains by filling 
-.Pa /etc/hosts
-
-It will in include the content of
-.Pa /etc/hosts.include
-
-It updates
-the "bad domains" list weekly and is called with 
-.Pa
-/etc/rc.local
-No matter the DNS resolver you use, bad domains are blacklisted.
-.It
-Customized message in 
-.Pa /etc/boot.conf
-.It 
-Enabled services : xenodm, unwind.
-.It
-Disable ulpt for USB printers. This happens in rc.shutdown to enjoy
-KARL at reboot. 
-See 
-.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 this thread
-.It
-ntpd configuration does'nt use google as a constraints
-.It
-Xenodm appearance is configured and configurable with a script called
-xenodm-config.
-.It 
-Additional packages are installed
-See 
-.Pa /usr/local/share/isotop/data/packages
-.It
-doas is configured to avoid entering password for some commands. See
-.Pa /etc/doas.conf
-.It
-.Xr cwm 5
-is the default window manager. It is pre-configured and shipped
-with various script to ease window management for non-keyboard users.
-.It
-iridium is the default browser. Are disabled every option related to
-google and tracking. It is unveiled by default :
-this means the browser can\(cqt read files on your computer except in
-\(ti/Downloads. It keeps your ssh keys and passwords in configuration
-files safes. 
-Firefox is also making calls to google and can\(cqt be unveiled for now 
-(see
-.Lk https://marc.info/?l=openbsd-misc&m=152872551609819&w=2 this thread
-)
-.It
-Alt-L is mapped as Esc for vi users :)
-.It 
-Translations are included : english and french for now.
-.It 
-A few scripts and tools are included in 
-.Pa /usr/local/share/isotop/bin
-and available in your 
-.Ev PATH
-.No .
-See 
-.Sx What scripts are shipped ?
-.It
-.Pa $HOME/.aliases 
-and 
-.Pa $HOME/.functions 
-are filled with some (useful ?) stuff.
-.It
-$HOME/.kshrc contains some autocompletion for OpenBSD.
-.It
-A random wallpaper is set a each session.
-.It
-The file browser is pcmanfm. It is configured to have custom actions
-accessible with a right click (edit image, upload a file...).
-.It
-The mouse pointer is hidden after a while using 
-.Xr xbanish 1
-.It
-nord colorscheme for X apps is installed. See
-.Lk  https://www.nordtheme.com/
-
-.El
-
-.Ss Why this name ?
-
-At first, isotop was a iso file containing all packages and
-configuration for intallation.
-Now it\(cqs just a script to configure a vanilla OpenBSD.
-
-Like an isotope it is a
-variant of OpenBSD with a few more things inside, but still OpenBSD.
-
-.Ss Why is it dark ?
-Because the developper like it, and it saves power.
-
-.Ss Can I install another web browser ?
-
-Of course.
-Firefox and chromium, amongst others, are available in ports.
-However, we choosed iridium because it is unveiled, meaning it can\(cqt access your personal files that might
-contains password or ssh keys and it is more privacy friendly than chromium.
-
-.Ss Can I install another desktop environment ?
-Of course.
-
-Gnome, kde, lxde, xfce and more are availables for OpenBSD via ports.
-
-.Ss What process are started when I open a session ?
-
-See and edit
-.Pa $HOME/.xsession
-
-See 
-.Lk https://tools.suckless.org/dmenu/ dmenu website
-
-.Ss Where are isotop files stored ?
-
-.Pa /usr/local/share/isotop
-
-.Ss What scripts are included ?
-
-.Bl -bullet
-.It
-dalarm : Specify an alert, then a number of minutes. A notification will
-show the alert after the delay.
-.It
-dcmus : choose a file to play in cmus playlist
-.It
-dfm : a file launcher using dmenu.
-.It
-dgroupwin : select a window and assign a group
-.It 
-xclockstatusbar : display a bar with various info at the top of the
-screen
-.It
-maxwin : maximize a window according to cwm's configuration and gap
-.It 
-dman : read a manpage
-.It
-dmenu_run_i : a dmenu_run improved to launch a command. End with a "!"
-and the command is open in a terminal. Example : 
-.Cm top!
-.It
-dsch : Search on the web.
-Default search engine is duckduckgo if you do not specify a search
-engine.
-
-Examples : 
-
-.D1 default engine : openbsd full disk encryption
-.D1 search on openbsd misc list : obsdmisc firefox crash
-
-.It
-dsct : configure temperature color of the screen.
-.It 
-dyt : download the video with 
-.Xr youtube-dl 1
 \&.
-Selected url is pasted by default.
-.It
-gdoas : open xterm to type doas password used for other scripts such as
-xenodm-config.
-.It
-imgmod : modify an image using 
-.Xr gm 1
-Supported modification are.
-.Bl -bullet
-.It
-convert to jpg
-.It 
-convert to png
-.It
-convert to gif
-.It 
-resize
-.It
-turn left or right
-.El
 
-.It
-imgopti : optimize an image to reduce its size.
-.It
-networkcheck : check internet access
-.It
-openbsdupgrade : upgrade to last -stable changes with
-.Xr syspatch 8
-.Xr fw_update 1
-.Xr pkg_add 1
-.It
-pixcol : show the html color code under the pointer 
-.It
-pixup : upload an image to pix.toile-libre.org
-.It
-rdmwall : set a random wallpaper. Backgrounds are searched in : 
-.Pa $HOME/Images/Wallpapers
-;
-.Pa /usr/local/share/isotop/walls
-.It
-scrot : take a screenshot, saved in $HOME
-.It
-scrotup : take a screenshot with scrot and upload with pixup
-.It
-send_dmesg.sh : send your dmesg to OpenBSD developers to help hardware supporte.
-.It
-setwall : set desktop background.
-.It
-web : a wrapper to start a web browser.
-.It
-xenodm-config : edit xenodm configuration and appearance.
-.El
+Before installing a new window manager, give dwm a try. It has been made
+as simple as possible.
 
-.Ss What are avaiable custom actions in pcmanfm ?
-
-.Bl -bullet
-.It 
-Modify image (turn, resize...)
-.It
-Optimize image
-.It
-Upload image
-.It
-Set as wallpaper
-.It
-Play in cmus
-.It
-Print with default printer (image, text, pdf...)
-.El
-
-
-.Sh How to use my desktop ?
-
-.Ss Start an application
-
-At first, the desktop is almost empty. 
-
-There is xclock at the top left border.
-
-Right-click on the background to see the application menu and select, by
-example, xterm. 
-
-You can also press Alt-p to show 
-.Cm dmenu 
-and type 
-.Dq xterm
-then press return.
-
-Last, you can move the pointer to the bottom-left corner to pop 
-jgmenu.
-
-.Ss Basic window management
-
-You can drag the window by pressing Alt and left-clicking on the window
-to move it around. 
-
-To resize the window, press Alt and right-click.
-
-You probably don't need to move and resize windows but to see maximized
-instead, or hide it. All of this can be done with keystrokes thanks to
-.Xr cwm 1
-but you might not remember them all the time. Some shortcuts are
-avaiable in cwm's aplication menu.
-
-.Ss Bindings
-
-Keyboard and mouse bindings are 
-.Xr cwm 1 
-defaults. 
-
-Some other are added : 
-
-.Bl -bullet
-.It
-Alt-F4 : close window
-.It
-Alt-Shift-h/j/k/l : move window to the left/bottom/top/right of the
-screen.
-.It
-Alt-s : start 
-.Cm dsch 
-.It
-Alt-x : start
-.Cm dfm 
-.It
-Alt-t and Alt-Shift-t : tile windows
-.It
-Alt-p : shown dmenu to start application
-.It
-Alt-f : show window menu
-.It
-Alt-g : assing a new group to focused window
-.El
-
-See
-.Xr cwmrc 5
-to customize according your needs.
-
-.Ss Mouse bindings
-
-You can popup menus by clicking on the desktop, on the clock or on the 
-.Em 
-border 
-.No
-of a
-window (quite big by default).
-
-.Bl -bullet
-.It
-Right click : Application menu. you can start an application or deal
-with you windows.
-.It
-Middle click : group menu : show active group to toggle visibility of
-groups.
-.It
-Left click : window menu, to select a window.
-.It 
-Scroll on the background to change volume.
-.It 
-Alt + Right click : resize window
-.It 
-Alt + Left click : drag window
-.El
-
-
-.Ss About window menu
-
-The window menu looks like this : 
-
-.Bd -literal
-(4) ![] window name
-(4)  [] other window name
-(2) &[] another window name
-(1) &[foo] again a window name
+.Bd -literal -offset indent
+ +------+----------------------------------+--------+
+ | tags | title                            | status +
+ +------+---------------------+------------+--------+
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ |          master            |        stack        |
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ +----------------------------+---------------------+
 .Ed
 
-Between parenthesis, the group assigned to the window.
+On the upper left, you can see workspaces (tags) followed by window layout
+symbol. There a 4 available :
+.Bl
+.It
+tiled []=,
+.It
+monocle [1],
+.It
+floating ><>,
+.It
+deck DD
+.El
 
-.D1 ! means the window is focused.
-.D1 & means the window is hidden.
-.D1 [foo] : the window get the label "foo" with Ctrl-alt-n shortcut
+\&. Vous pouvez
+cliquer dessus pour en changer.
 
-.Ss About workspaces
+En haut au milieu, vous pouvez lire le titre de la fenêtre
+sélectionnée.
 
-There are no workspaces. They are just a way to increase the size of the
-screen, and if you need a bigger screen, the window manager is probably
-wrong somewhere.
-Instead, cwm uses 
-.Em groups
-\(.
-You can choose to show one ore more grouped windows depending on your
-needs.
+En haut à droit, une barre de status indique l'heure, la date, le
+volume sonore, la charge de la batterie et la chanson jouée.
 
-You can automatically assign a group to a window in 
-.Pa $HOME/.cwmrc
-or you can use the 
-.Cm dgroupwin
-to assing a group to a window.
+Pour découvrir, vous pouvez ouvrir un terminal avec Alt-Shift-Entrée
+ou bien cliquer sur la barre de status et choisir Firefox. Cette
+nouvelle fenêtre apparaît à droite en plus petit
+dans le "stack". La fenêtre actuelle reste dans la zone
+principale appelée "master".
 
-At any time, a middle click on the desktop will show the group menu to
-toggle the visibility of active groups.
+Alt-j ou Alt-k vous permet de changer de fenêtre.
+Alt-n, où n est un chiffre, permet d'afficher uniquement les fenêtres
+dont l'étiquette est "n". Alt-Shift-n permet de donner à
+la fenêtre sélectionnée l'étiquette "n".
+Alt-Ctrl-n permet d'afficher en plus les fenêtres à
+l'étiquette n. 
 
-.Sh About dmenu
-Tools included use dmenu.
+Alt-Entrée ou bien clic-milieu sur la barre de titre permet de
+mettre la fenêtre souhaitée dans la zone principale.
 
-It is a menu printed at the top of your screen.
-Write what you need, on only part of it, then press return to select.
+Un clic droit sur la barre de titre ou bien Alt-Shift-c ferme la
+fenêtre.
 
-.D1 Return: select
-.D1 Esc: exit dmenu.
-.D1 ctrl-y: paste selection
+Vous pouvez déplacer une fenêtre en mode flottant avec
+Alt-clic milieu maintenu.
 
+Quelques raccourcis : 
+.Bl -bullet
+.It 
+clic gauche sur la barre de status ou le fond d'écran : affiche le menu pour
+ouvrir une application. Clic gauche sur une ligne ouvre l'application,
+clic-droit ferme le menu.
+.It 
+clic droit sur la barre de status ou le fond d'écran : affiche le menu de session
+.It 
+clic gauche ou scroll sur le titre d'une fenêtre : affiche la
+fenêtre suivante.
+.It 
+clic droit sur le titre d'une fenêtre : ferme la
+fenêtre.
+.It 
+ctrl-shift-Enter : ouvre un terminal
+.It 
+alt-p: affiche 
+.Xr dmenu 1
+pour ouvrir une application
+.El
 
+Bien sûr, ce n'est qu'un mince aperçu.
+Voir 
+.Xr dwm-isotop 1
+pour plus d'informations sur les possibilités de la session
+isotop et bien sûr
+.Xr dwm 1.
+
+.Ss Comment installer isotop pour un autre utilisateur ?
+Facile, il suffit de lancer le script d'installation 
+.Cm isotop-user.sh
+avec cet
+utilisateur. Seule la configuration utilisateur sera copiée.
+
+Voir
+.Sx Que fait isotop-user.sh ?
+
+.Ss Comment recompiler dwm, dmenu, slstatus, lsdesktop, rover ?
+
+Ces outils sont disponibles dans le dossier
+.Pa isotop-files/src
+disponibles après installation dans votre dossier personnel. Ils
+sont toujours là si vous ne les avez pas supprimés. Sinon,
+voir ici :
+
+.Lk https://framagit.org/3hg/isotop/-/tree/master/isotop-files/src
+
+.Ss Comment ajouter une imprimante ?
+Installez les paquets suivants : 
+.Bd -literal -offset indent
+# pkg_add cups cups-filters cups-libs foomatic-db gutenprint\
+gtk+2-cups gtk+3-cups gtk+4-cups
+.Ed
+
+Activez et démarrez cups:
+.Bd -literal -offset indent
+# rcctl enable cupsd cups_browsed
+# rcctl start cupsd cups_browsed
+.Ed
+
+Si votre imprimante est reliée en USB, lisez
+.Sx Comment utiliser une imprimante USB ?
+
+Ouvrez un navigateur à l'adresse 
+
+.Lk http://127.0.0.1:631
+
+Puis cliquez sur l'onglet 
+"Administration
+
+Voir aussi:
+.Lk https://wiki.openbsd.fr.eu.org/doku.php/system/print/
+
+.Ss Comment utiliser une imprimante USB ?
+Ajoutez les lignes suivantes dans le fichier 
+.Pa /etc/rc.shutdown
+.Bd -literal -offset indent
+printf 'disable ulpt\nq\n' | config -ef /bsd
+sha256 /bsd >/var/db/kernel.SHA256
+.Ed
+
+Puis redémarrer.
+
+Ceci a pour effet de désactiver ulpt pour les imprimantes USB.
+et de reconstruire la somme de contrôle du noyau pour profiter de
+KARL au redémarrage.
+
+Une fois le redémarrage effectué, il faut donner les
+permissions à cups de gérer cette imprimante.
+Repérez-là avec la commande
+.Bd -literal -offset indent
+# usbdevs -vd
+.Ed
+
+Puis modifiez les permissions en conséquence selon le port sur
+lequel l'imprimante est détectée : 
+.Bd -literal -offset indent
+chown _cups /dev/ugen0.* /dev/usb2
+.Ed
+
+Ajoutez la commande précedente au fichier 
+.Pa /etc/rc.local
+pour garder ces changements à chaque redémarrage.
+
+Voir
+.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 ce fil
+
+.Ss Comment configurer une connexion WiFi ?
+Lisez le man
+.Xr hostname.if 5
+et la documentation d'OpenBSD traduite
+.Lk https://wiki.obsd4a.net/openbsd.org:faq:faq6#reseau-sans-fil réseau sans fil
+Un outil pour faciliter les connexions sera publié dans une prochaine
+version d'isotop, lorsque le développeur aura une carte sans-fil.
+
+.Ss Comment ajouter/supprimer des programmes
+Ouvrez
+.Xr pkg_mgr 1
+dans un terminal.
+
+Sinon, lisez
+.Lk https://wiki.obsd4a.net/openbsd.org:faq:faq15 gestion des paquets.
+
+.Ss Comment monter une clé USB ?
+Voir
+.Xr dmount 1
+
+.Ss Pourquoi cups n'est pas installé par défaut ?
+Tout le monde n'utilise pas une imprimante. Son installation est
+laissée libre à chacun. Si vous en avez besoin lisez :
+.Sx Comment ajouter une imprimante ?
+
+.Ss Pourquoi mon écran semble rouge ?
+Puisqu'on pense à vos yeux, on lance automatiquement en début de session
+.Xr sct 1
+Vous pouvez utiliser 
+.Xr dsct 1
+pour modifier la couleur, ou carrément retirer
+.Cm sctd > /dev/null 2>&1 &
+du fichier 
+.Pa $HOME/.start
+.
+
+.Ss Pourquoi mpd est le lecteur de musique par défaut ?
+Il est léger et ne nécessite pas de lourdes dépendances.
+Par ailleurs, c'est très simple de le contrôler
+grâce à divers scripts.
+L'outil 
+.Cm ncmpc
+est installé pour vous donner une interface à mpd.
+Par défaut, toute la musique placée dans le dossier
+.Pa $HOME/mpd
+sera disponible à la lecture.
+
+Vous pouvez modifier cette configuration en �ditant
+.Pa $HOME/.mpdconf
+
+À ce propos, voir : 
+.Bl -bullet
+.It
+.Xr dmpc 1
+.It
+.Xr mpc 1
+.It
+.Xr ncmpc 1
+.El
+
+.Ss Quelles sont les différences avec une installation OpenBSD de base?
+Voir
+.Sx Que fait isotop-user.sh ?
+et
+.Sx Que fait isotop-root.sh ?
+
+.Ss Pourquoi firefox est le navigateur par défaut.
+Il est "unveiled" par défaut:
+cela signifie que le navigateur ne peut lire des fichiers sur votre
+ordinateur sauf dans
+.Pa $HOME/Downloads
+et
+.Pa /tmp
+pour plus de sécurité.
+
+Il garde vos clés SSH et mots de passe inaccessibles par un éventuel
+pirate.
+
+Vous pouvez bien entendu en installer un autre si vous
+préférez.
+
+.Ss Pourquoi ce nom?
+
+Au début, isotop était image iso contenant tous les paquetages et
+configuration pour l'installation.
+Maintenant, c'est juste un script pour configurer OpenBSD.
+
+Comme un isotope c'est une
+variante d'OpenBSD avec quelques éléments supplémentaires, mais toujours OpenBSD.
+
+.Ss Pourquoi c'est sombre ?
+Parce que le développeur aime bien, et ça économise l'énergie de ne pas
+allumer les pixels.
+
+.Ss Puis-je installer un autre environnement de bureau?
+Bien sûr.
+
+Gnome, kde, lxde, xfce et d'autres sont disponibles pour OpenBSD via les ports.
+
+.Ss Quels processus sont démarrés lorsque j'ouvre une session?
+
+Consultez le fichier
+.Pa $HOME/.start
+
+.Ss Quels scripts sont inclus?
+Voir le contenu du dossier
+.Pa $HOME/bin
+Référez-vous au pages man correspondantes pour plus
+d'information.
+
+.Ss Que fait isotop-user.sh ?
+
+Ce script installe le gestionnaire de fenêtre dwm (voir
+.Xr dwm-isotop 1
+) personnalisé, une version de 
+.Xr dmenu 1
+avec support de la souris, 
+.Xr slstatus 1
+pour afficher des informations dans la barre de status,
+.Xr lsdesktop 1
+permettant l'affichage des applications installées pour un menu,
+.Xr rover 1
+un gestionnaire de fichiers en mode texte.
+
+De plus, il copie plusieurs fichiers de configuration : 
+
+.Bl -bullet
+.It
+.Pa .Xresources
+: configure la couleur des applications X (xclock, xterm...) avec le
+thème 
+"nord"
+Voir
+.Lk  https://www.nordtheme.com/
+.It
+.Pa .aliases, .functions
+: Ajoute 
+quelques commandes pratiques (ll, .., clbin, mktgz, mkcd, ...). Consultez le contenu
+de ces fichiers pour en savoir plus.
+.It
+.Pa .bookmarks
+: un fichier contenant des marques pages que vous pouvez charger avec 
+.Xr dloadbmk 1
+et compléter avec
+.Xr daddbmk
+.It
+.Pa .config
+contient la configuration pour
+.Xr dunst 1
+,
+.Xr xfe 1
+,
+.Xr mpv 1
+, l'apparence des applications gtk3 et une liste des entrées à
+ignorer avec
+.Xr lsdestop 1
+.It
+.Pa .dmenurc
+un fichier permettant de modifier l'apparence de 
+.Xr dmenu 1
+de façon commune à plusieurs scripts
+.It
+.Pa .exrc
+Fichier de configuration de 
+.Xr vi 1
+.It 
+.Pa .first.sh
+est un script qui est lancé à la première ouverture
+de session et affiche cette page de manuel
+.It
+.Pa .gtkrc-2.0
+définit l'apparence des applications gtk
+.It
+.Pa .kshrc
+Fichier de configuration du shell par défaut ksh. Ce dernier
+permet d'afficher le dossier courant, une couleur spécifique si
+une commande a échoué et quelques autocomplétions
+pour des commandes relatives à OpenBSD.
+.It
+.Pa .local/share/applications
+: Ce dossier contient plusieurs fichiers
+".desktop"
+permettant de donner accès aux scripts intégrés
+dans isotop
+.It 
+.Pa .mpdconf
+: fichier de configuration pour
+.Xr mpd 1
+.It
+.Pa .profile
+: Fichier permettant de définir plusieurs variables
+d'environnement telles que BROWSER pour définir le navigateur par
+défaut ou encore la langue à utiliser, les dossiers où
+se trouvent les binaîtres PATH et le dossier où se
+trouvent les pages man supplémentaires MANPATH.
+.It
+.Pa .start
+: Fichier permettant d'exécuter des commandes au démarrage
+de la session. Il est lancé par 
+.Pa .xsession
+.It
+.Pa .wallpapers
+: Ce dossier contient les images qui pourront être
+définies comme fond d'écran. Par défaut, au
+lancement de la session, une image au hasard est choisie.
+Utilisez 
+.Xr dwall 1
+pour en changer ensuite.
+.El
+
+Enfin, plusieurs outils sont disponibles dans le dossier
+.Pa bin
+
+Référez-vous au pages man correspondantes pour plus
+d'information.
+
+Enfin, le script installe les pages de manuel livrées avec isotop dans
+le dossier
+.Pa $HOME/man
+
+.Ss Que fait isotop-root.sh ?
+
+Ce script s'occupe de configurer plusieurs outils au niveau du
+système tout entier. L'utilisateur est libre de l'utiliser ou
+non.
+.Bl -bullet
+.It
+Configuration de l'apparence de 
+.Xr xenodm 1
+Un fond d'écran est installé dans
+.Pa /usr/local/share/isotop/walls/loginbg.jpg
+.It
+Activation des 
+"softdep"
+pour accélérer la lecture sur les disques
+.It
+Installation d'un fichier appelé par
+.Pa /etc/rc.local
+qui permet de mettre à jour la liste des domaines
+blacklistés par
+.Xr unwind 8
+.It
+Configuration d'
+.Xr unwind 8
+et
+.Xr dhclient.conf 5
+pour avoir un résolveur de nom local qui filtre aussi les pubs et
+domaines malveillants.
+est configuré en tant que résolveur de nom de domaine local
+par défaut. Ainsi, vous ne dépendez pas d'un fournisseur
+d'accès à internet pour réaliser cette tâche
+(anti-censure).
+.Pp
+Un fichier
+.Pa /var/unwind.block
+contient une liste de domaines connus comme malveillants ou
+publicitaires. Cette liste est mise à jour
+une fois par semaine au démarrage via le script
+.Pa /etc/rc.local.
+.Pp
+Cette liste est récupérée depuis le site
+.Lk https://ybad.name/evils.html de l'auteur d'isotop.
+
+Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
+obtiendrez un
+message:
+"Le site web n'est pas disponible"
+.It
+Configuration de la gestion d'énergie avec
+.Xr apmd 8
+.It
+Configuration de 
+.Xr doas 1
+pour faciliter l'utilisation des outils isotop
+.It
+La configuration ntpd n'utilise pas google comme contrainte.
+.It
+Quelques programmes supplémentaires sont installés.
+Voir
+.Lk https://framagit.org/3hg/isotop/-/blob/master/isotop-files/packages.txt
+.El
+
+.Ss Pourquoi avoir choisi dwm?
+Gérer les fenêtres occupe énormément de
+temps. On les déplace, on les redimensionne, pour souvent devoir
+recommencer la minute suivante, en laissant plein de place
+inutilisée à l'écran.
+
+dwm propose une réponse à ce problème en arrangeant
+automatiquement les fenêtres.
+
+Lorsque trop de fenêtres sont ouvertes, il est rare de toutes les
+afficher en même temps : dwm permet de passer en un mode
+"maximisé" pour afficher une fenêtre en grand.
+
+Enfin, dwm est un gestionnaire de fenêtres très
+léger et rapide. Il est écrit en très peu de lignes
+de code, profite du support de
+.Xr pledge 2
+ce qui le rend plus fiable et sûr.
+
+Cependant, si vous en préférez un autre, n'hésitez
+pas :)
+
+.Sh À propos de dmenu
+Les outils inclus utilisent dmenu patché pour pouvoir aussi
+l'utiliser avec la souris.
+
+C'est un menu affiché en haut de votre écran.
+Écrivez ce dont vous avez besoin, ou une partie seulement, puis appuyez
+sur Entrée pour sélectionner ou bien cliquez dessus
+la ligne désirée. Un clic droit ou bien la touche echap
+ferment le menu.
+.Bd -literal -offset indent
+Retour ou clic gauche: sélectionner
+Esc ou clic droit: quitter le menu.
+ctrl-y: coller la sélection
+.Ed
+
+Voir
+.Lk https://tools.suckless.org/dmenu/ le site web de dmenu
 
 
 .Sh BUGS
-Of course.
+Bien sûr.
 
-Please report them to 
-.An prx 
+Veuillez les signaler à
+.An prx
 .Mt prx@ybad.name
 
 .Sh SEE ALSO
 
-.Xr cwm 1
-.Xr cwmrc 5
+.Lk https://framagit.org/3hg/isotop/ dépôt d'isotop
+.Lk https://dwm.suckless.org/tutorial/ Tuto officiel dwm
+.Lk https://ratfactor.com/dwm Tuto de Dave Gauer
+
+.Xr dwm-isotop 1
 .Xr dmenu 1
+.Xr firefox 1
+.Xr mpc 1
+.Xr mpd 1
+.Xr ncmpc 1
 .Xr tmux 1
+.Xr slstatus 1
+.Xr dunst 1
+
+.Xr bdmenu 1
+.Xr checkbatt 1
+.Xr daddbmk 1
+.Xr dalarm 1
+.Xr ddesktop 1
+.Xr dfm 1
+.Xr dloadbmk 1
+.Xr dlocate 1
+.Xr dman 1
+.Xr dmount 1
+.Xr dmpc 1
+.Xr dsch 1
+.Xr dsct 1
+.Xr dsession 1
+.Xr dshot 1
+.Xr dsshmenu 1
+.Xr dumount 1
+.Xr dwall 1
+.Xr dyt 1
+.Xr gdoas 1
+.Xr imgmod 1
+.Xr imgopti 1
+.Xr lsdesktop 1
+.Xr networkcheck 1
+.Xr openbsdupgrade 1
+.Xr pixup 1
+.Xr rdmwall 1
+.Xr rover-open 1
+.Xr scratchterm 1
+.Xr scrot 1
+.Xr send_dmesg 1
+.Xr setwall 1
+.Xr term 1
 
