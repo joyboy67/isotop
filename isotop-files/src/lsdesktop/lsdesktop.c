@@ -20,10 +20,8 @@
 #define LEN(X)               (sizeof X / sizeof X[0])
 #define PLEDGEORDIE(prom) if (pledge(prom, NULL) == -1) { err(1, "pledge"); } 
 
-void *       ecalloc(size_t nmemb, size_t size);
 int          efclose(FILE *stream);
 FILE *       efopen(const char *path, const char *mode);
-void *       ereallocarray(void *ptr, size_t nmemb, size_t size);
 int          endswith(const char *str, const char *end);
 size_t       esnprintf(char *str, size_t size, const char *fmt, ...);
 char *       estrdup(const char *s);
@@ -48,26 +46,6 @@ static const char *categories[][2] = {
 	{ "Video", "Multimedia" },
 };
 static const char *misc = "Misc";
-
-void *
-ecalloc(size_t nmemb, size_t size)
-{
-	void *p;
-
-
-	if ((p = calloc(nmemb, size)) == NULL)
-		err(1, "calloc");
-	return p;
-}
-
-void *
-ereallocarray(void *ptr, size_t nmemb, size_t size)
-{
-	if ((ptr = reallocarray(ptr, nmemb, size)) == NULL)
-		err(1, "reallocarray");
-
-	return ptr;
-}
 
 int
 efclose(FILE *stream)
