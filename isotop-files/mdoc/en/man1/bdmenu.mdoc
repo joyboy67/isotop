@@ -1,0 +1,26 @@
+.Dd $Mdocdate$
+.Dt bdmenu 1
+.Os
+.Sh NAME
+.Nm bdmenu
+.Nd an application launcher like
+.Xr dmenu_run 1
+with recent input management
+and possibility to open in a terminal.
+.Sh DESCRIPTION
+.Nm
+shows a list of commands that can be executed with, in
+first, the most recently opened.
+
+If the chosen entry ends with a "!", the command is opened
+in a terminal.
+.Sh SEE ALSO
+.Xr dmenu 1
+.Xr term 1
+.Sh EXAMPLES
+.Bd -literal
+	top! : open "top" in a terminal
+	firefox : open firefox
+.Ed
+.Sh AUTHORS
+.An prx prx@ybad.name

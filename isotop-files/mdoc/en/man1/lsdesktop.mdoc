@@ -3,26 +3,24 @@
 .Os
 .Sh NAME
 .Nm lsdesktop
-.Nd liste des fichiers .desktop
+.Nd lists .desktop files
 .Sh SYNOPSIS
 .Op Fl h
-.Op Fl s Ar séparateur
+.Op Fl s Ar separator
 .Sh DESCRIPTIION
 .Nm
-liste les fichiers .desktop présents sur le système.
+lists the .desktop files present on the system.
 
-Il les affiche de cette façon : 
+It displays them this way:
 .Bd -literal
-	Categorie|Nom|commande
+	Category|Name|command
 .Ed
 
-Si la variable d'environnement
+If the environment variable
 .Ev LANG
-est définie, la traduction du nom des applications est
-cherchée.
+is defined, the translation of the application name is sought.
 
-Les emplacements où les fichiers .desktop sont cherchés
-sont:
+The locations where .desktop files are searched are:
 .Bl -bullet
 .It 
 .Pa $HOME/.local/share/applications/
@@ -32,17 +30,17 @@ sont:
 .Pa /usr/share/applications/
 .El
 
-Un fichier
+A file
 .Pa $HOME/.config/lsdesktop.exclude
-peut contenir une liste des fichiers .desktop dont il ne faut pas tenir
-compte. Par exemple : 
+can contain a list of .desktop files that should not be put in the list
+For example:
 .Bd -literal 
 	gtk3-demo.desktop
 	gtk3-icon-browser.desktop
 	gtk3-widget-factory.desktop
 .Ed
 
-.Sh EXEMPLE
+.Sh EXAMPLE
 .Cm lsdesktop -s '::' | column -t -s '::'
 
 .Sh AUTHORS

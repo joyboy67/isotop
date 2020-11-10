@@ -1,0 +1,26 @@
+.Dd $Mdocdate$
+.Dt dumount 1
+.Os
+.Sh NAME
+.Nm dumount
+.Nd unmount a disk
+.Sh DESCRIPTION
+.Nm
+offers a list of mounted disks to choose the one to
+unmount..
+
+To function properly, the user must
+benefit from adequate permissions with doas.
+
+.Bd -literal
+$ cat doas.conf
+permit nopass :wheel cmd /sbin/umount
+.Ed
+.Sh SEE ALSO
+.Xr dumount 1
+.Xr dmenu 1
+.Xr doas 1
+.Xr doas.conf 5
+.Xr umount 8
+.Sh AUTHORS
+.An prx prx@ybad.name

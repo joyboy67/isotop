@@ -1,0 +1,28 @@
+.Dd $Mdocdate$
+.Dt dmount 1
+.Os
+.Sh NAME
+.Nm dmount
+.Nd disk mount utility
+.Sh DESCRIPTION
+.Nm
+provides a list of recently connected drives to
+allow mounting and opening.
+
+To function properly, user must
+benefit from adequate permissions with doas.
+
+.Bd -literal
+$ cat doas.conf
+permit nopass :wheel cmd /sbin/mount
+permit nopass :wheel cmd /sbin/disklabel
+.Ed
+.Sh SEE ALSO
+.Xr dumount 1
+.Xr dmenu 1
+.Xr doas 1
+.Xr doas.conf 5
+.Xr mount 8
+.Xr disklabel 8
+.Sh AUTHORS
+.An prx prx@ybad.name

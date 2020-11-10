@@ -1,0 +1,27 @@
+.Dd $Mdocdate$
+.Dt daddbmk 1
+.Os
+.Sh NAME
+.Nm daddbmk
+.Nd add a bookmark in 
+.Pa $HOME/.bookmarks
+.Sh DESCRIPTION
+.Nm
+display selected link in 
+.Xr dmenu 1
+get the page title with 
+.Xr curl 1
+then open in the default text editor for further modifications.
+
+Each line shows something like: 
+.Bd -literal
+description https://url
+.Ed
+
+.Sh SEE ALSO
+.Xr dloadbmk 1
+.Xr dmenu 1
+.Xr curl 1
+.Xr term 1
+.Sh AUTHORS
+.An prx prx@ybad.name

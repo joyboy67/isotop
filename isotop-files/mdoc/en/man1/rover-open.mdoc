@@ -1,0 +1,24 @@
+.Dd $Mdocdate$
+.Dt rover-open 1
+.Os
+.Sh NAME
+.Nm rover-open
+.Nd open with rover
+.Sh DESCRIPTION
+.Nm
+is a simple script allowing ypu to open a file with
+.Xr rover 1
+depending on its file extansion.
+
+It is defined by the
+.Ev ROVER_OPEN
+environment variable
+
+If the extansion doesn't match, then file is opened with  
+.Xr xdg-open 1
+
+.Sh SEE ALSO
+.Xr rover 1
+.Xr xdg-open 1
+.Sh AUTHORS
+.An prx prx@ybad.name

@@ -1,0 +1,30 @@
+.Dd $Mdocdate$
+.Dt checkbatt 1
+.Os
+.Sh NAME
+.Nm checkbatt
+.Nd displays an alert if the battery is low
+.Sh DESCRIPTION
+A first alert is displayed from a level of 20%
+
+A critical second alert is displayed at 10%. This leaves a
+short time for user to turn off or plug in his
+computer.
+
+This script is supposed to be called regularly via a
+cron job.
+
+.Bd -literal
+*/5 * * * * /home/foo/bin/checkbatt >/dev/null 2>&1
+.Ed
+
+.Sh SEE ALSO
+.Xr apm 8
+.Xr dunst 1
+.Xr crontab 1
+.Sh AUTHORS
+sources
+.Lk
+https://raw.githubusercontent.com/kovalyshyn/home/master/openbsd/bin/checkbatt
+modified by prx
+.An prx prx@ybad.name
