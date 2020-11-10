@@ -4,6 +4,7 @@
  * Version:  0.1
  * Licence:  MIT
  * Author:  Xavier Cartron prx@ybad.name
+ * TODO : locale
  */
 
 #include <ctype.h>
@@ -27,10 +28,26 @@ int          endswith(const char *str, const char *end);
 size_t       esnprintf(char *str, size_t size, const char *fmt, ...);
 char *       estrdup(const char *s);
 int          filter_desktop(const struct dirent *d);
-void         print_desktop_item(const char *f, const char *item);
+char *       get_desktop_item(const char *f, const char *item);
+void         print_name(const char *f);
+void         print_exec(const char *f);
+void         print_category(const char *f);
 void         trim(char **str);
 int          startswith(const char *str, const char *start);
 
+static const char *categories[][2] = {
+	{ "Graphics", "Graphics" },
+	{ "Development", "Development" },
+	{ "Settings", "Settings" },
+	{ "System", "System" },
+	{ "Utility", "Utility" },
+	{ "Game", "Game" },
+	{ "Network", "Network" },
+	{ "Office", "Office" },
+	{ "Audio", "Multimedia" },
+	{ "Video", "Multimedia" },
+};
+static const char *misc = "Misc";
 
 void *
 ecalloc(size_t nmemb, size_t size)
@@ -140,39 +157,90 @@ endswith(const char *str, const char *end)
   return ret;
 }
 
-void
-print_desktop_item(const char *f, const char *item)
+char *
+get_desktop_item(const char *f, const char *item)
 {
-	char *name = NULL;
+	char *match = NULL;
+	char *tmp = NULL;
 	char *line = NULL;
 	size_t linesize = 0;
 	ssize_t linelen;
 	FILE *fp;
-	char *tmp = NULL;
 
 
 	fp = efopen(f, "r");
 
 	while ((linelen = getline(&line, &linesize, fp)) != -1) {
 		if (startswith(line, item)) {
-			name = estrdup(line);
-			tmp = strsep(&name, "=");
-			trim(&name);
-			printf("%s", name);
+			tmp = strsep(&line, "=");
+			trim(&line);
+			match = estrdup(line);
 			break;
 		}
 	}
 
 	free(tmp);
-	free(line);
 	if (ferror(fp)) {
 		err(1, "getline");
 	}
 
 	efclose(fp);
+	return match;
 }
 
+void
+print_name(const char *f)
+{
+	char *res              = NULL;
+	char l[3]              = {'\0'};
+	char namel[10]         = {'\0'};
+	const char *lang       = getenv("LANG");
+	
+	
+	strncpy(l, lang, 2);
+	esnprintf(namel, sizeof(namel), "Name=[%s]", l);
+	res = get_desktop_item(f, namel);
+	if (res == NULL) {
+		res = get_desktop_item(f, "Name=");
+	}
+	printf("%s", res);
+	free(res);
+}
 
+void
+print_category(const char *f)
+{
+	char *res              = NULL;
+	
+
+	res = get_desktop_item(f, "Categories=");
+	if (res != NULL) {
+		for (size_t k = 0; k < LEN(categories); k++) {
+			if (strstr(res, categories[k][0]) != NULL) {
+				printf("%s", categories[k][1]);
+				break;
+			}
+		}
+	} else {
+		printf("%s", misc);
+	}
+	free(res);
+}
+
+void
+print_exec(const char *f)
+{
+	char *res              = NULL;
+	char *tmp              = NULL;
+	
+
+	/* remove %f and stuff */
+	res = get_desktop_item(f, "Exec=");
+	tmp = strsep(&res, "%");
+
+	printf("%s", tmp);
+	free(tmp);
+}
 
 int
 filter_desktop(const struct dirent *d)
@@ -245,6 +313,7 @@ main (int argc, char *argv[])
 
 	int n                   = 0;
 	char *sep               = "|";
+	char *item              = NULL;
 	char homedirapp[BUFSIZ] = {'\0'};
 	char desktop[BUFSIZ]    = {'\0'};
 	const char *homedir     = getenv("HOME");
@@ -279,9 +348,12 @@ main (int argc, char *argv[])
 			for(int j = 0; j < n; j++) {
 				esnprintf(desktop, sizeof(desktop), "%s/%s",
 					dfd[i], namelist[j]->d_name);
-				print_desktop_item(desktop, "Name=");
+
+				print_category(desktop);
 				printf("%s", sep);
-				print_desktop_item(desktop, "Exec=");
+				print_name(desktop);
+				printf("%s", sep);
+				print_exec(desktop);
 				printf("\n");
 				free(namelist[j]);
 			}

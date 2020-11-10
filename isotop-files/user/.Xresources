@@ -105,6 +105,7 @@ Xmessage*Command.internalWidth:         5
 Xmessage*Command.internalHeight:        1
 xmessage*message.scrollHorizontal: Never
 xmessage*message.scrollVertical: Never
+xmessage*international: True
 xmessage*baseTranslations:#augment\
         <Key>Return:exit()\n\
         <Key>Escape:exit()\n\

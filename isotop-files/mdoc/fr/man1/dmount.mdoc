@@ -1,0 +1,28 @@
+.Dd $Mdocdate$
+.Dt dmount 1
+.Os
+.Sh NAME
+.Nm dmount
+.Nd monte un disque
+.Sh DESCRIPTION
+.Nm
+propose une liste des disques récemment branchés pour en
+permettre le montage et l'ouverture.
+
+Pour fonctionner correctement, l'utilisateur doit
+bénéficier de permissions adéquates avec doas.
+
+.Bd -literal
+$ cat doas.conf
+permit nopass :wheel cmd /sbin/mount
+permit nopass :wheel cmd /sbin/disklabel
+.Ed
+.Sh VOIR AUSSI
+.Xr dumount 1
+.Xr dmenu 1
+.Xr doas 1
+.Xr doas.conf 5
+.Xr mount 8
+.Xr disklabel 8
+.Sh AUTHORS
+.An prx prx@ybad.name

@@ -1,0 +1,26 @@
+.Dd $Mdocdate$
+.Dt dumount 1
+.Os
+.Sh NAME
+.Nm dumount
+.Nd démonte un disque
+.Sh DESCRIPTION
+.Nm
+propose une liste des disques montés pour choisir celui à
+démonter.
+
+Pour fonctionner correctement, l'utilisateur doit
+bénéficier de permissions adéquates avec doas.
+
+.Bd -literal
+$ cat doas.conf
+permit nopass :wheel cmd /sbin/umount
+.Ed
+.Sh VOIR AUSSI
+.Xr dumount 1
+.Xr dmenu 1
+.Xr doas 1
+.Xr doas.conf 5
+.Xr umount 8
+.Sh AUTHORS
+.An prx prx@ybad.name

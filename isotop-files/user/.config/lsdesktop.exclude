@@ -7,3 +7,7 @@ org.gtk.Demo4.desktop
 org.gtk.IconBrowser4.desktop
 org.gtk.PrintEditor4.desktop
 org.gtk.WidgetFactory4.desktop
+xboard-config.desktop
+xboard-pgn-viewer.desktop
+xboard-fen-viewer.desktop
+xboard-tourney.desktop
