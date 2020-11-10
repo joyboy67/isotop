@@ -1,6 +1,6 @@
 .Dd $Mdocdate$
 .Dt isotop FAQ 7
-.OS
+.Os
 .Sh NAME
 .Nm isotop
 .Nd une OpenBSD préconfigurée, simple (et amusante ?)
@@ -33,25 +33,70 @@ bureau, essayez dwm. Nous avons essayé de le rendre plus simple à
 utiliser qu'il ne l'est déjà, et cela demandera peut-être un temps
 d'adaptation.
 
-Pour commencer : 
+
+.Bd -literal -offset indent
+ +------+----------------------------------+--------+
+ | tags | titre                            | status +
+ +------+---------------------+------------+--------+
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ |          master            |        stack        |
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ |                            |                     |
+ +----------------------------+---------------------+
+.Ed
 
 En haut à gauche, vous voyez les numéros des espaces de travail
-(étiquettes données aux genêtres) suivi d'un symbole. Vous pouvez
+ou étiquettes atribuées aux fenêtres
+(tags)
+suivi d'un symbole. Ce dernier décrit la façon dont
+les fenêtres seront rangées. Il en existe 4 : 
+
+.Bl
+.It
+tiled []=,
+.It
+monocle [1],
+.It
+flottant ><>,
+.It
+deck DD
+.El
+
+. Vous pouvez
 cliquer dessus pour en changer.
+
+En haut au milieu, vous pouvez lire le titre de la fenêtre
+sélectionnée.
 
 En haut à droit, une barre de status indique l'heure, la date, le
 volume sonore, la charge de la batterie et la chanson jouée.
 
 Pour découvrir, vous pouvez ouvrir un terminal avec Alt-Shift-Entrée
 ou bien cliquer sur la barre de status et choisir Firefox. Cette
-nouvelle fenêtre apparaît à droite en plus petit.
+nouvelle fenêtre apparaît à droite en plus petit
+dans le "stack". La fenêtre actuelle reste dans la zone
+principale appelée "master".
 
 Alt-j ou Alt-k vous permet de changer de fenêtre.
+Alt-n, où n est un chiffre, permet d'afficher uniquement les fenêtres
+dont l'étiquette est "n". Alt-Shift-n permet de donner à
+la fenêtre sélectionnée l'étiquette "n".
+Alt-Ctrl-n permet d'afficher en plus les fenêtres à
+l'étiquette n. 
+
 Alt-Entrée ou bien clic-milieu sur la barre de titre permet de
 mettre la fenêtre souhaitée dans la zone principale.
 
 Un clic droit sur la barre de titre ou bien Alt-Shift-c ferme la
 fenêtre.
+
+Vous pouvez déplacer une fenêtre en mode flottant avec
+Alt-clic milieu maintenu.
 
 Quelques raccourcis : 
 .Bl -bullet
@@ -493,7 +538,9 @@ Veuillez les signaler à
 
 .Sh SEE ALSO
 
-.Lk https://framagit.org/3hg/isotop/
+.Lk https://framagit.org/3hg/isotop/ dépôt d'isotop
+.Lk https://dwm.suckless.org/tutorial/ Tuto officiel dwm
+.Lk https://ratfactor.com/dwm Tuto de Dave Gauer
 
 .Xr dwm-isotop 1
 .Xr dmenu 1
