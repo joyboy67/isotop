@@ -57,196 +57,140 @@ floating ><>,
 deck DD
 .El
 
-\&. Vous pouvez
-cliquer dessus pour en changer.
+\&. You may click on it to change.
 
-En haut au milieu, vous pouvez lire le titre de la fenêtre
-sélectionnée.
+On the top, you can see the selected window title.
 
-En haut à droit, une barre de status indique l'heure, la date, le
-volume sonore, la charge de la batterie et la chanson jouée.
+On the top right, you can see a status bar.
 
-Pour découvrir, vous pouvez ouvrir un terminal avec Alt-Shift-Entrée
-ou bien cliquer sur la barre de status et choisir Firefox. Cette
-nouvelle fenêtre apparaît à droite en plus petit
-dans le "stack". La fenêtre actuelle reste dans la zone
-principale appelée "master".
+To understand how it works, open a terminal with Alt-Shift-Enter or
+left-click on the status bar and select Firefox. You see the new window
+on the right, in the stack. The first window stays in the master area.
 
-Alt-j ou Alt-k vous permet de changer de fenêtre.
-Alt-n, où n est un chiffre, permet d'afficher uniquement les fenêtres
-dont l'étiquette est "n". Alt-Shift-n permet de donner à
-la fenêtre sélectionnée l'étiquette "n".
-Alt-Ctrl-n permet d'afficher en plus les fenêtres à
-l'étiquette n. 
+Alt-j or Alt-k switch selected window.
+Alt-n, where n is a number, display windows tagged "n".
+Alt-Shift-n stick the tag n to the selected window.
+Alt-Ctrl-n display other tagged windows.
 
-Alt-Entrée ou bien clic-milieu sur la barre de titre permet de
-mettre la fenêtre souhaitée dans la zone principale.
+Alt-Enter or middle-clicclic-milieu on the title bar push the window in
+the master area.
 
-Un clic droit sur la barre de titre ou bien Alt-Shift-c ferme la
-fenêtre.
+right-click on the window title or Alt-Shift-c close the window.
 
-Vous pouvez déplacer une fenêtre en mode flottant avec
-Alt-clic milieu maintenu.
+Move a window with Alt-left-button.
 
-Quelques raccourcis : 
-.Bl -bullet
-.It 
-clic gauche sur la barre de status ou le fond d'écran : affiche le menu pour
-ouvrir une application. Clic gauche sur une ligne ouvre l'application,
-clic-droit ferme le menu.
-.It 
-clic droit sur la barre de status ou le fond d'écran : affiche le menu de session
-.It 
-clic gauche ou scroll sur le titre d'une fenêtre : affiche la
-fenêtre suivante.
-.It 
-clic droit sur le titre d'une fenêtre : ferme la
-fenêtre.
-.It 
-ctrl-shift-Enter : ouvre un terminal
-.It 
-alt-p: affiche 
-.Xr dmenu 1
-pour ouvrir une application
-.El
-
-Bien sûr, ce n'est qu'un mince aperçu.
-Voir 
+See 
 .Xr dwm-isotop 1
-pour plus d'informations sur les possibilités de la session
-isotop et bien sûr
+for more and of course
 .Xr dwm 1.
 
-.Ss Comment installer isotop pour un autre utilisateur ?
-Facile, il suffit de lancer le script d'installation 
+.Ss How to install isotop for another user ?
+Use
 .Cm isotop-user.sh
-avec cet
-utilisateur. Seule la configuration utilisateur sera copiée.
+with this user.
 
 Voir
-.Sx Que fait isotop-user.sh ?
+.Sx What isotop-user.sh does ?
 
-.Ss Comment recompiler dwm, dmenu, slstatus, lsdesktop, rover ?
+.Ss How to recompile dwm, dmenu, slstatus, lsdesktop, rover ?
 
-Ces outils sont disponibles dans le dossier
+They are in
 .Pa isotop-files/src
-disponibles après installation dans votre dossier personnel. Ils
-sont toujours là si vous ne les avez pas supprimés. Sinon,
-voir ici :
+unless you deleted this directory.
 
-.Lk https://framagit.org/3hg/isotop/-/tree/master/isotop-files/src
-
-.Ss Comment ajouter une imprimante ?
-Installez les paquets suivants : 
+.Ss How to add a printer ?
+Add a few ports:
 .Bd -literal -offset indent
 # pkg_add cups cups-filters cups-libs foomatic-db gutenprint\
 gtk+2-cups gtk+3-cups gtk+4-cups
 .Ed
 
-Activez et démarrez cups:
+Enable cups:
 .Bd -literal -offset indent
 # rcctl enable cupsd cups_browsed
 # rcctl start cupsd cups_browsed
 .Ed
 
-Si votre imprimante est reliée en USB, lisez
-.Sx Comment utiliser une imprimante USB ?
+and maybe read
+.Sx How to use an USB printer ?
 
-Ouvrez un navigateur à l'adresse 
+Open a browser to 
 
 .Lk http://127.0.0.1:631
 
-Puis cliquez sur l'onglet 
-"Administration
+then click on 
+"Administration"
 
-Voir aussi:
-.Lk https://wiki.openbsd.fr.eu.org/doku.php/system/print/
-
-.Ss Comment utiliser une imprimante USB ?
-Ajoutez les lignes suivantes dans le fichier 
+.Ss How to use an USB printer ?
+Add these lines in
 .Pa /etc/rc.shutdown
 .Bd -literal -offset indent
 printf 'disable ulpt\nq\n' | config -ef /bsd
 sha256 /bsd >/var/db/kernel.SHA256
 .Ed
 
-Puis redémarrer.
+then reboot.
 
-Ceci a pour effet de désactiver ulpt pour les imprimantes USB.
-et de reconstruire la somme de contrôle du noyau pour profiter de
-KARL au redémarrage.
+It disable ulpt to use an USB printer and rebuild kernel checksum.
 
-Une fois le redémarrage effectué, il faut donner les
-permissions à cups de gérer cette imprimante.
-Repérez-là avec la commande
+Change permissions for cups.
+Check which is your printer with
 .Bd -literal -offset indent
 # usbdevs -vd
 .Ed
 
-Puis modifiez les permissions en conséquence selon le port sur
-lequel l'imprimante est détectée : 
+Then :
 .Bd -literal -offset indent
 chown _cups /dev/ugen0.* /dev/usb2
 .Ed
 
-Ajoutez la commande précedente au fichier 
+You can add this to 
 .Pa /etc/rc.local
-pour garder ces changements à chaque redémarrage.
+to keep changes at each reboot.
 
-Voir
-.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 ce fil
+See
+.Lk https://marc.info/?l=openbsd-misc&m=155746672110488&w=2 this thread
 
-.Ss Comment configurer une connexion WiFi ?
-Lisez le man
+.Ss How to add a new WiFi network?
+read
 .Xr hostname.if 5
-et la documentation d'OpenBSD traduite
-.Lk https://wiki.obsd4a.net/openbsd.org:faq:faq6#reseau-sans-fil réseau sans fil
-Un outil pour faciliter les connexions sera publié dans une prochaine
-version d'isotop, lorsque le développeur aura une carte sans-fil.
 
-.Ss Comment ajouter/supprimer des programmes
-Ouvrez
-.Xr pkg_mgr 1
-dans un terminal.
+and try 
+.Xr wobsd 1
+included in isotop
 
-Sinon, lisez
-.Lk https://wiki.obsd4a.net/openbsd.org:faq:faq15 gestion des paquets.
+.Ss How to add new software ?
 
-.Ss Comment monter une clé USB ?
-Voir
+Read 
+.Lk https://www.openbsd.org/faq/faq15.html official faq
+
+.Ss How to deal with USB drive ?
+See
 .Xr dmount 1
 
-.Ss Pourquoi cups n'est pas installé par défaut ?
-Tout le monde n'utilise pas une imprimante. Son installation est
-laissée libre à chacun. Si vous en avez besoin lisez :
-.Sx Comment ajouter une imprimante ?
-
-.Ss Pourquoi mon écran semble rouge ?
-Puisqu'on pense à vos yeux, on lance automatiquement en début de session
+.Ss Why the screen seems red ?
+To take care of your eyes, 
 .Xr sct 1
-Vous pouvez utiliser 
-.Xr dsct 1
-pour modifier la couleur, ou carrément retirer
-.Cm sctd > /dev/null 2>&1 &
-du fichier 
+is started with your session.
+Edit
 .Pa $HOME/.start
-.
+if you want to change this.
 
-.Ss Pourquoi mpd est le lecteur de musique par défaut ?
-Il est léger et ne nécessite pas de lourdes dépendances.
-Par ailleurs, c'est très simple de le contrôler
-grâce à divers scripts.
-L'outil 
+.Ss why mpd is the default music player ?
+It is light and easy to use without a full GUI.
 .Cm ncmpc
-est installé pour vous donner une interface à mpd.
-Par défaut, toute la musique placée dans le dossier
-.Pa $HOME/mpd
-sera disponible à la lecture.
+is installed as a CLI interface and
+.Xr dmpc 1
+let you choose a song to play.
 
-Vous pouvez modifier cette configuration en �ditant
+By default, all music placed in 
+.Pa $HOME/mpd
+is played by mpd.
+
+You can change this by editing 
 .Pa $HOME/.mpdconf
 
-À ce propos, voir : 
+See
 .Bl -bullet
 .It
 .Xr dmpc 1
@@ -256,167 +200,118 @@ Vous pouvez modifier cette configuration en �ditant
 .Xr ncmpc 1
 .El
 
-.Ss Quelles sont les différences avec une installation OpenBSD de base?
-Voir
-.Sx Que fait isotop-user.sh ?
-et
-.Sx Que fait isotop-root.sh ?
-
-.Ss Pourquoi firefox est le navigateur par défaut.
-Il est "unveiled" par défaut:
-cela signifie que le navigateur ne peut lire des fichiers sur votre
-ordinateur sauf dans
+.Ss Why Firefox ?
+It is unveiled so you SSH keys and personal data is safe. On ly
 .Pa $HOME/Downloads
-et
+and
 .Pa /tmp
-pour plus de sécurité.
+are readable by this browser.
 
-Il garde vos clés SSH et mots de passe inaccessibles par un éventuel
-pirate.
+.Ss Why this name ?
 
-Vous pouvez bien entendu en installer un autre si vous
-préférez.
+It's like OpenBSd, but with a bit more on it :)
 
-.Ss Pourquoi ce nom?
+.Ss Why is it dark ?
+Because the dev like it. It's nice on his eyes and require less power.
 
-Au début, isotop était image iso contenant tous les paquetages et
-configuration pour l'installation.
-Maintenant, c'est juste un script pour configurer OpenBSD.
+.Ss Can I install another desktop environment ?
+Why not ?
+A lot are available in ports.
 
-Comme un isotope c'est une
-variante d'OpenBSD avec quelques éléments supplémentaires, mais toujours OpenBSD.
-
-.Ss Pourquoi c'est sombre ?
-Parce que le développeur aime bien, et ça économise l'énergie de ne pas
-allumer les pixels.
-
-.Ss Puis-je installer un autre environnement de bureau?
-Bien sûr.
-
-Gnome, kde, lxde, xfce et d'autres sont disponibles pour OpenBSD via les ports.
-
-.Ss Quels processus sont démarrés lorsque j'ouvre une session?
-
-Consultez le fichier
+.Ss What process are started when I open a new session?
+See
 .Pa $HOME/.start
 
-.Ss Quels scripts sont inclus?
-Voir le contenu du dossier
+.Ss What scripts are included ?
+See
 .Pa $HOME/bin
-Référez-vous au pages man correspondantes pour plus
-d'information.
+and their manpages.
 
-.Ss Que fait isotop-user.sh ?
+.Ss What does isotop-user.sh do?
 
-Ce script installe le gestionnaire de fenêtre dwm (voir
+It installs a customized dwm window manager (see
 .Xr dwm-isotop 1
-) personnalisé, une version de 
+), 
 .Xr dmenu 1
-avec support de la souris, 
+with mouse support
 .Xr slstatus 1
-pour afficher des informations dans la barre de status,
+to display a nice status bar
 .Xr lsdesktop 1
-permettant l'affichage des applications installées pour un menu,
+to start apps with a desktop file, 
 .Xr rover 1
-un gestionnaire de fichiers en mode texte.
+a file manager.
 
-De plus, il copie plusieurs fichiers de configuration : 
+It also copies a few configuration files :
 
 .Bl -bullet
 .It
 .Pa .Xresources
-: configure la couleur des applications X (xclock, xterm...) avec le
-thème 
-"nord"
-Voir
-.Lk  https://www.nordtheme.com/
+: colored using
+.Lk  https://www.nordtheme.com/ nord theme
 .It
 .Pa .aliases, .functions
-: Ajoute 
-quelques commandes pratiques (ll, .., clbin, mktgz, mkcd, ...). Consultez le contenu
-de ces fichiers pour en savoir plus.
-.It
 .Pa .bookmarks
-: un fichier contenant des marques pages que vous pouvez charger avec 
+: a list of url used with
 .Xr dloadbmk 1
-et compléter avec
+and
 .Xr daddbmk
 .It
 .Pa .config
-contient la configuration pour
+containing config for
 .Xr dunst 1
 ,
 .Xr xfe 1
 ,
 .Xr mpv 1
-, l'apparence des applications gtk3 et une liste des entrées à
-ignorer avec
+, gtk3 appearance and ignored files with
 .Xr lsdestop 1
 .It
 .Pa .dmenurc
-un fichier permettant de modifier l'apparence de 
+a file to keeep appearance of 
 .Xr dmenu 1
-de façon commune à plusieurs scripts
+consistent
 .It
 .Pa .exrc
-Fichier de configuration de 
 .Xr vi 1
+configuration
 .It 
 .Pa .first.sh
-est un script qui est lancé à la première ouverture
-de session et affiche cette page de manuel
+a script started the first time you see your isotop session.
 .It
 .Pa .gtkrc-2.0
-définit l'apparence des applications gtk
+gtk appearance
 .It
 .Pa .kshrc
-Fichier de configuration du shell par défaut ksh. Ce dernier
-permet d'afficher le dossier courant, une couleur spécifique si
-une commande a échoué et quelques autocomplétions
-pour des commandes relatives à OpenBSD.
+ksh configuration with autocompletion and nice prompt.
 .It
 .Pa .local/share/applications
-: Ce dossier contient plusieurs fichiers
-".desktop"
-permettant de donner accès aux scripts intégrés
-dans isotop
+: containing a few .desktop files for isotop scripts.
 .It 
 .Pa .mpdconf
-: fichier de configuration pour
+: configuration file for
 .Xr mpd 1
 .It
 .Pa .profile
-: Fichier permettant de définir plusieurs variables
-d'environnement telles que BROWSER pour définir le navigateur par
-défaut ou encore la langue à utiliser, les dossiers où
-se trouvent les binaîtres PATH et le dossier où se
-trouvent les pages man supplémentaires MANPATH.
+: set environment variables such as BROWSER, PATH and MANPATH.
 .It
 .Pa .start
-: Fichier permettant d'exécuter des commandes au démarrage
-de la session. Il est lancé par 
+: commands started at the beginning of a session, called by
 .Pa .xsession
 .It
 .Pa .wallpapers
-: Ce dossier contient les images qui pourront être
-définies comme fond d'écran. Par défaut, au
-lancement de la session, une image au hasard est choisie.
-Utilisez 
+: a directory with your favourite wallpapers picked randomly.
+Use
 .Xr dwall 1
-pour en changer ensuite.
+To change it.
 .El
 
-Enfin, plusieurs outils sont disponibles dans le dossier
+A few tools are available in
 .Pa bin
 
-Référez-vous au pages man correspondantes pour plus
-d'information.
-
-Enfin, le script installe les pages de manuel livrées avec isotop dans
-le dossier
+isotop's manpages are available in 
 .Pa $HOME/man
 
-.Ss Que fait isotop-root.sh ?
+.Ss What isotop-root.sh does ?
 
 Ce script s'occupe de configurer plusieurs outils au niveau du
 système tout entier. L'utilisateur est libre de l'utiliser ou
@@ -575,4 +470,5 @@ Veuillez les signaler à
 .Xr send_dmesg 1
 .Xr setwall 1
 .Xr term 1
+.Xr wobsd 1
 
