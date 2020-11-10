@@ -33,7 +33,6 @@ ntfs_3g--
 numlockx--
 optipng--
 p7zip--
-pkg_mgr--
 sct--
 sxiv--
 tango-icon-theme--
