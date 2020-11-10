@@ -1,0 +1,25 @@
+.Dd $Mdocdate$
+.Dt rover-open 1
+.Os
+.Sh NAME
+.Nm rover-open
+.Nd ouverture avec rover
+.Sh DESCRIPTION
+.Nm
+est un script permettant l'ouverture de fichiers avec 
+.Xr rover 1
+selon l'extension du fichier.
+
+Il est
+définit par la variable
+.Ev ROVER_OPEN
+
+Si aucune extension ne correspond au fichier que l'on tente d'ouvrir,
+c'est 
+.Xr xdg-open 1
+
+qui est utilisé.
+
+.Sh VOIR AUSSI
+.Xr rover 1
+.Xr xdg-open 1
