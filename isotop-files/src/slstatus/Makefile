@@ -29,8 +29,8 @@ COM =\
 	components/wifi
 
 # uncomment to use mpdonair
-COM += components/mpd
-LDLIBS += -lmpdclient
+#COM += components/mpd
+#LDLIBS += -lmpdclient
 
 # uncomment on OpenBSD
 LDFLAGS += -L/usr/local/lib

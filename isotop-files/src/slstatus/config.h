@@ -67,7 +67,7 @@ static const char unknown_str[] = "";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	{ mpdonair,   "  %s",       "t - a [p]" },
+	{ run_command,   " %s", "mpd-status" },
 	/*{ cpu_perc, "  💻 %s%%",      NULL },*/
 	{ battery_perc, "  ⚡ %s%%",      NULL },
 	{ vol_perc, "  🔉 %s%%",  NULL },
