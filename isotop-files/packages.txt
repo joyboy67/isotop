@@ -18,7 +18,6 @@ libdvdcss--
 libdvdnav--
 libdvdread--
 liberation-fonts--
-libmpdclient--
 libreoffice--
 libreoffice-i18n-fr--
 lynx--
