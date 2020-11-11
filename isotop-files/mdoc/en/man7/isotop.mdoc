@@ -313,116 +313,83 @@ isotop's manpages are available in
 
 .Ss What isotop-root.sh does ?
 
-Ce script s'occupe de configurer plusieurs outils au niveau du
-système tout entier. L'utilisateur est libre de l'utiliser ou
-non.
+This script make some changes on the whole system. You are not forced to
+use it, as it require root privileges. 
+
 .Bl -bullet
 .It
-Configuration de l'apparence de 
+Configure
 .Xr xenodm 1
-Un fond d'écran est installé dans
+appearance.
+The wallpaper used is in 
 .Pa /usr/local/share/isotop/walls/loginbg.jpg
 .It
-Activation des 
+Enable softdeps
 "softdep"
-pour accélérer la lecture sur les disques
+to speed up diksk
 .It
-Installation d'un fichier appelé par
+Install a script
 .Pa /etc/rc.local
-qui permet de mettre à jour la liste des domaines
-blacklistés par
+started at each boot
+to update block list for
 .Xr unwind 8
 .It
-Configuration d'
 .Xr unwind 8
-et
+and
 .Xr dhclient.conf 5
-pour avoir un résolveur de nom local qui filtre aussi les pubs et
-domaines malveillants.
-est configuré en tant que résolveur de nom de domaine local
-par défaut. Ainsi, vous ne dépendez pas d'un fournisseur
-d'accès à internet pour réaliser cette tâche
-(anti-censure).
-.Pp
-Un fichier
-.Pa /var/unwind.block
-contient une liste de domaines connus comme malveillants ou
-publicitaires. Cette liste est mise à jour
-une fois par semaine au démarrage via le script
-.Pa /etc/rc.local.
-.Pp
-Cette liste est récupérée depuis le site
-.Lk https://ybad.name/evils.html de l'auteur d'isotop.
+are configured to be a local domain name resolver.
 
-Si vous essayez d’accéder à l’un de ces domaines (pourquoi?), Vous
-obtiendrez un
-message:
-"Le site web n'est pas disponible"
+A file
+.Pa /var/unwind.block
+is filled with a list of unwanted domains (ad-filter).
+
+This list is gathered from 
+.Lk https://ybad.name/evils.html
 .It
-Configuration de la gestion d'énergie avec
 .Xr apmd 8
+is configured and enabled to save power
 .It
-Configuration de 
 .Xr doas 1
-pour faciliter l'utilisation des outils isotop
+is configured to avoid the request of a password to mount drives or
+reboot the machine. (facultative)
 .It
-La configuration ntpd n'utilise pas google comme contrainte.
+ntpd doesn't use google as a constraint.
 .It
-Quelques programmes supplémentaires sont installés.
-Voir
+A few ports are installed. See
 .Lk https://framagit.org/3hg/isotop/-/blob/master/isotop-files/packages.txt
 .El
 
-.Ss Pourquoi avoir choisi dwm?
-Gérer les fenêtres occupe énormément de
-temps. On les déplace, on les redimensionne, pour souvent devoir
-recommencer la minute suivante, en laissant plein de place
-inutilisée à l'écran.
+.Ss Why dwm?
+Moving and resizing windows takes a lot of time. dwm tries to answer
+this situation and let the user be really focused on this work instead
+of managing windows.
 
-dwm propose une réponse à ce problème en arrangeant
-automatiquement les fenêtres.
+When too much windows are open, we can hide them using "monocle" or
+"deck" layout.
 
-Lorsque trop de fenêtres sont ouvertes, il est rare de toutes les
-afficher en même temps : dwm permet de passer en un mode
-"maximisé" pour afficher une fenêtre en grand.
-
-Enfin, dwm est un gestionnaire de fenêtres très
-léger et rapide. Il est écrit en très peu de lignes
-de code, profite du support de
+Finally, dwm is light and reliable. It is also pledged:
 .Xr pledge 2
-ce qui le rend plus fiable et sûr.
 
-Cependant, si vous en préférez un autre, n'hésitez
-pas :)
+.Sh About dmenu
+A lot of isotop tools use dmenu. it is patched to enjoy mouse support.
 
-.Sh À propos de dmenu
-Les outils inclus utilisent dmenu patché pour pouvoir aussi
-l'utiliser avec la souris.
-
-C'est un menu affiché en haut de votre écran.
-Écrivez ce dont vous avez besoin, ou une partie seulement, puis appuyez
-sur Entrée pour sélectionner ou bien cliquez dessus
-la ligne désirée. Un clic droit ou bien la touche echap
-ferment le menu.
-.Bd -literal -offset indent
-Retour ou clic gauche: sélectionner
-Esc ou clic droit: quitter le menu.
-ctrl-y: coller la sélection
-.Ed
-
-Voir
+Also see :
+.Xr dmenu 1
+and
 .Lk https://tools.suckless.org/dmenu/ le site web de dmenu
 
 
 .Sh BUGS
-Bien sûr.
+of course
 
-Veuillez les signaler à
+Please let me know :
+
 .An prx
 .Mt prx@ybad.name
 
 .Sh SEE ALSO
 
+.Lk https://www.openbsd.org/faq/index.html Official OpenBSD FAQ
 .Lk https://framagit.org/3hg/isotop/ dépôt d'isotop
 .Lk https://dwm.suckless.org/tutorial/ Tuto officiel dwm
 .Lk https://ratfactor.com/dwm Tuto de Dave Gauer
