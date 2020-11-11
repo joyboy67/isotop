@@ -7,9 +7,9 @@ name=scratchterm
 sw=$(/usr/X11R6/bin/xwininfo -root|sed '/Width/!d;s/.* //')
 sh=$(/usr/X11R6/bin/xwininfo -root|sed '/Height/!d;s/.* //')
 
-# dimension # 2/3 of screen
-w=$(($sw*2/3))
-h=$(($sh*2/3))
+# dimension # 3/5 of screen
+w=$(($sw*3/5))
+h=$(($sh*3/5))
 
 # a char is approx 7x15 px
 columns=$(($w/7))
