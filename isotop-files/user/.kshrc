@@ -122,6 +122,8 @@ if [ $? = 0 ]; then
 	set -A complete_vmctl_2 -- $(vmctl status | awk '!/NAME/{print $NF}')
 fi
 
+set -A complete_sndioctl_1 -- $(sndioctl | cut -d= -f 1)
+
 # man
 #if [ ! -f /tmp/man_list ]; then
 #apropos .|cut -d'(' -f1 | cut -d',' -f1 > /tmp/man_list
