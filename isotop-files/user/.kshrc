@@ -52,17 +52,18 @@ ps1_retvalcol()
 }
 
 # pwd on the right
-ps1_pwd()
-{
-	# my PS1 is user@hostname, we need to know how long it is
-	cwd=$(printf "%s" $PWD | sed "s,$HOME,~,")
-	ps1len=$(printf "%s@%s%s" "$(id -un)""$cwd""$(hostname -s)" | wc -m)
-	nspaces=$(($COLUMNS - $ps1len - 1))
-	printf "%*s" $nspaces
-	printf "%s" "$cwd"
-}
+#ps1_pwd()
+#{
+#	# my PS1 is user@hostname, we need to know how long it is
+#	cwd=$(printf "%s" $PWD | sed "s,$HOME,~,")
+#	ps1len=$(printf "%s@%s%s" "$(id -un)""$cwd""$(hostname -s)" | wc -m)
+#	nspaces=$(($COLUMNS - $ps1len - 1))
+#	printf "%*s" $nspaces
+#	printf "%s" "$cwd"
+#}
 
-PS1='${NC}$(ps1_color)\u@\h${NC}$(ps1_retvalcol)${BOLD}$(ps1_pwd)${NC}\n\$ '
+#PS1='${NC}$(ps1_color)\u@\h${NC}$(ps1_retvalcol)${BOLD}$(ps1_pwd)${NC}\n\$ '
+PS1='${NC}$(ps1_color)\u@\h${NC}$(ps1_retvalcol)${BOLD}:\w${NC}\n\$ '
 
 # autocompletion
 # https://github.com/qbit/dotfiles/blob/master/common/dot_ksh_completions
