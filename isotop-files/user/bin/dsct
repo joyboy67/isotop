@@ -11,6 +11,7 @@ TEMP=$(echo '4500 firecamp
 
 
 if [ "$TEMP" != "" ]; then 
+	pkill -9 -f sctd # if it's running
 	sct "${TEMP}"
 fi
 
