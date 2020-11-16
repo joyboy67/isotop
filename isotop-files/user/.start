@@ -23,7 +23,7 @@ numlockx &
 # Vi user, be grateful
 xcape -e 'Alt_L=Escape' &
 # take care of you eyes, change temperature color
-sctd > /dev/null 2>&1 &
+dsct > /dev/null 2>&1 &
 # Auto-lock the screen
 xidle -timeout 900 &
 # hide cursor
