@@ -22,7 +22,7 @@ case $lang in
 		XENODMLOGIN='identifiant ='
 		XENODMPASSWORD='\\040\\040\\040\\040\\040secret ='
 		XENODMFAIL='Echec :s'
-		LASTVER="La dernière version d\'isotop est déjà installée"
+		LASTVER='La dernière version d\'isotop est déjà installée'
 	;;
 	*)
 		RELOADMSG='Open a new session to use isotop'
