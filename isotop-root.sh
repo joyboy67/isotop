@@ -10,7 +10,7 @@ addline()
 {
 	# addline "line" "file"
 	# avoid doubles
-	grep -qxF "${1}" "${2}" || echo "{1}" >> "${2}"
+	grep -qxF "${1}" "${2}" || echo "${1}" >> "${2}"
 }
 
 lang=$(cat /etc/kbdtype)

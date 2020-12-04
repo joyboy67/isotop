@@ -28,7 +28,7 @@ If OK, extract archive and run scripts :
 
 	$ tar xvzf isotop-$VERSION.tgz
 	$ sh isotop-user.sh
-	$ doas sh isotop-root.sh
+	$ su root isotop-root.sh
 
 When you have finished, feel free to remove every `isotop-*` files.
 
