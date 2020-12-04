@@ -25,6 +25,7 @@ mpc--
 mpd--
 mpv--
 mupdf--
+netsurf--
 ncmpc--
 noto-emoji--
 noto-fonts--
