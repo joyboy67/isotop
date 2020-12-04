@@ -21,6 +21,7 @@ COM =\
 	components/num_files\
 	components/ram\
 	components/run_command\
+	components/separator\
 	components/swap\
 	components/temperature\
 	components/uptime\
@@ -28,18 +29,9 @@ COM =\
 	components/volume\
 	components/wifi
 
-# uncomment to use mpdonair
-#COM += components/mpd
-#LDLIBS += -lmpdclient
-
-# uncomment on OpenBSD
-LDFLAGS += -L/usr/local/lib
-CPPFLAGS += -I/usr/local/include
-
 all: slstatus
 
 $(COM:=.o): config.mk $(REQ:=.h)
-
 slstatus.o: slstatus.c slstatus.h arg.h config.h config.mk $(REQ:=.h)
 
 .c.o:

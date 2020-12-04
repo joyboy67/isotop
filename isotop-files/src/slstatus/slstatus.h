@@ -40,9 +40,6 @@ const char *keymap(void);
 /* load_avg */
 const char *load_avg(void);
 
-/* mpd */
-const char *mpdonair(const char *fmt);
-
 /* netspeeds */
 const char *netspeed_rx(const char *interface);
 const char *netspeed_tx(const char *interface);
@@ -58,6 +55,9 @@ const char *ram_used(void);
 
 /* run_command */
 const char *run_command(const char *cmd);
+
+/* separator */
+const char *separator(const char *separator);
 
 /* swap */
 const char *swap_free(void);
@@ -82,5 +82,3 @@ const char *vol_perc(const char *card);
 /* wifi */
 const char *wifi_perc(const char *interface);
 const char *wifi_essid(const char *interface);
-
-

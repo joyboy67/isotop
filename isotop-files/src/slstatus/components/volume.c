@@ -166,7 +166,6 @@
 			}
 		}
 
-
 		value = 100;
 		LIST_FOREACH(c, &controls, next) {
 			if (c->type == CTRL_MUTE && c->val == 1)
@@ -178,7 +177,7 @@
 					value = v;
 			}
 		}
- 
+
 		return bprintf("%d", value);
 	}
 #else
