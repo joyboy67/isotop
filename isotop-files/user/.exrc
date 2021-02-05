@@ -1,5 +1,5 @@
 " retour à la ligne après 72 charsj
-set wraplen=72
+"set wraplen=72
 " longuer des tab : 4 espaces
 set tabstop=4
 " affiche le mode : insert, visual...
