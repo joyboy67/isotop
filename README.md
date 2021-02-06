@@ -18,7 +18,7 @@ configure system daemons.
 Install OpenBSD. See
 [intructions](https://www.openbsd.org/faq/faq4.html).
 
-Download isotop last archive and checksum
+Download isotop last archive and checksum (replace "$VERSION" with last available version number, just look here : https://framagit.org/3hg/isotop).
 
 	$ ftp https://framagit.org/3hg/isotop/raw/master/isotop-$VERSION.tgz
 	$ ftp https://framagit.org/3hg/isotop/raw/master/isotop-$VERSION.sha256
