@@ -4,13 +4,11 @@ aspell-fr--
 curl--
 detox--
 ffmpeg--
-gimp--
 gnome-colors-icon-theme--
 gnome-themes-extra--
 gtk-engines2--
 gtk2-murrine-engine--
 hack-fonts--
-lowdown--
 firefox--
 ja-fonts-funet--
 ja-fonts-gnu--
@@ -18,8 +16,6 @@ libdvdcss--
 libdvdnav--
 libdvdread--
 liberation-fonts--
-libreoffice--
-libreoffice-i18n-fr--
 lynx--
 mpc--
 mpd--
