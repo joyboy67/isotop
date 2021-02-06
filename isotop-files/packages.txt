@@ -33,6 +33,7 @@ ntfs_3g--
 numlockx--
 optipng--
 p7zip--
+python3--
 sct--
 sxiv--
 tango-icon-theme--
@@ -42,4 +43,3 @@ xclip--
 xdg-utils--
 xfe--
 xwallpaper--
-youtube-dl--

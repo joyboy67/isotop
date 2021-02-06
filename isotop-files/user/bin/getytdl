@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "Downloading last youtube-dl and change shebang to python3"
+
+ftp -o $HOME/bin/youtube-dl "https://yt-dl.org/downloads/latest/youtube-dl"
+chmod +x $HOME/bin/youtube-dl
+
+sed -i 's;#!/usr/bin/env python;#!/usr/bin/env python3;' $HOME/bin/youtube-dl

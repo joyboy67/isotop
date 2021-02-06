@@ -1,3 +1,6 @@
+# for mfs:
+chmod 1777 /tmp
+
 sleep 60 && syspatch &
 if [ ! -f /var/unwind.block ]; then
     ftp -o- https://ybad.name/pub/unwind.block.gz | gunzip > /var/unwind.block &

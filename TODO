@@ -1,5 +1,9 @@
 # TODO
 * update screenshots sur 3hg.fr
+* remove most ports, keep browser and file mgr
+* doc about youtube-dl
+* doc about tmpfs
+* doc /home/user 700
 
 ## Later
 * script dl paquets pour install offline

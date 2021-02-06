@@ -97,6 +97,9 @@ makewhatis $HOME/man
 mkdir $HOME/.wallpapers 
 cp -v isotop-files/walls/isotopwall.jpg $HOME/.wallpapers/
 
+# download youtube-dl
+$HOME/bin/getytdl
+
 # make sure scripts are +x
 chmod +x ${HOME}/bin/*
 
@@ -110,6 +113,9 @@ echo "* install checkbatt cron"
 crontab -l
 echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
 ) | sort -u | crontab -
+
+echo "*set /home/user permission to 700"
+chmod 700 (userinfo $(whoami) | grep dir | awk '{print $2}')
 
 echo ""
 echo "------------"

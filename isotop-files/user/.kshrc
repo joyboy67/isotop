@@ -2,7 +2,6 @@
 . /etc/ksh.kshrc
 test -f $HOME/.aliases && . $HOME/.aliases
 test -f $HOME/.functions && . $HOME/.functions
-set -o vi
 
 # history
 HISTFILE=$HOME/.hist
