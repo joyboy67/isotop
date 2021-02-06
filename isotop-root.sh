@@ -109,7 +109,7 @@ else
 	printf "swap /tmp mfs rw,nodev,nosuid,-s=%sB 0 0\n" \
 		$(( $(dmesg |grep "avail mem" | head -n 1 | awk '{print $4}') / 10 )) \
 		>> /etc/fstab
-	# this will probably fail, see rc.local
+	# this will probably fail because of X and sndiod, see rc.local
 	umount /tmp && chmod 1777 /tmp && mount /tmp
 
 	echo "* Save isotop version"
