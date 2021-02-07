@@ -119,17 +119,6 @@ echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
 echo "* set /home/user permission to 700"
 chmod 700 $(userinfo $(whoami) | grep dir | awk '{print $2}')
 
-echo "* ${SESSION}"
-echo "Y/N"
-read ans
-case ans in
-	"Y|y") 
-		doas pkg_add xfce xfce-extras
-		sed -i 's/dwm-isotop/startxfce4 --with-ck-launch/' $HOME/.xsession
-		;;
-	"N|n") echo "dwm is a good choice :)" ;;
-	*    ) read ans ;;
-esac
 echo ""
 echo "------------"
 echo "${DOASINSTALL}"
