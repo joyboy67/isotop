@@ -10,11 +10,13 @@ case $lang in
 		DOASINSTALL='Si vous en avez la permission, vous pouvez maintenant lancer 
     su root isotop-root.sh
 Ou recharger votre session'
+		SESSION='Voulez-vous utiliser xfce plutôt que dwm comme environnement? (xfce est plus classique)?'
 	;;
 	*)
 		DOASINSTALL='If you have permission, you may now run
     su root isotop-root.sh
 Or reload your session'
+		SESSION='Do you want to use xfce instead of default dwm?'
 	;;
 esac
 
@@ -114,9 +116,20 @@ crontab -l
 echo "*/5 * * * * $HOME/bin/checkbatt >/dev/null 2>&1"
 ) | sort -u | crontab -
 
-echo "*set /home/user permission to 700"
+echo "* set /home/user permission to 700"
 chmod 700 $(userinfo $(whoami) | grep dir | awk '{print $2}')
 
+echo "* ${SESSION}"
+echo "Y/N"
+read ans
+case ans in
+	"Y|y") 
+		doas pkg_add xfce xfce-extras
+		sed -i 's/dwm-isotop/startxfce4 --with-ck-launch/' $HOME/.xsession
+		;;
+	"N|n") echo "dwm is a good choice :)" ;;
+	*    ) read ans ;;
+esac
 echo ""
 echo "------------"
 echo "${DOASINSTALL}"
