@@ -10,10 +10,12 @@
 est constitué de deux scripts permettant de configurer OpenBSD pour obtenir un environnement de
 travail rapide, agréable et pratique.
 
-.Bl
-.It isotop-user.sh : installe une session pour l'utilisateur courant, ne
+.Bl -bullet
+.It
+isotop-user.sh : installe une session pour l'utilisateur courant, ne
 requiert aucune permission particulière.
-.It isotop-root.sh : configure le système et installe quelques
+.It
+isotop-root.sh : configure le système et installe quelques
 paquets, nécessite d'être superutilisateur.
 .El
 
@@ -56,7 +58,7 @@ ou étiquettes atribuées aux fenêtres
 suivi d'un symbole. Ce dernier décrit la façon dont
 les fenêtres seront rangées. Il en existe 4 : 
 
-.Bl
+.Bl -bullet
 .It
 tiled []=,
 .It
@@ -67,8 +69,7 @@ flottant ><>,
 deck DD
 .El
 
-\&. Vous pouvez
-cliquer dessus pour en changer.
+Vous pouvez cliquer dessus pour en changer.
 
 En haut au milieu, vous pouvez lire le titre de la fenêtre
 sélectionnée.
@@ -83,9 +84,11 @@ dans le "stack". La fenêtre actuelle reste dans la zone
 principale appelée "master".
 
 Alt-j ou Alt-k vous permet de changer de fenêtre.
+
 Alt-n, où n est un chiffre, permet d'afficher uniquement les fenêtres
 dont l'étiquette est "n". Alt-Shift-n permet de donner à
 la fenêtre sélectionnée l'étiquette "n".
+
 Alt-Ctrl-n permet d'afficher en plus les fenêtres à
 l'étiquette n. 
 
@@ -118,6 +121,8 @@ ctrl-shift-Enter : ouvre un terminal
 alt-p: affiche 
 .Xr dmenu 1
 pour ouvrir une application
+.It
+La molette sur la barre de status permet de régler le volume sonore.
 .El
 
 Bien sûr, ce n'est qu'un mince aperçu.
@@ -210,7 +215,7 @@ Voir
 Lisez le man
 .Xr hostname.if 5
 et la documentation d'OpenBSD traduite
-.Lk https://wiki.obsd4a.net/openbsd.org:faq:faq6#reseau-sans-fil réseau sans fil
+.Lk https://wiki.openbsd.fr.eu.org/doku.php/openbsd.org/faq/faq6#reseau-sans-fil réseau sans fil
 Un outil pour faciliter les connexions est aussi disponible : 
 .Xr wobsd
 
@@ -270,7 +275,7 @@ Voir
 et
 .Sx Que fait isotop-root.sh ?
 
-.Ss Pourquoi firefox est le navigateur par défaut.
+.Ss Pourquoi Firefox est le navigateur par défaut.
 Il est "unveiled" par défaut:
 cela signifie que le navigateur ne peut lire des fichiers sur votre
 ordinateur sauf dans
@@ -330,7 +335,11 @@ pour afficher des informations dans la barre de status,
 .Xr lsdesktop 1
 permettant l'affichage des applications installées pour un menu,
 .Xr rover 1
-un gestionnaire de fichiers en mode texte.
+un gestionnaire de fichiers en mode texte et la dernière version de youtube-dl.
+Voir
+.Xr getytdl 1
+
+Il modifie les permissions du dossier utilisateur à 700.
 
 De plus, il copie plusieurs fichiers de configuration : 
 
@@ -488,6 +497,8 @@ La configuration ntpd n'utilise pas google comme contrainte.
 Quelques programmes supplémentaires sont installés.
 Voir
 .Lk https://framagit.org/3hg/isotop/-/blob/master/isotop-files/packages.txt
+.It
+Le dossier /tmp est monté en RAM (10% sont utilisés).
 .El
 
 .Ss Pourquoi avoir choisi dwm?
@@ -543,9 +554,13 @@ Veuillez les signaler à
 .Sh SEE ALSO
 
 .Lk https://wiki.openbsd.fr.eu.org/ wiki d'OpenBSD pour tous
+
 .Lk https://www.openbsd.org/faq/index.html FAQ OpenBSD officielle (en)
+
 .Lk https://framagit.org/3hg/isotop/ dépôt d'isotop
+
 .Lk https://dwm.suckless.org/tutorial/ Tuto officiel dwm
+
 .Lk https://ratfactor.com/dwm Tuto de Dave Gauer
 
 .Xr dwm-isotop 1

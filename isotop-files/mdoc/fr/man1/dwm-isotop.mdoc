@@ -8,62 +8,79 @@
 Voici la liste des modifications qui ont été
 apportés à la configuration par défaut de
 .Lk dwm https://dwm.suckless.org
-
 La touche "Mod1" correspond à Alt.
 
 .Ss Patches appliqués
-
-.Bl
-.It 
-.Lk http://dwm.suckless.org/patches/focusmaster/ focusmaster
+.Bl -bullet
+.It
+.Lk https://dwm.suckless.org/patches/focusmaster/ focusmaster
 permet de sélectionner la fenêtre de la zone principal en
 un raccourci.
-.It 
-.Lk http://dwm.suckless.org/patches/deck/ deckdouble
+.It
+.Lk https://dwm.suckless.org/patches/deck/ deckdouble
 Ajoute un nouvel arrangement où les fenêtres mises de
 côté sont empilées.
-.It 
-.Lk http://dwm.suckless.org/patches/resetnmaster/ resetnmaster
+.It
+.Lk https://dwm.suckless.org/patches/resetnmaster/ resetnmaster
 pour remettre à zéro le nombre de fenêtres dans la
 zone principale.
+.It
+.Lk https://dwm.suckless.org/patches/hide_vacant_tags/ hide_vacant_tags
+pour cacher les étiquettes inutilisées
+.It
+.Lk https://dwm.suckless.org/patches/tagintostack/ tagintostack
+pour ne pas modifier la zone master quand on place une fenêtre avec une autre étiquette
+.It
+.Lk https://dwm.suckless.org/patches/smartborders/ smartborders
+pour cacher les bordures en mode monoble et quand il n'y a qu'une seule fenêtre visible.
 .El
 
 .Ss  Apparence
 Les couleurs du thème
 .Lk https://www.nordtheme.com/ nord
 sont appliquées.
-
 La police
 .Lk https://sourcefoundry.org/hack/ Hack
 est utilisée.
 
 .Ss  Raccourcis souris
-
 Sur la barre de titre des fenêtres:
-.Bl
-.It clic gauche ou scroll : change de fenêtre
-.It clic droit : ferme la fenêtre
-.It clic milieu : déplace la fenêtre dans la zone
+
+.Bl -bullet
+.It
+clic gauche ou scroll : change de fenêtre
+.It
+clic droit : ferme la fenêtre
+.It
+clic milieu : déplace la fenêtre dans la zone
 principale
 .El
 
 Sur la fenêtre:
-.Bl
-.It Mod1-clic gauche : déplace la fenêtre
-.It Mod1-clic milieu : active/désactive le mode flottant
-.It Mod1-clic droit : redimensionne la fenêtre
-.It Mod1-Shift-clic gauche : déplace la fenêtre dans la
+.Bl -bullet
+.It
+Mod1-clic gauche : déplace la fenêtre
+.It
+Mod1-clic milieu : active/désactive le mode flottant
+.It
+Mod1-clic droit : redimensionne la fenêtre
+.It
+Mod1-Shift-clic gauche : déplace la fenêtre dans la
 zone principale
 .El
 
 Sur la barre de status:
-.Bl
-.It clic-gauche : ouvre le menu 
+.Bl -bullet
+.It
+clic-gauche : ouvre le menu 
 .Xr ddesktop 1
-.It clic-droit : ouvre le menu de session
+.It
+clic-droit : ouvre le menu de session
 .Xr dsession 1
-.It clic-milieu : ouvre un terminal
-.It scroll : modifie le volume sonore
+.It
+clic-milieu : ouvre un terminal
+.It
+scroll : modifie le volume sonore
 .El
 
 .Ss  Raccourcis claviers
@@ -76,39 +93,58 @@ multi-écran : Mod1-. devient Mod1-;.
 Les raccourcis par défaut de dwm sont pour la plupart conservés. En voici
 quelques nouveaux : 
 
-.Bl
-.It Mod1-p : ouvre 
+.Bl -bullet
+.It
+Mod1-p : ouvre 
 .Xr bdmenu 1
-.It Mod1-u : ajoute une fenêtre dans la zone principale (remplace
+.It
+Mod1-u : ajoute une fenêtre dans la zone principale (remplace
 Mod1-i)
-.It Mod1-o : remet à 1 le nombre de fenêtres dans la zone
+.It
+Mod1-o : remet à 1 le nombre de fenêtres dans la zone
 principale.
-.It Mod1-z : mode monocle (zoom) : fenêtres maximisées
-.It Mod1-d : mode deck : fenêtres mises de côté
+.It
+Mod1-z : mode monocle (zoom) : fenêtres maximisées
+.It
+Mod1-d : mode deck : fenêtres mises de côté
 empilées
-.It Mod1-F4 : ferme le fenêtre. Identique à Mod1-Shift-c
-.It Mod1-F2 : Ouvre bdmenu. Identique à Mod1-p
-.It Mod1-= : augmente le volume sonore
-.It Mod1-) : diminue le volume sonore
-.It Mod1-s : ouvre
+.It
+Mod1-F4 : ferme le fenêtre. Identique à Mod1-Shift-c
+.It
+Mod1-F2 : Ouvre bdmenu. Identique à Mod1-p
+.It
+Mod1-= : augmente le volume sonore
+.It
+Mod1-) : diminue le volume sonore
+.It
+Mod1-s : ouvre
 .Xr dsch 1
-.It Mod1-w : ouvre
+.It
+Mod1-w : ouvre
 .Xr dloadbmk 1
-.It Mod1-q : ouvre
+.It
+Mod1-q : ouvre
 .Xr dmpc 1
-.It Mod1-Shift-Effacer (backspace) : verouille la session
-.It Impr Ecran : ouvre
+.It
+Mod1-Shift-Effacer (backspace) : verouille la session
+.It
+Impr Ecran : ouvre
 .Xr dshot 1
-.It Mod1-Backspace ou Mod1-x : ouvre le terminal flottant
+.It
+Mod1-Backspace ou Mod1-x : ouvre le terminal flottant
 .Xr scratchterm 1
 .El
 
 Pour mpd : 
-.Bl
-.It Mod1-Ctrl-h : mpc prev : chanson précédente
-.It Mod1-Ctrl-j : mpc toggle : joue/pause la lecture
-.It Mod1-Ctrl-k : mpc play : joue la playlist
-.It Mod1-Ctrl-l : mpc next : chanson suivante
+.Bl -bullet
+.It
+Mod1-Ctrl-h : mpc prev : chanson précédente
+.It
+Mod1-Ctrl-j : mpc toggle : joue/pause la lecture
+.It
+Mod1-Ctrl-k : mpc play : joue la playlist
+.It
+Mod1-Ctrl-l : mpc next : chanson suivante
 .El
 
 .Sh VOIR AUSSI

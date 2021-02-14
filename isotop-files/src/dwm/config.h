@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -9,9 +9,9 @@ static const char *fonts[]          = { "Hack:size=10" };
 static const char dmenufont[]       = "Hack:size=10";
 static const char col_bg[]          = "#2e3440";
 static const char col_fg[]          = "#d8dee9";
-static const char col_border[]      = "#4c566a";
-static const char col_selbg[]       = "#81a1c1";
-static const char col_selfg[]       = "#2e3440";
+static const char col_border[]      = "#2e3440";
+static const char col_selbg[]       = "#3b4252";
+static const char col_selfg[]       = "#88c0d0";
 static const char col_selborder[]   = "#bf616a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -20,7 +20,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6" };
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -32,6 +32,7 @@ static const Rule rules[] = {
 	{ NULL,               NULL,   "xmessage",    0,          1,    -1 },
 	{ "Dunst",            NULL,   NULL,          0,          1,    -1 },
 	{ "scratchterm",      NULL,   NULL,          0,          1,    -1 },
+	{ "float",            NULL,   NULL,          0,          1,    -1 },
 };
 
 /* layout(s) */

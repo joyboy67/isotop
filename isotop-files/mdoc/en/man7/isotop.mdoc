@@ -9,9 +9,11 @@
 .Nm 
 is made of two scripts :
 .Bl
-.It isotop-user.sh : install a user session and a bunch of tools to make
+.It
+isotop-user.sh : install a user session and a bunch of tools to make
 it easy to use. No need to be root.
-.It isotop-root.sh : add ports and configure parts of the system that
+.It
+isotop-root.sh : add ports and configure parts of the system that
 require root privileges.
 .El
 
@@ -19,7 +21,6 @@ Base tools if preffered, thus some choices have been made to keep a
 system as simple and efficient as possible.
 
 .Sh FAQ
-
 .Ss How to use this desktop environment?
 Isotop's default window manager is a slightly modified
 .Lk http://dwm.suckless.org/ dwm
@@ -45,8 +46,9 @@ as simple as possible.
 .Ed
 
 On the upper left, you can see workspaces (tags) followed by window layout
-symbol. There a 4 available :
-.Bl
+symbol. There a 4 availables
+:
+.Bl -bullet
 .It
 tiled []=,
 .It
@@ -57,7 +59,7 @@ floating ><>,
 deck DD
 .El
 
-\&. You may click on it to change.
+You can click on it to change.
 
 On the top, you can see the selected window title.
 
@@ -68,11 +70,14 @@ left-click on the status bar and select Firefox. You see the new window
 on the right, in the stack. The first window stays in the master area.
 
 Alt-j or Alt-k switch selected window.
+
 Alt-n, where n is a number, display windows tagged "n".
+
 Alt-Shift-n stick the tag n to the selected window.
+
 Alt-Ctrl-n display other tagged windows.
 
-Alt-Enter or middle-clicclic-milieu on the title bar push the window in
+Alt-Enter or middle-clic on the title bar push the window in
 the master area.
 
 right-click on the window title or Alt-Shift-c close the window.
@@ -82,18 +87,16 @@ Move a window with Alt-left-button.
 See 
 .Xr dwm-isotop 1
 for more and of course
-.Xr dwm 1.
+.Xr dwm 1
 
 .Ss How to install isotop for another user ?
 Use
 .Cm isotop-user.sh
 with this user.
 
-Voir
+See
 .Sx What isotop-user.sh does ?
-
 .Ss How to recompile dwm, dmenu, slstatus, lsdesktop, rover ?
-
 They are in
 .Pa isotop-files/src
 unless you deleted this directory.
@@ -115,9 +118,7 @@ and maybe read
 .Sx How to use an USB printer ?
 
 Open a browser to 
-
 .Lk http://127.0.0.1:631
-
 then click on 
 "Administration"
 
@@ -176,7 +177,7 @@ Edit
 .Pa $HOME/.start
 if you want to change this.
 
-.Ss why mpd is the default music player ?
+.Ss Why mpd is the default music player ?
 It is light and easy to use without a full GUI.
 .Cm ncmpc
 is installed as a CLI interface and
@@ -209,7 +210,7 @@ are readable by this browser.
 
 .Ss Why this name ?
 
-It's like OpenBSd, but with a bit more on it :)
+It's like OpenBSD, but with a bit more on it :)
 
 .Ss Why is it dark ?
 Because the dev like it. It's nice on his eyes and require less power.
@@ -229,6 +230,8 @@ and their manpages.
 
 .Ss What does isotop-user.sh do?
 
+It sets /home/user permission to 700
+
 It installs a customized dwm window manager (see
 .Xr dwm-isotop 1
 ), 
@@ -239,7 +242,9 @@ to display a nice status bar
 .Xr lsdesktop 1
 to start apps with a desktop file, 
 .Xr rover 1
-a file manager.
+a file manager and latest version of
+youtube-dl. See
+Xr getytdl.
 
 It also copies a few configuration files :
 
@@ -357,6 +362,8 @@ ntpd doesn't use google as a constraint.
 .It
 A few ports are installed. See
 .Lk https://framagit.org/3hg/isotop/-/blob/master/isotop-files/packages.txt
+.It
+/tmp is mounted in RAM using mfs. 10% of available memory is used.
 .El
 
 .Ss Why dwm?
@@ -367,7 +374,7 @@ of managing windows.
 When too much windows are open, we can hide them using "monocle" or
 "deck" layout.
 
-Finally, dwm is light and reliable. It is also pledged:
+Finally, dwm is light and reliable. It is also pledged, see
 .Xr pledge 2
 
 .Sh About dmenu
@@ -376,12 +383,11 @@ A lot of isotop tools use dmenu. it is patched to enjoy mouse support.
 Also see :
 .Xr dmenu 1
 and
-.Lk https://tools.suckless.org/dmenu/ le site web de dmenu
+.Lk https://tools.suckless.org/dmenu/ dmenu's website
 
 
 .Sh BUGS
-of course
-
+Of course
 Please let me know :
 
 .An prx
@@ -390,8 +396,11 @@ Please let me know :
 .Sh SEE ALSO
 
 .Lk https://www.openbsd.org/faq/index.html Official OpenBSD FAQ
+
 .Lk https://framagit.org/3hg/isotop/ dépôt d'isotop
+
 .Lk https://dwm.suckless.org/tutorial/ Tuto officiel dwm
+
 .Lk https://ratfactor.com/dwm Tuto de Dave Gauer
 
 .Xr dwm-isotop 1
@@ -424,6 +433,7 @@ Please let me know :
 .Xr dwall 1
 .Xr dyt 1
 .Xr gdoas 1
+.Xr getytdl 1
 .Xr imgmod 1
 .Xr imgopti 1
 .Xr lsdesktop 1
@@ -438,4 +448,3 @@ Please let me know :
 .Xr setwall 1
 .Xr term 1
 .Xr wobsd 1
-

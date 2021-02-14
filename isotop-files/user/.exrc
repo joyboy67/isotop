@@ -38,7 +38,9 @@ set cedit=
 " RACCOURCIS
 " ^M is return : to make it, ctrl-v then return
 " paste selected text
-map gc :r!xclip -o 
+map gp :r!xclip -o 
+" copy file
+map gc :!xclip -i %
 " go to the top
 map gg 1G
 " insert date
@@ -62,3 +64,5 @@ map glit :r!printf "\%s\n\%s\n\%s" "\begin{itemize}" "    \item" "\end{itemize}"
 map glen :r!printf "\%s\n\%s\n\%s" "\begin{enumerate}" "    \item" "\end{enumerate}" 
 map glt :r!printf "\%s\n\%s\n" "\begin{tabular}{m{.5\textwidth} m{.5\textwidth}}" "\end{tabular}" 
 map glim :r!printf "\%s\n" "\includegraphics[width=.5\textwidth]{foo}" 
+" Add # to a block
+map gk :s/^/#/ 

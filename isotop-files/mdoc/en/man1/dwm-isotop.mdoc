@@ -13,19 +13,25 @@ The "Mod1" key corresponds to Alt.
 
 .Ss Applied patchs
 
-.Bl
-.It 
+.Bl -bullet
+.It
 .Lk http://dwm.suckless.org/patches/focusmaster/ focusmaster
 used to select the master window by
 a shortcut.
-.It 
+.It
 .Lk http://dwm.suckless.org/patches/deck/ deckdouble
 Adds a new layout where the side windows
 are stacked.
-.It 
+.It
 .Lk http://dwm.suckless.org/patches/resetnmaster/ resetnmaster
 to reset the number of windows in the
 master area.
+.It
+.Lk https://dwm.suckless.org/patches/hide_vacant_tags/ hide_vacant_tags
+.It
+.Lk https://dwm.suckless.org/patches/tagintostack/ tagintostack
+.It
+.Lk https://dwm.suckless.org/patches/smartborders/ smartborders
 .El
 
 .Ss  Appearance
@@ -38,28 +44,39 @@ font is used.
 .Ss  Mouse Bindings
 
 On window titlebar:
-.Bl
-.It Left clic or scroll: cycle through windows
-.It Right clic: close the window
-.It Middle clic: put window in master area
+.Bl -bullet
+.It
+Left clic or scroll: cycle through windows
+.It
+Right clic: close the window
+.It
+Middle clic: put window in master area
 .El
 
 On window itself:
-.Bl
-.It Mod1-left-clic: déplace la fenêtre
-.It Mod1-middle-clic: active/désactive le mode flottant
-.It Mod1-right-clic: redimensionne la fenêtre
-.It Mod1-Shift-left-clic: put window in master area
+.Bl -bullet
+.It
+Mod1-left-clic: déplace la fenêtre
+.It
+Mod1-middle-clic: active/désactive le mode flottant
+.It
+Mod1-right-clic: redimensionne la fenêtre
+.It
+Mod1-Shift-left-clic: put window in master area
 .El
 
 On statusbar:
 .Bl
-.It left-clic: open the menu 
+.It
+left-clic: open the menu 
 .Xr ddesktop 1
-.It right-clic: open session menu
+.It
+right-clic: open session menu
 .Xr dsession 1
-.It middle-clic: open a terminal
-.It scroll: manage sound level
+.It
+middle-clic: open a terminal
+.It
+scroll: manage sound volume
 .El
 
 .Ss  Key Bindings
@@ -73,36 +90,55 @@ The default dwm shortcuts are mostly kept. Here are some
 some new: 
 
 .Bl
-.It Mod1-p: open 
+.It
+Mod1-p: open 
 .Xr bdmenu1
-.It Mod1-u: add a window in the master area (replace
+.It
+Mod1-u: add a window in the master area (replace
 Mod1-i)
-.It Mod1-o: reset the window number to 1 in the master area.
-.It Mod1-z: zoom mode: maximized window
-.It Mod1-d: deck mode: side windows stacked
-.It Mod1-F4: close the window. Idem Mod1-Shift-c
-.It Mod1-F2: open bdmenu. Idem Mod1-p
-.It Mod1-=: increase sound level
-.It Mod1-): decrease sound level
-.It Mod1-s: open
+.It
+Mod1-o: reset the window number to 1 in the master area.
+.It
+Mod1-z: zoom mode: maximized window
+.It
+Mod1-d: deck mode: side windows stacked
+.It
+Mod1-F4: close the window. Idem Mod1-Shift-c
+.It
+Mod1-F2: open bdmenu. Idem Mod1-p
+.It
+Mod1-=: increase sound level
+.It
+Mod1-): decrease sound level
+.It
+Mod1-s: open
 .Xr dsch 1
-.It Mod1-w: open
+.It
+Mod1-w: open
 .Xr dloadbmk 1
-.It Mod1-q: open
+.It
+Mod1-q: open
 .Xr dmpc 1
-.It Mod1-Shift-Backspace: lock the session
-.It Impr Ecran: open
+.It
+Mod1-Shift-Backspace: lock the session
+.It
+Impr Ecran: open
 .Xr dshot 1
-.It Mod1-Backspace or Mod1-x: open the floating terminal
+.It
+Mod1-Backspace or Mod1-x: open the floating terminal
 .Xr scratchterm 1
 .El
 
 Mpd Key Bindings: 
 .Bl
-.It Mod1-Ctrl-h: mpc prev : previous song
-.It Mod1-Ctrl-j: mpc toggle : play/pause
-.It Mod1-Ctrl-k: mpc play : play playlist
-.It Mod1-Ctrl-l: mpc next : next song
+.It
+Mod1-Ctrl-h: mpc prev : previous song
+.It
+Mod1-Ctrl-j: mpc toggle : play/pause
+.It
+Mod1-Ctrl-k: mpc play : play playlist
+.It
+Mod1-Ctrl-l: mpc next : next song
 .El
 
 .Sh SEE ALSO
