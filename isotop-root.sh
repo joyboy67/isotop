@@ -95,7 +95,7 @@ else
 	rcctl enable unwind
 
 	echo "* Configure dhclient"
-	addline "prepend domain-name-servers 127.0.0.1;" /etc/dhclient.conf
+	addline "supersede domain-name-servers 127.0.0.1;" /etc/dhclient.conf
 
 	echo "* Installing packages"
 	pkg_add -vmzl isotop-files/packages.txt
