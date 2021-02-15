@@ -6,7 +6,7 @@ test -f $HOME/.functions && . $HOME/.functions
 # history
 HISTFILE=$HOME/.hist
 HISTSIZE=3000
-HISTCONTROL=ignoredumps # no doubles
+HISTCONTROL=ignoredups # no doubles
 
 # Prompt
 # colors
