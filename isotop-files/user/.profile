@@ -14,11 +14,4 @@ export VISUAL EDITOR PATH HOME TERM TOP PAGER BROWSER ENV MANPATH
 export LDFLAGS="-L /usr/lib -L/usr/local/lib"
 export CXXFLAGS="-I /usr/include -I/usr/local/include"
 export ROVER_OPEN="rover-open"
-LC_CTYPE="fr_FR.UTF-8"
-LC_MESSAGES="fr_FR.UTF-8"
-LC_COLLATE="fr_FR.UTF-8"
-LC_ALL="fr_FR.UTF-8"
-LANG="fr_FR.UTF-8"
-export LC_CTYPE LC_MESSAGES LC_COLLATE LC_ALL LANG
-
 export MOZ_ACCELERATED=1
