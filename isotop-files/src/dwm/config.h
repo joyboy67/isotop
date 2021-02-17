@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -10,8 +10,8 @@ static const char dmenufont[]       = "Hack:size=10";
 static const char col_bg[]          = "#2e3440";
 static const char col_fg[]          = "#d8dee9";
 static const char col_border[]      = "#2e3440";
-static const char col_selbg[]       = "#3b4252";
-static const char col_selfg[]       = "#88c0d0";
+static const char col_selbg[]       = "#5E81AC";
+static const char col_selfg[]       = "#2E3440";
 static const char col_selborder[]   = "#bf616a";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -20,7 +20,10 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+#define MAX_TAGNAME_LEN 14		/* excludes TAG_PREPEND */
+#define TAG_PREPEND "%1i:"		/* formatted as 2 chars */
+#define MAX_TAGLEN 16			/* altogether */
+static char tags[][MAX_TAGLEN] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -97,6 +100,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_n,      nametag,        {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

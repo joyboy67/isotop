@@ -1,8 +1,8 @@
 l=15
-fn="Hack-10"
+fn="Hack-11"
 
 # nord
 nb="#2E3440"
 nf="#D8DEE9"
-sf="#88C0D0"
-sb="#3B4252"
+sf="#2E3440"
+sb="#5E81AC"

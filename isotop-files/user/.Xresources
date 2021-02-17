@@ -46,10 +46,10 @@
 *.color14:nord7
 *.color15:nord6
 
-*font:-misc-fixed-medium-r-normal-*-15-*-*-*-*-*-iso10646-1
-!*font:-misc-dejavu sans mono-medium-r-normal-*-17-*-*-*-*-*-iso10646-1
-!*faceName: DejaVuSansMono:pixelsize=12:antialias=true
-*faceName: Hack:pixelsize=12:antialias=true:autohint=true
+!*font:-*-fixed-medium-r-normal-*-17-*-*-*-*-*-iso8859-*
+!*font:-*-dejavu sans mono-medium-r-normal-*-17-*-*-*-*-*-iso8859-*
+*font:-*-luxi mono-medium-r-*-*-17-*-*-*-*-*-iso8859-*
+*faceName: Hack:pixelsize=14:antialias=true:autohint=true
 
 ! Xterm config
 xterm.vt100.bellIsUrgent: true
@@ -63,7 +63,8 @@ xterm*saveLines: 4242
 XTerm*borderWidth   : 0
 xterm*internalBorder: 10
 xterm*scrollBar: false
-xterm*utf8: 1
+xterm*utf8: true
+xterm*utf8Title: true
 xterm*cursorBlink: true
 ! clicking a line selects only from the current word forward
 XTerm*cutToBeginningOfLine   : false
@@ -105,7 +106,6 @@ Xmessage*Command.internalWidth:         5
 Xmessage*Command.internalHeight:        1
 xmessage*message.scrollHorizontal: Never
 xmessage*message.scrollVertical: Never
-xmessage*international: True
 xmessage*baseTranslations:#augment\
         <Key>Return:exit()\n\
         <Key>Escape:exit()\n\
@@ -115,9 +115,8 @@ xmessage*baseTranslations:#augment\
 xclock*Foreground:#eeeeee
 
 ! all
-Xft.autohint: 0
-Xft.lcdfilter: lcddefault
-Xft.hintstyle: hintslight
-Xft.hinting: 1
-Xft.antialias: 1
+Xft.autohint: false
+Xft.hinting: false
+Xft.antialias: true
+!Xft.dpi: 144
 Xft.rgba: rgb
