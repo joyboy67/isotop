@@ -22,7 +22,7 @@ Download isotop last archive and checksum.
 
 	$ ftp https://framagit.org/3hg/isotop/raw/master/isotop-latest.tgz
 	$ ftp https://framagit.org/3hg/isotop/raw/master/isotop-latest.sha256
-	$ sha256 -C isotop-$VERSION.sha256 isotop-latest.tgz
+	$ sha256 -C isotop-latest.sha256 isotop-latest.tgz
 
 If OK, extract archive and run scripts : 
 
