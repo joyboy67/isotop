@@ -3,7 +3,7 @@ VERSION != date +%Y%m%d%H%M
 
 
 all: archive
-	sha256 -h isotop-$(VERSION).sha256 isotop-$(VERSION).tgz
+	sha256 -h isotop-latest.sha256 isotop-latest.tgz
 
 clean:
 	rm -f isotop-*.tgz isotop-*.sha256
@@ -15,3 +15,4 @@ archive: clean
 		isotop-root.sh \
 		isotop-user.sh
 	gzip -9 -o isotop-$(VERSION).tgz isotop-$(VERSION).tar
+	cp isotop-$(VERSION).tgz isotop-latest.tgz
