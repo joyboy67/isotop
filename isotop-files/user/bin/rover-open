@@ -21,10 +21,11 @@ case "${ext}" in
     fmt="ffplay %s" ;;
   *.[1-9])
     fmt="man -l %s" ;;
-  *.c|*.h|*.sh|*.lua|*.py|*.ml|*[Mm]akefile|*.md)
+  *.c|*.h|*.sh|*.lua|*.py|*.ml|*[Mm]akefile|*.md|*.tex)
     fmt="$EDITOR %s" ;;
   *)
     fmt="xdg-open %s"
 esac
 
-exec sh -c "$(printf "$fmt" "\"$1\"")"
+printf "$fmt" "\"$1\"" | ${SHELL:-"/bin/sh"}
+

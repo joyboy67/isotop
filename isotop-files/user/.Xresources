@@ -49,7 +49,7 @@
 !*font:-*-fixed-medium-r-normal-*-17-*-*-*-*-*-iso8859-*
 !*font:-*-dejavu sans mono-medium-r-normal-*-17-*-*-*-*-*-iso8859-*
 *font:-*-luxi mono-medium-r-*-*-17-*-*-*-*-*-iso8859-*
-*faceName: Hack:pixelsize=14:antialias=true:autohint=true
+*faceName: Hack:pixelsize=12:antialias=true:autohint=true
 
 ! Xterm config
 xterm.vt100.bellIsUrgent: true
@@ -115,8 +115,10 @@ xmessage*baseTranslations:#augment\
 xclock*Foreground:#eeeeee
 
 ! all
-Xft.autohint: false
-Xft.hinting: false
+Xft.dpi: 96
 Xft.antialias: true
-!Xft.dpi: 144
+Xft.hinting: true
+Xft.autohint: false
+Xft.hintstyle: hintslight
+Xft.lcdfilter: lcddefault
 Xft.rgba: rgb
