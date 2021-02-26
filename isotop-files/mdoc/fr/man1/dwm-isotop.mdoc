@@ -13,13 +13,15 @@ La touche "Mod1" correspond à Alt.
 .Ss Patches appliqués
 .Bl -bullet
 .It
+.Lk https://dwm.suckless.org/patches/bottomstack/ bottomstack
+Nouvel arrangement pour écrans verticaux (Mod1-v et Mod1-Shift-v pour l'utiliser).
+.It
+.Lk http://dwm.suckless.org/patches/gaplessgrid/ gaplessgrid
+Nouvel arrangement en mode grille.
+.It
 .Lk https://dwm.suckless.org/patches/focusmaster/ focusmaster
 permet de sélectionner la fenêtre de la zone principal en
 un raccourci.
-.It
-.Lk https://dwm.suckless.org/patches/deck/ deckdouble
-Ajoute un nouvel arrangement où les fenêtres mises de
-côté sont empilées.
 .It
 .Lk https://dwm.suckless.org/patches/resetnmaster/ resetnmaster
 pour remettre à zéro le nombre de fenêtres dans la
@@ -28,13 +30,12 @@ zone principale.
 .Lk https://dwm.suckless.org/patches/hide_vacant_tags/ hide_vacant_tags
 pour cacher les étiquettes inutilisées
 .It
-.Lk https://dwm.suckless.org/patches/tagintostack/ tagintostack
-pour ne pas modifier la zone master quand on place une fenêtre avec une autre étiquette
-.It
-.Lk https://dwm.suckless.org/patches/smartborders/ smartborders
-pour cacher les bordures en mode monoble et quand il n'y a qu'une seule fenêtre visible.
+.Lk https://dwm.suckless.org/patches/noborder/ noborder
+pour cacher les bordures quand il n'y a qu'une seule fenêtre visible.
 .It
 .Lk https://dwm.suckless.org/patches/nametag/ nametag : pour renommer une étiquette avec Alt-n
+.It
+.Lk https://dwm.suckless.org/patches/focusurgent/ focusurgent
 .El
 
 .Ss  Apparence
@@ -135,6 +136,14 @@ Impr Ecran : ouvre
 .It
 Mod1-Backspace ou Mod1-x : ouvre le terminal flottant
 .Xr scratchterm 1
+.It
+Mod1-a : sélectionne la fenêtre urgente
+.It
+Mod1-v : arrangement bstack
+.It
+Mod1-Shift-v : arrangement bstackhoriz
+.It
+Mod1-g : arrangement en grille
 .El
 
 Pour mpd : 

@@ -15,13 +15,15 @@ The "Mod1" key corresponds to Alt.
 
 .Bl -bullet
 .It
+.Lk https://dwm.suckless.org/patches/bottomstack/ bottomstack
+Add a new layout for vertical screens. Alt-v and Alt-Shift-v to select them.
+.It
+.Lk http://dwm.suckless.org/patches/gaplessgrid/ gaplessgrid
+Grid layout accessible with Mod1-g
+.It
 .Lk http://dwm.suckless.org/patches/focusmaster/ focusmaster
 used to select the master window by
 a shortcut.
-.It
-.Lk http://dwm.suckless.org/patches/deck/ deckdouble
-Adds a new layout where the side windows
-are stacked.
 .It
 .Lk http://dwm.suckless.org/patches/resetnmaster/ resetnmaster
 to reset the number of windows in the
@@ -31,9 +33,7 @@ master area.
 .It
 .Lk https://dwm.suckless.org/patches/tagintostack/ tagintostack
 .It
-.Lk https://dwm.suckless.org/patches/smartborders/ smartborders
-.It
-.Lk https://dwm.suckless.org/patches/nametag/ nametag : press Alt-n to rename a tag.
+.Lk https://dwm.suckless.org/patches/focusurgent/ focusurgent
 .El
 
 .Ss  Appearance
@@ -129,6 +129,14 @@ Impr Ecran: open
 .It
 Mod1-Backspace or Mod1-x: open the floating terminal
 .Xr scratchterm 1
+.It
+Mod1-a : focus urgent window
+.It
+Mod1-v : layout bstack
+.It
+Mod1-Shift-v : layout bstackhoriz
+.It
+Mod1-g : grid layout
 .El
 
 Mpd Key Bindings: 
