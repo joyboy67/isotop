@@ -157,7 +157,7 @@ static Key keys[] = {
 	{ MODKEY,                     XK_m,  focusmaster,    {0} },
 
 	/* urgent */
-	{ MODKEY,                     XK_a,      focusurgent,    {0} },
+	{ MODKEY,                     XK_q,      focusurgent,    {0} },
 };
 
 /* button definitions */

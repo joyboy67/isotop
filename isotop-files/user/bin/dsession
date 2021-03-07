@@ -22,13 +22,14 @@ case $LANG in
 	;;
 esac
 
-res=$(echo "$_shutdown
-$_reboot
-$_suspend
-$_hibernate
+res=$(echo "$_help
 $_lock
 $_exit
-$_help" | dmenu \
+---
+$_suspend
+$_hibernate
+$_reboot
+$_shutdown" | dmenu \
 	-l ${l} \
 	-i \
 	-fn "${fn}" \
