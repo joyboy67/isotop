@@ -3,7 +3,7 @@
 #   $HOME/.ssh/config 
 #   $HOME/.ssh/known_hosts
 # Require : x11/dmenu <https://tools.suckless.org/dmenu/>
-# Author : prx <prx@ybad.name>
+# Author : prx <prx@si3t.ch>
 # Licence : MIT
 
 # term ?

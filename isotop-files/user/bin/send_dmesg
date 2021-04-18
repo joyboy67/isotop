@@ -1,5 +1,5 @@
 #!/bin/sh
-# Auteur :      prx <prx@ybad.name>
+# Auteur :      prx <prx@si3t.ch>
 # licence :     MIT
 
 # Description : send dmesg to dmesg@openbsd.org

@@ -7,12 +7,12 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack:size=10" };
 static const char dmenufont[]       = "Hack:size=10";
-static const char col_bg[]          = "#2e3440";
-static const char col_fg[]          = "#d8dee9";
-static const char col_border[]      = "#2e3440";
-static const char col_selbg[]       = "#5E81AC";
-static const char col_selfg[]       = "#2E3440";
-static const char col_selborder[]   = "#bf616a";
+static const char col_bg[]          = "#282828";
+static const char col_fg[]          = "#ebdbb2";
+static const char col_border[]      = "#282828";
+static const char col_selbg[]       = "#458588";
+static const char col_selfg[]       = "#282828";
+static const char col_selborder[]   = "#d65d0e";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_fg, col_bg, col_border },
@@ -43,7 +43,6 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
-#include "gaplessgrid.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -51,7 +50,6 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "TTT",      bstack },
 	{ "===",      bstackhoriz },
-	{ "###",      gaplessgrid },
 };
 
 /* key definitions */
@@ -98,7 +96,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_v,      setlayout,      {.v = &layouts[3]} },
 	{ MODKEY|ShiftMask,             XK_v,      setlayout,      {.v = &layouts[4]} },
-	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[5]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },

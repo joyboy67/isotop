@@ -1,7 +1,7 @@
 #!/bin/ksh
 # wobsd
 # Licence: MIT
-# Author: prx <prx@ybad.name>
+# Author: prx <prx@si3t.ch>
 # Description :
 # wobsd select a wifi access point and add it to
 # hostname.if join list to connect to it 

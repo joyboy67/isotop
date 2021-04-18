@@ -1,6 +1,6 @@
 #!/bin/sh
 # Licence MIT
-# author: prx <prx@ybad.name>
+# author: prx <prx@si3t.ch>
 # print a list of available .desktop files in dmenu
 # require lsdesktop
 ##

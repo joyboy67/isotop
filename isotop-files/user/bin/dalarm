@@ -1,6 +1,6 @@
 #!/bin/sh
 # dmenu alarm
-# Author:      prx <prx@ybad.name>
+# Author:      prx <prx@si3t.ch>
 # licence:     MIT
 
 test -s $HOME/.dmenurc && . $HOME/.dmenurc

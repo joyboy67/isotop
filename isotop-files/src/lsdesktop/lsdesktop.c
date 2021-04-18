@@ -3,7 +3,7 @@
  *     Application-Name command
  * Version:  0.1
  * Licence:  MIT
- * Author:  Xavier Cartron prx@ybad.name
+ * Author:  Xavier Cartron prx@si3t.ch
  * TODO : locale
  */
 
