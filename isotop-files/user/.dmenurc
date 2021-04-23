@@ -1,8 +1,8 @@
 l=15
 fn="Hack-10"
 
-# nord
-nb="#2E3440"
-nf="#D8DEE9"
-sf="#2E3440"
-sb="#5E81AC"
+# gruvbox
+nb="#282828"
+nf="#a89984"
+sf="#ebdbb2"
+sb="#458588"

@@ -1,17 +1,17 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack:size=10" };
 static const char dmenufont[]       = "Hack:size=10";
 static const char col_bg[]          = "#282828";
-static const char col_fg[]          = "#ebdbb2";
+static const char col_fg[]          = "#a89984";
 static const char col_border[]      = "#282828";
 static const char col_selbg[]       = "#458588";
-static const char col_selfg[]       = "#282828";
+static const char col_selfg[]       = "#ebdbb2";
 static const char col_selborder[]   = "#d65d0e";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
@@ -36,6 +36,8 @@ static const Rule rules[] = {
 	{ "Dunst",            NULL,   NULL,          0,          1,    -1 },
 	{ "scratchterm",      NULL,   NULL,          0,          1,    -1 },
 	{ "float",            NULL,   NULL,          0,          1,    -1 },
+	{ "Firefox",          NULL,   NULL,       1 << 2,       0,           -1 },
+	{ "tmux",          NULL,   NULL,       1 << 3,       0,           -1 },
 };
 
 /* layout(s) */
@@ -71,7 +73,8 @@ static const char *termcmd[]  = { "term", NULL };
 /* custom funcs definition */
 void resetnmaster(const Arg *arg);
 static void focusurgent(const Arg *arg);
-
+void shiftview(const Arg *arg);
+static void tagtoadjacent(const Arg *arg);
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,7 +107,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_n,      nametag,        {0} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -151,10 +153,13 @@ static Key keys[] = {
 	{ MODKEY,                     XK_x,          spawn,      SHCMD("scratchterm") },
 
 	/* focusmaster patch Mod-m */
-	{ MODKEY,                     XK_m,  focusmaster,    {0} },
+	{ MODKEY,                     XK_m,          focusmaster,    {0} },
 
 	/* urgent */
-	{ MODKEY,                     XK_q,      focusurgent,    {0} },
+	{ MODKEY,                     XK_q,          focusurgent,    {0} },
+
+    /* nametag patch */
+	{ MODKEY,                     XK_n,          nametag,        {0} },
 };
 
 /* button definitions */
@@ -172,22 +177,29 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+
 	/* scroll or left click change window */
 	{ ClkWinTitle,          0,              Button1,        focusstack,     {.i = +1 } },
 	{ ClkWinTitle,          0,              Button4,        focusstack,     {.i = +1 } },
 	{ ClkWinTitle,          0,              Button5,        focusstack,     {.i = -1 } },
+
 	/* right click on title = close */
 	{ ClkWinTitle,          0,              Button3,        killclient,     {0} },
+
 	/* scroll on status : change volume */
 	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("sndioctl -q output.level=+0.1") },
 	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("sndioctl -q output.level=-0.1") },
+
 	/* on status and background: left or right-click : menu */
-	{ ClkStatusText,        0,              Button3,        spawn,          SHCMD("dsession") },
-	{ ClkStatusText,        0,              Button1,        spawn,          SHCMD("ddesktop") },
+	{ ClkStatusText,        0,              Button3,        spawn,          SHCMD("ddesktop") },
 	{ ClkRootWin,           0,              Button3,        spawn,          SHCMD("dsession") },
-	{ ClkRootWin,           0,              Button1,        spawn,          SHCMD("ddesktop") },
+
 	/* MODKEY-scrollup on window push it into master area */
 	{ ClkClientWin,  MODKEY|ShiftMask,      Button1,      zoom,    {0} },
+
+    /* MODKEY - left/right click on title : move window to next/previous tag */
+	{ ClkWinTitle,     MODKEY,            Button3,      tagtoadjacent,     {.i = +1 } },
+	{ ClkWinTitle,     MODKEY,            Button1,      tagtoadjacent,     {.i = -1 } },
 };
 
 /* custom funcs */
@@ -197,6 +209,7 @@ resetnmaster(const Arg *arg)
 	selmon->nmaster = 1;
 	arrange(selmon);
 }
+
 static void
 focusurgent(const Arg *arg) {
 	Client *c;
@@ -210,4 +223,28 @@ focusurgent(const Arg *arg) {
 			focus(c);
 		}
 	}
+}
+
+void
+tagtoadjacent(const Arg *arg) {
+    int a = 0;
+    if (arg->i < 0) { /* left */
+        if (selmon->sel != NULL
+           && __builtin_popcount(selmon->tagset[selmon->seltags] & TAGMASK) == 1
+           && selmon->tagset[selmon->seltags] > 1) {
+               selmon->sel->tags >>= 1;
+               a = 1;
+           }
+    } else if (arg->i > 0) { /* right */
+        if (selmon->sel != NULL
+           && __builtin_popcount(selmon->tagset[selmon->seltags] & TAGMASK) == 1
+           && selmon->tagset[selmon->seltags] & (TAGMASK >> 1)) {
+               selmon->sel->tags <<= 1;
+               a = 1;
+           }
+    }
+    if (a) {
+        focus(NULL);
+        arrange(selmon);
+    }
 }
