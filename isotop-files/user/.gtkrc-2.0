@@ -1,5 +1,6 @@
-gtk-theme-name="Arc-Darker"
-gtk-icon-theme-name="Arc"
+include "/home/prx/.gtkrc-2.0.mine"
+gtk-theme-name="Adwaita"
+gtk-icon-theme-name="gnome-brave"
 gtk-font-name="DejaVu Sans 9"
 gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-size=0
