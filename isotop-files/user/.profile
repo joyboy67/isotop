@@ -1,4 +1,4 @@
-PATH=$HOME/bin:$HOME/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:/opt/bin:.:/usr/local/jdk-1.8.0/jre/bin/:/usr/local/share/isotop/bin:$HOME/.cabal/bin:$HOME/.local/bin
+PATH=$HOME/bin:$HOME/.local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/sbin:/usr/games:/opt/bin:/usr/local/jdk-1.8.0/jre/bin/:/usr/local/share/isotop/bin:$HOME/.cabal/bin:$HOME/.local/bin
 EDITOR='vi'
 VISUAL='vi'
 TOP='-s .5'
