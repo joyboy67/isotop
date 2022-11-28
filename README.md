@@ -1,5 +1,6 @@
-# fork from https://framagit.org/3hg/isotop
+fork from https://framagit.org/3hg/isotop
 
+--------------
 
 ## Installation
 
@@ -19,12 +20,3 @@ If OK, extract archive and run scripts :
 	$ su root isotop-root.sh
 
 When you have finished, feel free to remove every `isotop-*` files.
-
-Screenshots
------------
-
-![isotop login screen](img/screenshots/isotop-xenodm.png)
-![isotop desktop ](img/screenshots/isotop.png)
-![isotop desktop 2](img/screenshots/isotop2.png)
-![isotop desktop 3](img/screenshots/isotop3.png)
-
