@@ -1,17 +1,5 @@
-# isotop
+# fork from https://framagit.org/3hg/isotop
 
-![isotop logo](img/logo_isotop.png)
-
-isotop is a set of configuration files, translations and instructions to
-make OpenBSD great for desktop.
-
-Available from OpenBSD > 6.5
-
-It is splitted in two separate scripts : 
-
-- `isotop-user.sh` : configure user session.
-- `isotop-root.sh` : require root privileges, install ports and
-configure system daemons.
 
 ## Installation
 
